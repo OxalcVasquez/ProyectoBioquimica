@@ -16,7 +16,6 @@ public class clsCategoria {
 
     clsJDBCConexion objConexion = new clsJDBCConexion();
     String strSQL;
-//    Statement sent;
     ResultSet rs = null;
 
     public Integer generarCodigoCategoria() throws Exception {
