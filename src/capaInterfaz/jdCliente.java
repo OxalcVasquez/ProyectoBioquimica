@@ -5,9 +5,9 @@
  */
 package capaInterfaz;
 
-import capaNegocio.ColorTabla;
-import capaNegocio.RoundedPanel;
-import capaNegocio.ComboMed;
+import capaInterfaz.Componentes.ColorTabla;
+import capaInterfaz.Componentes.RoundedPanel;
+import capaInterfaz.Componentes.ComboMed;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.BorderFactory;
@@ -46,10 +46,10 @@ public class jdCliente extends javax.swing.JDialog {
 
         jPanel2 = new RoundedPanel();
         jLabel2 = new javax.swing.JLabel();
-        gradientButton2 = new capaNegocio.BotonMedGradiente();
+        gradientButton2 = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        botonMedGradiente1 = new capaNegocio.BotonMedGradiente();
+        botonMedGradiente1 = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -58,13 +58,13 @@ public class jdCliente extends javax.swing.JDialog {
         cboSexo = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
-        txtCodigo = new capaNegocio.TextoMed();
-        txtNombre = new capaNegocio.TextoMed();
-        txtDNI = new capaNegocio.TextoMed();
-        textoMed1 = new capaNegocio.TextoMed();
-        txtCorreo = new capaNegocio.TextoMed();
-        txtEdad = new capaNegocio.TextoMed();
-        txtCiudad = new capaNegocio.TextoMed();
+        txtCodigo = new capaInterfaz.Componentes.TextoMed();
+        txtNombre = new capaInterfaz.Componentes.TextoMed();
+        txtDNI = new capaInterfaz.Componentes.TextoMed();
+        textoMed1 = new capaInterfaz.Componentes.TextoMed();
+        txtCorreo = new capaInterfaz.Componentes.TextoMed();
+        txtEdad = new capaInterfaz.Componentes.TextoMed();
+        txtCiudad = new capaInterfaz.Componentes.TextoMed();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -186,13 +186,13 @@ public class jdCliente extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel10)
@@ -202,18 +202,18 @@ public class jdCliente extends javax.swing.JDialog {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(gradientButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonMedGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(107, 107, 107))))
+                        .addGap(107, 107, 107))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(gradientButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonMedGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(57, 57, 57))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,10 +429,10 @@ public class jdCliente extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private capaNegocio.BotonMedGradiente botonMedGradiente1;
+    private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente1;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboSexo;
-    private capaNegocio.BotonMedGradiente gradientButton2;
+    private capaInterfaz.Componentes.BotonMedGradiente gradientButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -447,12 +447,12 @@ public class jdCliente extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDatos;
-    private capaNegocio.TextoMed textoMed1;
-    private capaNegocio.TextoMed txtCiudad;
-    private capaNegocio.TextoMed txtCodigo;
-    private capaNegocio.TextoMed txtCorreo;
-    private capaNegocio.TextoMed txtDNI;
-    private capaNegocio.TextoMed txtEdad;
-    private capaNegocio.TextoMed txtNombre;
+    private capaInterfaz.Componentes.TextoMed textoMed1;
+    private capaInterfaz.Componentes.TextoMed txtCiudad;
+    private capaInterfaz.Componentes.TextoMed txtCodigo;
+    private capaInterfaz.Componentes.TextoMed txtCorreo;
+    private capaInterfaz.Componentes.TextoMed txtDNI;
+    private capaInterfaz.Componentes.TextoMed txtEdad;
+    private capaInterfaz.Componentes.TextoMed txtNombre;
     // End of variables declaration//GEN-END:variables
 }

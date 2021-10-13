@@ -1,5 +1,5 @@
 
-package capaNegocio;
+package capaInterfaz.Componentes;
 
 import java.awt.Color;
 import java.awt.Component;
