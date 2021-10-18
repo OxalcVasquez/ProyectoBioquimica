@@ -8,17 +8,21 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaNegocio.clsProveedor;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.sql.ResultSet;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author CMFerrer
  */
 public class jdManProveedor extends javax.swing.JDialog {
-
+clsProveedor objProv = new clsProveedor();
     private int posX = 0, posY = 0;
     /**
      * Creates new form jdPaciente
@@ -47,7 +51,7 @@ public class jdManProveedor extends javax.swing.JDialog {
 
         jPanel2 = new RoundedPanel();
         jLabel2 = new javax.swing.JLabel();
-        gradientButton2 = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnNuevo = new capaInterfaz.Componentes.BotonMedGradiente();
@@ -94,10 +98,10 @@ public class jdManProveedor extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel2.setText("Ruc:");
 
-        gradientButton2.setText("B");
-        gradientButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setText("B");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gradientButton2ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -108,6 +112,11 @@ public class jdManProveedor extends javax.swing.JDialog {
         jLabel4.setText("Web:");
 
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel5.setText("Correo:");
@@ -140,6 +149,11 @@ public class jdManProveedor extends javax.swing.JDialog {
             }
         ));
         tblDatos.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDatos);
 
         txtRuc.setText("");
@@ -184,12 +198,32 @@ public class jdManProveedor extends javax.swing.JDialog {
         chkEstado.setText("(Activo)");
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnDarBaja.setText("Dar de baja");
+        btnDarBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDarBajaActionPerformed(evt);
+            }
+        });
 
         btnSalir2.setText("Salir");
+        btnSalir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -216,7 +250,7 @@ public class jdManProveedor extends javax.swing.JDialog {
                                 .addGap(24, 24, 24)
                                 .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addComponent(gradientButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel10)
@@ -244,7 +278,7 @@ public class jdManProveedor extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(gradientButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -282,20 +316,20 @@ public class jdManProveedor extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtWeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addGap(60, 60, 60)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
+                        .addGap(18, 18, 18)
                         .addComponent(btnDarBaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(120, 120, 120))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 850, 650));
@@ -416,14 +450,155 @@ public class jdManProveedor extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void gradientButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradientButton2ActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_gradientButton2ActionPerformed
+         ResultSet rsPr = null;
+           String rubro="";
+        try {
+            if(txtRuc.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Ingrese ruc a buscar...");
+                txtRuc.requestFocus();
+            }else{
+                rsPr=objProv.buscarProv(txtRuc.getText());
+                if(rsPr.next()){
+                    txtRAZ.setText(rsPr.getString("razonsocial"));
+                    txtCorreo.setText(rsPr.getString("correo"));
+                    txtTel.setText(String.valueOf(rsPr.getString("telefono")));
+                    txtWeb.setText(String.valueOf(rsPr.getString("web")));
+                    txtCiudad.setText(String.valueOf(rsPr.getString("ciudad")));
+                    rubro=rsPr.getString("rubro");
+                    if(rubro.equals("A")) cboRubro.setSelectedItem("Agrícola");
+                    if(rubro.equals("V")) cboRubro.setSelectedItem("Veterinario");
+                    if(rubro.equals("Q")) cboRubro.setSelectedItem("Químico");
+                  
+                    chkEstado.setSelected(rsPr.getBoolean("estado"));
+                }else{
+                    JOptionPane.showMessageDialog(this, "Ruc no registrado...");
+                    
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtWebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWebActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtWebActionPerformed
 
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+         String rubro="";
+    
+        try {
+            
+              
+                if (objProv.validar(txtRuc.getText())){
+                    if (cboRubro.getSelectedItem().equals("Agrícola")) rubro="A";
+                    if (cboRubro.getSelectedItem().equals("Veterinario")) rubro="V";
+                    if (cboRubro.getSelectedItem().equals("Químico")) rubro="Q";
+                    
+                    objProv.registrarProv(txtRuc.getText(),txtRAZ.getText(), txtCorreo.getText(), txtWeb.getText(), txtTel.getText(), txtCiudad.getText(), rubro, chkEstado.isSelected());
+                  JOptionPane.showMessageDialog(this, "Registro correcto");
+                  listarProveedores();
+                }else{
+                     JOptionPane.showMessageDialog(this, "Ruc ya está registrado!");
+
+                }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaActionPerformed
+        // TODO add your handling code here:
+         try {
+            if(txtRuc.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Ingrese ruc a dar de baja...");
+            }else{
+                objProv.darBajaHab(txtRuc.getText());
+                listarProveedores();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnDarBajaActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+         try {
+            if(txtRuc.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Ingrese ruc a dar de baja...");
+            }else{
+                objProv.darBajaHab(txtRuc.getText());
+                listarProveedores();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+         try {
+            if(txtRuc.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Ingrese ruc a eliminar...");
+            }else{
+                objProv.eliminarProv(txtRuc.getText());
+                listarProveedores();
+                
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
+        // TODO add your handling code here:
+        txtRuc.setText(String.valueOf(tblDatos.getValueAt(tblDatos.getSelectedRow(),0)));
+        btnBuscarActionPerformed(null);
+    }//GEN-LAST:event_tblDatosMouseClicked
+
+    private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnSalir2ActionPerformed
+ private void listarProveedores(){
+        ResultSet rsPr =null;
+        String rubro="";
+        DefaultTableModel modeloPr=new DefaultTableModel();
+        modeloPr.addColumn("Ruc");
+        modeloPr.addColumn("Razon Social");
+        modeloPr.addColumn("Correo");
+        modeloPr.addColumn("Web");
+        modeloPr.addColumn("Tel.");
+        modeloPr.addColumn("Ciudad");
+        modeloPr.addColumn("Rubro");
+        modeloPr.addColumn("Estado");
+        tblDatos.setModel(modeloPr);
+        try {
+            rsPr=objProv.listarProveedores();
+            while(rsPr.next()){
+                rubro=rsPr.getString("rubro");
+                    if(rubro.equals("A")) rubro=("Agrícola");
+                    if(rubro.equals("V")) rubro=("Veterinario");
+                    if(rubro.equals("Q")) rubro=("Químico");
+                modeloPr.addRow(new Object[]{
+                    rsPr.getString("ruc"),
+                    rsPr.getString("razonsocial"),
+                    rsPr.getString("correo"),
+                    rsPr.getString("web"),
+                    rsPr.getString("telefono"),
+                    rsPr.getString("ciudad"),
+                    rubro,
+                    rsPr.getBoolean("estado")? "Activo" : "Inactivo",});
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage());
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -498,6 +673,7 @@ public class jdManProveedor extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private capaInterfaz.Componentes.BotonMedGradiente btnBuscar;
     private capaInterfaz.Componentes.BotonMedGradiente btnDarBaja;
     private capaInterfaz.Componentes.BotonMedGradiente btnEliminar;
     private capaInterfaz.Componentes.BotonMedGradiente btnModificar;
@@ -506,7 +682,6 @@ public class jdManProveedor extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente btnSalir2;
     private javax.swing.JComboBox<String> cboRubro;
     private capaInterfaz.Componentes.CheckMed chkEstado;
-    private capaInterfaz.Componentes.BotonMedGradiente gradientButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
