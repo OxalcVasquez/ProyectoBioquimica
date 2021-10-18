@@ -22,9 +22,9 @@ import javax.swing.table.DefaultTableModel;
  * @author CMFerrer
  */
 public class jdManCategoria extends javax.swing.JDialog {
-
+    
     clsCategoria objCategoria = new clsCategoria();
-
+    
     private int posX = 0, posY = 0;
 
     /**
@@ -33,13 +33,13 @@ public class jdManCategoria extends javax.swing.JDialog {
     public jdManCategoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
-
+        chkVigencia.setSelected(false);
         tblDatos.getTableHeader().setDefaultRenderer(new ColorTabla());
-
+        
     }
 
     /**
@@ -185,17 +185,15 @@ public class jdManCategoria extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(98, 98, 98))
+                            .addComponent(jLabel2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(74, 74, 74)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel8))
                                 .addGap(28, 28, 28)
-                                .addComponent(chkVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(159, 159, 159)))
+                                .addComponent(chkVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(159, 159, 159)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -327,7 +325,7 @@ public class jdManCategoria extends javax.swing.JDialog {
         }
         return true;
     }
-
+    
     public void listarCategorias() {
         ResultSet rsListaCategorias = null;
         DefaultTableModel modelCategoria = new DefaultTableModel() {
@@ -335,34 +333,34 @@ public class jdManCategoria extends javax.swing.JDialog {
                 return false;
             }
         };
-
+        
         modelCategoria.addColumn("Cod. Categoria");
         modelCategoria.addColumn("Nombre");
         modelCategoria.addColumn("Vigencia");
         tblDatos.setModel(modelCategoria);
-
+        
         try {
             rsListaCategorias = objCategoria.listarCategorias();
             while (rsListaCategorias.next()) {
-
+                
                 modelCategoria.addRow(new Object[]{
                     rsListaCategorias.getInt("codcategoria"),
                     rsListaCategorias.getString("nombre"),
                     rsListaCategorias.getBoolean("vigencia") ? "Vigente" : "No vigente"
-
+                
                 });
-
+                
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-
+        
     }
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         // TODO add your handling code here:
         setLocation(evt.getXOnScreen() - posX, evt.getYOnScreen() - posY);
     }//GEN-LAST:event_formMouseDragged
-
+  
     private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();//metodo solo para ingresar numeros
@@ -388,16 +386,16 @@ public class jdManCategoria extends javax.swing.JDialog {
                 if (rsCategoria.next()) {
                     txtNombre.setText(rsCategoria.getString("nombre"));
                     chkVigencia.setSelected(rsCategoria.getBoolean("vigencia"));
-
+                    
                 } else {
                     JOptionPane.showMessageDialog(this, "No se encuentra registrada la categoria buscada");
-
+                    
                 }
-
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a buscar");
             }
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -406,7 +404,7 @@ public class jdManCategoria extends javax.swing.JDialog {
         txtCodigo.setText("");
         txtNombre.setText("");
         listarCategorias();
-
+        
     }
     private void chkVigenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkVigenciaActionPerformed
         // TODO add your handling code here:
@@ -418,7 +416,7 @@ public class jdManCategoria extends javax.swing.JDialog {
             if (btnNuevo.getText().equals("Nuevo")) {
                 btnNuevo.setText("Guardar");
                 txtCodigo.setText(objCategoria.generarCodigoCategoria().toString());
-
+                
             } else {
                 btnNuevo.setText("Nuevo");
                 //Guardar 
@@ -427,9 +425,9 @@ public class jdManCategoria extends javax.swing.JDialog {
                     listarCategorias();
                     limpiarControles();
                 }
-
+                
             }
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -444,13 +442,13 @@ public class jdManCategoria extends javax.swing.JDialog {
         // TODO add your handling code here:
         try {
             if (!txtCodigo.getText().isEmpty()) {
-
+                
                 objCategoria.modificarCategoria(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(), chkVigencia.isSelected());
                 limpiarControles();
             } else {
                 JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a modificar");
             }
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -465,7 +463,7 @@ public class jdManCategoria extends javax.swing.JDialog {
             } else {
                 JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a eliminar");
             }
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -478,11 +476,11 @@ public class jdManCategoria extends javax.swing.JDialog {
             if (!txtCodigo.getText().isEmpty()) {
                 objCategoria.darBajaCategoria(Integer.parseInt(txtCodigo.getText()));
                 limpiarControles();
-
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a modificar");
             }
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }

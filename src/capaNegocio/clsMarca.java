@@ -32,6 +32,20 @@ public class clsMarca {
         return 0;
     }
 
+    public Integer obtenerCodigoMarca(String nombre) throws Exception {
+        strSQL = "select codMarca from marca where nombre='" + nombre + "'";
+
+        try {
+            rs = objConexion.consultarBD(strSQL);
+            if (rs.next()) {
+                return rs.getInt("codMarca");
+            }
+        } catch (Exception e) {
+            throw new Exception("Error al obtener codigo de Marca!");
+        }
+        return 0;
+    }
+
     public ResultSet listarMarcas() throws Exception {
         strSQL = "select * from Marca";
 

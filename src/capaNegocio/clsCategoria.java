@@ -31,6 +31,20 @@ public class clsCategoria {
         }
         return 0;
     }
+    
+     public Integer obtenerCodigoCategoria(String nombre) throws Exception {
+        strSQL = "select codCategoria from categoria where nombre='"+nombre+"'";
+
+        try {
+            rs = objConexion.consultarBD(strSQL);
+            if (rs.next()) {
+                return rs.getInt("codCategoria");
+            }
+        } catch (Exception e) {
+            throw new Exception("Error al obtener codigo de categoria!");
+        }
+        return 0;
+    }
 
     public ResultSet listarCategorias() throws Exception {
         strSQL = "select * from categoria";
