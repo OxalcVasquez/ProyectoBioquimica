@@ -5,10 +5,15 @@
  */
 package capaNegocio;
 
+import capaDatos.clsJDBCConexion;
+import java.sql.ResultSet;
+
 /**
  *
  * @author LENOVO
  */
 public class clsComprobanteVenta {
-    
+    clsJDBCConexion objConexion = new clsJDBCConexion();
+    String strSQL;
+    ResultSet rs = null;
 }
