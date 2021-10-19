@@ -17,7 +17,7 @@ public class clsCliente {
     String strSQL;
     ResultSet rs = null;
     
-    public Integer generarCodigoCategoria() throws Exception {
+    public Integer generarCodigoCliente() throws Exception {
         strSQL = "select coalesce(max(codCliente),0)+1 as codigo from cliente";
 
         try {
@@ -31,7 +31,7 @@ public class clsCliente {
         return 0;
     }
 
-    public ResultSet listarCategorias() throws Exception {
+    public ResultSet listarCliente() throws Exception {
         strSQL = "select * from cliente";
 
         try {
@@ -43,7 +43,7 @@ public class clsCliente {
 
     }
     
-      public ResultSet buscarCategoria(Integer cod) throws Exception {
+      public ResultSet buscarCliente(Integer cod) throws Exception {
         strSQL = "select * from cliente where codcliente=" + cod + "";
 
         try {
@@ -55,7 +55,7 @@ public class clsCliente {
 
     }
       
-      public ResultSet listarCategoriasVigentes() throws Exception {
+      public ResultSet listarClientesVigentes() throws Exception {
         strSQL = "select * from cliente where vigencia=true";
 
         try {
@@ -67,7 +67,7 @@ public class clsCliente {
 
     }
     
-    public void registrarCategoria(Integer cod,String numD,String tipoD,String nom,String ape,String fecha,Boolean sexo,String ciudad, String telefono, String correo, Boolean vigencia) throws Exception {
+    public void registrarCliente(Integer cod,String numD,String tipoD,String nom,String ape,String fecha,Boolean sexo,String ciudad, String telefono, String correo, Boolean vigencia) throws Exception {
         strSQL = "INSERT INTO cliente(codCliente,numdocumento,tipodocumento,nombres,apellidos,fechanac,sexo,ciudad,telefono, correo, vigencia) VALUES (" + cod + ", '" + numD + "','" + tipoD + "','" + nom + "','" + ape + "','" + fecha + "', " + sexo + ",'" + ciudad + "','" + telefono + "','" + correo + "', " + vigencia + ");";
 
         try {
@@ -79,7 +79,7 @@ public class clsCliente {
 
     }
 
-     public void modificarCategoria(Integer cod,String numD,String tipoD,String nom,String ape,String fecha,Boolean sexo,String ciudad, String telefono, String correo, Boolean vigencia) throws Exception {
+     public void modificarCliente(Integer cod,String numD,String tipoD,String nom,String ape,String fecha,Boolean sexo,String ciudad, String telefono, String correo, Boolean vigencia) throws Exception {
         strSQL = " UPDATE cliente SET  numdocumento='" + numD + "',tipodocumento='" + tipoD + "',nombres='" + nom + "',apellidos='" + ape + "',fechanac='" + fecha + "', sexo= " + sexo +"',ciudad='" + ciudad +"',telefono='" + telefono +"',correo='" + correo +"', vigencia= " + vigencia + " WHERE codCliente=" + cod + ";";
 
         try {
@@ -91,7 +91,7 @@ public class clsCliente {
 
     }
      
-      public void eliminarCategoria(Integer cod) throws Exception {
+      public void eliminarCliente(Integer cod) throws Exception {
         strSQL = " DELETE FROM cliente WHERE codcliente=" + cod + ";";
 
         try {
@@ -103,7 +103,7 @@ public class clsCliente {
 
     }
       
-         public void darBajaCategoria(Integer cod) throws Exception {
+         public void darBajaCliente(Integer cod) throws Exception {
         strSQL = "UPDATE cliente SET vigencia=false WHERE codcliente=" + cod + ";";
 
         try {
