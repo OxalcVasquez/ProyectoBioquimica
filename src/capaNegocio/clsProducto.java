@@ -59,6 +59,33 @@ public class clsProducto {
         }
 
     }
+    public ResultSet buscarProductos(String nombre) throws Exception {
+        strSQL = "select p.*,c.nombre as categoria,m.nombre as marca from producto p "
+                + "inner join categoria c on p.codcategoria = c.codcategoria "
+                + "inner join marca m  on p.codmarca = m.codmarca where p.nombre like '"+ nombre + "%'";
+
+        try {
+            rs = objConexion.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("Error al listar producto");
+        }
+
+    }
+    
+      public ResultSet buscarProductosCategoria(String categoria) throws Exception {
+        strSQL = "select p.*,c.nombre as categoria,m.nombre as marca from producto p "
+                + "inner join categoria c on p.codcategoria = c.codcategoria "
+                + "inner join marca m  on p.codmarca = m.codmarca where c.nombre = '"+ categoria + "'";
+
+        try {
+            rs = objConexion.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("Error al listar producto");
+        }
+
+    }
 
     public ResultSet listarProductosVigentes() throws Exception {
         strSQL = "select * from producto where vigencia=true";
