@@ -47,35 +47,31 @@ public class jdVenta extends javax.swing.JDialog {
         jPanel2 = new RoundedPanel();
         gradientButton2 = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente1 = new capaInterfaz.Componentes.BotonMedGradiente();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel13 = new javax.swing.JLabel();
-        cboComp = new javax.swing.JComboBox<>();
-        jLabel12 = new javax.swing.JLabel();
-        txtCorreo = new capaInterfaz.Componentes.TextoMed();
         jLabel11 = new javax.swing.JLabel();
         btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
-        txtCorreo2 = new capaInterfaz.Componentes.TextoMed();
+        txtProducto = new capaInterfaz.Componentes.TextoMed();
         jLabel14 = new javax.swing.JLabel();
         txtCorreo3 = new capaInterfaz.Componentes.TextoMed();
         jLabel16 = new javax.swing.JLabel();
         txtCorreo4 = new capaInterfaz.Componentes.TextoMed();
         jLabel17 = new javax.swing.JLabel();
-        txtCorreo5 = new capaInterfaz.Componentes.TextoMed();
         btnBuscar3 = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente2 = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente3 = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        roundedPanel1 = new capaInterfaz.Componentes.RoundedPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtCorreo = new capaInterfaz.Componentes.TextoMed();
+        jTextField1 = new javax.swing.JTextField();
+        cboComp = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -114,14 +110,6 @@ public class jdVenta extends javax.swing.JDialog {
         });
         jPanel2.add(botonMedGradiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 450, 160, -1));
 
-        jLabel5.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabel5.setText("BIOQUÍMICA DEL NORTE ANDINO S.A.C.  ");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jLabel8.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
-        jLabel8.setText("RUC: 20601834945 ");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
-
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -138,97 +126,9 @@ public class jdVenta extends javax.swing.JDialog {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 790, 243));
 
-        jLabel9.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jLabel9.setText("Chota-Cajamarca-Perú, Jr. San Martín N°477");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
-
-        jLabel10.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
-        jLabel10.setText("CORREO: bioquimicadelnorte@gmail.com");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
-
-        jPanel4.setBackground(new java.awt.Color(84, 248, 147));
-        jPanel4.setForeground(new java.awt.Color(204, 204, 204));
-
-        jLabel7.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jLabel7.setText("N°:");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
-        jLabel15.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jLabel15.setText("Fecha:");
-
-        jLabel13.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jLabel13.setText("Tipo Comp:");
-
-        cboComp.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        cboComp.setForeground(new java.awt.Color(51, 51, 51));
-        cboComp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Boleta Electrónica", "Factura", "Factura Electrónica" }));
-
-        jLabel12.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jLabel12.setText("N° Comp:");
-
-        txtCorreo.setText("");
-        txtCorreo.setPlaceholder("");
-        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel15))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboComp, 0, 184, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel15))))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 630, -1));
-
         jLabel11.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel11.setText("Producto:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
 
         btnBuscar.setText("B");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -236,20 +136,20 @@ public class jdVenta extends javax.swing.JDialog {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 57, -1));
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 57, -1));
 
-        txtCorreo2.setText("");
-        txtCorreo2.setPlaceholder("");
-        txtCorreo2.addActionListener(new java.awt.event.ActionListener() {
+        txtProducto.setText("");
+        txtProducto.setPlaceholder("");
+        txtProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreo2ActionPerformed(evt);
+                txtProductoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 179, -1));
+        jPanel2.add(txtProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 290, -1));
 
         jLabel14.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel14.setText("Nombre:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, -1, -1));
 
         txtCorreo3.setText("");
         txtCorreo3.setPlaceholder("");
@@ -258,11 +158,11 @@ public class jdVenta extends javax.swing.JDialog {
                 txtCorreo3ActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 320, -1));
+        jPanel2.add(txtCorreo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 320, -1));
 
         jLabel16.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel16.setText("Cantidad:");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
         txtCorreo4.setText("");
         txtCorreo4.setPlaceholder("");
@@ -271,20 +171,11 @@ public class jdVenta extends javax.swing.JDialog {
                 txtCorreo4ActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 179, -1));
+        jPanel2.add(txtCorreo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 179, -1));
 
         jLabel17.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel17.setText("---------");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 630, 70, -1));
-
-        txtCorreo5.setText("");
-        txtCorreo5.setPlaceholder("");
-        txtCorreo5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreo5ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txtCorreo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 179, -1));
 
         btnBuscar3.setText("Nuevo");
         btnBuscar3.addActionListener(new java.awt.event.ActionListener() {
@@ -292,7 +183,7 @@ public class jdVenta extends javax.swing.JDialog {
                 btnBuscar3ActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 260, -1, -1));
+        jPanel2.add(btnBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 130, -1, -1));
 
         botonMedGradiente2.setText("Salir");
         jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 570, 160, -1));
@@ -307,6 +198,88 @@ public class jdVenta extends javax.swing.JDialog {
         jLabel21.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel21.setText("Total:");
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 630, -1, -1));
+        jPanel2.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
+
+        roundedPanel1.setBackground(new java.awt.Color(84, 248, 147));
+
+        jLabel7.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabel7.setText("N°:");
+
+        jLabel12.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabel12.setText("N° Comp:");
+
+        txtCorreo.setText("");
+        txtCorreo.setPlaceholder("");
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoActionPerformed(evt);
+            }
+        });
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        cboComp.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        cboComp.setForeground(new java.awt.Color(51, 51, 51));
+        cboComp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Boleta Electrónica", "Factura", "Factura Electrónica" }));
+
+        jLabel15.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabel15.setText("Fecha:");
+
+        jLabel13.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabel13.setText("Tipo Comp:");
+
+        javax.swing.GroupLayout roundedPanel1Layout = new javax.swing.GroupLayout(roundedPanel1);
+        roundedPanel1.setLayout(roundedPanel1Layout);
+        roundedPanel1Layout.setHorizontalGroup(
+            roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel15)
+                .addGap(18, 18, 18)
+                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboComp, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        roundedPanel1Layout.setVerticalGroup(
+            roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(roundedPanel1Layout.createSequentialGroup()
+                .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(roundedPanel1Layout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel15))))
+                    .addGroup(roundedPanel1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)
+                            .addComponent(cboComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(roundedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, 80));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 690));
 
@@ -397,6 +370,9 @@ public class jdVenta extends javax.swing.JDialog {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        jdBuscarProductos objFrmBuscar = new jdBuscarProductos(null, true);
+        objFrmBuscar.setVisible(true);
+        txtProducto.setText(objFrmBuscar.codigo + " "+objFrmBuscar.producto);
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -408,17 +384,13 @@ public class jdVenta extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreo3ActionPerformed
 
-    private void txtCorreo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo2ActionPerformed
+    private void txtProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreo2ActionPerformed
+    }//GEN-LAST:event_txtProductoActionPerformed
 
     private void txtCorreo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreo4ActionPerformed
-
-    private void txtCorreo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreo5ActionPerformed
 
     private void btnBuscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar3ActionPerformed
         // TODO add your handling code here:
@@ -544,7 +516,6 @@ public class jdVenta extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente gradientButton2;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -554,21 +525,18 @@ public class jdVenta extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField1;
+    private capaInterfaz.Componentes.RoundedPanel roundedPanel1;
     private javax.swing.JTable tblDatos;
     private capaInterfaz.Componentes.TextoMed txtCorreo;
-    private capaInterfaz.Componentes.TextoMed txtCorreo2;
     private capaInterfaz.Componentes.TextoMed txtCorreo3;
     private capaInterfaz.Componentes.TextoMed txtCorreo4;
-    private capaInterfaz.Componentes.TextoMed txtCorreo5;
+    private capaInterfaz.Componentes.TextoMed txtProducto;
     // End of variables declaration//GEN-END:variables
 }

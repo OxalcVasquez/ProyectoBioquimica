@@ -29,6 +29,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
     clsCategoria objCat = new clsCategoria();
     clsProducto objProducto = new clsProducto();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    String codigo, producto;
 
     private int posX = 0, posY = 0;
 
@@ -62,7 +63,6 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
         txtNombre = new capaInterfaz.Componentes.TextoMed();
-        btnSalir2 = new capaInterfaz.Componentes.BotonMedGradiente();
         btnSalir3 = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel9 = new javax.swing.JLabel();
         cboCategoria = new javax.swing.JComboBox<>();
@@ -131,9 +131,12 @@ public class jdBuscarProductos extends javax.swing.JDialog {
             }
         });
 
-        btnSalir2.setText("Salir");
-
         btnSalir3.setText("Seleccionar");
+        btnSalir3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir3ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel9.setText("Categoría");
@@ -157,28 +160,28 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(35, 35, 35)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(88, 88, 88)
-                                .addComponent(jLabel9))
-                            .addComponent(jLabel11))
-                        .addGap(130, 130, 130)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboMarca, 0, 240, Short.MAX_VALUE)
-                            .addComponent(cboCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(31, 31, 31)
-                            .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(88, 88, 88)
+                                        .addComponent(jLabel9))
+                                    .addComponent(jLabel11))
+                                .addGap(130, 130, 130)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cboMarca, 0, 240, Short.MAX_VALUE)
+                                    .addComponent(cboCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(367, 367, 367)
+                        .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -198,11 +201,9 @@ public class jdBuscarProductos extends javax.swing.JDialog {
                             .addComponent(jLabel11))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 960, 470));
@@ -379,17 +380,20 @@ public class jdBuscarProductos extends javax.swing.JDialog {
     private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
         // TODO add your handling code here:
 //        txtCodigo.setText(String.valueOf(tblDatos.getValueAt(tblDatos.getSelectedRow(), 0)));
+        codigo = String.valueOf((tblDatos.getValueAt(tblDatos.getSelectedRow(), 0)));
+        producto = String.valueOf((tblDatos.getValueAt(tblDatos.getSelectedRow(), 1)));
+
     }//GEN-LAST:event_tblDatosMouseClicked
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-     
+
 
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
         // TODO add your handling code here:
-           try {
+        try {
             listarProductos(objProducto.buscarProductos(txtNombre.getText().toUpperCase()));
         } catch (Exception e) {
 
@@ -398,12 +402,18 @@ public class jdBuscarProductos extends javax.swing.JDialog {
 
     private void cboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoriaActionPerformed
         // TODO add your handling code here:
-            try {
+        try {
             listarProductos(objProducto.buscarProductosCategoria(cboCategoria.getSelectedItem().toString()));
         } catch (Exception e) {
 
         }
     }//GEN-LAST:event_cboCategoriaActionPerformed
+
+    private void btnSalir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir3ActionPerformed
+        // TODO add your handling code here:
+        System.out.println(codigo+" "+producto);
+        this.dispose();
+    }//GEN-LAST:event_btnSalir3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -704,7 +714,6 @@ public class jdBuscarProductos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
-    private capaInterfaz.Componentes.BotonMedGradiente btnSalir2;
     private capaInterfaz.Componentes.BotonMedGradiente btnSalir3;
     private javax.swing.JComboBox<String> cboCategoria;
     private javax.swing.JComboBox<String> cboMarca;
