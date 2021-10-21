@@ -8,17 +8,21 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaNegocio.clsCliente;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.sql.ResultSet;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author CMFerrer
  */
 public class jdCliente extends javax.swing.JDialog {
-
+clsCliente objC = new clsCliente();
     private int posX = 0, posY = 0;
     /**
      * Creates new form jdPaciente
@@ -32,7 +36,7 @@ public class jdCliente extends javax.swing.JDialog {
         setBackground(new Color(0, 0, 0, 0));
         
         cboSexo.setUI(ComboMed.createUI(cboSexo));
-        tblDatos.getTableHeader().setDefaultRenderer(new ColorTabla());
+        tblCliente.getTableHeader().setDefaultRenderer(new ColorTabla());
     }
 
     /**
@@ -57,7 +61,7 @@ public class jdCliente extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         cboSexo = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDatos = new javax.swing.JTable();
+        tblCliente = new javax.swing.JTable();
         txtCodigo = new capaInterfaz.Componentes.TextoMed();
         txtNombre = new capaInterfaz.Componentes.TextoMed();
         txtDNI = new capaInterfaz.Componentes.TextoMed();
@@ -80,6 +84,11 @@ public class jdCliente extends javax.swing.JDialog {
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -123,19 +132,16 @@ public class jdCliente extends javax.swing.JDialog {
         cboSexo.setForeground(new java.awt.Color(51, 51, 51));
         cboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
 
-        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        tblDatos.setSelectionBackground(new java.awt.Color(104, 228, 176));
-        jScrollPane1.setViewportView(tblDatos);
+        tblCliente.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        jScrollPane1.setViewportView(tblCliente);
 
         txtCodigo.setText("");
         txtCodigo.setPlaceholder("");
@@ -317,10 +323,10 @@ public class jdCliente extends javax.swing.JDialog {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGap(0, 640, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 960, 630));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 960, 640));
         jPanel3.setBorder(BorderFactory.createMatteBorder(0, 3, 3, 3, Color.GRAY));
 
         pack();
@@ -381,6 +387,43 @@ public class jdCliente extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_gradientButton2ActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        listarCliente();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void listarCliente(){
+        ResultSet rsListaTH= null;
+        String vig="";
+        String sexo="";
+        DefaultTableModel modelo= new DefaultTableModel();
+        modelo.addColumn("Código");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Ciudad");
+        modelo.addColumn("Sexo");
+        modelo.addColumn("Vigencia");
+        tblCliente.setModel(modelo);
+        try {
+            rsListaTH=objC.listarCliente();
+            while(rsListaTH.next()){
+               if(rsListaTH.getString("vigencia").equals("t")){
+                   vig="Vigente";
+               } else{
+                   vig="No Vigente";
+               }
+               
+               if(rsListaTH.getString("sexo").equals("t")){
+                   sexo="Masculino";
+               } else{
+                   vig="Femenino";
+               }
+               
+               modelo.addRow(new Object[]{rsListaTH.getInt("codCliente"),rsListaTH.getString("numdocumento"),rsListaTH.getString("nombres"),rsListaTH.getString("ciudad"),sexo,vig});
+            }
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -456,7 +499,7 @@ public class jdCliente extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblDatos;
+    private javax.swing.JTable tblCliente;
     private capaInterfaz.Componentes.TextoMed textoMed1;
     private capaInterfaz.Componentes.TextoMed txtCiudad;
     private capaInterfaz.Componentes.TextoMed txtCodigo;
