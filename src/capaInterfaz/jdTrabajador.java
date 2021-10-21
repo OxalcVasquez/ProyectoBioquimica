@@ -639,7 +639,28 @@ public class jdTrabajador extends javax.swing.JDialog {
     }//GEN-LAST:event_tblTrabajadorMouseClicked
 
     private void gradientButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradientButton4ActionPerformed
-        // TODO add your handling code here:
+        Boolean sexo = null;
+        Character cargo = null;
+        try {
+             if(txtCodigo.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Es necesario el codigo del trabajador");    
+            }else{
+             if(cboSexo.getSelectedItem().equals("Masculino")) sexo = true;
+             if(cboSexo.getSelectedItem().equals("Femenino")) sexo = false;
+             if(cboCargo.getSelectedItem().equals("Caja")) cargo = 'C';
+             if(cboCargo.getSelectedItem().equals("Vendedor")) cargo = 'V';
+             
+             objTra.actualizarTrabajador(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(),txtApellido.getText(), txtDNI.getText(),txtTelefono.getText(), txtCorreo.getText(),txtDireccion.getText(),sexo,txtFecha.getText(),cargo,chkEstado.isSelected());
+                  JOptionPane.showMessageDialog(this,"Se actualizo al trabajador"); 
+                  listarTrabajador();
+                  limpiarContenido();
+             }
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        
+        
+        
     }//GEN-LAST:event_gradientButton4ActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -664,7 +685,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                
             }
         } catch (Exception e) {
-        
+             JOptionPane.showMessageDialog(this, e.getMessage());
         }
         
         

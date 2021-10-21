@@ -45,7 +45,7 @@ public class clsTrabajador {
         }
      
     }
-    public void actualizarTrabajador(Integer codtrabajador,String nombres,String apellidos,String dni,String telefono,String correo,String direccion,Boolean sexo,String fechanac,String cargo,Boolean vigencia) throws Exception{
+    public void actualizarTrabajador(Integer codtrabajador,String nombres,String apellidos,String dni,String telefono,String correo,String direccion,Boolean sexo,String fechanac,Character cargo,Boolean vigencia) throws Exception{
     
         strSQL = "update trabajador set codtrabajador = "+codtrabajador+",nombres = '"+nombres+"',apellidos = '"+apellidos+"',dni = '"+dni+"',telefono ='"+telefono+"',correo = '"+correo+"',direccion = '"+direccion+"',sexo ="+sexo+", fechanac = '"+fechanac+"',cargo = '"+cargo+"',vigencia = "+vigencia+" where codtrabajador = "+codtrabajador+"";
         try {
