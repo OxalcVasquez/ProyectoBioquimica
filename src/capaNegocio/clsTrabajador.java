@@ -7,6 +7,7 @@ package capaNegocio;
 
 import capaDatos.clsJDBCConexion;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,7 +34,7 @@ public class clsTrabajador {
         return 0;
     }
     
-    public void guardarTrabajador(Integer codtrabajador,String nombres,String apellidos,String dni,String telefono,String correo,String direccion,Boolean sexo,String fechanac,String cargo,Boolean vigencia) throws Exception{
+    public void guardarTrabajador(Integer codtrabajador,String nombres,String apellidos,String dni,String telefono,String correo,String direccion,Boolean sexo,String fechanac,Character cargo,Boolean vigencia) throws Exception{
     
         strSQL = "insert into trabajador (codtrabajador,nombres,apellidos,dni,telefono,correo,direccion,sexo,fechanac,cargo,vigencia) values ("+codtrabajador+",'"+nombres+"','"+apellidos+"','"+dni+" ','"+telefono+" ','"+correo+" ','"+direccion+"',"+sexo+",'"+fechanac+"','"+cargo+"',"+vigencia+")";
         try {
@@ -56,11 +57,15 @@ public class clsTrabajador {
      
     }
     public void eliminarTrabajador(Integer codtrabajador) throws Exception{
-    strSQL = "delete from trabajador where codtrabajador = "+codtrabajador+"";
+        
+        ArrayList consultas = new ArrayList();
+        consultas.add("delete from usuario where codtrabajador ="+codtrabajador+" ");
+        consultas.add("delete from trabajador where codtrabajador ="+codtrabajador+" ");
+
         try {
-        obj.ejecutarBD(strSQL);
+            obj.ejecutarTransaccionBD(consultas);           
         } catch (Exception e) {
-            throw new Exception("No se eliminar");
+        throw new Exception("No se pudo eliminar el trabajador");
         }
         
     }

@@ -1,6 +1,7 @@
 package capaDatos;
 
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -81,5 +82,30 @@ public class clsJDBCConexion {
 
         }
 
+    }
+    //Ejecuta TRANSACCIÓN .-
+    
+    public void ejecutarTransaccionBD(ArrayList ArregloConsultas) throws Exception {
+        
+        try {
+            conectarBD();
+            con.setAutoCommit(false);
+             sent = con.createStatement();
+            for(Object consultas: ArregloConsultas ){               
+                sent.executeUpdate((String) consultas);
+            }
+            con.commit();
+            con.setAutoCommit(true);
+            
+        } catch (Exception e) {
+            con.rollback();
+           throw new Exception("Error al ejecutar la transaccion");
+        }finally{
+            if(con !=null ){
+                desconectarBD();
+            }
+        
+        }
+    
     }
 }

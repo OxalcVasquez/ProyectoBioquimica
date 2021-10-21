@@ -78,6 +78,7 @@ public class jdTrabajador extends javax.swing.JDialog {
         btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
         chkEstado = new javax.swing.JCheckBox();
         jLabel12 = new javax.swing.JLabel();
+        btnEliminar = new capaInterfaz.Componentes.BotonMedGradiente();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -210,7 +211,7 @@ public class jdTrabajador extends javax.swing.JDialog {
 
         cboCargo.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         cboCargo.setForeground(new java.awt.Color(51, 51, 51));
-        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "T", "C", "a" }));
+        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Caja", "Vendedor" }));
 
         gradientButton3.setText("Dar Baja");
         gradientButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -220,6 +221,11 @@ public class jdTrabajador extends javax.swing.JDialog {
         });
 
         gradientButton4.setText("Modificar");
+        gradientButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gradientButton4ActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -232,6 +238,13 @@ public class jdTrabajador extends javax.swing.JDialog {
 
         jLabel12.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
         jLabel12.setText("Estado : ");
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -287,15 +300,16 @@ public class jdTrabajador extends javax.swing.JDialog {
                             .addComponent(chkEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(74, 74, 74))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(gradientButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gradientButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,20 +358,21 @@ public class jdTrabajador extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkEstado)
                     .addComponent(jLabel12))
+                .addGap(42, 42, 42)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(18, 18, 18)
                         .addComponent(gradientButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addGap(18, 18, 18)
                         .addComponent(gradientButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)))
+                .addGap(23, 23, 23))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 850, 650));
@@ -502,7 +517,7 @@ public class jdTrabajador extends javax.swing.JDialog {
     private void listarTrabajador(){
     
         ResultSet rs = null;
-        
+        String cargo = "";
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombres");
@@ -518,7 +533,9 @@ public class jdTrabajador extends javax.swing.JDialog {
         try {
             rs = objTra.listarTrabajador();
             while(rs.next()){
-                modelo.addRow(new Object[]{rs.getString("codtrabajador"),rs.getString("nombres"),rs.getString("apellidos"),rs.getString("dni"),rs.getString("telefono"),rs.getString("correo"),rs.getString("cargo"),rs.getBoolean("vigencia") });
+                if(rs.getString("cargo").equals("C")) cargo = "Cajero";
+                if(rs.getString("cargo").equals("V")) cargo = "Vendedor";
+                modelo.addRow(new Object[]{rs.getString("codtrabajador"),rs.getString("nombres"),rs.getString("apellidos"),rs.getString("dni"),rs.getString("telefono"),rs.getString("correo"),cargo,rs.getBoolean("vigencia") });
             }
             
         } catch (Exception e) {
@@ -527,7 +544,7 @@ public class jdTrabajador extends javax.swing.JDialog {
         
     }
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        
+        Character cargo = null ;
         Boolean sexo  = null;
         try {
             if(btnNuevo.getText().equals("Nuevo")){
@@ -539,7 +556,10 @@ public class jdTrabajador extends javax.swing.JDialog {
                 btnNuevo.setText("Nuevo");
                 if(cboSexo.getSelectedItem().equals("Masculino")) sexo = true;
                 if(cboSexo.getSelectedItem().equals("Femenino")) sexo = false;
-                objTra.guardarTrabajador(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),txtTelefono.getText(),txtCorreo.getText(), txtDireccion.getText(),sexo,txtFecha.getText(),String.valueOf(cboCargo.getSelectedItem()),chkEstado.isSelected());
+                if(cboCargo.getSelectedItem().equals("Caja")) cargo = 'C';
+                if(cboCargo.getSelectedItem().equals("Vendedor")) cargo = 'V';
+                
+                objTra.guardarTrabajador(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),txtTelefono.getText(),txtCorreo.getText(), txtDireccion.getText(),sexo,txtFecha.getText(),cargo,chkEstado.isSelected());
                 JOptionPane.showMessageDialog(this,"Trabajador Registrado correctamente");
                 limpiarContenido();
                 listarTrabajador(); 
@@ -570,6 +590,7 @@ public class jdTrabajador extends javax.swing.JDialog {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
        ResultSet rs = null;
        String sexo = "";
+       String cargo ="";
         try {
         
             if(txtCodigo.getText().equals("")){
@@ -588,7 +609,11 @@ public class jdTrabajador extends javax.swing.JDialog {
                     if(rs.getBoolean("sexo")== true) sexo = "Masculino";
                             if(rs.getBoolean("sexo") == false) sexo = "Femenino";
                     cboSexo.setSelectedItem(sexo);
-                    cboCargo.setSelectedItem(rs.getString("cargo"));
+                    
+                    if(rs.getString("cargo").equals("C")) cargo = "Caja";
+                    if(rs.getString("cargo").equals("V")) cargo = "Vendedor";
+                    
+                    cboCargo.setSelectedItem(cargo);
                     chkEstado.setSelected(rs.getBoolean("vigencia"));   
                 }
             }
@@ -612,6 +637,41 @@ public class jdTrabajador extends javax.swing.JDialog {
         
         
     }//GEN-LAST:event_tblTrabajadorMouseClicked
+
+    private void gradientButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradientButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gradientButton4ActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        
+        try {
+        
+            if(txtCodigo.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Es necesario el codigo del trabajador");    
+            }else{
+            
+                int confirmacion = JOptionPane.showConfirmDialog(this,"¿Estás seguro de la eliminación? El usuario será eliminado","Eliminación",JOptionPane.YES_NO_OPTION);
+                if(confirmacion == JOptionPane.YES_OPTION){
+                 objTra.eliminarTrabajador(Integer.parseInt(txtCodigo.getText()));
+                 JOptionPane.showMessageDialog(this,"Se elimino al trabajador "); 
+                 listarTrabajador();
+                 limpiarContenido();
+            }else{
+                  JOptionPane.showMessageDialog(this,"No se elimino al trabajador"); 
+                  listarTrabajador();
+                  limpiarContenido();
+                }
+               
+            }
+        } catch (Exception e) {
+        
+        }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -784,6 +844,7 @@ public class jdTrabajador extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar;
+    private capaInterfaz.Componentes.BotonMedGradiente btnEliminar;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboCargo;
