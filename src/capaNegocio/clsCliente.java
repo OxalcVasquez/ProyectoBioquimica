@@ -68,8 +68,8 @@ public class clsCliente {
     }
     
     public void registrarCliente(Integer cod,String numD,String tipoD,String nom,String ape,String fecha,Boolean sexo,String ciudad, String telefono, String correo, Boolean vigencia) throws Exception {
-        strSQL = "INSERT INTO cliente(codCliente,numdocumento,tipodocumento,nombres,apellidos,fechanac,sexo,ciudad,telefono, correo, vigencia) VALUES (" + cod + ", '" + numD + "','" + tipoD + "','" + nom + "','" + ape + "','" + fecha + "', " + sexo + ",'" + ciudad + "','" + telefono + "','" + correo + "', " + vigencia + ");";
-
+        strSQL = "insert into cliente values("+cod+",'"+numD+"','"+tipoD+"','"+nom+"','"+ape+"','"+fecha+"',"+sexo+",'"+ciudad+"','"+telefono+"','"+correo+"',"+vigencia+")";
+ 
         try {
             objConexion.ejecutarBD(strSQL);
 

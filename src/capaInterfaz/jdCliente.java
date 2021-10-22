@@ -50,7 +50,7 @@ clsCliente objC = new clsCliente();
 
         jPanel2 = new RoundedPanel();
         jLabel2 = new javax.swing.JLabel();
-        gradientButton2 = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnNuevo = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         botonEliminar = new capaInterfaz.Componentes.BotonMedGradiente();
@@ -99,10 +99,10 @@ clsCliente objC = new clsCliente();
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel2.setText("Codigo:");
 
-        gradientButton2.setText("Registrar");
-        gradientButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gradientButton2ActionPerformed(evt);
+                btnNuevoActionPerformed(evt);
             }
         });
 
@@ -238,7 +238,7 @@ clsCliente objC = new clsCliente();
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonMedGradiente2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(gradientButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(57, 57, 57))))
         );
@@ -275,7 +275,7 @@ clsCliente objC = new clsCliente();
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(gradientButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonMedGradiente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -401,9 +401,33 @@ clsCliente objC = new clsCliente();
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void gradientButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradientButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_gradientButton2ActionPerformed
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        Boolean sexo; 
+        try {
+            if (btnNuevo.getText().equals("Nuevo")){
+                btnNuevo.setText("Guardar");
+                txtCodigo.setText(objC.generarCodigoCliente().toString());
+                txtNombre.requestFocus();
+            }else{
+                btnNuevo.setText("Nuevo");
+                
+                if(cboSexo.getSelectedItem().toString().equals("Masculino")){
+                    sexo=true;
+                } else{
+                    sexo=false;
+                }
+                String tipoDoc="D";
+                String ape="Rojas";
+                String fechaNac="2002/06/10";
+                Boolean vig=true;
+                objC.registrarCliente(Integer.parseInt(txtCodigo.getText()), txtDNI.getText(), tipoDoc, txtNombre.getText(), ape, fechaNac, sexo, txtCiudad.getText(), txtTelefono.getText(), txtCorreo.getText(), vig);
+                limpiarControles();
+                listarCliente();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         listarCliente();
@@ -530,9 +554,9 @@ clsCliente objC = new clsCliente();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private capaInterfaz.Componentes.BotonMedGradiente botonEliminar;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente2;
+    private capaInterfaz.Componentes.BotonMedGradiente btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboSexo;
-    private capaInterfaz.Componentes.BotonMedGradiente gradientButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

@@ -102,7 +102,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="botonMedGradiente2" min="-2" pref="194" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="gradientButton2" max="32767" attributes="0"/>
+                                  <Component id="btnNuevo" max="32767" attributes="0"/>
                                   <Component id="botonEliminar" min="-2" pref="194" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -150,7 +150,7 @@
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="gradientButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnNuevo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="botonMedGradiente2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -171,12 +171,12 @@
             <Property name="text" type="java.lang.String" value="Codigo:"/>
           </Properties>
         </Component>
-        <Component class="capaInterfaz.Componentes.BotonMedGradiente" name="gradientButton2">
+        <Component class="capaInterfaz.Componentes.BotonMedGradiente" name="btnNuevo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Registrar"/>
+            <Property name="text" type="java.lang.String" value="Nuevo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gradientButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
