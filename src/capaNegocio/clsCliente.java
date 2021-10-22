@@ -80,7 +80,7 @@ public class clsCliente {
     }
 
      public void modificarCliente(Integer cod,String numD,String tipoD,String nom,String ape,String fecha,Boolean sexo,String ciudad, String telefono, String correo, Boolean vigencia) throws Exception {
-        strSQL = " UPDATE cliente SET  numdocumento='" + numD + "',tipodocumento='" + tipoD + "',nombres='" + nom + "',apellidos='" + ape + "',fechanac='" + fecha + "', sexo= " + sexo +"',ciudad='" + ciudad +"',telefono='" + telefono +"',correo='" + correo +"', vigencia= " + vigencia + " WHERE codCliente=" + cod + ";";
+        strSQL = " UPDATE cliente SET  numdocumento='" + numD + "',tipodocumento='" + tipoD + "',nombres='" + nom + "',apellidos='" + ape + "',fechanac='" + fecha + "', sexo= " + sexo +",ciudad='" + ciudad +"',telefono='" + telefono +"',correo='" + correo +"', vigencia=" + vigencia + " WHERE codCliente=" + cod;
 
         try {
             objConexion.ejecutarBD(strSQL);

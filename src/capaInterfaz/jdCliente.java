@@ -479,6 +479,7 @@ clsCliente objC = new clsCliente();
             Boolean vig=true;
             objC.modificarCliente(Integer.parseInt(txtCodigo.getText()), txtDNI.getText(), tipoDoc, txtNombre.getText(), ape, fechaNac, sexo, txtCiudad.getText(), txtTelefono.getText(), txtCorreo.getText(), vig);
             limpiarControles();
+            listarCliente();
 //            listarEmpleado();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
