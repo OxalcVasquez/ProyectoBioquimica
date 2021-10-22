@@ -89,7 +89,7 @@ public class jdVenta extends javax.swing.JDialog {
         btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
         txtProducto = new capaInterfaz.Componentes.TextoMed();
         jLabel14 = new javax.swing.JLabel();
-        txtNroDocumento = new capaInterfaz.Componentes.TextoMed();
+        txtTotal = new capaInterfaz.Componentes.TextoMed();
         jLabel16 = new javax.swing.JLabel();
         txtPrecio = new capaInterfaz.Componentes.TextoMed();
         btnBuscar3 = new capaInterfaz.Componentes.BotonMedGradiente();
@@ -119,6 +119,9 @@ public class jdVenta extends javax.swing.JDialog {
         jLabel24 = new javax.swing.JLabel();
         cboTrabajador = new javax.swing.JComboBox<>();
         jsCantidad = new capaInterfaz.Componentes.spinnerMed();
+        txtNroDocumento1 = new capaInterfaz.Componentes.TextoMed();
+        txtSubTotal = new capaInterfaz.Componentes.TextoMed();
+        txtIGV = new capaInterfaz.Componentes.TextoMed();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -200,14 +203,15 @@ public class jdVenta extends javax.swing.JDialog {
         jLabel14.setText("Nro Documento:");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, -1, -1));
 
-        txtNroDocumento.setText("");
-        txtNroDocumento.setPlaceholder("");
-        txtNroDocumento.addActionListener(new java.awt.event.ActionListener() {
+        txtTotal.setEditable(false);
+        txtTotal.setText("");
+        txtTotal.setPlaceholder("");
+        txtTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNroDocumentoActionPerformed(evt);
+                txtTotalActionPerformed(evt);
             }
         });
-        jPanel2.add(txtNroDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, 180, -1));
+        jPanel2.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 450, 80, -1));
 
         jLabel16.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel16.setText("Cantidad:");
@@ -371,17 +375,22 @@ public class jdVenta extends javax.swing.JDialog {
 
         jLabel23.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel23.setText("IGV:");
-        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 420, -1, -1));
+        jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 410, -1, -1));
 
         tblDetalle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Cod", "Producto", "Precio", "Cantidad", "Subtotal"
+                "Producto", "Precio", "Cantidad", "Subtotal"
             }
         ));
         tblDetalle.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        tblDetalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDetalleMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDetalle);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 520, 160));
@@ -395,6 +404,35 @@ public class jdVenta extends javax.swing.JDialog {
         cboTrabajador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "Carnet Extranjería", "Libreta Militar" }));
         jPanel2.add(cboTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 720, 184, -1));
         jPanel2.add(jsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
+
+        txtNroDocumento1.setText("");
+        txtNroDocumento1.setPlaceholder("");
+        txtNroDocumento1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNroDocumento1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtNroDocumento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, 180, -1));
+
+        txtSubTotal.setEditable(false);
+        txtSubTotal.setText("");
+        txtSubTotal.setPlaceholder("");
+        txtSubTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSubTotalActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtSubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 80, -1));
+
+        txtIGV.setEditable(false);
+        txtIGV.setText("");
+        txtIGV.setPlaceholder("");
+        txtIGV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIGVActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtIGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 410, 80, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 780));
 
@@ -477,6 +515,15 @@ public class jdVenta extends javax.swing.JDialog {
 
     private void gradientButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradientButton2ActionPerformed
         // TODO add your handling code here:
+        for (int i = 0; i < listaDetalle.size(); i++) {
+            Object[] datos = (Object[]) listaDetalle.get(i);
+            if (datos[0].equals(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 0))) {
+                listaDetalle.remove(i);
+                JOptionPane.showMessageDialog(this, "Producto eliminado correctamente");
+                listarDetalle(listaDetalle);
+            }
+        }
+
     }//GEN-LAST:event_gradientButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -532,9 +579,9 @@ public class jdVenta extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoActionPerformed
 
-    private void txtNroDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroDocumentoActionPerformed
+    private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNroDocumentoActionPerformed
+    }//GEN-LAST:event_txtTotalActionPerformed
 
     private void txtProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoActionPerformed
         // TODO add your handling code here:
@@ -546,18 +593,30 @@ public class jdVenta extends javax.swing.JDialog {
         for (int i = 0; i < tblDetalle.getRowCount(); i++) {
             for (int j = 0; j < tblDetalle.getColumnCount(); j++) {
                 if (tblDetalle.getModel().getValueAt(i, j).equals(txtProducto.getText())) {
-                    System.out.println(tblDetalle.getModel().getValueAt(i, j));
                     tblDetalle.setValueAt(jsCantidad.getCantidad(), i, j + 2);
                     Object[] datos = (Object[]) listaDetalle.get(i);
                     datos[2] = jsCantidad.getCantidad();
-                    
                     Double precio = (Double) tblDetalle.getModel().getValueAt(i, j + 1);
-                    
                     tblDetalle.setValueAt(jsCantidad.getCantidad() * precio, i, j + 3);
+                                        datos[3] = jsCantidad.getCantidad();
+                    datos[3] = tblDetalle.getModel().getValueAt(i, j + 3);
+
 
                 }
             }
         }
+        listarDetalle(listaDetalle);
+        actualizarTotal();
+    }
+
+    public Boolean validarDetalle(String producto) {
+        for (int i = 0; i < listaDetalle.size(); i++) {
+            Object[] datos = (Object[]) listaDetalle.get(i);
+            if (datos[0].equals(producto)) {
+                return false;
+            }
+        }
+        return true;
     }
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
@@ -581,26 +640,64 @@ public class jdVenta extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscar4ActionPerformed
 
+    public void actualizarTotal() {
+        Double total = 0.0;
+        for (int i = 0; i < tblDetalle.getRowCount(); i++) {
+            total += (Double) tblDetalle.getValueAt(i, 3);
+            txtTotal.setText(total.toString());
+            txtIGV.setText(String.valueOf(Double.parseDouble(txtTotal.getText()) * 0.18));
+            txtSubTotal.setText(String.valueOf(Double.parseDouble(txtTotal.getText()) - Double.parseDouble(txtIGV.getText())));
+        }
+    }
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
         try {
 
-            Object producto[] = new Object[4];
+            if (validarDetalle(txtProducto.getText())) {
+                Object producto[] = new Object[4];
 //            producto[0] = rsProducto.getInt("codproducto");
-            producto[0] = rsProducto.getString("nombre");
-            producto[1] = rsProducto.getDouble("precioventa");
-            producto[2] = jsCantidad.getCantidad();
-            producto[3] = rsProducto.getDouble("precioventa") * jsCantidad.getCantidad();
-            listaDetalle.add(producto);
-            listarDetalle(listaDetalle);
+                producto[0] = rsProducto.getString("nombre");
+                producto[1] = rsProducto.getDouble("precioventa");
+                producto[2] = jsCantidad.getCantidad();
+                producto[3] = rsProducto.getDouble("precioventa") * jsCantidad.getCantidad();
+                listaDetalle.add(producto);
+                listarDetalle(listaDetalle);
+                actualizarTotal();
+//                txtTotal.setText(String.valueOf(rsProducto.getDouble("precioventa") * jsCantidad.getCantidad()));
+//                txtIGV.setText(String.valueOf(Double.parseDouble(txtTotal.getText()) * 0.18));
+//                txtSubTotal.setText(String.valueOf(Double.parseDouble(txtTotal.getText()) - Double.parseDouble(txtIGV.getText())));
+
+            } else {
+                JOptionPane.showMessageDialog(this, "El producto ya se encuentre al carrito");
+
+            }
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
 
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
-    private Double actualizarPrecio() {
-        return 40.0;
-    }
+    private void tblDetalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDetalleMouseClicked
+        // TODO add your handling code here:
+        txtProducto.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 0)));
+        jsCantidad.setCantidad((Integer) (tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 2)));
+        txtPrecio.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 3)));
+
+    }//GEN-LAST:event_tblDetalleMouseClicked
+
+    private void txtNroDocumento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroDocumento1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNroDocumento1ActionPerformed
+
+    private void txtSubTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSubTotalActionPerformed
+
+    private void txtIGVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIGVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIGVActionPerformed
+
+
 
     /**
      * @param args the command line arguments
@@ -748,8 +845,11 @@ public class jdVenta extends javax.swing.JDialog {
     private javax.swing.JTable tblDetalle;
     private capaInterfaz.Componentes.TextoMed txtCorreo;
     private capaInterfaz.Componentes.TextoMed txtCorreo5;
-    private capaInterfaz.Componentes.TextoMed txtNroDocumento;
+    private capaInterfaz.Componentes.TextoMed txtIGV;
+    private capaInterfaz.Componentes.TextoMed txtNroDocumento1;
     private capaInterfaz.Componentes.TextoMed txtPrecio;
     private capaInterfaz.Componentes.TextoMed txtProducto;
+    private capaInterfaz.Componentes.TextoMed txtSubTotal;
+    private capaInterfaz.Componentes.TextoMed txtTotal;
     // End of variables declaration//GEN-END:variables
 }

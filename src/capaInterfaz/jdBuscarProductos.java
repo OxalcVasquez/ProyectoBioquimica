@@ -414,12 +414,17 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         // TODO add your handling code here:
         System.out.println(codigo + " " + producto);
         try {
-            rsProducto = objProducto.buscarProducto(Integer.parseInt(codigo));
+            if (rsProducto != null) {
+                rsProducto = objProducto.buscarProducto(Integer.parseInt(codigo));
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor seleccione un producto");
+            }
 
         } catch (Exception e) {
         }
 
-        this.dispose();
+
     }//GEN-LAST:event_btnSalir3ActionPerformed
 
     /**
