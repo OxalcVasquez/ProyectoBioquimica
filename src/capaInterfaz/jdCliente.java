@@ -71,6 +71,7 @@ clsCliente objC = new clsCliente();
         txtEdad = new capaInterfaz.Componentes.TextoMed();
         txtCiudad = new capaInterfaz.Componentes.TextoMed();
         botonMedGradiente2 = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnNuevo1 = new capaInterfaz.Componentes.BotonMedGradiente();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -149,6 +150,11 @@ clsCliente objC = new clsCliente();
             }
         ));
         tblCliente.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblClienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCliente);
 
         txtCodigo.setText("");
@@ -194,6 +200,13 @@ clsCliente objC = new clsCliente();
             }
         });
 
+        btnNuevo1.setText("Buscar");
+        btnNuevo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevo1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -209,8 +222,11 @@ clsCliente objC = new clsCliente();
                                     .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnNuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -225,7 +241,7 @@ clsCliente objC = new clsCliente();
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
                             .addComponent(jLabel6)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -246,13 +262,14 @@ clsCliente objC = new clsCliente();
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                    .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel7)
@@ -468,6 +485,44 @@ clsCliente objC = new clsCliente();
         }
     }//GEN-LAST:event_botonMedGradiente2ActionPerformed
 
+    private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+        txtCodigo.setText(String.valueOf(tblCliente.getValueAt(tblCliente.getSelectedRow(),0)));
+    }//GEN-LAST:event_tblClienteMouseClicked
+
+    private void btnNuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevo1ActionPerformed
+        ResultSet rsEm=null;
+        Boolean sexo;
+        try{
+            if(txtCodigo.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Ingrese codigo a buscar");
+                txtDNI.requestFocus();
+            }else{
+                rsEm=objC.buscarCliente(Integer.parseInt(txtCodigo.getText()));
+                if(rsEm.next()){
+                    txtNombre.setText(rsEm.getString("nombres"));
+                    txtDNI.setText(rsEm.getString("numdocumento"));
+                    txtCiudad.setText(rsEm.getString("ciudad"));
+                    txtTelefono.setText(rsEm.getString("telefono"));
+                    txtCorreo.setText(rsEm.getString("correo"));
+                    sexo = rsEm.getBoolean("sexo");
+                    if(sexo){
+                        cboSexo.setSelectedItem("Masculino");
+                    }else{
+                        cboSexo.setSelectedItem("Femenino");
+                    }
+//                    chkVigencia.setSelected(rsEm.getBoolean("Vigencia"));
+                    
+                }else{
+                    JOptionPane.showMessageDialog(this, "Codigo no registrado");
+                    limpiarControles();
+                }
+            }
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnNuevo1ActionPerformed
+
     private void limpiarControles(){
         txtCodigo.setText("");
         txtDNI.setText("");
@@ -572,6 +627,7 @@ clsCliente objC = new clsCliente();
     private capaInterfaz.Componentes.BotonMedGradiente botonEliminar;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente2;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevo;
+    private capaInterfaz.Componentes.BotonMedGradiente btnNuevo1;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboSexo;
     private javax.swing.JLabel jLabel1;
