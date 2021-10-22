@@ -68,10 +68,10 @@ clsCliente objC = new clsCliente();
         txtDNI = new capaInterfaz.Componentes.TextoMed();
         txtTelefono = new capaInterfaz.Componentes.TextoMed();
         txtCorreo = new capaInterfaz.Componentes.TextoMed();
-        txtEdad = new capaInterfaz.Componentes.TextoMed();
         txtCiudad = new capaInterfaz.Componentes.TextoMed();
         botonMedGradiente2 = new capaInterfaz.Componentes.BotonMedGradiente();
         btnNuevo1 = new capaInterfaz.Componentes.BotonMedGradiente();
+        jdCalendar = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -131,7 +131,7 @@ clsCliente objC = new clsCliente();
         jLabel7.setText("Ciudad:");
 
         jLabel6.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabel6.setText("Edad:");
+        jLabel6.setText("Fecha Nac:");
 
         jLabel8.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel8.setText("Sexo:");
@@ -187,9 +187,6 @@ clsCliente objC = new clsCliente();
         txtCorreo.setText("");
         txtCorreo.setPlaceholder("");
 
-        txtEdad.setText("");
-        txtEdad.setPlaceholder("");
-
         txtCiudad.setText("");
         txtCiudad.setPlaceholder("");
 
@@ -206,6 +203,8 @@ clsCliente objC = new clsCliente();
                 btnNuevo1ActionPerformed(evt);
             }
         });
+
+        jdCalendar.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -235,7 +234,7 @@ clsCliente objC = new clsCliente();
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel10)
                             .addComponent(jLabel7)
@@ -244,20 +243,20 @@ clsCliente objC = new clsCliente();
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(107, 107, 107))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonMedGradiente2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(57, 57, 57))))
+                        .addGap(57, 57, 57))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cboSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtDNI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jdCalendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(107, 107, 107))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,7 +279,7 @@ clsCliente objC = new clsCliente();
                     .addComponent(jLabel4)
                     .addComponent(jLabel6)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -529,7 +528,7 @@ clsCliente objC = new clsCliente();
         txtDNI.setText("");
         txtNombre.setText("");
         txtCiudad.setText("");
-        txtEdad.setText("");
+        
         txtTelefono.setText("");
         txtCorreo.setText("");
     }
@@ -644,12 +643,12 @@ clsCliente objC = new clsCliente();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jdCalendar;
     private javax.swing.JTable tblCliente;
     private capaInterfaz.Componentes.TextoMed txtCiudad;
     private capaInterfaz.Componentes.TextoMed txtCodigo;
     private capaInterfaz.Componentes.TextoMed txtCorreo;
     private capaInterfaz.Componentes.TextoMed txtDNI;
-    private capaInterfaz.Componentes.TextoMed txtEdad;
     private capaInterfaz.Componentes.TextoMed txtNombre;
     private capaInterfaz.Componentes.TextoMed txtTelefono;
     // End of variables declaration//GEN-END:variables
