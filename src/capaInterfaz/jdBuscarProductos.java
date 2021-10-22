@@ -30,6 +30,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
     clsProducto objProducto = new clsProducto();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     String codigo, producto;
+    ResultSet rsProducto = null;
 
     private int posX = 0, posY = 0;
 
@@ -411,7 +412,13 @@ public class jdBuscarProductos extends javax.swing.JDialog {
 
     private void btnSalir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir3ActionPerformed
         // TODO add your handling code here:
-        System.out.println(codigo+" "+producto);
+        System.out.println(codigo + " " + producto);
+        try {
+            rsProducto = objProducto.buscarProducto(Integer.parseInt(codigo));
+
+        } catch (Exception e) {
+        }
+
         this.dispose();
     }//GEN-LAST:event_btnSalir3ActionPerformed
 
