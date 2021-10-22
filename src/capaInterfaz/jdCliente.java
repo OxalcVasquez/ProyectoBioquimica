@@ -12,6 +12,7 @@ import capaNegocio.clsCliente;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
@@ -448,7 +449,23 @@ clsCliente objC = new clsCliente();
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonMedGradiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente2ActionPerformed
-        // TODO add your handling code here:
+        Boolean sexo;
+        try {
+            if(cboSexo.getSelectedItem().toString().equals("Masculino")){
+                    sexo=true;
+                } else{
+                    sexo=false;
+                }
+            String tipoDoc="D";
+            String ape="Rojas";
+            String fechaNac="2002/06/10";
+            Boolean vig=true;
+            objC.modificarCliente(Integer.parseInt(txtCodigo.getText()), txtDNI.getText(), tipoDoc, txtNombre.getText(), ape, fechaNac, sexo, txtCiudad.getText(), txtTelefono.getText(), txtCorreo.getText(), vig);
+            limpiarControles();
+//            listarEmpleado();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_botonMedGradiente2ActionPerformed
 
     private void limpiarControles(){
