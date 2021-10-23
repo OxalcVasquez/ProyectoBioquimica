@@ -8,9 +8,13 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaNegocio.clsProducto;
+import capaNegocio.clsProveedor;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.sql.ResultSet;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
 
 /**
@@ -18,7 +22,8 @@ import javax.swing.border.MatteBorder;
  * @author CMFerrer
  */
 public class jdComprobanteCompra extends javax.swing.JDialog {
-
+    clsProveedor objProv =new clsProveedor();
+    clsProducto objProducto=new clsProducto();
     private int posX = 0, posY = 0;
     /**
      * Creates new form jdPaciente
@@ -51,38 +56,39 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
-        txtCorreo = new capaInterfaz.Componentes.TextoMed();
+        txtnumComp = new capaInterfaz.Componentes.TextoMed();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtnumcompra = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        fecha = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
         btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtCorreo2 = new capaInterfaz.Componentes.TextoMed();
+        txtCodPro = new capaInterfaz.Componentes.TextoMed();
         jLabel14 = new javax.swing.JLabel();
-        txtCorreo3 = new capaInterfaz.Componentes.TextoMed();
-        btnBuscar1 = new capaInterfaz.Componentes.BotonMedGradiente();
+        txtNom = new capaInterfaz.Componentes.TextoMed();
+        btnBuscarProv = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel16 = new javax.swing.JLabel();
         txtCorreo4 = new capaInterfaz.Componentes.TextoMed();
         jLabel17 = new javax.swing.JLabel();
         txtCorreo5 = new capaInterfaz.Componentes.TextoMed();
-        btnBuscar2 = new capaInterfaz.Componentes.BotonMedGradiente();
-        btnBuscar3 = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnNuevoPrveedor = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnNuevoProd = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente2 = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente3 = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        txtCorreo6 = new capaInterfaz.Componentes.TextoMed();
+        txtruc = new capaInterfaz.Componentes.TextoMed();
         jLabel20 = new javax.swing.JLabel();
         cboComp = new javax.swing.JComboBox<>();
-        txtCorreo1 = new capaInterfaz.Componentes.TextoMed();
+        txtRaz = new capaInterfaz.Componentes.TextoMed();
         jLabel21 = new javax.swing.JLabel();
+        gradientButton3 = new capaInterfaz.Componentes.BotonMedGradiente();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -105,13 +111,13 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        gradientButton2.setText("Nuevo");
+        gradientButton2.setText("+");
         gradientButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradientButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(gradientButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 380, 157, -1));
+        jPanel2.add(gradientButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 50, -1));
 
         botonMedGradiente1.setText("Modificar");
         botonMedGradiente1.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +133,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
         jLabel8.setFont(new java.awt.Font("Gadugi", 3, 14)); // NOI18N
         jLabel8.setText("RUC: 20601834945 ");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 45, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,22 +151,22 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 790, 243));
 
-        txtCorreo.setText("");
-        txtCorreo.setPlaceholder("");
-        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+        txtnumComp.setText("");
+        txtnumComp.setPlaceholder("");
+        txtnumComp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreoActionPerformed(evt);
+                txtnumCompActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 317, -1));
+        jPanel2.add(txtnumComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 317, -1));
 
         jLabel9.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel9.setText("Chota-Cajamarca-Perú, Jr. San Martín N°477");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 99, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         jLabel10.setText("CORREO: bioquimicadelnorte@gmail.com");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 72, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
         jPanel4.setForeground(new java.awt.Color(204, 204, 204));
@@ -171,9 +177,9 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel7.setText("N°:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtnumcompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtnumcompraActionPerformed(evt);
             }
         });
 
@@ -193,11 +199,11 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                         .addGap(21, 21, 21)
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtnumcompra, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -209,9 +215,9 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtnumcompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel15))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -237,35 +243,35 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jLabel13.setText("Tipo Comp:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, 20));
 
-        txtCorreo2.setText("");
-        txtCorreo2.setPlaceholder("");
-        txtCorreo2.addActionListener(new java.awt.event.ActionListener() {
+        txtCodPro.setText("");
+        txtCodPro.setPlaceholder("");
+        txtCodPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreo2ActionPerformed(evt);
+                txtCodProActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 179, -1));
+        jPanel2.add(txtCodPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 179, -1));
 
         jLabel14.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel14.setText("Nombre:");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, -1, -1));
 
-        txtCorreo3.setText("");
-        txtCorreo3.setPlaceholder("");
-        txtCorreo3.addActionListener(new java.awt.event.ActionListener() {
+        txtNom.setText("");
+        txtNom.setPlaceholder("");
+        txtNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreo3ActionPerformed(evt);
+                txtNomActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 320, -1));
+        jPanel2.add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 320, -1));
 
-        btnBuscar1.setText("B");
-        btnBuscar1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarProv.setText("B");
+        btnBuscarProv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar1ActionPerformed(evt);
+                btnBuscarProvActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 162, 57, -1));
+        jPanel2.add(btnBuscarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 162, 57, -1));
 
         jLabel16.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel16.setText("Cantidad:");
@@ -293,21 +299,21 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         });
         jPanel2.add(txtCorreo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 179, -1));
 
-        btnBuscar2.setText("Nuevo");
-        btnBuscar2.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevoPrveedor.setText("Nuevo");
+        btnNuevoPrveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar2ActionPerformed(evt);
+                btnNuevoPrveedorActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(943, 162, -1, -1));
+        jPanel2.add(btnNuevoPrveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(943, 162, -1, -1));
 
-        btnBuscar3.setText("Nuevo");
-        btnBuscar3.addActionListener(new java.awt.event.ActionListener() {
+        btnNuevoProd.setText("Nuevo");
+        btnNuevoProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar3ActionPerformed(evt);
+                btnNuevoProdActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 260, -1, -1));
+        jPanel2.add(btnNuevoProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 260, -1, -1));
 
         botonMedGradiente2.setText("Salir");
         jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 570, 160, -1));
@@ -323,9 +329,9 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jLabel19.setText("Proveedor:");
         jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 166, -1, -1));
 
-        txtCorreo6.setText("");
-        txtCorreo6.setPlaceholder("");
-        jPanel2.add(txtCorreo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 164, 179, -1));
+        txtruc.setText("");
+        txtruc.setPlaceholder("");
+        jPanel2.add(txtruc, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 164, 179, -1));
 
         jLabel20.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel20.setText("Razón social:");
@@ -336,18 +342,26 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         cboComp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Boleta Electrónica", "Factura", "Factura Electrónica" }));
         jPanel2.add(cboComp, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 190, -1));
 
-        txtCorreo1.setText("");
-        txtCorreo1.setPlaceholder("");
-        txtCorreo1.addActionListener(new java.awt.event.ActionListener() {
+        txtRaz.setText("");
+        txtRaz.setPlaceholder("");
+        txtRaz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreo1ActionPerformed(evt);
+                txtRazActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 164, 317, -1));
+        jPanel2.add(txtRaz, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 164, 317, -1));
 
         jLabel21.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel21.setText("Total:");
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 630, -1, -1));
+
+        gradientButton3.setText("Nuevo");
+        gradientButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gradientButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(gradientButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 380, 157, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 690));
 
@@ -432,30 +446,67 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_gradientButton2ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtnumcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumcompraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtnumcompraActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            if (!txtCodPro.getText().isEmpty()) {
+                ResultSet rsProducto = objProducto.buscarProducto(Integer.parseInt(txtCodPro.getText()));
+                if (rsProducto.next()) {
+                    txtNom.setText(rsProducto.getString("nombre"));
+                   
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "No se encuentra registrada el producto buscado");
+                    btnNuevoProd.requestFocus();
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a buscar");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+    private void txtnumCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumCompActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoActionPerformed
+    }//GEN-LAST:event_txtnumCompActionPerformed
 
-    private void txtCorreo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo3ActionPerformed
+    private void txtNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreo3ActionPerformed
+    }//GEN-LAST:event_txtNomActionPerformed
 
-    private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
+    private void btnBuscarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscar1ActionPerformed
+        ResultSet rsPr = null;
+   
+        try {
+            if(txtruc.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Ingrese ruc a buscar...");
+                txtruc.requestFocus();
+            }else{
+                rsPr=objProv.buscarProv(txtruc.getText());
+                if(rsPr.next()){
+                    txtRaz.setText(rsPr.getString("razonsocial"));
+                    
+                }else{
+                    JOptionPane.showMessageDialog(this, "Ruc no registrado...");
+                    btnNuevoPrveedor.requestFocus();
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_btnBuscarProvActionPerformed
 
-    private void txtCorreo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo2ActionPerformed
+    private void txtCodProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreo2ActionPerformed
+    }//GEN-LAST:event_txtCodProActionPerformed
 
     private void txtCorreo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo4ActionPerformed
         // TODO add your handling code here:
@@ -465,21 +516,29 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreo5ActionPerformed
 
-    private void btnBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar2ActionPerformed
+    private void btnNuevoPrveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPrveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscar2ActionPerformed
+        jdManProveedor obj = new jdManProveedor(null, true);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnNuevoPrveedorActionPerformed
 
-    private void btnBuscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar3ActionPerformed
+    private void btnNuevoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscar3ActionPerformed
+        jdGestionarProducto obj = new jdGestionarProducto(null, true);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnNuevoProdActionPerformed
 
     private void botonMedGradiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonMedGradiente1ActionPerformed
 
-    private void txtCorreo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo1ActionPerformed
+    private void txtRazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreo1ActionPerformed
+    }//GEN-LAST:event_txtRazActionPerformed
+
+    private void gradientButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradientButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gradientButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -559,13 +618,14 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente2;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente3;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar;
-    private capaInterfaz.Componentes.BotonMedGradiente btnBuscar1;
-    private capaInterfaz.Componentes.BotonMedGradiente btnBuscar2;
-    private capaInterfaz.Componentes.BotonMedGradiente btnBuscar3;
+    private capaInterfaz.Componentes.BotonMedGradiente btnBuscarProv;
+    private capaInterfaz.Componentes.BotonMedGradiente btnNuevoProd;
+    private capaInterfaz.Componentes.BotonMedGradiente btnNuevoPrveedor;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboComp;
+    private com.toedter.calendar.JDateChooser fecha;
     private capaInterfaz.Componentes.BotonMedGradiente gradientButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private capaInterfaz.Componentes.BotonMedGradiente gradientButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -589,14 +649,14 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblDatos;
-    private capaInterfaz.Componentes.TextoMed txtCorreo;
-    private capaInterfaz.Componentes.TextoMed txtCorreo1;
-    private capaInterfaz.Componentes.TextoMed txtCorreo2;
-    private capaInterfaz.Componentes.TextoMed txtCorreo3;
+    private capaInterfaz.Componentes.TextoMed txtCodPro;
     private capaInterfaz.Componentes.TextoMed txtCorreo4;
     private capaInterfaz.Componentes.TextoMed txtCorreo5;
-    private capaInterfaz.Componentes.TextoMed txtCorreo6;
+    private capaInterfaz.Componentes.TextoMed txtNom;
+    private capaInterfaz.Componentes.TextoMed txtRaz;
+    private capaInterfaz.Componentes.TextoMed txtnumComp;
+    private javax.swing.JTextField txtnumcompra;
+    private capaInterfaz.Componentes.TextoMed txtruc;
     // End of variables declaration//GEN-END:variables
 }
