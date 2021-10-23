@@ -240,6 +240,11 @@ public class jdVenta extends javax.swing.JDialog {
         jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 610, 160, -1));
 
         botonMedGradiente3.setText("Eliminar");
+        botonMedGradiente3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMedGradiente3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonMedGradiente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 550, 160, -1));
 
         jLabel18.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -697,6 +702,9 @@ public class jdVenta extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIGVActionPerformed
 
+    private void botonMedGradiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonMedGradiente3ActionPerformed
 
 
     /**

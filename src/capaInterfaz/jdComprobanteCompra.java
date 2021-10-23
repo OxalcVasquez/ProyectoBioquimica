@@ -13,9 +13,13 @@ import capaNegocio.clsProveedor;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,9 +29,9 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     clsProveedor objProv =new clsProveedor();
     clsProducto objProducto=new clsProducto();
     private int posX = 0, posY = 0;
-    /**
-     * Creates new form jdPaciente
-     */
+    ResultSet rsProducto;
+    ArrayList listaDetalle = new ArrayList();
+    private double precio;
     public jdComprobanteCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -37,9 +41,30 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         setBackground(new Color(0, 0, 0, 0));
         
         cboComp.setUI(ComboMed.createUI(cboComp));
-        tblDatos.getTableHeader().setDefaultRenderer(new ColorTabla());
+        tblCompras.getTableHeader().setDefaultRenderer(new ColorTabla());
+        tblDetalle.getTableHeader().setDefaultRenderer(new ColorTabla());
+        txtPrecio.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                actualizarDetalle();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                actualizarDetalle();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                actualizarDetalle();
+            }
+
+        });
+    }
+  private void setPrecio(Double precio) {
+        this.precio = precio;
     }
 
+    public Double getPrecio() {
+        return this.precio;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,12 +75,12 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel2 = new RoundedPanel();
-        gradientButton2 = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnMenos = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente1 = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblDatos = new javax.swing.JTable();
+        tblCompras = new javax.swing.JTable();
         txtnumComp = new capaInterfaz.Componentes.TextoMed();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -69,16 +94,12 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtCodPro = new capaInterfaz.Componentes.TextoMed();
-        jLabel14 = new javax.swing.JLabel();
-        txtNom = new capaInterfaz.Componentes.TextoMed();
+        txtProducto = new capaInterfaz.Componentes.TextoMed();
         btnBuscarProv = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel16 = new javax.swing.JLabel();
-        txtCorreo4 = new capaInterfaz.Componentes.TextoMed();
-        jLabel17 = new javax.swing.JLabel();
-        txtCorreo5 = new capaInterfaz.Componentes.TextoMed();
+        txtPrecio = new capaInterfaz.Componentes.TextoMed();
+        txtTotal = new javax.swing.JLabel();
         btnNuevoPrveedor = new capaInterfaz.Componentes.BotonMedGradiente();
-        btnNuevoProd = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente2 = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente3 = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel18 = new javax.swing.JLabel();
@@ -89,6 +110,10 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         txtRaz = new capaInterfaz.Componentes.TextoMed();
         jLabel21 = new javax.swing.JLabel();
         gradientButton3 = new capaInterfaz.Componentes.BotonMedGradiente();
+        jsCantidad = new capaInterfaz.Componentes.spinnerMed();
+        btnMas = new capaInterfaz.Componentes.BotonMedGradiente();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblDetalle = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -111,13 +136,13 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        gradientButton2.setText("+");
-        gradientButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnMenos.setText("-");
+        btnMenos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gradientButton2ActionPerformed(evt);
+                btnMenosActionPerformed(evt);
             }
         });
-        jPanel2.add(gradientButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 310, 50, -1));
+        jPanel2.add(btnMenos, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 50, -1));
 
         botonMedGradiente1.setText("Modificar");
         botonMedGradiente1.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +150,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                 botonMedGradiente1ActionPerformed(evt);
             }
         });
-        jPanel2.add(botonMedGradiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 450, 160, -1));
+        jPanel2.add(botonMedGradiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 490, 160, -1));
 
         jLabel5.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel5.setText("BIOQUÍMICA DEL NORTE ANDINO S.A.C.  ");
@@ -135,7 +160,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jLabel8.setText("RUC: 20601834945 ");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
 
-        tblDatos.setModel(new javax.swing.table.DefaultTableModel(
+        tblCompras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -146,10 +171,10 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
             }
         ));
-        tblDatos.setSelectionBackground(new java.awt.Color(104, 228, 176));
-        jScrollPane1.setViewportView(tblDatos);
+        tblCompras.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        jScrollPane1.setViewportView(tblCompras);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 790, 243));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 760, 170));
 
         txtnumComp.setText("");
         txtnumComp.setPlaceholder("");
@@ -233,7 +258,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 57, -1));
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 260, 57, -1));
 
         jLabel12.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel12.setText("N° Comp:");
@@ -243,27 +268,14 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jLabel13.setText("Tipo Comp:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, 20));
 
-        txtCodPro.setText("");
-        txtCodPro.setPlaceholder("");
-        txtCodPro.addActionListener(new java.awt.event.ActionListener() {
+        txtProducto.setText("");
+        txtProducto.setPlaceholder("");
+        txtProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodProActionPerformed(evt);
+                txtProductoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCodPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 179, -1));
-
-        jLabel14.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabel14.setText("Nombre:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 260, -1, -1));
-
-        txtNom.setText("");
-        txtNom.setPlaceholder("");
-        txtNom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, 320, -1));
+        jPanel2.add(txtProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 750, -1));
 
         btnBuscarProv.setText("B");
         btnBuscarProv.addActionListener(new java.awt.event.ActionListener() {
@@ -275,29 +287,20 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
         jLabel16.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel16.setText("Cantidad:");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
-        txtCorreo4.setText("");
-        txtCorreo4.setPlaceholder("");
-        txtCorreo4.addActionListener(new java.awt.event.ActionListener() {
+        txtPrecio.setText("");
+        txtPrecio.setPlaceholder("");
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreo4ActionPerformed(evt);
+                txtPrecioActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 179, -1));
+        jPanel2.add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 110, -1));
 
-        jLabel17.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jLabel17.setText("---------");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 630, 70, -1));
-
-        txtCorreo5.setText("");
-        txtCorreo5.setPlaceholder("");
-        txtCorreo5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreo5ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txtCorreo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 179, -1));
+        txtTotal.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        txtTotal.setText("---------");
+        jPanel2.add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 500, 70, -1));
 
         btnNuevoPrveedor.setText("Nuevo");
         btnNuevoPrveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -307,23 +310,15 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         });
         jPanel2.add(btnNuevoPrveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(943, 162, -1, -1));
 
-        btnNuevoProd.setText("Nuevo");
-        btnNuevoProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoProdActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnNuevoProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 260, -1, -1));
-
         botonMedGradiente2.setText("Salir");
-        jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 570, 160, -1));
+        jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 610, 160, -1));
 
         botonMedGradiente3.setText("Eliminar");
-        jPanel2.add(botonMedGradiente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 510, 160, -1));
+        jPanel2.add(botonMedGradiente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 550, 160, -1));
 
         jLabel18.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel18.setText("Precio:");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, -1));
 
         jLabel19.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel19.setText("Proveedor:");
@@ -353,7 +348,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
         jLabel21.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel21.setText("Total:");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 630, -1, -1));
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 500, -1, -1));
 
         gradientButton3.setText("Nuevo");
         gradientButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -361,9 +356,34 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                 gradientButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(gradientButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 380, 157, -1));
+        jPanel2.add(gradientButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 420, 157, -1));
+        jPanel2.add(jsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 690));
+        btnMas.setText("+");
+        btnMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 400, 50, -1));
+
+        tblDetalle.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tblDetalle.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        jScrollPane2.setViewportView(tblDetalle);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 530, 180));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 740));
 
         jPanel1.setBackground(new java.awt.Color(84, 248, 147));
 
@@ -418,10 +438,10 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1190, 670));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 1190, 700));
         jPanel3.setBorder(BorderFactory.createMatteBorder(0, 3, 3, 3, Color.GRAY));
 
         pack();
@@ -442,44 +462,25 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void gradientButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradientButton2ActionPerformed
+    private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_gradientButton2ActionPerformed
+         for (int i = 0; i < listaDetalle.size(); i++) {
+            Object[] datos = (Object[]) listaDetalle.get(i);
+            if (datos[0].equals(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 0))) {
+                listaDetalle.remove(i);
+                JOptionPane.showMessageDialog(this, "Producto eliminado correctamente");
+                listarDetalle(listaDetalle);
+            }
+        }
+    }//GEN-LAST:event_btnMenosActionPerformed
 
     private void txtnumcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumcompraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnumcompraActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        try {
-            if (!txtCodPro.getText().isEmpty()) {
-                ResultSet rsProducto = objProducto.buscarProducto(Integer.parseInt(txtCodPro.getText()));
-                if (rsProducto.next()) {
-                    txtNom.setText(rsProducto.getString("nombre"));
-                   
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "No se encuentra registrada el producto buscado");
-                    btnNuevoProd.requestFocus();
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a buscar");
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
     private void txtnumCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumCompActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnumCompActionPerformed
-
-    private void txtNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomActionPerformed
 
     private void btnBuscarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProvActionPerformed
         // TODO add your handling code here:
@@ -504,29 +505,15 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnBuscarProvActionPerformed
 
-    private void txtCodProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProActionPerformed
+    private void txtProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodProActionPerformed
-
-    private void txtCorreo4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreo4ActionPerformed
-
-    private void txtCorreo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreo5ActionPerformed
+    }//GEN-LAST:event_txtProductoActionPerformed
 
     private void btnNuevoPrveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPrveedorActionPerformed
         // TODO add your handling code here:
         jdManProveedor obj = new jdManProveedor(null, true);
         obj.setVisible(true);
     }//GEN-LAST:event_btnNuevoPrveedorActionPerformed
-
-    private void btnNuevoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProdActionPerformed
-        // TODO add your handling code here:
-        jdGestionarProducto obj = new jdGestionarProducto(null, true);
-        obj.setVisible(true);
-    }//GEN-LAST:event_btnNuevoProdActionPerformed
 
     private void botonMedGradiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente1ActionPerformed
         // TODO add your handling code here:
@@ -540,6 +527,113 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_gradientButton3ActionPerformed
 
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecioActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+          try {
+            jdBuscarProductos objFrmBuscar = new jdBuscarProductos(null, true);
+            objFrmBuscar.setVisible(true);
+//            txtProducto.setText(objFrmBuscar.codigo +" "+objFrmBuscar.producto);
+            txtProducto.setText(objFrmBuscar.producto);
+            rsProducto = objFrmBuscar.rsProducto;
+            if (objFrmBuscar.rsProducto.next()) {
+                jsCantidad.setCantidad(1);
+                setPrecio(objFrmBuscar.rsProducto.getDouble("preciocompra"));
+                txtPrecio.setText(String.valueOf(objFrmBuscar.rsProducto.getDouble("preciocompra")));
+
+            }
+            jsCantidad.setPrecio(txtPrecio, precio);
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            if (validarDetalle(txtProducto.getText())) {
+                Object producto[] = new Object[4];
+//            producto[0] = rsProducto.getInt("codproducto");
+                producto[0] = rsProducto.getString("nombre");
+                producto[1] = rsProducto.getDouble("preciocompra");
+                producto[2] = jsCantidad.getCantidad();
+                producto[3] = rsProducto.getDouble("preciocompra") * jsCantidad.getCantidad();
+                listaDetalle.add(producto);
+                listarDetalle(listaDetalle);
+                actualizarTotal();
+//                txtTotal.setText(String.valueOf(rsProducto.getDouble("precioventa") * jsCantidad.getCantidad()));
+//                txtIGV.setText(String.valueOf(Double.parseDouble(txtTotal.getText()) * 0.18));
+//                txtSubTotal.setText(String.valueOf(Double.parseDouble(txtTotal.getText()) - Double.parseDouble(txtIGV.getText())));
+
+            } else {
+                JOptionPane.showMessageDialog(this, "El producto ya se encuentre en la compra");
+
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
+    }//GEN-LAST:event_btnMasActionPerformed
+ public void actualizarTotal() {
+        Double total = 0.0;
+        for (int i = 0; i < tblCompras.getRowCount(); i++) {
+            total += (Double) tblCompras.getValueAt(i, 3);
+            txtTotal.setText(total.toString());
+            
+        }
+    }
+ public void listarDetalle(ArrayList lista) {
+        DefaultTableModel modelo = new DefaultTableModel();
+//        modelo.addColumn("Cod.");
+        modelo.addColumn("Producto");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Subtotal");
+        Object[] datos = new Object[4];
+        for (int i = 0; i < lista.size(); i++) {
+            datos = (Object[]) lista.get(i);
+            modelo.addRow(datos);
+
+        }
+
+        tblCompras.setModel(modelo);
+
+    }
+    public void actualizarDetalle() {
+//        System.out.println(txtProducto.getText().split(" ")[0]);
+
+        for (int i = 0; i < tblCompras.getRowCount(); i++) {
+            for (int j = 0; j < tblCompras.getColumnCount(); j++) {
+                if (tblCompras.getModel().getValueAt(i, j).equals(txtProducto.getText())) {
+                    tblCompras.setValueAt(jsCantidad.getCantidad(), i, j + 2);
+                    Object[] datos = (Object[]) listaDetalle.get(i);
+                    datos[2] = jsCantidad.getCantidad();
+                    Double precio = (Double) tblCompras.getModel().getValueAt(i, j + 1);
+                    tblCompras.setValueAt(jsCantidad.getCantidad() * precio, i, j + 3);
+                                        datos[3] = jsCantidad.getCantidad();
+                    datos[3] = tblCompras.getModel().getValueAt(i, j + 3);
+
+
+                }
+            }
+        }
+        listarDetalle(listaDetalle);
+        actualizarTotal();
+    }
+
+    public Boolean validarDetalle(String producto) {
+        for (int i = 0; i < listaDetalle.size(); i++) {
+            Object[] datos = (Object[]) listaDetalle.get(i);
+            if (datos[0].equals(producto)) {
+                return false;
+            }
+        }
+        return true;
+    }
     /**
      * @param args the command line arguments
      */
@@ -619,22 +713,20 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente3;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscarProv;
-    private capaInterfaz.Componentes.BotonMedGradiente btnNuevoProd;
+    private capaInterfaz.Componentes.BotonMedGradiente btnMas;
+    private capaInterfaz.Componentes.BotonMedGradiente btnMenos;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevoPrveedor;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboComp;
     private com.toedter.calendar.JDateChooser fecha;
-    private capaInterfaz.Componentes.BotonMedGradiente gradientButton2;
     private capaInterfaz.Componentes.BotonMedGradiente gradientButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
@@ -649,12 +741,14 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblDatos;
-    private capaInterfaz.Componentes.TextoMed txtCodPro;
-    private capaInterfaz.Componentes.TextoMed txtCorreo4;
-    private capaInterfaz.Componentes.TextoMed txtCorreo5;
-    private capaInterfaz.Componentes.TextoMed txtNom;
+    private javax.swing.JScrollPane jScrollPane2;
+    private capaInterfaz.Componentes.spinnerMed jsCantidad;
+    private javax.swing.JTable tblCompras;
+    private javax.swing.JTable tblDetalle;
+    private capaInterfaz.Componentes.TextoMed txtPrecio;
+    private capaInterfaz.Componentes.TextoMed txtProducto;
     private capaInterfaz.Componentes.TextoMed txtRaz;
+    private javax.swing.JLabel txtTotal;
     private capaInterfaz.Componentes.TextoMed txtnumComp;
     private javax.swing.JTextField txtnumcompra;
     private capaInterfaz.Componentes.TextoMed txtruc;
