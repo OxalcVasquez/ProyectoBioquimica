@@ -70,7 +70,7 @@ clsCliente objC = new clsCliente();
         txtCorreo = new capaInterfaz.Componentes.TextoMed();
         txtCiudad = new capaInterfaz.Componentes.TextoMed();
         botonMedGradiente2 = new capaInterfaz.Componentes.BotonMedGradiente();
-        btnNuevo1 = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
         jdCalendar = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
         txtApellidos = new capaInterfaz.Componentes.TextoMed();
@@ -203,10 +203,10 @@ clsCliente objC = new clsCliente();
             }
         });
 
-        btnNuevo1.setText("Buscar");
-        btnNuevo1.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevo1ActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -282,7 +282,7 @@ clsCliente objC = new clsCliente();
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(22, 22, 22)
-                                .addComponent(btnNuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(77, 77, 77)
                                 .addComponent(jLabel12))
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,7 +309,7 @@ clsCliente objC = new clsCliente();
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)
                             .addComponent(cboDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(11, 11, 11)
@@ -389,25 +389,25 @@ clsCliente objC = new clsCliente();
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(298, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(285, 285, 285))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))))
+                .addContainerGap(288, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(245, 245, 245)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 158));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 158));
         jPanel1.setBorder(BorderFactory.createMatteBorder(3, 3, 0, 3, Color.GRAY));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -498,7 +498,7 @@ clsCliente objC = new clsCliente();
                 }
                 if(cboDoc.getSelectedItem().toString().equals("DNI")) tipoDoc="D";
                 if(cboDoc.getSelectedItem().toString().equals("Pasaporte")) tipoDoc="P";
-                if(cboDoc.getSelectedItem().toString().equals("Carnet Extranjeria")) tipoDoc="CE";
+                if(cboDoc.getSelectedItem().toString().equals("Carnet Extranjeria")) tipoDoc="C";
                 
                 
                 String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdCalendar.getDate()); 
@@ -541,7 +541,7 @@ clsCliente objC = new clsCliente();
                 }
             if(cboDoc.getSelectedItem().toString().equals("DNI")) tipoDoc="D";
             if(cboDoc.getSelectedItem().toString().equals("Pasaporte")) tipoDoc="P";
-            if(cboDoc.getSelectedItem().toString().equals("Carnet Extranjeria")) tipoDoc="CE";
+            if(cboDoc.getSelectedItem().toString().equals("Carnet Extranjeria")) tipoDoc="C";
             
             String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdCalendar.getDate()); 
             
@@ -556,11 +556,13 @@ clsCliente objC = new clsCliente();
 
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
         txtCodigo.setText(String.valueOf(tblCliente.getValueAt(tblCliente.getSelectedRow(),0)));
+        btnBuscarActionPerformed(null);
     }//GEN-LAST:event_tblClienteMouseClicked
 
-    private void btnNuevo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevo1ActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         ResultSet rsEm=null;
         Boolean sexo;
+        String tipoD;
         try{
             if(txtCodigo.getText().equals("")){
                 JOptionPane.showMessageDialog(this, "Ingrese codigo a buscar");
@@ -573,8 +575,15 @@ clsCliente objC = new clsCliente();
                     txtCiudad.setText(rsEm.getString("ciudad"));
                     txtTelefono.setText(rsEm.getString("telefono"));
                     txtCorreo.setText(rsEm.getString("correo"));
+                    txtApellidos.setText(rsEm.getString("apellidos"));
                     jdCalendar.setDate(rsEm.getDate("fechanac"));
+                    chkVigencia.setSelected(rsEm.getBoolean("vigencia"));
+                    tipoD = rsEm.getString("tipodocumento");
                     sexo = rsEm.getBoolean("sexo");
+                    if(tipoD.equals("D"))tipoD="DNI";
+                    if(tipoD.equals("P"))tipoD="Pasaporte";
+                    if(tipoD.equals("C"))tipoD="Carnet Extranjeria";
+                    cboDoc.setSelectedItem(tipoD);
                     if(sexo){
                         cboSexo.setSelectedItem("Masculino");
                     }else{
@@ -591,16 +600,18 @@ clsCliente objC = new clsCliente();
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }//GEN-LAST:event_btnNuevo1ActionPerformed
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void limpiarControles(){
         txtCodigo.setText("");
         txtDNI.setText("");
         txtNombre.setText("");
         txtCiudad.setText("");
-        
+        txtApellidos.setText("");
+        jdCalendar.setDate(null);
         txtTelefono.setText("");
         txtCorreo.setText("");
+        chkVigencia.setSelected(false);
     }
     
     private void listarCliente(){
@@ -608,10 +619,11 @@ clsCliente objC = new clsCliente();
         String vig="";
         String sexo="";
         DefaultTableModel modelo= new DefaultTableModel();
-        modelo.addColumn("Código");
+        modelo.addColumn("COD");
         modelo.addColumn("DNI");
         modelo.addColumn("Nombre");
         modelo.addColumn("Ciudad");
+        modelo.addColumn("Telefono");
         modelo.addColumn("Sexo");
         modelo.addColumn("Vigencia");
         tblCliente.setModel(modelo);
@@ -627,10 +639,10 @@ clsCliente objC = new clsCliente();
                if(rsListaTH.getString("sexo").equals("t")){
                    sexo="Masculino";
                } else{
-                   vig="Femenino";
+                   sexo="Femenino";
                }
                
-               modelo.addRow(new Object[]{rsListaTH.getInt("codCliente"),rsListaTH.getString("numdocumento"),rsListaTH.getString("nombres"),rsListaTH.getString("ciudad"),sexo,vig});
+               modelo.addRow(new Object[]{rsListaTH.getInt("codCliente"),rsListaTH.getString("numdocumento"),rsListaTH.getString("nombres"),rsListaTH.getString("ciudad"),rsListaTH.getString("telefono"),sexo,vig});
             }
         } catch (Exception e) {
              JOptionPane.showMessageDialog(this, e.getMessage());
@@ -696,8 +708,8 @@ clsCliente objC = new clsCliente();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private capaInterfaz.Componentes.BotonMedGradiente botonEliminar;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente2;
+    private capaInterfaz.Componentes.BotonMedGradiente btnBuscar;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevo;
-    private capaInterfaz.Componentes.BotonMedGradiente btnNuevo1;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboDoc;
     private javax.swing.JComboBox<String> cboSexo;
