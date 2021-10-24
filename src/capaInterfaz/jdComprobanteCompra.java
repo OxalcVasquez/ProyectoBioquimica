@@ -32,6 +32,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     ResultSet rsProducto;
     ArrayList listaDetalle = new ArrayList();
     private double precio;
+    public String ruc;
     public jdComprobanteCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -89,7 +90,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         txtnumcompra = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        fecha = new com.toedter.calendar.JDateChooser();
+        jdcFechaCompra = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
         btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel12 = new javax.swing.JLabel();
@@ -224,7 +225,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                         .addGap(21, 21, 21)
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jdcFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -242,7 +243,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                         .addComponent(jLabel7)
                         .addComponent(txtnumcompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel15))
-                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdcFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -326,6 +327,11 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
         txtruc.setText("");
         txtruc.setPlaceholder("");
+        txtruc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtrucKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtruc, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 164, 179, -1));
 
         jLabel20.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
@@ -512,7 +518,12 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private void btnNuevoPrveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoPrveedorActionPerformed
         // TODO add your handling code here:
         jdManProveedor obj = new jdManProveedor(null, true);
-        obj.setVisible(true);
+        try {
+            obj.ruc=txtruc.getText();
+          obj.setVisible(true);
+        ruc=txtruc.getText();   
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnNuevoPrveedorActionPerformed
 
     private void botonMedGradiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente1ActionPerformed
@@ -578,6 +589,21 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, ex);
         }
     }//GEN-LAST:event_btnMasActionPerformed
+
+    private void txtrucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtrucKeyTyped
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();//metodo solo para ingresar numeros
+        if (c < '0' || c > '9') {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+        //metodo solo para ingresar numeros
+        if (txtruc.getText().length() == 11) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_txtrucKeyTyped
  public void actualizarTotal() {
         Double total = 0.0;
         for (int i = 0; i < tblCompras.getRowCount(); i++) {
@@ -718,7 +744,6 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevoPrveedor;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboComp;
-    private com.toedter.calendar.JDateChooser fecha;
     private capaInterfaz.Componentes.BotonMedGradiente gradientButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -742,6 +767,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private com.toedter.calendar.JDateChooser jdcFechaCompra;
     private capaInterfaz.Componentes.spinnerMed jsCantidad;
     private javax.swing.JTable tblCompras;
     private javax.swing.JTable tblDetalle;

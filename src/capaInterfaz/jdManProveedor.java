@@ -12,6 +12,8 @@ import capaNegocio.clsProveedor;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
@@ -27,6 +29,7 @@ clsProveedor objProv = new clsProveedor();
     /**
      * Creates new form jdPaciente
      */
+    public String ruc;
     public jdManProveedor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -163,6 +166,11 @@ clsProveedor objProv = new clsProveedor();
 
         txtRuc.setText("");
         txtRuc.setPlaceholder("");
+        txtRuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRucActionPerformed(evt);
+            }
+        });
         txtRuc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtRucKeyTyped(evt);
@@ -171,6 +179,11 @@ clsProveedor objProv = new clsProveedor();
 
         txtRAZ.setText("");
         txtRAZ.setPlaceholder("");
+        txtRAZ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRAZActionPerformed(evt);
+            }
+        });
         txtRAZ.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtRAZKeyTyped(evt);
@@ -195,6 +208,16 @@ clsProveedor objProv = new clsProveedor();
 
         txtCorreo.setText("");
         txtCorreo.setPlaceholder("");
+        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCorreoActionPerformed(evt);
+            }
+        });
+        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCorreoKeyTyped(evt);
+            }
+        });
 
         txtCiudad.setText("");
         txtCiudad.setPlaceholder("");
@@ -391,14 +414,14 @@ clsProveedor objProv = new clsProveedor();
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
+            .addGap(0, 960, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 930, 630));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 960, 550));
         jPanel3.setBorder(BorderFactory.createMatteBorder(0, 3, 3, 3, Color.GRAY));
 
         pack();
@@ -422,7 +445,8 @@ clsProveedor objProv = new clsProveedor();
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
-        if (txtRuc.getText().length() >= 6) {
+        //metodo solo para ingresar numeros
+        if (txtRuc.getText().length() == 11) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -445,14 +469,15 @@ clsProveedor objProv = new clsProveedor();
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
-        if (txtTel.getText().length() >= 8) {
+        
+        if (txtTel.getText().length() >= 10) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_txtTelKeyTyped
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -573,7 +598,25 @@ clsProveedor objProv = new clsProveedor();
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         listarProveedores();
+        txtRuc.setText(ruc);
     }//GEN-LAST:event_formWindowOpened
+
+    private void txtRucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRucActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRucActionPerformed
+
+    private void txtRAZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRAZActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRAZActionPerformed
+
+
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoActionPerformed
+
+    private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoKeyTyped
  private void listarProveedores(){
         ResultSet rsPr =null;
         String rubro="";
