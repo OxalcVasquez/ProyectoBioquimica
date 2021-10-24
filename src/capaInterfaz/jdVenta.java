@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -459,7 +460,7 @@ public class jdVenta extends javax.swing.JDialog {
         });
         jPanel2.add(txtIGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 410, 80, -1));
 
-        btnNuevo.setText("Registrar");
+        btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
@@ -800,34 +801,62 @@ public class jdVenta extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIGVActionPerformed
 
+
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
         try {
-            objVenta.registrarVenta(Integer.parseInt(txtNumero.getText()),
-                    txtNroComprobante.getText(),
+            if (btnNuevo.getText().equals("Nuevo")) {
+                btnNuevo.setText("Guardar");
+                txtNumero.setText(objVenta.generarNumVenta().toString());
+                txtNroComprobante.requestFocus();
+            } else {
+                if(objVenta.verificarVenta(txtNroComprobante.getText(),obtenerTipoComprobante() )){
+                 objVenta.registrarVenta(Integer.parseInt(txtNumero.getText()),
+                        txtNroComprobante.getText(),
                     cboTipo.getSelectedItem().toString().substring(0, 1),
-                    Double.parseDouble(txtIGV.getText()),
-                    Double.parseDouble(txtSubTotal.getText()),
-                    Double.parseDouble(txtTotal.getText()),
-                    sdf.format(jdcFecha.getDate()),
-                    horaActual,
-                    objCliente.buscarCodClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0)),
-                    Integer.parseInt(cboTrabajador.getSelectedItem().toString().split("-")[0]),
-                    listaDetalle);
+                        Double.parseDouble(txtIGV.getText()),
+                        Double.parseDouble(txtSubTotal.getText()),
+                        Double.parseDouble(txtTotal.getText()),
+                        sdf.format(jdcFecha.getDate()),
+                        horaActual,
+                        objCliente.buscarCodClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0)),
+                        Integer.parseInt(cboTrabajador.getSelectedItem().toString().split("-")[0]),
+                        listaDetalle);
+                
+                }else{
+                    JOptionPane.showMessageDialog(this, "El numero de comprobante con el tipo ingresado ya esta registrado");
+                    }
+               
+            }
+
         } catch (Exception e) {
-                        JOptionPane.showMessageDialog(this, e);
+            JOptionPane.showMessageDialog(this, e);
 
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        Date fechaActual = new Date();
+        jdcFecha.setDate(fechaActual);
         listarVentas();
         listarTrabajador();
     }//GEN-LAST:event_formWindowOpened
 
+    private String obtenerTipoComprobante() {
+
+        String tipo[] = cboTipo.getSelectedItem().toString().split(" ");
+        if (tipo.length > 1) {
+            return (tipo[0].substring(0, 1) + tipo[1].substring(0, 1));
+        } else {
+            return tipo[0].substring(0, 1);
+
+        }
+    }
     private void botonMedGradiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente3ActionPerformed
         // TODO add your handling code here:
+        System.out.println(obtenerTipoComprobante());
+
     }//GEN-LAST:event_botonMedGradiente3ActionPerformed
 
     /**

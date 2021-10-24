@@ -23,8 +23,41 @@ public class clsVenta {
     ResultSet rs = null;
     Connection con;
     CallableStatement cs = null;
-    
+
     //Falta validar el stock maximo , stock == 0, validar el numero de comporbamte y tipo,metodos de lista 
+    public Integer generarNumVenta() throws Exception {
+        strSQL = "select f_generarNumVenta();";
+        try {
+            objConexion.conectarBD();
+            con = objConexion.getCon();
+            cs = con.prepareCall(strSQL);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("f_generarNumVenta");
+            }
+        } catch (Exception e) {
+            throw new Exception("Error al ejecutar rla funcion");
+
+        } finally {
+            objConexion.desconectarBD();
+            cs.close();
+        }
+        return 0;
+    }
+
+    public Boolean verificarVenta(String numcom, String tipo) throws Exception {
+        strSQL = "select * from comprobanteventa where numcomprobante='"+numcom+"' and tipo='"+tipo+"'";
+        
+        try {
+            rs = objConexion.consultarBD(strSQL);
+            if(rs.next()){
+            return false;
+            }
+        } catch (Exception e) {
+            throw new Exception("Error al verificar venta");
+        }
+        return true;
+    }
 
     public ResultSet listarVentas() throws Exception {
         strSQL = "select v.*,c.nombres ||' '|| c.apellidos as cliente,t.nombres ||' '|| t.apellidos as trabajador from comprobanteVenta as v "
