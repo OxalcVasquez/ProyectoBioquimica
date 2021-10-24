@@ -64,7 +64,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
         txtNombre = new capaInterfaz.Componentes.TextoMed();
-        btnSalir3 = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnSeleccionar = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel9 = new javax.swing.JLabel();
         cboCategoria = new javax.swing.JComboBox<>();
         cboMarca = new javax.swing.JComboBox<>();
@@ -132,10 +132,10 @@ public class jdBuscarProductos extends javax.swing.JDialog {
             }
         });
 
-        btnSalir3.setText("Seleccionar");
-        btnSalir3.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionar.setText("Seleccionar");
+        btnSeleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalir3ActionPerformed(evt);
+                btnSeleccionarActionPerformed(evt);
             }
         });
 
@@ -182,7 +182,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(367, 367, 367)
-                        .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -203,7 +203,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnSalir3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSeleccionar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
@@ -410,13 +410,21 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_cboCategoriaActionPerformed
 
-    private void btnSalir3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir3ActionPerformed
+    private void btnSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarActionPerformed
         // TODO add your handling code here:
         System.out.println(codigo + " " + producto);
         try {
-            if (rsProducto != null) {
+
+            if (codigo != null) {
                 rsProducto = objProducto.buscarProducto(Integer.parseInt(codigo));
-                this.dispose();
+                if (rsProducto.next()) {
+                    if (rsProducto.getInt("stock") > 0) {
+                        rsProducto = objProducto.buscarProducto(Integer.parseInt(codigo));
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "El producto seleccionado no tiene stock disponible");
+                    }
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Por favor seleccione un producto");
             }
@@ -425,7 +433,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         }
 
 
-    }//GEN-LAST:event_btnSalir3ActionPerformed
+    }//GEN-LAST:event_btnSeleccionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -726,7 +734,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
-    private capaInterfaz.Componentes.BotonMedGradiente btnSalir3;
+    private capaInterfaz.Componentes.BotonMedGradiente btnSeleccionar;
     private javax.swing.JComboBox<String> cboCategoria;
     private javax.swing.JComboBox<String> cboMarca;
     private javax.swing.JLabel jLabel1;

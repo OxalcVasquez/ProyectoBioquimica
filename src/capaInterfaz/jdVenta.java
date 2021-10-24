@@ -8,6 +8,7 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaNegocio.*;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -34,6 +36,9 @@ import javax.swing.text.DefaultFormatter;
 public class jdVenta extends javax.swing.JDialog {
 
     private int posX = 0, posY = 0;
+    clsTrabajador objTrabajador = new clsTrabajador();
+        clsCliente objCliente = new clsCliente();
+
     ResultSet rsProducto;
     ArrayList listaDetalle = new ArrayList();
     private double precio;
@@ -109,8 +114,8 @@ public class jdVenta extends javax.swing.JDialog {
         jLabel19 = new javax.swing.JLabel();
         cboTipoDoc = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
-        txtCorreo5 = new capaInterfaz.Componentes.TextoMed();
-        btnBuscar4 = new capaInterfaz.Componentes.BotonMedGradiente();
+        txtCliente = new capaInterfaz.Componentes.TextoMed();
+        btnBuscarCliente = new capaInterfaz.Componentes.BotonMedGradiente();
         btnAgregarProducto = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -119,9 +124,10 @@ public class jdVenta extends javax.swing.JDialog {
         jLabel24 = new javax.swing.JLabel();
         cboTrabajador = new javax.swing.JComboBox<>();
         jsCantidad = new capaInterfaz.Componentes.spinnerMed();
-        txtNroDocumento1 = new capaInterfaz.Componentes.TextoMed();
+        txtNroDocumento = new capaInterfaz.Componentes.TextoMed();
         txtSubTotal = new capaInterfaz.Componentes.TextoMed();
         txtIGV = new capaInterfaz.Componentes.TextoMed();
+        btnNuevo = new capaInterfaz.Componentes.BotonMedGradiente();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -137,6 +143,11 @@ public class jdVenta extends javax.swing.JDialog {
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -158,7 +169,7 @@ public class jdVenta extends javax.swing.JDialog {
                 botonMedGradiente1ActionPerformed(evt);
             }
         });
-        jPanel2.add(botonMedGradiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 490, 160, -1));
+        jPanel2.add(botonMedGradiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 670, 160, -1));
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -349,22 +360,22 @@ public class jdVenta extends javax.swing.JDialog {
         jLabel20.setText("Tipo Documento:");
         jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, -1, -1));
 
-        txtCorreo5.setText("");
-        txtCorreo5.setPlaceholder("");
-        txtCorreo5.addActionListener(new java.awt.event.ActionListener() {
+        txtCliente.setText("");
+        txtCliente.setPlaceholder("");
+        txtCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreo5ActionPerformed(evt);
+                txtClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(txtCorreo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, 300, -1));
+        jPanel2.add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 220, 300, -1));
 
-        btnBuscar4.setText("Buscar");
-        btnBuscar4.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarCliente.setText("Buscar");
+        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar4ActionPerformed(evt);
+                btnBuscarClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 160, -1, -1));
+        jPanel2.add(btnBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 160, -1, -1));
 
         btnAgregarProducto.setText("Agregar Producto");
         btnAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -406,18 +417,17 @@ public class jdVenta extends javax.swing.JDialog {
 
         cboTrabajador.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         cboTrabajador.setForeground(new java.awt.Color(51, 51, 51));
-        cboTrabajador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "Carnet Extranjería", "Libreta Militar" }));
-        jPanel2.add(cboTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 720, 184, -1));
+        jPanel2.add(cboTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 720, 280, -1));
         jPanel2.add(jsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
-        txtNroDocumento1.setText("");
-        txtNroDocumento1.setPlaceholder("");
-        txtNroDocumento1.addActionListener(new java.awt.event.ActionListener() {
+        txtNroDocumento.setText("");
+        txtNroDocumento.setPlaceholder("");
+        txtNroDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNroDocumento1ActionPerformed(evt);
+                txtNroDocumentoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtNroDocumento1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, 180, -1));
+        jPanel2.add(txtNroDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, 180, -1));
 
         txtSubTotal.setEditable(false);
         txtSubTotal.setText("");
@@ -438,6 +448,14 @@ public class jdVenta extends javax.swing.JDialog {
             }
         });
         jPanel2.add(txtIGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 410, 80, -1));
+
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 490, 160, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 780));
 
@@ -518,6 +536,22 @@ public class jdVenta extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+     public void listarTrabajador() {
+        ResultSet rsTrabajador = null;
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        cboTrabajador.setModel(model);
+
+        try {
+            rsTrabajador = objTrabajador.listarTrabajador();
+            while (rsTrabajador.next()) {
+                model.addElement(rsTrabajador.getString("codtrabajador")+"-"+rsTrabajador.getString("nombres")+" "+rsTrabajador.getString("apellidos"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+
+        }
+
+    }
     private void gradientButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradientButton2ActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < listaDetalle.size(); i++) {
@@ -637,13 +671,30 @@ public class jdVenta extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonMedGradiente1ActionPerformed
 
-    private void txtCorreo5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreo5ActionPerformed
+    private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreo5ActionPerformed
+    }//GEN-LAST:event_txtClienteActionPerformed
 
-    private void btnBuscar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar4ActionPerformed
+    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscar4ActionPerformed
+         try {
+
+             ResultSet rsCliente = null;
+             rsCliente = objCliente.buscarClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0));
+            if (rsCliente.next()) {
+              txtCliente.setText(rsCliente.getString("nombres")+" "+rsCliente.getString("apellidos"));
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encuentra el cliente registrado, por favor registrelo");
+                jdCliente objFrmCliente = new jdCliente(null, true);
+                objFrmCliente.setVisible(true);
+
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
+        
+    }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     public void actualizarTotal() {
         Double total = 0.0;
@@ -690,9 +741,9 @@ public class jdVenta extends javax.swing.JDialog {
 
     }//GEN-LAST:event_tblDetalleMouseClicked
 
-    private void txtNroDocumento1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroDocumento1ActionPerformed
+    private void txtNroDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroDocumentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNroDocumento1ActionPerformed
+    }//GEN-LAST:event_txtNroDocumentoActionPerformed
 
     private void txtSubTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSubTotalActionPerformed
         // TODO add your handling code here:
@@ -701,6 +752,15 @@ public class jdVenta extends javax.swing.JDialog {
     private void txtIGVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIGVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIGVActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        listarTrabajador();
+    }//GEN-LAST:event_formWindowOpened
 
     private void botonMedGradiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente3ActionPerformed
         // TODO add your handling code here:
@@ -819,7 +879,8 @@ public class jdVenta extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente btnAgregarProducto;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar3;
-    private capaInterfaz.Componentes.BotonMedGradiente btnBuscar4;
+    private capaInterfaz.Componentes.BotonMedGradiente btnBuscarCliente;
+    private capaInterfaz.Componentes.BotonMedGradiente btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboComp;
     private javax.swing.JComboBox<String> cboTipoDoc;
@@ -851,10 +912,10 @@ public class jdVenta extends javax.swing.JDialog {
     private capaInterfaz.Componentes.RoundedPanel roundedPanel1;
     private javax.swing.JTable tblDatos;
     private javax.swing.JTable tblDetalle;
+    private capaInterfaz.Componentes.TextoMed txtCliente;
     private capaInterfaz.Componentes.TextoMed txtCorreo;
-    private capaInterfaz.Componentes.TextoMed txtCorreo5;
     private capaInterfaz.Componentes.TextoMed txtIGV;
-    private capaInterfaz.Componentes.TextoMed txtNroDocumento1;
+    private capaInterfaz.Componentes.TextoMed txtNroDocumento;
     private capaInterfaz.Componentes.TextoMed txtPrecio;
     private capaInterfaz.Componentes.TextoMed txtProducto;
     private capaInterfaz.Componentes.TextoMed txtSubTotal;

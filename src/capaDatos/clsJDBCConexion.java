@@ -108,4 +108,31 @@ public class clsJDBCConexion {
         }
     
     }
+    //Transaccion
+    public void ejecutartBDTransacciones(ArrayList arregloConsulta) throws Exception{
+        
+        try {
+            conectarBD();
+            con.setAutoCommit(false);//Iniciar la transaccion
+            sent = con.createStatement();
+            for (Object consulta:arregloConsulta) {
+                sent.executeUpdate((String)consulta);
+                
+            }
+            //todas las sentencias de la transaccion
+            con.commit();
+            con.setAutoCommit(true); //Finaliza o desactiva el manejo de transaccion
+
+        } catch (Exception e) {
+            con.rollback();
+            throw new Exception("Error al ejecutar la transaccion... ");
+
+        }finally {
+            if (con != null) {
+                desconectarBD();
+            }
+
+        }
+    }
+    
 }
