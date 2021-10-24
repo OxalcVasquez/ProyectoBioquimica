@@ -549,7 +549,7 @@ public class jdTrabajador extends javax.swing.JDialog {
         try {
             if(btnNuevo.getText().equals("Nuevo")){
                 btnNuevo.setText("Guardar");
-                txtCodigo.setText(String.valueOf(objTra.codigoTrabajador()));
+                txtCodigo.setText(String.valueOf(objTra.codigoTrabajadorPA()));
                 txtCodigo.enable(false);
                 txtNombre.requestFocus(); 
             }else{
