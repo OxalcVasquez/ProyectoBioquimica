@@ -68,6 +68,21 @@ public class clsCliente {
 
     }
 
+    public Integer buscarCodClientePorDocumento(String numdocumento, char td) throws Exception {
+        strSQL = "select codcliente from cliente where numdocumento='" + numdocumento + "'and tipodocumento='" + td + "'";
+
+        try {
+            rs = objConexion.consultarBD(strSQL);
+            if (rs.next()) {
+                return rs.getInt("codcliente");
+            }
+
+        } catch (Exception e) {
+            throw new Exception("Error al buscar cliente");
+        }
+        return 0;
+    }
+
     public ResultSet listarClientesVigentes() throws Exception {
         strSQL = "select * from cliente where vigencia=true";
 

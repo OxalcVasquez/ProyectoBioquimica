@@ -108,6 +108,11 @@ public class clsJDBCConexion {
         }
     
     }
+    
+     public Connection getCon(){
+        return con;
+    }
+    
     //Transaccion
     public void ejecutartBDTransacciones(ArrayList arregloConsulta) throws Exception{
         

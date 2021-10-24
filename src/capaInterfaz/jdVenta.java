@@ -12,6 +12,8 @@ import capaNegocio.*;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,11 +39,19 @@ public class jdVenta extends javax.swing.JDialog {
 
     private int posX = 0, posY = 0;
     clsTrabajador objTrabajador = new clsTrabajador();
-        clsCliente objCliente = new clsCliente();
+    clsCliente objCliente = new clsCliente();
+    clsVenta objVenta = new clsVenta();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     ResultSet rsProducto;
     ArrayList listaDetalle = new ArrayList();
     private double precio;
+
+    LocalDateTime locaDate = LocalDateTime.now();
+    int hours = locaDate.getHour();
+    int minutes = locaDate.getMinute();
+    int seconds = locaDate.getSecond();
+    String horaActual = hours + ":" + minutes + ":" + seconds;
 
     /**
      * Creates new form
@@ -53,7 +63,7 @@ public class jdVenta extends javax.swing.JDialog {
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
-        cboComp.setUI(ComboMed.createUI(cboComp));
+        cboTipo.setUI(ComboMed.createUI(cboTipo));
         cboTipoDoc.setUI(ComboMed.createUI(cboTipoDoc));
         tblDetalle.getTableHeader().setDefaultRenderer(new ColorTabla());
 
@@ -105,10 +115,10 @@ public class jdVenta extends javax.swing.JDialog {
         roundedPanel1 = new capaInterfaz.Componentes.RoundedPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        txtCorreo = new capaInterfaz.Componentes.TextoMed();
-        jTextField1 = new javax.swing.JTextField();
-        cboComp = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txtNroComprobante = new capaInterfaz.Componentes.TextoMed();
+        txtNumero = new javax.swing.JTextField();
+        cboTipo = new javax.swing.JComboBox<>();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
         jLabel15 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -169,7 +179,7 @@ public class jdVenta extends javax.swing.JDialog {
                 botonMedGradiente1ActionPerformed(evt);
             }
         });
-        jPanel2.add(botonMedGradiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 670, 160, -1));
+        jPanel2.add(botonMedGradiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 670, 160, -1));
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,7 +195,7 @@ public class jdVenta extends javax.swing.JDialog {
         tblDatos.setSelectionBackground(new java.awt.Color(104, 228, 176));
         jScrollPane1.setViewportView(tblDatos);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 740, 220));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 830, 220));
 
         jLabel11.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel11.setText("Producto:");
@@ -248,7 +258,7 @@ public class jdVenta extends javax.swing.JDialog {
         jPanel2.add(btnBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 270, -1, -1));
 
         botonMedGradiente2.setText("Salir");
-        jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 610, 160, -1));
+        jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 600, 160, -1));
 
         botonMedGradiente3.setText("Eliminar");
         botonMedGradiente3.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +266,7 @@ public class jdVenta extends javax.swing.JDialog {
                 botonMedGradiente3ActionPerformed(evt);
             }
         });
-        jPanel2.add(botonMedGradiente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 550, 160, -1));
+        jPanel2.add(botonMedGradiente3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 540, 160, -1));
 
         jLabel18.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel18.setText("Precio:");
@@ -274,23 +284,23 @@ public class jdVenta extends javax.swing.JDialog {
         jLabel12.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel12.setText("N° Comp:");
 
-        txtCorreo.setText("");
-        txtCorreo.setPlaceholder("");
-        txtCorreo.addActionListener(new java.awt.event.ActionListener() {
+        txtNroComprobante.setText("");
+        txtNroComprobante.setPlaceholder("");
+        txtNroComprobante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCorreoActionPerformed(evt);
+                txtNroComprobanteActionPerformed(evt);
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtNumeroActionPerformed(evt);
             }
         });
 
-        cboComp.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        cboComp.setForeground(new java.awt.Color(51, 51, 51));
-        cboComp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Boleta Electrónica", "Factura", "Factura Electrónica" }));
+        cboTipo.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        cboTipo.setForeground(new java.awt.Color(51, 51, 51));
+        cboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Boleta Electrónica", "Factura", "Factura Electrónica" }));
 
         jLabel15.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel15.setText("Fecha:");
@@ -306,19 +316,19 @@ public class jdVenta extends javax.swing.JDialog {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel15)
                 .addGap(18, 18, 18)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cboComp, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel12)
                 .addGap(18, 18, 18)
-                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNroComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         roundedPanel1Layout.setVerticalGroup(
@@ -328,19 +338,19 @@ public class jdVenta extends javax.swing.JDialog {
                     .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(roundedPanel1Layout.createSequentialGroup()
                             .addGap(14, 14, 14)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, roundedPanel1Layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel7)
                                 .addComponent(jLabel15))))
                     .addGroup(roundedPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(roundedPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNroComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)
-                            .addComponent(cboComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -449,13 +459,13 @@ public class jdVenta extends javax.swing.JDialog {
         });
         jPanel2.add(txtIGV, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 410, 80, -1));
 
-        btnNuevo.setText("Nuevo");
+        btnNuevo.setText("Registrar");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 490, 160, -1));
+        jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 480, 160, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 780));
 
@@ -536,7 +546,7 @@ public class jdVenta extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-     public void listarTrabajador() {
+    public void listarTrabajador() {
         ResultSet rsTrabajador = null;
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         cboTrabajador.setModel(model);
@@ -544,7 +554,7 @@ public class jdVenta extends javax.swing.JDialog {
         try {
             rsTrabajador = objTrabajador.listarTrabajador();
             while (rsTrabajador.next()) {
-                model.addElement(rsTrabajador.getString("codtrabajador")+"-"+rsTrabajador.getString("nombres")+" "+rsTrabajador.getString("apellidos"));
+                model.addElement(rsTrabajador.getString("codtrabajador") + "-" + rsTrabajador.getString("nombres") + " " + rsTrabajador.getString("apellidos"));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -565,9 +575,9 @@ public class jdVenta extends javax.swing.JDialog {
 
     }//GEN-LAST:event_gradientButton2ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNumeroActionPerformed
 
     private void setPrecio(Double precio) {
         this.precio = precio;
@@ -614,9 +624,9 @@ public class jdVenta extends javax.swing.JDialog {
         tblDetalle.setModel(modelo);
 
     }
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+    private void txtNroComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroComprobanteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoActionPerformed
+    }//GEN-LAST:event_txtNroComprobanteActionPerformed
 
     private void txtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalActionPerformed
         // TODO add your handling code here:
@@ -637,9 +647,8 @@ public class jdVenta extends javax.swing.JDialog {
                     datos[2] = jsCantidad.getCantidad();
                     Double precio = (Double) tblDetalle.getModel().getValueAt(i, j + 1);
                     tblDetalle.setValueAt(jsCantidad.getCantidad() * precio, i, j + 3);
-                                        datos[3] = jsCantidad.getCantidad();
+                    datos[3] = jsCantidad.getCantidad();
                     datos[3] = tblDetalle.getModel().getValueAt(i, j + 3);
-
 
                 }
             }
@@ -663,6 +672,43 @@ public class jdVenta extends javax.swing.JDialog {
 
     }//GEN-LAST:event_txtPrecioActionPerformed
 
+    public void listarVentas() {
+        ResultSet rsLista = null;
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nro");
+        model.addColumn("Nro Comprobante");
+        model.addColumn("Tipo C");
+        model.addColumn("IGV");
+        model.addColumn("Subtotal");
+        model.addColumn("Total");
+        model.addColumn("Fecha");
+        model.addColumn("Hora");
+        model.addColumn("Cliente");
+        model.addColumn("Trabajador");
+        tblDatos.setModel(model);
+        try {
+            rsLista = objVenta.listarVentas();
+            while (rsLista.next()) {
+
+                model.addRow(new Object[]{
+                    rsLista.getInt("numventa"),
+                    rsLista.getString("numcomprobante"),
+                    rsLista.getString("tipo"),
+                    rsLista.getDouble("igv"),
+                    rsLista.getDouble("subtotal"),
+                    rsLista.getDouble("total"),
+                    rsLista.getDate("fecha"),
+                    rsLista.getTime("hora"),
+                    rsLista.getString("cliente"),
+                    rsLista.getString("trabajador")
+
+                });
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
     private void btnBuscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscar3ActionPerformed
@@ -677,12 +723,12 @@ public class jdVenta extends javax.swing.JDialog {
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
 
-             ResultSet rsCliente = null;
-             rsCliente = objCliente.buscarClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0));
+            ResultSet rsCliente = null;
+            rsCliente = objCliente.buscarClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0));
             if (rsCliente.next()) {
-              txtCliente.setText(rsCliente.getString("nombres")+" "+rsCliente.getString("apellidos"));
+                txtCliente.setText(rsCliente.getString("nombres") + " " + rsCliente.getString("apellidos"));
             } else {
                 JOptionPane.showMessageDialog(this, "No se encuentra el cliente registrado, por favor registrelo");
                 jdCliente objFrmCliente = new jdCliente(null, true);
@@ -693,7 +739,7 @@ public class jdVenta extends javax.swing.JDialog {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
-        
+
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     public void actualizarTotal() {
@@ -709,12 +755,13 @@ public class jdVenta extends javax.swing.JDialog {
         try {
 
             if (validarDetalle(txtProducto.getText())) {
-                Object producto[] = new Object[4];
-//            producto[0] = rsProducto.getInt("codproducto");
+                Object producto[] = new Object[5];
+
                 producto[0] = rsProducto.getString("nombre");
                 producto[1] = rsProducto.getDouble("precioventa");
                 producto[2] = jsCantidad.getCantidad();
                 producto[3] = rsProducto.getDouble("precioventa") * jsCantidad.getCantidad();
+                producto[4] = rsProducto.getInt("codproducto");
                 listaDetalle.add(producto);
                 listarDetalle(listaDetalle);
                 actualizarTotal();
@@ -755,17 +802,33 @@ public class jdVenta extends javax.swing.JDialog {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
+        try {
+            objVenta.registrarVenta(Integer.parseInt(txtNumero.getText()),
+                    txtNroComprobante.getText(),
+                    cboTipo.getSelectedItem().toString().substring(0, 1),
+                    Double.parseDouble(txtIGV.getText()),
+                    Double.parseDouble(txtSubTotal.getText()),
+                    Double.parseDouble(txtTotal.getText()),
+                    sdf.format(jdcFecha.getDate()),
+                    horaActual,
+                    objCliente.buscarCodClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0)),
+                    Integer.parseInt(cboTrabajador.getSelectedItem().toString().split("-")[0]),
+                    listaDetalle);
+        } catch (Exception e) {
+                        JOptionPane.showMessageDialog(this, e);
+
+        }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        listarVentas();
         listarTrabajador();
     }//GEN-LAST:event_formWindowOpened
 
     private void botonMedGradiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonMedGradiente3ActionPerformed
-
 
     /**
      * @param args the command line arguments
@@ -882,11 +945,10 @@ public class jdVenta extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscarCliente;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevo;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> cboComp;
+    private javax.swing.JComboBox<String> cboTipo;
     private javax.swing.JComboBox<String> cboTipoDoc;
     private javax.swing.JComboBox<String> cboTrabajador;
     private capaInterfaz.Componentes.BotonMedGradiente gradientButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -907,15 +969,16 @@ public class jdVenta extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
+    private com.toedter.calendar.JDateChooser jdcFecha;
     private capaInterfaz.Componentes.spinnerMed jsCantidad;
     private capaInterfaz.Componentes.RoundedPanel roundedPanel1;
     private javax.swing.JTable tblDatos;
     private javax.swing.JTable tblDetalle;
     private capaInterfaz.Componentes.TextoMed txtCliente;
-    private capaInterfaz.Componentes.TextoMed txtCorreo;
     private capaInterfaz.Componentes.TextoMed txtIGV;
+    private capaInterfaz.Componentes.TextoMed txtNroComprobante;
     private capaInterfaz.Componentes.TextoMed txtNroDocumento;
+    private javax.swing.JTextField txtNumero;
     private capaInterfaz.Componentes.TextoMed txtPrecio;
     private capaInterfaz.Componentes.TextoMed txtProducto;
     private capaInterfaz.Componentes.TextoMed txtSubTotal;
