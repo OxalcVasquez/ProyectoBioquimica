@@ -131,13 +131,13 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="capaInterfaz.Componentes.TextoMed" name="txtnumComp">
+        <Component class="capaInterfaz.Componentes.TextoMed" name="txtnumComprobante">
           <Properties>
             <Property name="text" type="java.lang.String" value=""/>
             <Property name="placeholder" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtnumCompActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtnumComprobanteActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -521,12 +521,12 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="capaInterfaz.Componentes.BotonMedGradiente" name="gradientButton3">
+        <Component class="capaInterfaz.Componentes.BotonMedGradiente" name="btnNuevaComprs">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nuevo"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gradientButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevaComprsActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

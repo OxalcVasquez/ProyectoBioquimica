@@ -164,7 +164,9 @@ clsProveedor objProv = new clsProveedor();
         });
         jScrollPane1.setViewportView(tblDatos);
 
+        txtRuc.setForeground(new java.awt.Color(0, 0, 0));
         txtRuc.setText("");
+        txtRuc.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         txtRuc.setPlaceholder("");
         txtRuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
