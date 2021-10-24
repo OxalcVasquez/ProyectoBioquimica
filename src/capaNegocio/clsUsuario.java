@@ -2,7 +2,8 @@
 package capaNegocio;
 
 import capaDatos.clsJDBCConexion;
-import java.sql.ResultSet;
+import java.sql.CallableStatement;
+import java.sql.*;
 
 /**
  *
@@ -12,6 +13,8 @@ public class clsUsuario {
         clsJDBCConexion obj  = new clsJDBCConexion();
     String strSQL = "";
     ResultSet rs = null;
+    Connection con ;
+    CallableStatement cs = null;
     
     
     public int codigoUsuario() throws Exception{
@@ -28,6 +31,30 @@ public class clsUsuario {
         }
         return 0;
     }
+    
+    public int codigoUsuarioPA() throws Exception{
+    
+        strSQL = "select f_codigoUsuario()";
+        
+        try {
+            obj.conectarBD();
+            con = obj.getCon();
+            cs = con.prepareCall(strSQL);
+            rs = cs.executeQuery();
+            if(rs.next()){
+                 return rs.getInt("f_codigoUsuario");
+            }
+
+        } catch (Exception e) {
+            throw new Exception("No se pudo generar el codigo");
+        }finally{
+            obj.desconectarBD();
+            cs.close();
+            rs.close();
+        }
+        return 0;
+    }
+    
     public void guardarUsuario(Integer codusuario,String nombreusuario,String contraseñausuario,Boolean vigencia,String fecharegistro,Integer codtrabajador) throws Exception{
     
         strSQL = "insert into usuario (codusuario,nombreusuario,contraseñausuario,vigencia,fecharegistro,codtrabajador) values ("+codusuario+",'"+nombreusuario+"','"+contraseñausuario+"',"+vigencia+",'"+fecharegistro+"',"+codtrabajador+")";

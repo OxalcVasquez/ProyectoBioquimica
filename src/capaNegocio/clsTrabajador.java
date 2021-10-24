@@ -6,6 +6,8 @@
 package capaNegocio;
 
 import capaDatos.clsJDBCConexion;
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -17,6 +19,8 @@ public class clsTrabajador {
     clsJDBCConexion obj  = new clsJDBCConexion();
     String strSQL = "";
     ResultSet rs = null;
+    Connection con;
+    CallableStatement cs = null;
     
     
     public int codigoTrabajador() throws Exception{
@@ -30,6 +34,29 @@ public class clsTrabajador {
             }
         } catch (Exception e) {
             throw new Exception("No se pudo generar el codigo");
+        }
+        return 0;
+    }
+    
+     public int codigoTrabajadorPA() throws Exception{
+    
+        strSQL = "select f_codigoTrabajador()";
+        obj.conectarBD();
+        con = obj.getCon();
+        cs = con.prepareCall(strSQL);
+        rs = cs.executeQuery();
+        if(rs.next()){
+            return rs.getInt("f_codigoTrabajador");
+        }      
+        try {
+           
+        } catch (Exception e) {
+            throw new Exception("No se pudo generar el codigo");
+        }finally{
+            obj.desconectarBD();
+            con.close();
+            rs.close();
+        
         }
         return 0;
     }

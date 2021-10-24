@@ -473,7 +473,7 @@ public class jdUsuario extends javax.swing.JDialog {
         try {
             if(btnNuevo.getText().equals("Nuevo")){
                 btnNuevo.setText("Guardar");
-                txtCodigo.setText(String.valueOf(objUsu.codigoUsuario()));
+                txtCodigo.setText(String.valueOf(objUsu.codigoUsuarioPA()));
                 txtCodigo.enable(false);
                 txtNombre.requestFocus(); 
             }else{
