@@ -43,6 +43,7 @@ public class spinnerMed extends JPanel {
     JButton siguiente = new JButton(new javax.swing.ImageIcon(getClass().getResource("/Iconos/next.png")));
     JFormattedTextField cantidad ;
 
+    NumberFormatter formatter;
     
     JTextField campoPrecio = new JTextField();
     Double precio = 0.0;
@@ -150,6 +151,10 @@ public class spinnerMed extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+    }
+    
+    public void setMaximo(Integer maximo){
+        formatter.setMaximum(maximo);
     }
 
 }
