@@ -211,7 +211,7 @@ public class jdTrabajador extends javax.swing.JDialog {
 
         cboCargo.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         cboCargo.setForeground(new java.awt.Color(51, 51, 51));
-        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Caja", "Vendedor" }));
+        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Vendedor", "Administrador", "Apoyo" }));
 
         gradientButton3.setText("Dar Baja");
         gradientButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -535,6 +535,8 @@ public class jdTrabajador extends javax.swing.JDialog {
             while(rs.next()){
                 if(rs.getString("cargo").equals("C")) cargo = "Cajero";
                 if(rs.getString("cargo").equals("V")) cargo = "Vendedor";
+                if(rs.getString("cargo").equals("A")) cargo = "Administrador";
+                if(rs.getString("cargo").equals("Y")) cargo = "Apoyo";
                 modelo.addRow(new Object[]{rs.getString("codtrabajador"),rs.getString("nombres"),rs.getString("apellidos"),rs.getString("dni"),rs.getString("telefono"),rs.getString("correo"),cargo,rs.getBoolean("vigencia") });
             }
             
@@ -558,6 +560,8 @@ public class jdTrabajador extends javax.swing.JDialog {
                 if(cboSexo.getSelectedItem().equals("Femenino")) sexo = false;
                 if(cboCargo.getSelectedItem().equals("Caja")) cargo = 'C';
                 if(cboCargo.getSelectedItem().equals("Vendedor")) cargo = 'V';
+                if(cboCargo.getSelectedItem().equals("Administrador")) cargo = 'A';
+                if(cboCargo.getSelectedItem().equals("Apoyo")) cargo = 'Y';
                 
                 objTra.guardarTrabajador(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),txtTelefono.getText(),txtCorreo.getText(), txtDireccion.getText(),sexo,txtFecha.getText(),cargo,chkEstado.isSelected());
                 JOptionPane.showMessageDialog(this,"Trabajador Registrado correctamente");
@@ -612,6 +616,8 @@ public class jdTrabajador extends javax.swing.JDialog {
                     
                     if(rs.getString("cargo").equals("C")) cargo = "Caja";
                     if(rs.getString("cargo").equals("V")) cargo = "Vendedor";
+                    if(rs.getString("cargo").equals("A")) cargo = "Administrador";
+                    if(rs.getString("cargo").equals("Y")) cargo = "Apoyo";
                     
                     cboCargo.setSelectedItem(cargo);
                     chkEstado.setSelected(rs.getBoolean("vigencia"));   
@@ -649,6 +655,8 @@ public class jdTrabajador extends javax.swing.JDialog {
              if(cboSexo.getSelectedItem().equals("Femenino")) sexo = false;
              if(cboCargo.getSelectedItem().equals("Caja")) cargo = 'C';
              if(cboCargo.getSelectedItem().equals("Vendedor")) cargo = 'V';
+             if(cboCargo.getSelectedItem().equals("Administrador")) cargo = 'A';
+             if(cboCargo.getSelectedItem().equals("Apoyo")) cargo = 'Y';
              
              objTra.actualizarTrabajador(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(),txtApellido.getText(), txtDNI.getText(),txtTelefono.getText(), txtCorreo.getText(),txtDireccion.getText(),sexo,txtFecha.getText(),cargo,chkEstado.isSelected());
                   JOptionPane.showMessageDialog(this,"Se actualizo al trabajador"); 
