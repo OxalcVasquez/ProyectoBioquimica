@@ -29,24 +29,26 @@ import javax.swing.table.DefaultTableModel;
  * @author CMFerrer
  */
 public class jdComprobanteCompra extends javax.swing.JDialog {
-    clsProveedor objProv =new clsProveedor();
-    clsProducto objProducto=new clsProducto();
-    clsDetalleCompra objDetalle =new clsDetalleCompra();
-    clsComprobanteCompra objCom=new clsComprobanteCompra();
+
+    clsProveedor objProv = new clsProveedor();
+    clsProducto objProducto = new clsProducto();
+    clsDetalleCompra objDetalle = new clsDetalleCompra();
+    clsComprobanteCompra objCom = new clsComprobanteCompra();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     private int posX = 0, posY = 0;
     ResultSet rsProducto;
     ArrayList listaDetalle = new ArrayList();
     private double precio;
     public String ruc;
+
     public jdComprobanteCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
-        
+
         cboComp.setUI(ComboMed.createUI(cboComp));
         tblCompras.getTableHeader().setDefaultRenderer(new ColorTabla());
         tblDetalle.getTableHeader().setDefaultRenderer(new ColorTabla());
@@ -65,13 +67,15 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
         });
     }
-  private void setPrecio(Double precio) {
+
+    private void setPrecio(Double precio) {
         this.precio = precio;
     }
 
     public Double getPrecio() {
         return this.precio;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -492,7 +496,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         // TODO add your handling code here:
         posX = evt.getX();
-	posY = evt.getY();
+        posY = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
@@ -506,7 +510,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
     private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
         // TODO add your handling code here:
-         for (int i = 0; i < listaDetalle.size(); i++) {
+        for (int i = 0; i < listaDetalle.size(); i++) {
             Object[] datos = (Object[]) listaDetalle.get(i);
             if (datos[0].equals(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 0))) {
                 listaDetalle.remove(i);
@@ -527,17 +531,17 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private void btnBuscarProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProvActionPerformed
         // TODO add your handling code here:
         ResultSet rsPr = null;
-   
+
         try {
-            if(txtruc.getText().isEmpty()){
+            if (txtruc.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Ingrese ruc a buscar...");
                 txtruc.requestFocus();
-            }else{
-                rsPr=objProv.buscarProv(txtruc.getText());
-                if(rsPr.next()){
+            } else {
+                rsPr = objProv.buscarProv(txtruc.getText());
+                if (rsPr.next()) {
                     txtRaz.setText(rsPr.getString("razonsocial"));
-                    
-                }else{
+
+                } else {
                     JOptionPane.showMessageDialog(this, "Ruc no registrado...");
                     btnNuevoPrveedor.requestFocus();
                 }
@@ -555,9 +559,9 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         // TODO add your handling code here:
         jdManProveedor obj = new jdManProveedor(null, true);
         try {
-            obj.ruc=txtruc.getText();
-          obj.setVisible(true);
-        ruc=txtruc.getText();   
+            obj.ruc = txtruc.getText();
+            obj.setVisible(true);
+            ruc = txtruc.getText();
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnNuevoPrveedorActionPerformed
@@ -572,7 +576,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
     private void btnNuevaComprsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaComprsActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
             if (btnNuevaComprs.getText().equals("Nuevo")) {
                 btnNuevaComprs.setText("Guardar");
                 txtnumcompra.setText(objCom.generarCodigoCCompra().toString());
@@ -581,15 +585,15 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                 btnNuevaComprs.setText("Nuevo");
                 //Guardar 
                 objCom.registrarCompraTran(Integer.parseInt(txtnumcompra.getText()),
-                    txtnumComprobante.getText(),
-                    cboComp.getSelectedItem().toString().substring(0, 1),
-                    Double.parseDouble(txtTotal.getText()),
-                    sdf.format(jdcFechaCompra.getDate()),
-                    txtruc.getText(),
-                    listaDetalle);
+                        txtnumComprobante.getText(),
+                        cboComp.getSelectedItem().toString().substring(0, 1),
+                        Double.parseDouble(txtTotal.getText()),
+                        sdf.format(jdcFechaCompra.getDate()),
+                        txtruc.getText(),
+                        listaDetalle);
                 listarCompras();
-limpiarVenta();
-limpirDetalle();
+                limpiarVenta();
+                limpirDetalle();
             }
 
         } catch (Exception e) {
@@ -603,7 +607,7 @@ limpirDetalle();
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-          try {
+        try {
             jdBuscarProductos objFrmBuscar = new jdBuscarProductos(null, true);
             objFrmBuscar.setVisible(true);
 //            txtProducto.setText(objFrmBuscar.codigo +" "+objFrmBuscar.producto);
@@ -631,7 +635,7 @@ limpirDetalle();
                 producto[0] = rsProducto.getString("nombre");
                 producto[1] = rsProducto.getDouble("preciocompra");
                 producto[2] = jsCantidad.getCantidad();
-                producto[3] = rsProducto.getDouble("preciocompra") * jsCantidad.getCantidad();      
+                producto[3] = rsProducto.getDouble("preciocompra") * jsCantidad.getCantidad();
                 producto[4] = rsProducto.getInt("codproducto");
                 listaDetalle.add(producto);
                 listarDetalle(listaDetalle);
@@ -683,59 +687,75 @@ limpirDetalle();
 
     private void btnBuscarComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarComActionPerformed
         // TODO add your handling code here:
-        ResultSet rsLista=null;
-       String tipo="";
+        ResultSet rsLista = null;
+        String tipo = "";
         try {
-            if(txtnumcompra.getText().equals("")){
+            if (txtnumcompra.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Ingrese el número de compra a buscar!");
-            }else{
-                rsLista=objCom.buscarCompra(Integer.parseInt(txtnumcompra.getText()));
-                if (rsLista.next()){
+            } else {
+                rsLista = objCom.buscarCompra(Integer.parseInt(txtnumcompra.getText()));
+                if (rsLista.next()) {
                     jdcFechaCompra.setDate(rsLista.getDate("fecha"));
                     txtRaz.setText(rsLista.getString("razonSocial"));
                     txtnumComprobante.setText(rsLista.getString("numcomprobante"));
                     txtTotal.setText(rsLista.getString("total"));
-                    
-                    tipo=rsLista.getString("tipo");
-                    if(tipo.equals("B")) cboComp.setSelectedItem("Boleta");
-                    if(tipo.equals("BE")) cboComp.setSelectedItem("Boleta Electrónica");
-                    if(tipo.equals("F")) cboComp.setSelectedItem("Factura");
-                    if(tipo.equals("FE")) cboComp.setSelectedItem("Factura Electrónica");
-                    
+
+                    tipo = rsLista.getString("tipo");
+                    if (tipo.equals("B")) {
+                        cboComp.setSelectedItem("Boleta");
+                    }
+                    if (tipo.equals("BE")) {
+                        cboComp.setSelectedItem("Boleta Electrónica");
+                    }
+                    if (tipo.equals("F")) {
+                        cboComp.setSelectedItem("Factura");
+                    }
+                    if (tipo.equals("FE")) {
+                        cboComp.setSelectedItem("Factura Electrónica");
+                    }
+
                     listarDetalle2(Integer.parseInt(txtnumcompra.getText()));
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(this, "Número de hbaitación no existe!");
                     limpiarVenta();
                 }
             }
         } catch (Exception e) {
-             JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        
+
     }//GEN-LAST:event_btnBuscarComActionPerformed
- public void actualizarTotal() {
+    public void actualizarTotal() {
         Double total = 0.0;
         for (int i = 0; i < tblDetalle.getRowCount(); i++) {
             total += (Double) tblDetalle.getValueAt(i, 3);
             txtTotal.setText(total.toString());
-            
+
         }
     }
- public void listarDetalle2(Integer cod) {
-                  ResultSet rsLista = null;
+
+    public void listarDetalle2(Integer cod) {
+        ResultSet rsLista = null;
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Producto");
         model.addColumn("Precio");
         model.addColumn("Cantidad");
         model.addColumn("Subtotal");
-        
-  
+
         tblDetalle.setModel(model);
         try {
-            Double sub=0.0;
+            Double sub = 0.0;
             rsLista = objDetalle.listarDetalle(cod);
             while (rsLista.next()) {
-                sub=rsLista.getDouble("precio")*rsLista.getInt("cantidad");
+                Object detalleDatos[] = new Object[5];
+                detalleDatos[0] = rsLista.getString("producto");
+                detalleDatos[1] = rsLista.getDouble("precio");
+                detalleDatos[2] = rsLista.getInt("cantidad");
+                detalleDatos[3] = rsLista.getDouble("precio") * rsLista.getInt("cantidad");
+                detalleDatos[4] = rsLista.getInt("codproducto");
+                listaDetalle.add(detalleDatos);
+                
+                sub = rsLista.getDouble("precio") * rsLista.getInt("cantidad");
                 model.addRow(new Object[]{
                     rsLista.getString("producto"),
                     rsLista.getDouble("precio"),
@@ -748,7 +768,8 @@ limpirDetalle();
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
- public void listarDetalle(ArrayList lista) {
+
+    public void listarDetalle(ArrayList lista) {
         DefaultTableModel modelo = new DefaultTableModel();
 //        modelo.addColumn("Cod.");
         modelo.addColumn("Producto");
@@ -765,6 +786,7 @@ limpirDetalle();
         tblDetalle.setModel(modelo);
 
     }
+
     public void actualizarDetalle() {
 //        System.out.println(txtProducto.getText().split(" ")[0]);
 
@@ -776,9 +798,8 @@ limpirDetalle();
                     datos[2] = jsCantidad.getCantidad();
                     Double precio = (Double) tblDetalle.getModel().getValueAt(i, j + 1);
                     tblDetalle.setValueAt(jsCantidad.getCantidad() * precio, i, j + 3);
-                                        datos[3] = jsCantidad.getCantidad();
+                    datos[3] = jsCantidad.getCantidad();
                     datos[3] = tblDetalle.getModel().getValueAt(i, j + 3);
-
 
                 }
             }
@@ -796,19 +817,22 @@ limpirDetalle();
         }
         return true;
     }
-    public void limpiarVenta(){
+
+    public void limpiarVenta() {
         jdcFechaCompra.setDate(null);
         txtnumcompra.setText("");
         txtnumComprobante.setText("");
         txtRaz.setText("");
         txtruc.setText("");
         txtProducto.setText("");
-           }
-    public void limpirDetalle(){
+    }
+
+    public void limpirDetalle() {
         txtPrecio.setText("");
         jsCantidad.setCantidad(1);
     }
-     public void listarCompras() {
+
+    public void listarCompras() {
         ResultSet rsLista = null;
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nro");
@@ -817,21 +841,28 @@ limpirDetalle();
         model.addColumn("Total");
         model.addColumn("Fecha");
         model.addColumn("Proveedor");
-       String tipo;
+        String tipo;
         tblCompras.setModel(model);
         try {
             rsLista = objCom.listarComprobanteCompra();
             while (rsLista.next()) {
-                tipo=rsLista.getString("tipo"); //D,O,M
-                if (tipo.equals("B")) tipo="Boleta";
-                if (tipo.equals("BE")) tipo="Boleta Electrónica";
-                if (tipo.equals("F")) tipo="Factura";
-                                if (tipo.equals("FE")) tipo="Factura Electrónica";
+                tipo = rsLista.getString("tipo"); //D,O,M
+                if (tipo.equals("B")) {
+                    tipo = "Boleta";
+                }
+                if (tipo.equals("BE")) {
+                    tipo = "Boleta Electrónica";
+                }
+                if (tipo.equals("F")) {
+                    tipo = "Factura";
+                }
+                if (tipo.equals("FE")) {
+                    tipo = "Factura Electrónica";
+                }
                 model.addRow(new Object[]{
                     rsLista.getInt("codcomprobante"),
                     rsLista.getString("numcomprobante"),
                     tipo,
-                    
                     rsLista.getDouble("total"),
                     rsLista.getDate("fecha"),
                     rsLista.getString("razonsocial")
@@ -843,6 +874,7 @@ limpirDetalle();
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
+
     /**
      * @param args the command line arguments
      */

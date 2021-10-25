@@ -139,6 +139,7 @@ public class jdVenta extends javax.swing.JDialog {
         txtSubTotal = new capaInterfaz.Componentes.TextoMed();
         txtIGV = new capaInterfaz.Componentes.TextoMed();
         btnNuevo = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnBuscarVenta = new capaInterfaz.Componentes.BotonMedGradiente();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -226,6 +227,7 @@ public class jdVenta extends javax.swing.JDialog {
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 170, -1, -1));
 
         txtTotal.setEditable(false);
+        txtTotal.setForeground(new java.awt.Color(51, 51, 51));
         txtTotal.setText("");
         txtTotal.setPlaceholder("");
         txtTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -371,6 +373,7 @@ public class jdVenta extends javax.swing.JDialog {
         jLabel20.setText("Tipo Documento:");
         jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, -1, -1));
 
+        txtCliente.setForeground(new java.awt.Color(51, 51, 51));
         txtCliente.setText("");
         txtCliente.setPlaceholder("");
         txtCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -386,7 +389,7 @@ public class jdVenta extends javax.swing.JDialog {
                 btnBuscarClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 160, -1, -1));
+        jPanel2.add(btnBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 150, -1, -1));
 
         btnAgregarProducto.setText("Agregar Producto");
         btnAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
@@ -431,6 +434,7 @@ public class jdVenta extends javax.swing.JDialog {
         jPanel2.add(cboTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 720, 280, -1));
         jPanel2.add(jsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
+        txtNroDocumento.setForeground(new java.awt.Color(51, 51, 51));
         txtNroDocumento.setText("");
         txtNroDocumento.setPlaceholder("");
         txtNroDocumento.addActionListener(new java.awt.event.ActionListener() {
@@ -441,6 +445,7 @@ public class jdVenta extends javax.swing.JDialog {
         jPanel2.add(txtNroDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, 180, -1));
 
         txtSubTotal.setEditable(false);
+        txtSubTotal.setForeground(new java.awt.Color(51, 51, 51));
         txtSubTotal.setText("");
         txtSubTotal.setPlaceholder("");
         txtSubTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -451,6 +456,7 @@ public class jdVenta extends javax.swing.JDialog {
         jPanel2.add(txtSubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 410, 80, -1));
 
         txtIGV.setEditable(false);
+        txtIGV.setForeground(new java.awt.Color(51, 51, 51));
         txtIGV.setText("");
         txtIGV.setPlaceholder("");
         txtIGV.addActionListener(new java.awt.event.ActionListener() {
@@ -467,6 +473,14 @@ public class jdVenta extends javax.swing.JDialog {
             }
         });
         jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 480, 160, -1));
+
+        btnBuscarVenta.setText("Buscar Venta");
+        btnBuscarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarVentaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnBuscarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 780));
 
@@ -626,6 +640,38 @@ public class jdVenta extends javax.swing.JDialog {
         tblDetalle.setModel(modelo);
 
     }
+
+    public void listarDetalle(ResultSet rsDetalle) {
+        try {
+            DefaultTableModel modelo = new DefaultTableModel();
+//        modelo.addColumn("Cod.");
+            modelo.addColumn("Producto");
+            modelo.addColumn("Precio");
+            modelo.addColumn("Cantidad");
+            modelo.addColumn("Subtotal");
+            while (rsDetalle.next()) {
+                Object detalleDatos[] = new Object[5];
+                detalleDatos[0] = rsDetalle.getString("producto");
+                detalleDatos[1] = rsDetalle.getDouble("precio");
+                detalleDatos[2] = rsDetalle.getInt("cantidad");
+                detalleDatos[3] = rsDetalle.getDouble("precio") * rsDetalle.getInt("cantidad");
+                detalleDatos[4] = rsDetalle.getInt("codproducto");
+                listaDetalle.add(detalleDatos);
+                modelo.addRow(new Object[]{
+                    rsDetalle.getString("producto"),
+                    rsDetalle.getDouble("precio"),
+                    rsDetalle.getInt("cantidad"),
+                    rsDetalle.getDouble("precio") * rsDetalle.getInt("cantidad"),});
+                
+
+            }
+
+            tblDetalle.setModel(modelo);
+        } catch (Exception e) {
+        }
+
+    }
+
     private void txtNroComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroComprobanteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNroComprobanteActionPerformed
@@ -811,23 +857,24 @@ public class jdVenta extends javax.swing.JDialog {
                 txtNumero.setText(objVenta.generarNumVenta().toString());
                 txtNroComprobante.requestFocus();
             } else {
-                if(objVenta.verificarVenta(txtNroComprobante.getText(),obtenerTipoComprobante() )){
-                 objVenta.registrarVenta(Integer.parseInt(txtNumero.getText()),
-                        txtNroComprobante.getText(),
-                    cboTipo.getSelectedItem().toString().substring(0, 1),
-                        Double.parseDouble(txtIGV.getText()),
-                        Double.parseDouble(txtSubTotal.getText()),
-                        Double.parseDouble(txtTotal.getText()),
-                        sdf.format(jdcFecha.getDate()),
-                        horaActual,
-                        objCliente.buscarCodClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0)),
-                        Integer.parseInt(cboTrabajador.getSelectedItem().toString().split("-")[0]),
-                        listaDetalle);
-                
-                }else{
+                if (objVenta.verificarVenta(txtNroComprobante.getText(), obtenerTipoComprobante())) {
+                    objVenta.registrarVenta(Integer.parseInt(txtNumero.getText()),
+                            txtNroComprobante.getText(),
+                            cboTipo.getSelectedItem().toString().substring(0, 1),
+                            Double.parseDouble(txtIGV.getText()),
+                            Double.parseDouble(txtSubTotal.getText()),
+                            Double.parseDouble(txtTotal.getText()),
+                            sdf.format(jdcFecha.getDate()),
+                            horaActual,
+                            objCliente.buscarCodClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0)),
+                            Integer.parseInt(cboTrabajador.getSelectedItem().toString().split("-")[0]),
+                            listaDetalle);
+
+                    listaDetalle = new ArrayList();
+                } else {
                     JOptionPane.showMessageDialog(this, "El numero de comprobante con el tipo ingresado ya esta registrado");
-                    }
-               
+                }
+
             }
 
         } catch (Exception e) {
@@ -859,6 +906,63 @@ public class jdVenta extends javax.swing.JDialog {
         System.out.println(obtenerTipoComprobante());
 
     }//GEN-LAST:event_botonMedGradiente3ActionPerformed
+
+    private void btnBuscarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVentaActionPerformed
+        // TODO add your handling code here:
+        try {
+            ResultSet rsVenta = objVenta.buscarVenta(Integer.parseInt(txtNumero.getText()));
+            ResultSet rsDetalle = objVenta.buscarDetalleVenta(Integer.parseInt(txtNumero.getText()));
+            if (rsVenta.next()) {
+                listarDetalle(rsDetalle);
+                jdcFecha.setDate(rsVenta.getDate("fecha"));
+                if (rsVenta.getString("tipo").equals("B")) {
+                    cboTipo.setSelectedIndex(0);
+
+                } else if (rsVenta.getString("tipo").equals("BE")) {
+                    cboTipo.setSelectedIndex(1);
+
+                } else if (rsVenta.getString("tipo").equals("F")) {
+                    cboTipo.setSelectedIndex(2);
+
+                } else {
+                    cboTipo.setSelectedIndex(3);
+
+                }
+                ResultSet rsCliente = objCliente.buscarCliente(rsVenta.getInt("codcliente"));
+                if (rsCliente.next()) {
+                    //DNI, Pasaporte, Carnet Extranjería, Libreta Militar
+
+                    if (rsCliente.getString("tipodocumento").equals("D")) {
+                        cboTipoDoc.setSelectedIndex(0);
+                    } else if (rsCliente.getString("tipodocumento").equals("P")) {
+                        cboTipoDoc.setSelectedIndex(1);
+
+                    } else if (rsCliente.getString("tipodocumento").equals("C")) {
+                        cboTipoDoc.setSelectedIndex(2);
+
+                    } else {
+                        cboTipoDoc.setSelectedIndex(3);
+
+                    }
+                    txtNroDocumento.setText(rsCliente.getString("numdocumento"));
+
+                    txtCliente.setText(rsCliente.getString("nombres") + " " + rsCliente.getString("apellidos"));
+                }
+
+                ResultSet rsTrabajador = objTrabajador.buscar(rsVenta.getInt("codtrabajador"));
+                if (rsTrabajador.next()) {
+                    cboTrabajador.setSelectedItem(rsTrabajador.getString("codtrabajador") + "-" + rsTrabajador.getString("nombres") + " " + rsTrabajador.getString("apellidos"));
+                }
+
+                txtNroComprobante.setText(rsVenta.getString("numcomprobante"));
+                txtTotal.setText(String.valueOf(rsVenta.getDouble("total")));
+                txtIGV.setText(String.valueOf(rsVenta.getDouble("igv")));
+                txtSubTotal.setText(String.valueOf(rsVenta.getDouble("subtotal")));
+
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnBuscarVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -973,6 +1077,7 @@ public class jdVenta extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar3;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscarCliente;
+    private capaInterfaz.Componentes.BotonMedGradiente btnBuscarVenta;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboTipo;

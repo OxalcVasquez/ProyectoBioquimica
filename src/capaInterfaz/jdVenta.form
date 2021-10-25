@@ -166,6 +166,9 @@
         <Component class="capaInterfaz.Componentes.TextoMed" name="txtTotal">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value=""/>
             <Property name="placeholder" type="java.lang.String" value=""/>
           </Properties>
@@ -466,6 +469,9 @@
         </Component>
         <Component class="capaInterfaz.Componentes.TextoMed" name="txtCliente">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value=""/>
             <Property name="placeholder" type="java.lang.String" value=""/>
           </Properties>
@@ -487,7 +493,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="950" y="160" width="-1" height="-1"/>
+              <AbsoluteConstraints x="940" y="150" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -611,6 +617,9 @@
         </Component>
         <Component class="capaInterfaz.Componentes.TextoMed" name="txtNroDocumento">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value=""/>
             <Property name="placeholder" type="java.lang.String" value=""/>
           </Properties>
@@ -626,6 +635,9 @@
         <Component class="capaInterfaz.Componentes.TextoMed" name="txtSubTotal">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value=""/>
             <Property name="placeholder" type="java.lang.String" value=""/>
           </Properties>
@@ -641,6 +653,9 @@
         <Component class="capaInterfaz.Componentes.TextoMed" name="txtIGV">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="33" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value=""/>
             <Property name="placeholder" type="java.lang.String" value=""/>
           </Properties>
@@ -663,6 +678,19 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="880" y="480" width="160" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="capaInterfaz.Componentes.BotonMedGradiente" name="btnBuscarVenta">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar Venta"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarVentaActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="310" y="170" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

@@ -73,6 +73,34 @@ public class clsVenta {
 
     }
 
+      public ResultSet buscarVenta(Integer numventa) throws Exception {
+        strSQL = "select * from comprobanteventa where numventa ="+numventa;
+
+        try {
+            rs = objConexion.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("Error al listar ventas");
+        }
+
+    }
+      
+    
+         public ResultSet buscarDetalleVenta(Integer numventa) throws Exception {
+        strSQL = "select D.*, P.nombre as producto from detalleventa D inner join producto P on P.codproducto=D.codproducto " +
+" where numventa="+numventa;
+
+        try {
+            rs = objConexion.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("Error al listar ventas");
+        }
+
+    }
+      
+    
+    
     public void registrarVenta(Integer num, String numcom, String tipo, Double igv, Double subtotal, Double total, String fecha, String hora, Integer codcli, Integer codtra, ArrayList Detalle) throws Exception {
         ArrayList consultas = new ArrayList();
         consultas.add((String) "INSERT INTO comprobanteventa(numventa, numcomprobante, tipo, igv, subtotal, total, fecha, hora, codcliente, codtrabajador) "
@@ -93,35 +121,4 @@ public class clsVenta {
 
     }
 
-    public void darAltaTH_Transaccion(Integer cod) throws Exception {
-        ArrayList consultas = new ArrayList();
-        consultas.add((String) "update habitacion set  estado='D' where codtipohabitacion=" + cod + "");
-        consultas.add((String) "update tipo_habitacion set vigencia=true where codtipohabitacion=" + cod + "");
-
-        try {
-            objConexion.ejecutartBDTransacciones(consultas);
-        } catch (Exception e) {
-            throw new Exception("Error  al dar de alta Tipo de Habitacion");
-
-        }
-
-    }
-
-    public ResultSet listarTipoHab() throws Exception {
-        strSQL = "select * from f_listarTipoHab();";
-        try {
-            objConexion.conectarBD();
-            con = objConexion.getCon();
-            cs = con.prepareCall(strSQL);
-            rs = cs.executeQuery();
-            return rs;
-
-        } catch (Exception e) {
-            throw new Exception("Error al ejecutar rla funcion");
-
-        } finally {
-            objConexion.desconectarBD();
-            cs.close();
-        }
-    }
 }
