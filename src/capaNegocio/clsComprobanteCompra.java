@@ -96,4 +96,17 @@ public class clsComprobanteCompra {
         }
 
     }
+      
+      public ResultSet buscarCompra (Integer cod) throws Exception {
+        strSQL = "select C.* ,P.razonsocial  from comprobanteCompra C inner join proveedor P on p.ruc=C.rucproveedor\n" +
+" WHERE codcomprobante= "+cod+"";
+
+        try {
+            rs = objConexion.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("Error al listar compra");
+        }
+
+    }
 }

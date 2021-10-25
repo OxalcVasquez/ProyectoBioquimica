@@ -9,6 +9,7 @@ import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
 import capaNegocio.clsComprobanteCompra;
+import capaNegocio.clsDetalleCompra;
 import capaNegocio.clsProducto;
 import capaNegocio.clsProveedor;
 import java.awt.Color;
@@ -30,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
 public class jdComprobanteCompra extends javax.swing.JDialog {
     clsProveedor objProv =new clsProveedor();
     clsProducto objProducto=new clsProducto();
+    clsDetalleCompra objDetalle =new clsDetalleCompra();
     clsComprobanteCompra objCom=new clsComprobanteCompra();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     private int posX = 0, posY = 0;
@@ -95,8 +97,8 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         txtnumcompra = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jdcFechaCompra = new com.toedter.calendar.JDateChooser();
+        btnBuscarCom = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel11 = new javax.swing.JLabel();
-        btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtProducto = new capaInterfaz.Componentes.TextoMed();
@@ -119,6 +121,8 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         btnMas = new capaInterfaz.Componentes.BotonMedGradiente();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDetalle = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -134,6 +138,11 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -177,6 +186,11 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
             }
         ));
         tblCompras.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        tblCompras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblComprasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCompras);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 760, 170));
@@ -216,6 +230,13 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jLabel15.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel15.setText("Fecha:");
 
+        btnBuscarCom.setText("B");
+        btnBuscarCom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarComActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -233,8 +254,10 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                         .addGap(29, 29, 29)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtnumcompra, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(txtnumcompra, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscarCom, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,24 +269,17 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel7)
                         .addComponent(txtnumcompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel15))
+                        .addComponent(jLabel15)
+                        .addComponent(btnBuscarCom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jdcFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(625, 35, -1, -1));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 470, -1));
 
         jLabel11.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel11.setText("Producto:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
-
-        btnBuscar.setText("B");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 260, 57, -1));
 
         jLabel12.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel12.setText("N° Comp:");
@@ -389,9 +405,25 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
             }
         ));
         tblDetalle.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        tblDetalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDetalleMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDetalle);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 530, 180));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ICONO.png"))); // NOI18N
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, 130));
+
+        btnBuscar.setText("B");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 260, 57, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 740));
 
@@ -555,11 +587,13 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                     sdf.format(jdcFechaCompra.getDate()),
                     txtruc.getText(),
                     listaDetalle);
-
+                listarCompras();
+limpiarVenta();
+limpirDetalle();
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "aa");
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btnNuevaComprsActionPerformed
 
@@ -592,12 +626,13 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         try {
 
             if (validarDetalle(txtProducto.getText())) {
-                Object producto[] = new Object[4];
-//            producto[0] = rsProducto.getInt("codproducto");
+                Object producto[] = new Object[5];
+
                 producto[0] = rsProducto.getString("nombre");
                 producto[1] = rsProducto.getDouble("preciocompra");
                 producto[2] = jsCantidad.getCantidad();
-                producto[3] = rsProducto.getDouble("preciocompra") * jsCantidad.getCantidad();
+                producto[3] = rsProducto.getDouble("preciocompra") * jsCantidad.getCantidad();      
+                producto[4] = rsProducto.getInt("codproducto");
                 listaDetalle.add(producto);
                 listarDetalle(listaDetalle);
                 actualizarTotal();
@@ -629,12 +664,88 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
             Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_txtrucKeyTyped
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        listarCompras();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void tblComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblComprasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblComprasMouseClicked
+
+    private void tblDetalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDetalleMouseClicked
+        // TODO add your handling code here:
+        txtProducto.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 0)));
+        jsCantidad.setCantidad((Integer) (tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 2)));
+        txtPrecio.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 3)));
+    }//GEN-LAST:event_tblDetalleMouseClicked
+
+    private void btnBuscarComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarComActionPerformed
+        // TODO add your handling code here:
+        ResultSet rsLista=null;
+       String tipo="";
+        try {
+            if(txtnumcompra.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Ingrese el número de compra a buscar!");
+            }else{
+                rsLista=objCom.buscarCompra(Integer.parseInt(txtnumcompra.getText()));
+                if (rsLista.next()){
+                    jdcFechaCompra.setDate(rsLista.getDate("fecha"));
+                    txtRaz.setText(rsLista.getString("razonSocial"));
+                    txtnumComprobante.setText(rsLista.getString("numcomprobante"));
+                    txtTotal.setText(rsLista.getString("total"));
+                    
+                    tipo=rsLista.getString("tipo");
+                    if(tipo.equals("B")) cboComp.setSelectedItem("Boleta");
+                    if(tipo.equals("BE")) cboComp.setSelectedItem("Boleta Electrónica");
+                    if(tipo.equals("F")) cboComp.setSelectedItem("Factura");
+                    if(tipo.equals("FE")) cboComp.setSelectedItem("Factura Electrónica");
+                    
+                    listarDetalle2(Integer.parseInt(txtnumcompra.getText()));
+                }else{
+                    JOptionPane.showMessageDialog(this, "Número de hbaitación no existe!");
+                    limpiarVenta();
+                }
+            }
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnBuscarComActionPerformed
  public void actualizarTotal() {
         Double total = 0.0;
         for (int i = 0; i < tblDetalle.getRowCount(); i++) {
             total += (Double) tblDetalle.getValueAt(i, 3);
             txtTotal.setText(total.toString());
             
+        }
+    }
+ public void listarDetalle2(Integer cod) {
+                  ResultSet rsLista = null;
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Producto");
+        model.addColumn("Precio");
+        model.addColumn("Cantidad");
+        model.addColumn("Subtotal");
+        
+  
+        tblDetalle.setModel(model);
+        try {
+            Double sub=0.0;
+            rsLista = objDetalle.listarDetalle(cod);
+            while (rsLista.next()) {
+                sub=rsLista.getDouble("precio")*rsLista.getInt("cantidad");
+                model.addRow(new Object[]{
+                    rsLista.getString("producto"),
+                    rsLista.getDouble("precio"),
+                    rsLista.getInt("cantidad"),
+                    sub
+                });
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
  public void listarDetalle(ArrayList lista) {
@@ -685,7 +796,18 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         }
         return true;
     }
-    
+    public void limpiarVenta(){
+        jdcFechaCompra.setDate(null);
+        txtnumcompra.setText("");
+        txtnumComprobante.setText("");
+        txtRaz.setText("");
+        txtruc.setText("");
+        txtProducto.setText("");
+           }
+    public void limpirDetalle(){
+        txtPrecio.setText("");
+        jsCantidad.setCantidad(1);
+    }
      public void listarCompras() {
         ResultSet rsLista = null;
         DefaultTableModel model = new DefaultTableModel();
@@ -695,16 +817,21 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         model.addColumn("Total");
         model.addColumn("Fecha");
         model.addColumn("Proveedor");
-       
+       String tipo;
         tblCompras.setModel(model);
         try {
             rsLista = objCom.listarComprobanteCompra();
             while (rsLista.next()) {
-
+                tipo=rsLista.getString("tipo"); //D,O,M
+                if (tipo.equals("B")) tipo="Boleta";
+                if (tipo.equals("BE")) tipo="Boleta Electrónica";
+                if (tipo.equals("F")) tipo="Factura";
+                                if (tipo.equals("FE")) tipo="Factura Electrónica";
                 model.addRow(new Object[]{
-                    rsLista.getInt("codcomprobamte"),
+                    rsLista.getInt("codcomprobante"),
                     rsLista.getString("numcomprobante"),
-                    rsLista.getString("tipo"),
+                    tipo,
+                    
                     rsLista.getDouble("total"),
                     rsLista.getDate("fecha"),
                     rsLista.getString("razonsocial")
@@ -794,6 +921,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente2;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente3;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar;
+    private capaInterfaz.Componentes.BotonMedGradiente btnBuscarCom;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscarProv;
     private capaInterfaz.Componentes.BotonMedGradiente btnMas;
     private capaInterfaz.Componentes.BotonMedGradiente btnMenos;
@@ -810,6 +938,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel5;

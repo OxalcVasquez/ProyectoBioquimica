@@ -78,6 +78,7 @@ clsCliente objC = new clsCliente();
         jLabel12 = new javax.swing.JLabel();
         cboDoc = new javax.swing.JComboBox<>();
         chkVigencia = new javax.swing.JCheckBox();
+        botonMedGradiente3 = new capaInterfaz.Componentes.BotonMedGradiente();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -105,7 +106,7 @@ clsCliente objC = new clsCliente();
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabel2.setText("Codigo:");
+        jLabel2.setText("Código:");
 
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -231,6 +232,8 @@ clsCliente objC = new clsCliente();
         chkVigencia.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         chkVigencia.setText("(Vigencia)");
 
+        botonMedGradiente3.setText("Salir");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -243,7 +246,8 @@ clsCliente objC = new clsCliente();
                     .addComponent(botonMedGradiente2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonMedGradiente3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
@@ -332,7 +336,7 @@ clsCliente objC = new clsCliente();
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chkVigencia)
                             .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -359,7 +363,9 @@ clsCliente objC = new clsCliente();
                         .addComponent(botonMedGradiente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119))
+                        .addGap(18, 18, 18)
+                        .addComponent(botonMedGradiente3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -708,6 +714,7 @@ clsCliente objC = new clsCliente();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private capaInterfaz.Componentes.BotonMedGradiente botonEliminar;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente2;
+    private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente3;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevo;
     private javax.swing.JButton btnSalir;
