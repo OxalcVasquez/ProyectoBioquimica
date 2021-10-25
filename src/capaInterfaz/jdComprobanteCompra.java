@@ -685,7 +685,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
     private void tblComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblComprasMouseClicked
         // TODO add your handling code here:
-         txtnumcompra.setText(String.valueOf(tblCompras.getValueAt(tblCompras.getSelectedRow(),0)));
+        txtnumcompra.setText(String.valueOf(tblCompras.getValueAt(tblCompras.getSelectedRow(), 0)));
         btnBuscarComActionPerformed(null);
     }//GEN-LAST:event_tblComprasMouseClicked
 
@@ -740,10 +740,10 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
     private void btnNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProductoActionPerformed
         // TODO add your handling code here:
-        jdGestionarProducto obj =new jdGestionarProducto(null, true);
+        jdGestionarProducto obj = new jdGestionarProducto(null, true);
         obj.setVisible(true);
     }//GEN-LAST:event_btnNuevoProductoActionPerformed
- public void actualizarTotal() {
+    public void actualizarTotal() {
         Double total = 0.0;
         for (int i = 0; i < tblDetalle.getRowCount(); i++) {
             total += (Double) tblDetalle.getValueAt(i, 3);
@@ -764,7 +764,14 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         try {
             Double sub = 0.0;
             rsLista = objDetalle.listarDetalle(cod);
-            while (rsLista.next()) {              
+            while (rsLista.next()) {
+                Object detalleDatos[] = new Object[5];
+                detalleDatos[0] = rsLista.getString("producto");
+                detalleDatos[1] = rsLista.getDouble("precio");
+                detalleDatos[2] = rsLista.getInt("cantidad");
+                detalleDatos[3] = rsLista.getDouble("precio") * rsLista.getInt("cantidad");
+                detalleDatos[4] = rsLista.getInt("codproducto");
+                listaDetalle.add(detalleDatos);
                 sub = rsLista.getDouble("precio") * rsLista.getInt("cantidad");
                 model.addRow(new Object[]{
                     rsLista.getString("producto"),
