@@ -372,7 +372,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                 .addGap(23, 23, 23))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 850, 650));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 850, 650));
 
         jPanel1.setBackground(new java.awt.Color(84, 248, 147));
 
@@ -398,7 +398,7 @@ public class jdTrabajador extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(253, Short.MAX_VALUE)
+                .addContainerGap(143, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(177, 177, 177)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -417,7 +417,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                 .addContainerGap(80, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 158));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 158));
         jPanel1.setBorder(BorderFactory.createMatteBorder(3, 3, 0, 3, Color.GRAY));
 
         pack();
@@ -565,7 +565,7 @@ public class jdTrabajador extends javax.swing.JDialog {
            JOptionPane.showMessageDialog(this,"Es necesario el codigo del trabajador");   
            }else{
            
-               objTra.darbaja(Integer.parseInt(txtCodigo.getText()));
+               objTra.darbajaTR(Integer.parseInt(txtCodigo.getText()));
                JOptionPane.showMessageDialog(this,"Se dio de baja al trabajador");
                listarTrabajador();
                limpiarContenido();

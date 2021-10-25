@@ -133,4 +133,17 @@ public class clsTrabajador {
             throw new Exception("No se pudo dar de baja");
         }
     }
+    
+    public void darbajaTR(Integer cod) throws Exception{
+       
+        ArrayList consulta = new ArrayList();
+        consulta.add("update trabajador set  vigencia = false where codtrabajador ="+cod+" ");
+        consulta.add("update usuario set vigencia = false where codtrabajador = "+cod+"");
+        
+        try {
+            obj.ejecutartBDTransacciones(consulta);
+        } catch (Exception e) {
+            throw new Exception("No se pudo dar de baja");
+        }
+    }
 }
