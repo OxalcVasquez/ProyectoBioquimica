@@ -85,12 +85,18 @@ public class clsTrabajador {
     }
     public void eliminarTrabajador(Integer codtrabajador) throws Exception{
         
+        strSQL= "select * from comprobanteventa where codtrabajador = "+codtrabajador+"";
         ArrayList consultas = new ArrayList();
         consultas.add("delete from usuario where codtrabajador ="+codtrabajador+" ");
         consultas.add("delete from trabajador where codtrabajador ="+codtrabajador+" ");
-
+        
         try {
-            obj.ejecutarTransaccionBD(consultas);           
+            rs = obj.consultarBD(strSQL);
+            if(rs.next()){
+            throw new Exception("Existe una venta hecha por el trabajador, no puede ser eliminado");
+            }else{
+             obj.ejecutarTransaccionBD(consultas); 
+        }        
         } catch (Exception e) {
         throw new Exception("No se pudo eliminar el trabajador");
         }

@@ -12,6 +12,7 @@ import capaNegocio.clsTrabajador;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
@@ -67,7 +68,6 @@ public class jdTrabajador extends javax.swing.JDialog {
         txtDNI = new capaInterfaz.Componentes.TextoMed();
         txtTelefono = new capaInterfaz.Componentes.TextoMed();
         txtCorreo = new capaInterfaz.Componentes.TextoMed();
-        txtFecha = new capaInterfaz.Componentes.TextoMed();
         txtDireccion = new capaInterfaz.Componentes.TextoMed();
         jLabel9 = new javax.swing.JLabel();
         txtApellido = new capaInterfaz.Componentes.TextoMed();
@@ -79,10 +79,10 @@ public class jdTrabajador extends javax.swing.JDialog {
         chkEstado = new javax.swing.JCheckBox();
         jLabel12 = new javax.swing.JLabel();
         btnEliminar = new capaInterfaz.Componentes.BotonMedGradiente();
+        jdtFecha = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -189,9 +189,6 @@ public class jdTrabajador extends javax.swing.JDialog {
         txtCorreo.setText("");
         txtCorreo.setPlaceholder("");
 
-        txtFecha.setText("");
-        txtFecha.setPlaceholder("");
-
         txtDireccion.setText("");
         txtDireccion.setPlaceholder("");
 
@@ -288,8 +285,8 @@ public class jdTrabajador extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
@@ -325,10 +322,10 @@ public class jdTrabajador extends javax.swing.JDialog {
                             .addComponent(jLabel7)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jdtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)))
@@ -423,22 +420,6 @@ public class jdTrabajador extends javax.swing.JDialog {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 158));
         jPanel1.setBorder(BorderFactory.createMatteBorder(3, 3, 0, 3, Color.GRAY));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 960, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 960, 630));
-        jPanel3.setBorder(BorderFactory.createMatteBorder(0, 3, 3, 3, Color.GRAY));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -505,7 +486,7 @@ public class jdTrabajador extends javax.swing.JDialog {
            txtDNI.setText("");
             txtCorreo.setText("");
              txtDireccion.setText("");
-              txtFecha.setText("");
+              jdtFecha.setDate(null);
                txtTelefono.setText("");
                 cboCargo.setSelectedItem(null);
                  cboSexo.setSelectedItem(null);
@@ -563,7 +544,10 @@ public class jdTrabajador extends javax.swing.JDialog {
                 if(cboCargo.getSelectedItem().equals("Administrador")) cargo = 'A';
                 if(cboCargo.getSelectedItem().equals("Apoyo")) cargo = 'Y';
                 
-                objTra.guardarTrabajador(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),txtTelefono.getText(),txtCorreo.getText(), txtDireccion.getText(),sexo,txtFecha.getText(),cargo,chkEstado.isSelected());
+                String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdtFecha.getDate()); 
+               
+                
+                objTra.guardarTrabajador(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),txtTelefono.getText(),txtCorreo.getText(), txtDireccion.getText(),sexo,fecha,cargo,chkEstado.isSelected());
                 JOptionPane.showMessageDialog(this,"Trabajador Registrado correctamente");
                 limpiarContenido();
                 listarTrabajador(); 
@@ -607,7 +591,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                     txtCorreo.setText(rs.getString("correo"));
                     txtDNI.setText(rs.getString("dni"));
                     txtDireccion.setText(rs.getString("direccion"));
-                    txtFecha.setText(rs.getString("fechanac"));
+                    jdtFecha.setDate(rs.getDate("fechanac"));
                     txtTelefono.setText(rs.getString("telefono"));
                     
                     if(rs.getBoolean("sexo")== true) sexo = "Masculino";
@@ -658,7 +642,9 @@ public class jdTrabajador extends javax.swing.JDialog {
              if(cboCargo.getSelectedItem().equals("Administrador")) cargo = 'A';
              if(cboCargo.getSelectedItem().equals("Apoyo")) cargo = 'Y';
              
-             objTra.actualizarTrabajador(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(),txtApellido.getText(), txtDNI.getText(),txtTelefono.getText(), txtCorreo.getText(),txtDireccion.getText(),sexo,txtFecha.getText(),cargo,chkEstado.isSelected());
+             String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdtFecha.getDate());
+             
+             objTra.actualizarTrabajador(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(),txtApellido.getText(), txtDNI.getText(),txtTelefono.getText(), txtCorreo.getText(),txtDireccion.getText(),sexo,fecha,cargo,chkEstado.isSelected());
                   JOptionPane.showMessageDialog(this,"Se actualizo al trabajador"); 
                   listarTrabajador();
                   limpiarContenido();
@@ -895,15 +881,14 @@ public class jdTrabajador extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jdtFecha;
     private javax.swing.JTable tblTrabajador;
     private capaInterfaz.Componentes.TextoMed txtApellido;
     private capaInterfaz.Componentes.TextoMed txtCodigo;
     private capaInterfaz.Componentes.TextoMed txtCorreo;
     private capaInterfaz.Componentes.TextoMed txtDNI;
     private capaInterfaz.Componentes.TextoMed txtDireccion;
-    private capaInterfaz.Componentes.TextoMed txtFecha;
     private capaInterfaz.Componentes.TextoMed txtNombre;
     private capaInterfaz.Componentes.TextoMed txtTelefono;
     // End of variables declaration//GEN-END:variables
