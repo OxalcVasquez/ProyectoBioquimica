@@ -123,6 +123,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         tblDetalle = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         btnBuscar = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnNuevoProducto = new capaInterfaz.Componentes.BotonMedGradiente();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -296,7 +297,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                 txtProductoActionPerformed(evt);
             }
         });
-        jPanel2.add(txtProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 750, -1));
+        jPanel2.add(txtProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 680, -1));
 
         btnBuscarProv.setText("B");
         btnBuscarProv.addActionListener(new java.awt.event.ActionListener() {
@@ -329,7 +330,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                 btnNuevoPrveedorActionPerformed(evt);
             }
         });
-        jPanel2.add(btnNuevoPrveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(943, 162, -1, -1));
+        jPanel2.add(btnNuevoPrveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 160, -1, -1));
 
         botonMedGradiente2.setText("Salir");
         jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 610, 160, -1));
@@ -423,7 +424,15 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 260, 57, -1));
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 260, 57, -1));
+
+        btnNuevoProducto.setText("Nuevo");
+        btnNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoProductoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 270, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 740));
 
@@ -672,6 +681,8 @@ limpirDetalle();
 
     private void tblComprasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblComprasMouseClicked
         // TODO add your handling code here:
+         txtnumcompra.setText(String.valueOf(tblCompras.getValueAt(tblCompras.getSelectedRow(),0)));
+        btnBuscarComActionPerformed(null);
     }//GEN-LAST:event_tblComprasMouseClicked
 
     private void tblDetalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDetalleMouseClicked
@@ -693,6 +704,7 @@ limpirDetalle();
                 if (rsLista.next()){
                     jdcFechaCompra.setDate(rsLista.getDate("fecha"));
                     txtRaz.setText(rsLista.getString("razonSocial"));
+                    txtruc.setText(rsLista.getString("rucproveedor"));
                     txtnumComprobante.setText(rsLista.getString("numcomprobante"));
                     txtTotal.setText(rsLista.getString("total"));
                     
@@ -713,6 +725,12 @@ limpirDetalle();
         }
         
     }//GEN-LAST:event_btnBuscarComActionPerformed
+
+    private void btnNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProductoActionPerformed
+        // TODO add your handling code here:
+        jdGestionarProducto obj =new jdGestionarProducto(null, true);
+        obj.setVisible(true);
+    }//GEN-LAST:event_btnNuevoProductoActionPerformed
  public void actualizarTotal() {
         Double total = 0.0;
         for (int i = 0; i < tblDetalle.getRowCount(); i++) {
@@ -926,6 +944,7 @@ limpirDetalle();
     private capaInterfaz.Componentes.BotonMedGradiente btnMas;
     private capaInterfaz.Componentes.BotonMedGradiente btnMenos;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevaComprs;
+    private capaInterfaz.Componentes.BotonMedGradiente btnNuevoProducto;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevoPrveedor;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboComp;
