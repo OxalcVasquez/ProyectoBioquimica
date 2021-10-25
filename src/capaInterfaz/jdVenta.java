@@ -34,7 +34,7 @@ import javax.swing.text.DefaultFormatter;
 
 /**
  *
- * @author CMFerrer
+ * @author Jordan Oxalc Vásquez Fernandez
  */
 public class jdVenta extends javax.swing.JDialog {
 
@@ -49,10 +49,10 @@ public class jdVenta extends javax.swing.JDialog {
     private double precio;
 
     LocalDateTime locaDate = LocalDateTime.now();
-    int hours = locaDate.getHour();
-    int minutes = locaDate.getMinute();
-    int seconds = locaDate.getSecond();
-    String horaActual = hours + ":" + minutes + ":" + seconds;
+    int horas = locaDate.getHour();
+    int minutos = locaDate.getMinute();
+    int segundos = locaDate.getSecond();
+    String horaActual = horas + ":" + minutos + ":" + segundos;
 
     /**
      * Creates new form
@@ -597,6 +597,7 @@ public class jdVenta extends javax.swing.JDialog {
             rsProducto = objFrmBuscar.rsProducto;
             if (objFrmBuscar.rsProducto.next()) {
                 jsCantidad.setCantidad(1);
+//                jsCantidad.setMaximo(objFrmBuscar.rsProducto.getInt("stock"));
                 setPrecio(objFrmBuscar.rsProducto.getDouble("precioventa"));
                 txtPrecio.setText(String.valueOf(objFrmBuscar.rsProducto.getDouble("precioventa")));
 
