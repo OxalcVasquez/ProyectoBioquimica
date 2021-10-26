@@ -370,9 +370,9 @@ public class jdBuscarProductos extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
- 
+
         listarMarcas();
-        
+
         listarCategorias();
         try {
             listarProductos(objProducto.listarProductos());
@@ -416,12 +416,11 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         // TODO add your handling code here:
         System.out.println(codigo + " " + producto);
         try {
-
             if (codigo != null) {
                 rsProducto = objProducto.buscarProducto(Integer.parseInt(codigo));
-                if (rsProducto.next()) {
-                    if (rsProducto.getInt("stock") > 0) {
-                        rsProducto = objProducto.buscarProducto(Integer.parseInt(codigo));
+                ResultSet rsTemp = objProducto.buscarProducto(Integer.parseInt(codigo));
+                if (rsTemp.next()) {
+                    if (rsTemp.getInt("stock") > 0) {
                         this.dispose();
                     } else {
                         JOptionPane.showMessageDialog(this, "El producto seleccionado no tiene stock disponible");

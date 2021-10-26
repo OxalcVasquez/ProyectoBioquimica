@@ -37,17 +37,18 @@ import javax.swing.text.DefaultFormatter;
  * @author Jordan Oxalc Vásquez Fernandez
  */
 public class jdVenta extends javax.swing.JDialog {
-
+    
     private int posX = 0, posY = 0;
     clsTrabajador objTrabajador = new clsTrabajador();
     clsCliente objCliente = new clsCliente();
     clsVenta objVenta = new clsVenta();
+    clsProducto objPro = new clsProducto();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+    
     ResultSet rsProducto;
     ArrayList listaDetalle = new ArrayList();
     private double precio;
-
+    
     LocalDateTime locaDate = LocalDateTime.now();
     int horas = locaDate.getHour();
     int minutos = locaDate.getMinute();
@@ -60,31 +61,35 @@ public class jdVenta extends javax.swing.JDialog {
     public jdVenta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
         cboTipo.setUI(ComboMed.createUI(cboTipo));
         cboTipoDoc.setUI(ComboMed.createUI(cboTipoDoc));
         tblDetalle.getTableHeader().setDefaultRenderer(new ColorTabla());
-
+        
         tblDatos.getTableHeader().setDefaultRenderer(new ColorTabla());
-
+        
         txtPrecio.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 actualizarDetalle();
+                
             }
-
+            
             public void removeUpdate(DocumentEvent e) {
                 actualizarDetalle();
+                
             }
-
+            
             public void insertUpdate(DocumentEvent e) {
                 actualizarDetalle();
+                verficarCantidadMaxima();
+                
             }
-
+            
         });
-
+        
     }
 
     /**
@@ -97,7 +102,7 @@ public class jdVenta extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel2 = new RoundedPanel();
-        gradientButton2 = new capaInterfaz.Componentes.BotonMedGradiente();
+        btnEliminarProducto = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente1 = new capaInterfaz.Componentes.BotonMedGradiente();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDatos = new javax.swing.JTable();
@@ -167,13 +172,13 @@ public class jdVenta extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        gradientButton2.setText("Eliminar Producto");
-        gradientButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarProducto.setText("Eliminar Producto");
+        btnEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gradientButton2ActionPerformed(evt);
+                btnEliminarProductoActionPerformed(evt);
             }
         });
-        jPanel2.add(gradientButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 210, -1));
+        jPanel2.add(btnEliminarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 210, -1));
 
         botonMedGradiente1.setText("Modificar");
         botonMedGradiente1.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +186,7 @@ public class jdVenta extends javax.swing.JDialog {
                 botonMedGradiente1ActionPerformed(evt);
             }
         });
-        jPanel2.add(botonMedGradiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 670, 160, -1));
+        jPanel2.add(botonMedGradiente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 590, 160, -1));
 
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -195,6 +200,11 @@ public class jdVenta extends javax.swing.JDialog {
             }
         ));
         tblDatos.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDatosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDatos);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 490, 830, 220));
@@ -261,7 +271,7 @@ public class jdVenta extends javax.swing.JDialog {
         jPanel2.add(btnBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 270, -1, -1));
 
         botonMedGradiente2.setText("Salir");
-        jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 600, 160, -1));
+        jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 650, 160, -1));
 
         botonMedGradiente3.setText("Eliminar");
         botonMedGradiente3.addActionListener(new java.awt.event.ActionListener() {
@@ -560,12 +570,12 @@ public class jdVenta extends javax.swing.JDialog {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
-
+    
     public void listarTrabajador() {
         ResultSet rsTrabajador = null;
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         cboTrabajador.setModel(model);
-
+        
         try {
             rsTrabajador = objTrabajador.listarTrabajador();
             while (rsTrabajador.next()) {
@@ -573,56 +583,88 @@ public class jdVenta extends javax.swing.JDialog {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
-
+            
         }
-
+        
     }
-    private void gradientButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradientButton2ActionPerformed
+    private void btnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProductoActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < listaDetalle.size(); i++) {
             Object[] datos = (Object[]) listaDetalle.get(i);
-            if (datos[0].equals(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 0))) {
+            if (datos[0].equals(txtProducto.getText())) {
                 listaDetalle.remove(i);
                 JOptionPane.showMessageDialog(this, "Producto eliminado correctamente");
                 listarDetalle(listaDetalle);
             }
+            
         }
 
-    }//GEN-LAST:event_gradientButton2ActionPerformed
+    }//GEN-LAST:event_btnEliminarProductoActionPerformed
 
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroActionPerformed
-
+    
     private void setPrecio(Double precio) {
         this.precio = precio;
     }
-
+    
     public Double getPrecio() {
         return this.precio;
+    }
+    
+    private void precioProducto(ResultSet rsPrdo) {
+        try {
+            //Productoooo guardar
+            rsProducto = rsPrdo;
+            if (rsPrdo.next()) {
+                setPrecio(rsPrdo.getDouble("precioventa"));
+            }
+            jsCantidad.setPrecio(txtPrecio, precio);
+            
+        } catch (Exception e) {
+        }
+    }
+    
+    private void buscarProducto(ResultSet rsPrdo) {
+        try {
+            //Productoooo guardar
+            rsProducto = rsPrdo;
+            if (rsPrdo.next()) {
+                txtProducto.setText(rsPrdo.getString("nombre"));
+                jsCantidad.setMaximo(rsPrdo.getInt("stock"));
+                jsCantidad.setCantidad(1);
+                setPrecio(rsPrdo.getDouble("precioventa"));
+                txtPrecio.setText(String.valueOf(rsPrdo.getDouble("precioventa")));
+                
+            }
+            jsCantidad.setPrecio(txtPrecio, precio);
+            
+        } catch (Exception e) {
+        }
     }
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         try {
             jdBuscarProductos objFrmBuscar = new jdBuscarProductos(null, true);
             objFrmBuscar.setVisible(true);
-//            txtProducto.setText(objFrmBuscar.codigo +" "+objFrmBuscar.producto);
-            txtProducto.setText(objFrmBuscar.producto);
-            rsProducto = objFrmBuscar.rsProducto;
-            if (objFrmBuscar.rsProducto.next()) {
-                jsCantidad.setCantidad(1);
-//                jsCantidad.setMaximo(objFrmBuscar.rsProducto.getInt("stock"));
-                setPrecio(objFrmBuscar.rsProducto.getDouble("precioventa"));
-                txtPrecio.setText(String.valueOf(objFrmBuscar.rsProducto.getDouble("precioventa")));
-
-            }
-            jsCantidad.setPrecio(txtPrecio, precio);
+            buscarProducto(objFrmBuscar.rsProducto);
+//            txtProducto.setText(objFrmBuscar.producto);
+//            rsProducto = objFrmBuscar.rsProducto;
+//            if (objFrmBuscar.rsProducto.next()) {
+//                jsCantidad.setMaximo(rsProducto.getInt("stock"));
+//                jsCantidad.setCantidad(1);
+//                setPrecio(objFrmBuscar.rsProducto.getDouble("precioventa"));
+//                txtPrecio.setText(String.valueOf(objFrmBuscar.rsProducto.getDouble("precioventa")));
+//
+//            }
+//            jsCantidad.setPrecio(txtPrecio, precio);
 
         } catch (Exception e) {
         }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
-
+    
     public void listarDetalle(ArrayList lista) {
         DefaultTableModel modelo = new DefaultTableModel();
 //        modelo.addColumn("Cod.");
@@ -634,13 +676,38 @@ public class jdVenta extends javax.swing.JDialog {
         for (int i = 0; i < lista.size(); i++) {
             datos = (Object[]) lista.get(i);
             modelo.addRow(datos);
-
+            
         }
-
+        
         tblDetalle.setModel(modelo);
-
+        
     }
-
+    
+    private void verficarCantidadMaxima() {
+        if (jsCantidad.getCantidad() == jsCantidad.getMaximo()) {
+            JOptionPane.showMessageDialog(this, "Ya alcanzo el stock maximo del producto seleccionado");
+        }
+    }
+    
+    public ArrayList datosDetalle(ResultSet rsDetalle) {
+        ArrayList detalle = new ArrayList();
+        
+        try {
+            while (rsDetalle.next()) {
+                Object detalleDatos[] = new Object[5];
+                detalleDatos[0] = rsDetalle.getString("producto");
+                detalleDatos[1] = rsDetalle.getDouble("precio");
+                detalleDatos[2] = rsDetalle.getInt("cantidad");
+                detalleDatos[3] = rsDetalle.getDouble("precio") * rsDetalle.getInt("cantidad");
+                detalleDatos[4] = rsDetalle.getInt("codproducto");
+                detalle.add(detalleDatos);
+                
+            }
+        } catch (Exception e) {
+        }
+        return detalle;
+    }
+    
     public void listarDetalle(ResultSet rsDetalle) {
         try {
             DefaultTableModel modelo = new DefaultTableModel();
@@ -649,27 +716,28 @@ public class jdVenta extends javax.swing.JDialog {
             modelo.addColumn("Precio");
             modelo.addColumn("Cantidad");
             modelo.addColumn("Subtotal");
+//            listaDetalle = new ArrayList();
             while (rsDetalle.next()) {
                 Object detalleDatos[] = new Object[5];
-                detalleDatos[0] = rsDetalle.getString("producto");
-                detalleDatos[1] = rsDetalle.getDouble("precio");
-                detalleDatos[2] = rsDetalle.getInt("cantidad");
-                detalleDatos[3] = rsDetalle.getDouble("precio") * rsDetalle.getInt("cantidad");
-                detalleDatos[4] = rsDetalle.getInt("codproducto");
-                listaDetalle.add(detalleDatos);
+
+//                detalleDatos[0] = rsDetalle.getString("producto");
+//                detalleDatos[1] = rsDetalle.getDouble("precio");
+//                detalleDatos[2] = rsDetalle.getInt("cantidad");
+//                detalleDatos[3] = rsDetalle.getDouble("precio") * rsDetalle.getInt("cantidad");
+//                detalleDatos[4] = rsDetalle.getInt("codproducto");
+//                listaDetalle.add(detalleDatos);
                 modelo.addRow(new Object[]{
                     rsDetalle.getString("producto"),
                     rsDetalle.getDouble("precio"),
                     rsDetalle.getInt("cantidad"),
                     rsDetalle.getDouble("precio") * rsDetalle.getInt("cantidad"),});
                 
-
             }
-
+            
             tblDetalle.setModel(modelo);
         } catch (Exception e) {
         }
-
+        
     }
 
     private void txtNroComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroComprobanteActionPerformed
@@ -683,7 +751,7 @@ public class jdVenta extends javax.swing.JDialog {
     private void txtProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProductoActionPerformed
-
+    
     public void actualizarDetalle() {
 //        System.out.println(txtProducto.getText().split(" ")[0]);
 
@@ -695,16 +763,15 @@ public class jdVenta extends javax.swing.JDialog {
                     datos[2] = jsCantidad.getCantidad();
                     Double precio = (Double) tblDetalle.getModel().getValueAt(i, j + 1);
                     tblDetalle.setValueAt(jsCantidad.getCantidad() * precio, i, j + 3);
-                    datos[3] = jsCantidad.getCantidad();
                     datos[3] = tblDetalle.getModel().getValueAt(i, j + 3);
-
+                    
                 }
             }
         }
         listarDetalle(listaDetalle);
         actualizarTotal();
     }
-
+    
     public Boolean validarDetalle(String producto) {
         for (int i = 0; i < listaDetalle.size(); i++) {
             Object[] datos = (Object[]) listaDetalle.get(i);
@@ -719,7 +786,7 @@ public class jdVenta extends javax.swing.JDialog {
 
 
     }//GEN-LAST:event_txtPrecioActionPerformed
-
+    
     public void listarVentas() {
         ResultSet rsLista = null;
         DefaultTableModel model = new DefaultTableModel();
@@ -737,7 +804,7 @@ public class jdVenta extends javax.swing.JDialog {
         try {
             rsLista = objVenta.listarVentas();
             while (rsLista.next()) {
-
+                
                 model.addRow(new Object[]{
                     rsLista.getInt("numventa"),
                     rsLista.getString("numcomprobante"),
@@ -749,9 +816,9 @@ public class jdVenta extends javax.swing.JDialog {
                     rsLista.getTime("hora"),
                     rsLista.getString("cliente"),
                     rsLista.getString("trabajador")
-
+                
                 });
-
+                
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
@@ -763,7 +830,31 @@ public class jdVenta extends javax.swing.JDialog {
 
     private void botonMedGradiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente1ActionPerformed
         // TODO add your handling code here:
+        try {
+            Integer numventa = Integer.parseInt(txtNumero.getText());
+            ResultSet rsVentaTemporal = objVenta.buscarVenta(numventa);
+            ArrayList detalleEliminar = datosDetalle(objVenta.buscarDetalleVenta(numventa));
+            objVenta.modificarVenta(Integer.parseInt(txtNumero.getText()),
+                    txtNroComprobante.getText(),
+                    obtenerTipoComprobante(),
+                    Double.parseDouble(txtIGV.getText()),
+                    Double.parseDouble(txtSubTotal.getText()),
+                    Double.parseDouble(txtTotal.getText()),
+                    sdf.format(jdcFecha.getDate()),
+                    horaActual,
+                    objCliente.buscarCodClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0)),
+                    Integer.parseInt(cboTrabajador.getSelectedItem().toString().split("-")[0]),
+                    detalleEliminar,
+                    listaDetalle);
+            JOptionPane.showMessageDialog(this, "Se ha modificado");
+            
+            listarVentas();
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
     }//GEN-LAST:event_botonMedGradiente1ActionPerformed
+    
 
     private void txtClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClienteActionPerformed
         // TODO add your handling code here:
@@ -772,7 +863,7 @@ public class jdVenta extends javax.swing.JDialog {
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         // TODO add your handling code here:
         try {
-
+            
             ResultSet rsCliente = null;
             rsCliente = objCliente.buscarClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0));
             if (rsCliente.next()) {
@@ -781,15 +872,15 @@ public class jdVenta extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "No se encuentra el cliente registrado, por favor registrelo");
                 jdCliente objFrmCliente = new jdCliente(null, true);
                 objFrmCliente.setVisible(true);
-
+                
             }
-
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
 
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
-
+    
     public void actualizarTotal() {
         Double total = 0.0;
         for (int i = 0; i < tblDetalle.getRowCount(); i++) {
@@ -799,12 +890,43 @@ public class jdVenta extends javax.swing.JDialog {
             txtSubTotal.setText(String.valueOf(Double.parseDouble(txtTotal.getText()) - Double.parseDouble(txtIGV.getText())));
         }
     }
+    
+    private void agregarProducto(ResultSet rsProd, Integer cant) {
+        try {
+            
+            if (validarDetalle(txtProducto.getText())) {
+                if (rsProd.next()) {
+                    Object producto[] = new Object[5];
+                    producto[0] = rsProd.getString("nombre");
+                    producto[1] = rsProd.getDouble("precioventa");
+                    producto[2] = cant;
+                    producto[3] = rsProd.getDouble("precioventa") * cant;
+                    producto[4] = rsProd.getInt("codproducto");
+                    listaDetalle.add(producto);
+                    
+                }
+                
+                listarDetalle(listaDetalle);
+                actualizarTotal();
+//                txtTotal.setText(String.valueOf(rsProducto.getDouble("precioventa") * jsCantidad.getCantidad()));
+//                txtIGV.setText(String.valueOf(Double.parseDouble(txtTotal.getText()) * 0.18));
+//                txtSubTotal.setText(String.valueOf(Double.parseDouble(txtTotal.getText()) - Double.parseDouble(txtIGV.getText())));
+
+            } else {
+                JOptionPane.showMessageDialog(this, "El producto ya se encuentre al carrito");
+                
+            }
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
+    }
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
         try {
-
+            
             if (validarDetalle(txtProducto.getText())) {
                 Object producto[] = new Object[5];
-
+                
                 producto[0] = rsProducto.getString("nombre");
                 producto[1] = rsProducto.getDouble("precioventa");
                 producto[2] = jsCantidad.getCantidad();
@@ -819,9 +941,9 @@ public class jdVenta extends javax.swing.JDialog {
 
             } else {
                 JOptionPane.showMessageDialog(this, "El producto ya se encuentre al carrito");
-
+                
             }
-
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex);
         }
@@ -830,9 +952,17 @@ public class jdVenta extends javax.swing.JDialog {
 
     private void tblDetalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDetalleMouseClicked
         // TODO add your handling code here:
-        txtProducto.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 0)));
-        jsCantidad.setCantidad((Integer) (tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 2)));
-        txtPrecio.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 3)));
+        try {
+            txtProducto.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 0)));
+            jsCantidad.setCantidad(Integer.parseInt(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 2).toString()));
+            txtPrecio.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 3)));
+            jsCantidad.setPrecio(txtPrecio,Double.parseDouble(txtPrecio.getText())/jsCantidad.getCantidad());
+
+//        precioProducto(objPro.buscarProductos(txtProducto.getText())); 
+
+        } catch (Exception e) {
+        }
+        
 
     }//GEN-LAST:event_tblDetalleMouseClicked
 
@@ -847,7 +977,7 @@ public class jdVenta extends javax.swing.JDialog {
     private void txtIGVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIGVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIGVActionPerformed
-
+    
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
@@ -857,10 +987,11 @@ public class jdVenta extends javax.swing.JDialog {
                 txtNumero.setText(objVenta.generarNumVenta().toString());
                 txtNroComprobante.requestFocus();
             } else {
+                btnNuevo.setText("Nuevo");
                 if (objVenta.verificarVenta(txtNroComprobante.getText(), obtenerTipoComprobante())) {
                     objVenta.registrarVenta(Integer.parseInt(txtNumero.getText()),
                             txtNroComprobante.getText(),
-                            cboTipo.getSelectedItem().toString().substring(0, 1),
+                            obtenerTipoComprobante(),
                             Double.parseDouble(txtIGV.getText()),
                             Double.parseDouble(txtSubTotal.getText()),
                             Double.parseDouble(txtTotal.getText()),
@@ -869,20 +1000,36 @@ public class jdVenta extends javax.swing.JDialog {
                             objCliente.buscarCodClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0)),
                             Integer.parseInt(cboTrabajador.getSelectedItem().toString().split("-")[0]),
                             listaDetalle);
-
-                    listaDetalle = new ArrayList();
+                    limpiarControloes();
+                    
                 } else {
                     JOptionPane.showMessageDialog(this, "El numero de comprobante con el tipo ingresado ya esta registrado");
                 }
-
+                
             }
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
-
+            
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
-
+    
+    private void limpiarControloes() {
+        txtNumero.setText("");
+        txtProducto.setText("");
+        txtNroComprobante.setText("");
+        txtPrecio.setText("");
+        jsCantidad.setCantidad(1);
+        txtNroDocumento.setText("");
+        txtCliente.setText("");
+        txtIGV.setText("");
+        txtSubTotal.setText("");
+        txtTotal.setText("");
+        listaDetalle = new ArrayList();
+        listarDetalle(listaDetalle);
+        listarVentas();
+        
+    }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         Date fechaActual = new Date();
@@ -890,20 +1037,35 @@ public class jdVenta extends javax.swing.JDialog {
         listarVentas();
         listarTrabajador();
     }//GEN-LAST:event_formWindowOpened
-
+    
     private String obtenerTipoComprobante() {
-
+        
         String tipo[] = cboTipo.getSelectedItem().toString().split(" ");
         if (tipo.length > 1) {
             return (tipo[0].substring(0, 1) + tipo[1].substring(0, 1));
         } else {
             return tipo[0].substring(0, 1);
-
+            
         }
     }
     private void botonMedGradiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente3ActionPerformed
         // TODO add your handling code here:
-        System.out.println(obtenerTipoComprobante());
+        try {
+            int rpta = JOptionPane.showConfirmDialog(this, "Esta seguro de eliminar la venta seleccionada");
+            if (rpta == JOptionPane.YES_OPTION) {
+                if (!txtNumero.getText().isEmpty()) {
+                    objVenta.eliminarVenta(Integer.parseInt(txtNumero.getText()), datosDetalle(objVenta.buscarDetalleVenta(Integer.parseInt(txtNumero.getText()))));
+                    JOptionPane.showMessageDialog(this, "Se ha eliminado la venta correctamente");
+                    limpiarControloes();
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "Por favor ingrese el numero de venta a eliminar");
+                    
+                }
+            }
+            
+        } catch (Exception e) {
+        }
 
     }//GEN-LAST:event_botonMedGradiente3ActionPerformed
 
@@ -912,21 +1074,28 @@ public class jdVenta extends javax.swing.JDialog {
         try {
             ResultSet rsVenta = objVenta.buscarVenta(Integer.parseInt(txtNumero.getText()));
             ResultSet rsDetalle = objVenta.buscarDetalleVenta(Integer.parseInt(txtNumero.getText()));
+            listaDetalle = datosDetalle(objVenta.buscarDetalleVenta(Integer.parseInt(txtNumero.getText())));
+            
+          
+            
             if (rsVenta.next()) {
-                listarDetalle(rsDetalle);
+                
+                listarDetalle(listaDetalle);
+                jsCantidad.setPrecio(txtPrecio, precio);
+                
                 jdcFecha.setDate(rsVenta.getDate("fecha"));
                 if (rsVenta.getString("tipo").equals("B")) {
                     cboTipo.setSelectedIndex(0);
-
+                    
                 } else if (rsVenta.getString("tipo").equals("BE")) {
                     cboTipo.setSelectedIndex(1);
-
+                    
                 } else if (rsVenta.getString("tipo").equals("F")) {
                     cboTipo.setSelectedIndex(2);
-
+                    
                 } else {
                     cboTipo.setSelectedIndex(3);
-
+                    
                 }
                 ResultSet rsCliente = objCliente.buscarCliente(rsVenta.getInt("codcliente"));
                 if (rsCliente.next()) {
@@ -936,33 +1105,38 @@ public class jdVenta extends javax.swing.JDialog {
                         cboTipoDoc.setSelectedIndex(0);
                     } else if (rsCliente.getString("tipodocumento").equals("P")) {
                         cboTipoDoc.setSelectedIndex(1);
-
+                        
                     } else if (rsCliente.getString("tipodocumento").equals("C")) {
                         cboTipoDoc.setSelectedIndex(2);
-
+                        
                     } else {
                         cboTipoDoc.setSelectedIndex(3);
-
+                        
                     }
                     txtNroDocumento.setText(rsCliente.getString("numdocumento"));
-
+                    
                     txtCliente.setText(rsCliente.getString("nombres") + " " + rsCliente.getString("apellidos"));
                 }
-
+                
                 ResultSet rsTrabajador = objTrabajador.buscar(rsVenta.getInt("codtrabajador"));
                 if (rsTrabajador.next()) {
                     cboTrabajador.setSelectedItem(rsTrabajador.getString("codtrabajador") + "-" + rsTrabajador.getString("nombres") + " " + rsTrabajador.getString("apellidos"));
                 }
-
+                
                 txtNroComprobante.setText(rsVenta.getString("numcomprobante"));
                 txtTotal.setText(String.valueOf(rsVenta.getDouble("total")));
                 txtIGV.setText(String.valueOf(rsVenta.getDouble("igv")));
                 txtSubTotal.setText(String.valueOf(rsVenta.getDouble("subtotal")));
-
+                
             }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnBuscarVentaActionPerformed
+
+    private void tblDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDatosMouseClicked
+        // TODO add your handling code here:
+        txtNumero.setText(tblDatos.getValueAt(tblDatos.getSelectedRow(), 0).toString());
+    }//GEN-LAST:event_tblDatosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1078,12 +1252,12 @@ public class jdVenta extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar3;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscarCliente;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscarVenta;
+    private capaInterfaz.Componentes.BotonMedGradiente btnEliminarProducto;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboTipo;
     private javax.swing.JComboBox<String> cboTipoDoc;
     private javax.swing.JComboBox<String> cboTrabajador;
-    private capaInterfaz.Componentes.BotonMedGradiente gradientButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

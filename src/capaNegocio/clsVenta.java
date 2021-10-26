@@ -46,12 +46,12 @@ public class clsVenta {
     }
 
     public Boolean verificarVenta(String numcom, String tipo) throws Exception {
-        strSQL = "select * from comprobanteventa where numcomprobante='"+numcom+"' and tipo='"+tipo+"'";
-        
+        strSQL = "select * from comprobanteventa where numcomprobante='" + numcom + "' and tipo='" + tipo + "'";
+
         try {
             rs = objConexion.consultarBD(strSQL);
-            if(rs.next()){
-            return false;
+            if (rs.next()) {
+                return false;
             }
         } catch (Exception e) {
             throw new Exception("Error al verificar venta");
@@ -73,8 +73,8 @@ public class clsVenta {
 
     }
 
-      public ResultSet buscarVenta(Integer numventa) throws Exception {
-        strSQL = "select * from comprobanteventa where numventa ="+numventa;
+    public ResultSet buscarVenta(Integer numventa) throws Exception {
+        strSQL = "select * from comprobanteventa where numventa =" + numventa;
 
         try {
             rs = objConexion.consultarBD(strSQL);
@@ -84,11 +84,10 @@ public class clsVenta {
         }
 
     }
-      
-    
-         public ResultSet buscarDetalleVenta(Integer numventa) throws Exception {
-        strSQL = "select D.*, P.nombre as producto from detalleventa D inner join producto P on P.codproducto=D.codproducto " +
-" where numventa="+numventa;
+
+    public ResultSet buscarDetalleVenta(Integer numventa) throws Exception {
+        strSQL = "select D.*, P.nombre as producto from detalleventa D inner join producto P on P.codproducto=D.codproducto "
+                + " where numventa=" + numventa;
 
         try {
             rs = objConexion.consultarBD(strSQL);
@@ -98,9 +97,7 @@ public class clsVenta {
         }
 
     }
-      
-    
-    
+
     public void registrarVenta(Integer num, String numcom, String tipo, Double igv, Double subtotal, Double total, String fecha, String hora, Integer codcli, Integer codtra, ArrayList Detalle) throws Exception {
         ArrayList consultas = new ArrayList();
         consultas.add((String) "INSERT INTO comprobanteventa(numventa, numcomprobante, tipo, igv, subtotal, total, fecha, hora, codcliente, codtrabajador) "
@@ -112,6 +109,57 @@ public class clsVenta {
             consultas.add((String) "UPDATE producto set stock=stock-" + datos[2] + " where codproducto=" + datos[4]);
 
         }
+        try {
+            objConexion.ejecutartBDTransacciones(consultas);
+
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+
+    }
+
+    public void modificarVenta(Integer num, String numcom, String tipo, Double igv, Double subtotal, Double total, String fecha, String hora, Integer codcli, Integer codtra, ArrayList Detalle, ArrayList detalleModificado) throws Exception {
+        ArrayList consultas = new ArrayList();
+
+        for (int i = 0; i < Detalle.size(); i++) {
+            Object[] datos = (Object[]) Detalle.get(i);
+            consultas.add((String) "UPDATE producto set stock=stock+" + datos[2] + " where codproducto=" + datos[4]);
+            consultas.add((String) "DELETE FROM  detalleventa where numventa=" + num);
+
+        }
+
+        consultas.add((String) "DELETE FROM  comprobanteventa where numventa=" + num);
+
+        consultas.add((String) "INSERT INTO comprobanteventa(numventa, numcomprobante, tipo, igv, subtotal, total, fecha, hora, codcliente, codtrabajador) "
+                + "	VALUES (" + num + ", '" + numcom + "', '" + tipo + "', " + igv + ", " + subtotal + ", " + total + ",'" + fecha + "' , '" + hora + "', " + codcli + ", " + codtra + ");");
+
+        for (int i = 0; i < detalleModificado.size(); i++) {
+            Object[] datos = (Object[]) detalleModificado.get(i);
+            consultas.add((String) "INSERT INTO detalleventa(cantidad, precio, numventa, codproducto) VALUES (" + datos[2] + "," + datos[1] + ", " + num + ", " + datos[4] + ")");
+            consultas.add((String) "UPDATE producto set stock=stock-" + datos[2] + " where codproducto=" + datos[4]);
+
+        }
+        try {
+            objConexion.ejecutartBDTransacciones(consultas);
+
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+
+    }
+
+    public void eliminarVenta(Integer num, ArrayList Detalle) throws Exception {
+        ArrayList consultas = new ArrayList();
+
+        for (int i = 0; i < Detalle.size(); i++) {
+            Object[] datos = (Object[]) Detalle.get(i);
+            consultas.add((String) "UPDATE producto set stock=stock+" + datos[2] + " where codproducto=" + datos[4]);
+            consultas.add((String) "DELETE FROM  detalleventa where numventa=" + num);
+
+        }
+
+        consultas.add((String) "DELETE FROM  comprobanteventa where numventa=" + num);
+
         try {
             objConexion.ejecutartBDTransacciones(consultas);
 

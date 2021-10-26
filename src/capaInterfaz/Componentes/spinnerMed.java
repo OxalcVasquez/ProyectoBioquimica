@@ -23,11 +23,13 @@ import javax.swing.InputVerifier;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFormattedTextField.AbstractFormatterFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.Document;
 import javax.swing.text.DocumentFilter;
 import javax.swing.text.NumberFormatter;
@@ -42,11 +44,15 @@ public class spinnerMed extends JPanel {
 
     JButton siguiente = new JButton(new javax.swing.ImageIcon(getClass().getResource("/Iconos/next.png")));
     JFormattedTextField cantidad ;
-
     NumberFormatter formatter;
+
     
     JTextField campoPrecio = new JTextField();
     Double precio = 0.0;
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad.setText(String.valueOf(cantidad));
+    }
 
     public void setPrecio(JTextField campoPrecio, Double precio) {
         this.precio = precio;
@@ -58,14 +64,25 @@ public class spinnerMed extends JPanel {
     public Integer getCantidad() {
         return Integer.parseInt(cantidad.getValue().toString());
     }
+    
+    public void setMaximo(Integer maximo){
+        formatter.setMaximum(maximo);
+        cantidad.setFormatterFactory(new DefaultFormatterFactory(formatter));
+    }
 
+    public Integer getMaximo( ){
+        return Integer.parseInt(formatter.getMaximum().toString());
+    }
+
+    
+    
     public spinnerMed() {
 
         setBackground(Color.WHITE);
         setLayout(layout);
 
         NumberFormat format = NumberFormat.getInstance();
-        NumberFormatter formatter = new NumberFormatter(format);
+        formatter = new NumberFormatter(format);
         formatter.setValueClass(Integer.class);
         formatter.setMinimum(1);
         formatter.setMaximum(Integer.MAX_VALUE);
@@ -96,6 +113,7 @@ public class spinnerMed extends JPanel {
 
                 if (campoPrecio.isEnabled()) {
                     if ((e.getKeyCode() >= KeyEvent.VK_0 && e.getKeyCode() <= KeyEvent.VK_9) || (e.getKeyCode() >= KeyEvent.VK_NUMPAD0 && e.getKeyCode() <= KeyEvent.VK_NUMPAD9) || e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+
                         campoPrecio.setText(String.valueOf(precio * Integer.parseInt(cantidad.getValue().toString())));
                     }
                 }
@@ -134,6 +152,7 @@ public class spinnerMed extends JPanel {
             public void actionPerformed(ActionEvent ae) {
                 cantidad.setText(String.valueOf(Integer.parseInt(cantidad.getValue().toString()) + 1));
                 if (campoPrecio.isEnabled()) {
+                    
                     campoPrecio.setText(String.valueOf(precio * Integer.parseInt(cantidad.getValue().toString())));
                 }
             }
@@ -142,19 +161,11 @@ public class spinnerMed extends JPanel {
         //layout.setHgap(6);
         campoPrecio.setEnabled(false);
     }
-    
-    public void setCantidad(Integer cantidad) {
-        this.cantidad.setText(String.valueOf(cantidad));
-    }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-    }
-    
-    public void setMaximo(Integer maximo){
-        formatter.setMaximum(maximo);
     }
 
 }
