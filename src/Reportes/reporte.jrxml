@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fa68ae05-f43c-41f8-96de-a4f4f39f53e8">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.3310000000000004"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="26"/>
@@ -29,23 +29,23 @@
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="111" height="20" uuid="9653f0d7-6572-4da3-a5aa-b6a7b3790e81"/>
+				<reportElement x="0" y="0" width="111" height="20"/>
 				<text><![CDATA[codcliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="111" y="0" width="111" height="20" uuid="29abde23-5663-45f0-bc17-bed58f525850"/>
+				<reportElement x="111" y="0" width="111" height="20"/>
 				<text><![CDATA[numdocumento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="222" y="0" width="111" height="20" uuid="a3797e91-da47-4b49-bb80-804db750b003"/>
+				<reportElement x="222" y="0" width="111" height="20"/>
 				<text><![CDATA[tipodocumento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="333" y="0" width="111" height="20" uuid="3b3036d7-ceec-4e7b-a675-076a4fd0b09b"/>
+				<reportElement x="333" y="0" width="111" height="20"/>
 				<text><![CDATA[nombres]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="444" y="0" width="111" height="20" uuid="583396f3-5ad3-40a7-9337-0536ef27e72e"/>
+				<reportElement x="444" y="0" width="111" height="20"/>
 				<text><![CDATA[apellidos]]></text>
 			</staticText>
 		</band>
@@ -53,23 +53,23 @@
 	<detail>
 		<band height="125" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="111" height="20" uuid="90e524b9-3abd-4451-931c-f48303762b54"/>
+				<reportElement x="0" y="0" width="111" height="20"/>
 				<textFieldExpression><![CDATA[$F{codcliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="111" y="0" width="111" height="20" uuid="02e59252-af17-429f-8459-7c4a2e36227a"/>
+				<reportElement x="111" y="0" width="111" height="20"/>
 				<textFieldExpression><![CDATA[$F{numdocumento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="222" y="0" width="111" height="20" uuid="a091421e-c021-4a6c-9d3e-52fcc8bbf165"/>
+				<reportElement x="222" y="0" width="111" height="20"/>
 				<textFieldExpression><![CDATA[$F{tipodocumento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="333" y="0" width="111" height="20" uuid="a6245b3d-e2ec-43fc-a64e-63c77ea391ac"/>
+				<reportElement x="333" y="0" width="111" height="20"/>
 				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="444" y="0" width="111" height="20" uuid="7df03163-2a9b-4dae-b925-76961b26cbf2"/>
+				<reportElement x="444" y="0" width="111" height="20"/>
 				<textFieldExpression><![CDATA[$F{apellidos}]]></textFieldExpression>
 			</textField>
 		</band>
