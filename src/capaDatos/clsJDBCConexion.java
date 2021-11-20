@@ -13,6 +13,7 @@ public class clsJDBCConexion {
     private String driver, url, user, password;
     private Connection con;
     private Statement sent = null;
+    private PreparedStatement ps;
 
     //Constructor de clases
     public clsJDBCConexion() {
@@ -66,6 +67,49 @@ public class clsJDBCConexion {
             }
         }
     }
+    
+    /**
+     *
+     * @param sets
+     * @return
+     * @throws Exception
+     */
+    public ResultSet consultarBD(ArrayList sets) throws Exception {
+        ResultSet rs = null;
+        try {
+            conectarBD();
+
+            ps = con.prepareStatement(sets.get(0).toString());
+
+            for (int i = 1; i < sets.size(); i++) {
+                String tipo = sets.get(i).getClass().getSimpleName();
+                if (tipo.equalsIgnoreCase("String")) {
+                    ps.setString(i, (String) sets.get(i));
+                } else if (tipo.equalsIgnoreCase("Integer")) {
+                    ps.setInt(i, (int) sets.get(i));
+                } else if (tipo.equalsIgnoreCase("Boolean")) {
+                    ps.setBoolean(i, (boolean) sets.get(i));
+                } else if (tipo.equalsIgnoreCase("Date")) {
+                    ps.setDate(i, (Date) sets.get(i));
+                } else if (tipo.equalsIgnoreCase("Float")) {
+                    ps.setFloat(i, (float) sets.get(i));
+                } else if (tipo.equalsIgnoreCase("Double")) {
+                    ps.setDouble(i, (double) sets.get(i));
+                }
+            }
+
+            rs = ps.executeQuery();
+            return rs;
+
+        } catch (Exception e) {
+            throw new Exception("Error al ejecutar consulta...");
+        } finally {
+            if (con != null) {
+                sets.clear();
+                desconectarBD();
+            }
+        }
+    }
 
     //Ejecutar INSERT,UPDATE Y DELETE
     public void ejecutarBD(String strSQL) throws Exception {
@@ -82,6 +126,44 @@ public class clsJDBCConexion {
 
         }
 
+    }
+    
+    /**
+     *
+     * @param sets consulta y parámetro(s)
+     * @throws Exception
+     */
+    public void ejecutarBD(ArrayList sets) throws Exception {
+        try {
+            conectarBD();
+            ps = con.prepareStatement(sets.get(0).toString());
+
+            for (int i = 1; i < sets.size(); i++) {
+                String tipo = sets.get(i).getClass().getSimpleName();
+                if (tipo.equalsIgnoreCase("String")) {
+                    ps.setString(i, (String) sets.get(i));
+                } else if (tipo.equalsIgnoreCase("Integer")) {
+                    ps.setInt(i, (int) sets.get(i));
+                } else if (tipo.equalsIgnoreCase("Boolean")) {
+                    ps.setBoolean(i, (boolean) sets.get(i));
+                } else if (tipo.equalsIgnoreCase("Date")) {
+                    ps.setDate(i, (Date) sets.get(i));
+                } else if (tipo.equalsIgnoreCase("Float")) {
+                    ps.setFloat(i, (float) sets.get(i));
+                } else if (tipo.equalsIgnoreCase("Double")) {
+                    ps.setDouble(i, (double) sets.get(i));
+                }
+            }
+
+            ps.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception("Error al ejecutar la consulta...");
+        } finally {
+            if (con != null) {
+                sets.clear();
+                desconectarBD();
+            }
+        }
     }
     //Ejecuta TRANSACCIÓN .-
     
