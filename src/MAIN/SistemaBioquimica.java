@@ -35,7 +35,7 @@ public class SistemaBioquimica {
             java.util.logging.Logger.getLogger(jfPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         jfPrincipal principal = new jfPrincipal();
-        principal.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Iconos/hotel (1).png")));
+        principal.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Iconos/hotel.png")));
     }
     
 }
