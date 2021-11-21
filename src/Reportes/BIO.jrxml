@@ -76,10 +76,6 @@
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
-				<image>
-					<reportElement x="70" y="15" width="65" height="55" uuid="caf0184a-c846-47ad-9cf0-1f881e7175d1"/>
-					<imageExpression><![CDATA["D:\\USAT VI\\DESARROLLO DE APLICACIONES DE ESCRITORIO\\Aplicaciones\\sistemaBioquimica\\src\\Iconos\\ICONO2.png"]]></imageExpression>
-				</image>
 			</frame>
 		</band>
 	</title>
