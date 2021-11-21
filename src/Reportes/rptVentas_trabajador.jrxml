@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="18e711c0-2d93-4d81-aa8b-f1c3030f23d4">
+	<property name="ireport.zoom" value="1.7715610000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     trabajador."codtrabajador" AS trabajador_codtrabajador,
+     trabajador."nombres" AS trabajador_nombres,
+     trabajador."apellidos" AS trabajador_apellidos,
+     trabajador."dni" AS trabajador_dni,
+     trabajador."cargo" AS trabajador_cargo,
+     comprobanteventa."numventa" AS comprobanteventa_numventa,
+     comprobanteventa."numcomprobante" AS comprobanteventa_numcomprobante,
+     comprobanteventa."tipo" AS comprobanteventa_tipo,
+     comprobanteventa."total" AS comprobanteventa_total,
+     comprobanteventa."fecha" AS comprobanteventa_fecha,
+     comprobanteventa."hora" AS comprobanteventa_hora,
+     comprobanteventa."codcliente" AS comprobanteventa_codcliente,
+     comprobanteventa."codtrabajador" AS comprobanteventa_codtrabajador,
+     comprobanteventa."subtotal" AS comprobanteventa_subtotal
+     
+FROM
+     "public"."trabajador" trabajador INNER JOIN "public"."comprobanteventa" comprobanteventa ON trabajador."codtrabajador" = comprobanteventa."codtrabajador"
+order by trabajador]]>
+	</queryString>
+	<field name="trabajador_codtrabajador" class="java.lang.Integer"/>
+	<field name="trabajador_nombres" class="java.lang.String"/>
+	<field name="trabajador_apellidos" class="java.lang.String"/>
+	<field name="trabajador_dni" class="java.lang.String"/>
+	<field name="trabajador_cargo" class="java.lang.String"/>
+	<field name="comprobanteventa_numventa" class="java.lang.Integer"/>
+	<field name="comprobanteventa_numcomprobante" class="java.lang.String"/>
+	<field name="comprobanteventa_tipo" class="java.lang.String"/>
+	<field name="comprobanteventa_total" class="java.math.BigDecimal"/>
+	<field name="comprobanteventa_fecha" class="java.sql.Date"/>
+	<field name="comprobanteventa_hora" class="java.sql.Time"/>
+	<field name="comprobanteventa_codcliente" class="java.lang.Integer"/>
+	<field name="comprobanteventa_codtrabajador" class="java.lang.Integer"/>
+	<field name="comprobanteventa_subtotal" class="java.math.BigDecimal"/>
+	<variable name="comprobanteventa_numventa_1" class="java.lang.Integer" resetType="Group" resetGroup="ventas_trabajador" calculation="Count">
+		<variableExpression><![CDATA[$F{comprobanteventa_numventa}]]></variableExpression>
+	</variable>
+	<group name="trabajador_codtrabajador">
+		<groupExpression><![CDATA[$F{trabajador_codtrabajador}]]></groupExpression>
+	</group>
+	<group name="ventas_trabajador">
+		<groupExpression><![CDATA[$F{trabajador_codtrabajador}]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<staticText>
+					<reportElement x="24" y="0" width="61" height="20" uuid="4108570a-740c-4c73-b8e3-38ed9e00bfa0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nº Venta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="85" y="0" width="61" height="20" uuid="0f049e2a-bae6-4ac9-9023-b4ac881f923e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nº Conpr.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="146" y="0" width="61" height="20" uuid="fd6cf768-50ab-4e96-8ae5-357725c999fd"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="207" y="0" width="61" height="20" uuid="96aff0e3-1eb3-4c97-a603-390cfe5110a9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="268" y="0" width="61" height="20" uuid="4faba169-dbb1-41b1-bde7-0a76f7b807be"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="329" y="0" width="61" height="20" uuid="e8c20a43-65ab-4f6c-823d-17a80e709e9e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Hora]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="390" y="0" width="65" height="20" uuid="3eadc538-8428-4cd5-8805-244bf474eef2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cod. Cliente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="455" y="0" width="61" height="20" uuid="6d07978a-d1f4-4c25-824e-8595d2648c0d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sub Total]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="23">
+				<textField>
+					<reportElement x="500" y="0" width="55" height="20" uuid="e020d4e6-d006-48e6-ba34-e43a4f0c4036"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{comprobanteventa_numventa_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="420" y="0" width="80" height="20" uuid="fb9ce838-373b-4a9e-9b66-9966a924b871"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nº de Ventas :]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#54F893" uuid="7567afde-b4b5-4450-a0f2-efd9b77abb4e"/>
+				<staticText>
+					<reportElement x="20" y="20" width="446" height="50" forecolor="#FFFFFF" uuid="00233029-60a6-4eeb-aeac-629255a7fc16"/>
+					<textElement>
+						<font fontName="Gadugi" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[VENTAS - TRABAJADOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="416" y="34" width="169" height="53" forecolor="#FFFFFF" uuid="1d8e70cd-5a1f-4599-81f1-9b34298620bc"/>
+					<textElement>
+						<font fontName="Gadugi" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Listado de ventas por trabajador]]></text>
+				</staticText>
+				<textField pattern="M/d/yy h:mm a">
+					<reportElement x="499" y="18" width="86" height="14" forecolor="#FFFFFF" uuid="ec6ee4b8-0eaa-4e66-a9db-49c5a11ad0c9"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="37" height="20" uuid="bc83902e-25e1-4d3a-93dc-cc2b38176111"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="37" y="0" width="22" height="20" uuid="9eeb3974-f9d1-4f3c-96e3-4c6e43755495"/>
+				<textFieldExpression><![CDATA[$F{trabajador_codtrabajador}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="81" y="0" width="46" height="20" uuid="9328f8f2-8bf5-4529-9707-3e97ec9fcdee"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="127" y="0" width="46" height="20" uuid="e76f3fae-67a0-4db6-90ab-f33551ee0b94"/>
+				<textFieldExpression><![CDATA[$F{trabajador_nombres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="238" y="0" width="37" height="20" uuid="0e7f2e72-a4c8-405e-bbea-4a310f6d2e02"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dni :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="275" y="0" width="100" height="20" uuid="306e05f1-5699-4b10-9640-e1ba65c3a669"/>
+				<textFieldExpression><![CDATA[$F{trabajador_dni}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="173" y="0" width="46" height="20" uuid="302e1771-9c3b-4295-9c6f-bd87a596a97e"/>
+				<textFieldExpression><![CDATA[$F{trabajador_apellidos}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="5e249fd7-fdb9-4f34-9fcb-3c599e9595f4"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="24" y="0" width="61" height="20" uuid="d22d7a48-b374-4790-adb2-51ea8d2cf614"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{comprobanteventa_numventa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="0" width="61" height="20" uuid="3c117226-bfda-43b7-950b-3e2ba32d0579"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{comprobanteventa_numcomprobante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="146" y="0" width="61" height="20" uuid="c80cebfb-3eca-4476-a594-3025fa0174e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{comprobanteventa_tipo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="0" width="61" height="20" uuid="9242ca44-c31a-4c67-b4c4-a9bc411a0ec0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{comprobanteventa_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="0" width="61" height="20" uuid="bd911162-f381-4c7f-92a4-aba4b37f9776"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{comprobanteventa_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="329" y="0" width="61" height="20" uuid="01dcbcfd-1d79-47d1-8674-7e284798ee46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{comprobanteventa_hora}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="65" height="20" uuid="2a754d59-2fd1-4cf8-bcef-13dcb387b706"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{comprobanteventa_codcliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="61" height="20" uuid="c1e0bbae-2556-4bb9-aca1-38fc2b70adf6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{comprobanteventa_subtotal}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="24" y="0" width="492" height="20" uuid="a624a3a0-c15c-4f9d-be56-79e63a8c25bf"/>
+			</rectangle>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="430" y="0" width="100" height="30" uuid="1ea50095-05d0-4218-9109-dbae3e24fff8"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="530" y="0" width="100" height="30" uuid="385c6ae1-a3f2-44c6-ae49-2af977c5f6bd"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="140" height="30" uuid="014d70ca-60a5-4b06-b5a8-d30800d369e7"/>
+				<textElement>
+					<font fontName="Gadugi"/>
+				</textElement>
+				<text><![CDATA[Bioquímica del Norte Andino]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
