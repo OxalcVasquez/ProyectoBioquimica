@@ -44,6 +44,28 @@ public class clsVenta {
         }
         return 0;
     }
+    
+      public Integer obtenerNumVenta(String tip,String com) throws Exception {
+        strSQL = "select f_obtenerNumVenta('"+tip+"','"+com+"');";
+        try {
+            objConexion.conectarBD();
+            con = objConexion.getCon();
+            cs = con.prepareCall(strSQL);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("f_obtenerNumVenta");
+            }
+        } catch (Exception e) {
+            throw new Exception("Error al ejecutar rla funcion");
+
+        } finally {
+            objConexion.desconectarBD();
+            cs.close();
+        }
+        return 0;
+    }
+
+      
 
     public Boolean verificarVenta(String numcom, String tipo) throws Exception {
         strSQL = "select * from comprobanteventa where numcomprobante='" + numcom + "' and tipo='" + tipo + "'";
@@ -58,6 +80,9 @@ public class clsVenta {
         }
         return true;
     }
+    
+    
+    
 
     public ResultSet listarVentas() throws Exception {
         strSQL = "select v.*,c.nombres ||' '|| c.apellidos as cliente,t.nombres ||' '|| t.apellidos as trabajador from comprobanteVenta as v "
