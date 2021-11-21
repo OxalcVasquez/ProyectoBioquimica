@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1a6c8297-92f0-48c3-82d1-2c2fcb6772be">
+	<property name="ireport.zoom" value="2.3579476910000037"/>
+	<property name="ireport.x" value="63"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     comprobanteventa."numventa" AS comprobanteventa_numventa,
+     comprobanteventa."numcomprobante" AS comprobanteventa_numcomprobante,
+	 case comprobanteventa."tipo" when 'B' then 'Boleta' when 'BF' then 'B. Elec.' when 'F' then 'Factura' else 'F. Elec.' end  AS comprobanteventa_tipo,
+     comprobanteventa."igv" AS comprobanteventa_igv,
+     comprobanteventa."total" AS comprobanteventa_total,
+     comprobanteventa."fecha" AS comprobanteventa_fecha,
+     comprobanteventa."hora" AS comprobanteventa_hora,
+     comprobanteventa."codcliente" AS comprobanteventa_codcliente,
+     comprobanteventa."codtrabajador" AS comprobanteventa_codtrabajador,
+     comprobanteventa."subtotal" AS comprobanteventa_subtotal,
+     detalleventa."cantidad" AS detalleventa_cantidad,
+     detalleventa."precio" AS detalleventa_precio,
+     detalleventa."numventa" AS detalleventa_numventa,
+     detalleventa."codproducto" AS detalleventa_codproducto,
+     cliente."nombres"  ||' '|| cliente."apellidos" AS cliente,
+     trabajador."nombres" ||' '||trabajador."apellidos" AS trabajador,
+	 p.nombre as producto
+	 
+FROM
+     "public"."comprobanteventa" comprobanteventa INNER JOIN "public"."detalleventa" detalleventa ON comprobanteventa."numventa" = detalleventa."numventa"
+     INNER JOIN "public"."cliente" cliente ON comprobanteventa."codcliente" = cliente."codcliente"
+     INNER JOIN "public"."trabajador" trabajador ON comprobanteventa."codtrabajador" = trabajador."codtrabajador"
+	 INNER JOIN producto p  ON detalleventa."codproducto" = p."codproducto"
+order by comprobanteventa."numventa"
+]]>
+	</queryString>
+	<field name="comprobanteventa_numventa" class="java.lang.Integer"/>
+	<field name="comprobanteventa_numcomprobante" class="java.lang.String"/>
+	<field name="comprobanteventa_tipo" class="java.lang.String"/>
+	<field name="comprobanteventa_igv" class="java.math.BigDecimal"/>
+	<field name="comprobanteventa_total" class="java.math.BigDecimal"/>
+	<field name="comprobanteventa_fecha" class="java.sql.Date"/>
+	<field name="comprobanteventa_hora" class="java.sql.Time"/>
+	<field name="comprobanteventa_codcliente" class="java.lang.Integer"/>
+	<field name="comprobanteventa_codtrabajador" class="java.lang.Integer"/>
+	<field name="comprobanteventa_subtotal" class="java.math.BigDecimal"/>
+	<field name="detalleventa_cantidad" class="java.lang.Integer"/>
+	<field name="detalleventa_precio" class="java.math.BigDecimal"/>
+	<field name="detalleventa_numventa" class="java.lang.Integer"/>
+	<field name="detalleventa_codproducto" class="java.lang.Integer"/>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="trabajador" class="java.lang.String"/>
+	<field name="producto" class="java.lang.String"/>
+	<group name="comprobanteventa_numventa">
+		<groupExpression><![CDATA[$F{comprobanteventa_numventa}]]></groupExpression>
+	</group>
+	<group name="detallesVenta">
+		<groupExpression><![CDATA[$F{comprobanteventa_numventa}]]></groupExpression>
+		<groupHeader>
+			<band height="91">
+				<rectangle radius="4">
+					<reportElement mode="Opaque" x="98" y="62" width="370" height="29" backcolor="#36304A" uuid="da759e26-6cb1-47f0-b782-d72fe8dc122f"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="376" y="62" width="92" height="29" forecolor="#FFFFFF" uuid="3e5167d3-4089-4e5d-bdee-23e182aee37a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Precio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="151" y="62" width="133" height="29" forecolor="#FFFFFF" uuid="6079e780-26e3-4be4-86e9-66f1d6ea8196"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Producto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="284" y="62" width="92" height="29" forecolor="#FFFFFF" uuid="69c768df-ef77-4738-b3a0-4b8db20cf295"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cantidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="98" y="62" width="53" height="29" forecolor="#FFFFFF" uuid="5989ed9e-0632-4afa-97dc-22f12cb05b41"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[N° Venta]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="92" y="0" width="98" height="20" uuid="ff6b2da0-8522-4bf6-8eee-2484cc9c14d9"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{comprobanteventa_numcomprobante}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="92" height="20" uuid="333632f0-c9ec-40a7-9716-aa35ce98ca6c"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi" isBold="true"/>
+					</textElement>
+					<text><![CDATA[N° Comprobante:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="192" y="20" width="84" height="20" uuid="27305b70-616b-407b-9144-e0730e91a502"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="92" y="20" width="98" height="20" uuid="e6b0a778-b469-4b05-8c1e-d35d171158c3"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{comprobanteventa_total}]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement x="276" y="20" width="100" height="20" uuid="c10609f1-79ea-4948-be79-1b44bd9b18c4"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{comprobanteventa_fecha}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="460" y="20" width="95" height="20" uuid="877f1fb4-e2e8-46a8-a29c-35afe04a0343"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="468" y="0" width="87" height="20" uuid="28054258-b993-4f62-93f4-6ef01db76e1e"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{trabajador}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="20" width="92" height="20" uuid="dc97a51e-03d6-411f-a44c-29683a22144d"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="376" y="20" width="92" height="20" uuid="6495ee12-990a-47b2-9227-cb61feb9bcfb"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cliente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="376" y="0" width="92" height="20" uuid="c0e7ff31-4dea-4dea-9418-758eb15bf8de"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Trabajador]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="276" y="0" width="100" height="20" uuid="54c1de59-338c-4c19-a4ea-25afd8216074"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{comprobanteventa_tipo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="192" y="0" width="92" height="20" uuid="fefc9d5c-781b-474b-a6c5-ab6ced37b61d"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Gadugi" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipo]]></text>
+				</staticText>
+				<line>
+					<reportElement x="-2" y="40" width="556" height="1" uuid="4af93916-a403-45e9-b693-42f9beb69166"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="18"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="59" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-21" width="595" height="80" backcolor="#54F893" uuid="7a9f882b-fcd4-4638-baa5-859144010562"/>
+				<staticText>
+					<reportElement x="111" y="19" width="266" height="50" forecolor="#FFFFFF" uuid="27367d01-5788-448d-b50a-63fe43ff609e"/>
+					<textElement>
+						<font fontName="Gadugi" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[VENTAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="467" y="50" width="107" height="30" forecolor="#FFFFFF" uuid="04570a2d-3966-4f44-9457-d320e38edad0"/>
+					<textElement>
+						<font fontName="Gadugi" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Detalle venta]]></text>
+				</staticText>
+				<image>
+					<reportElement x="40" y="20" width="50" height="50" uuid="1d9c1a72-8544-4704-ab30-dcaab7712d92"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
+				<textField pattern="M/d/yy h:mm a">
+					<reportElement x="500" y="20" width="86" height="14" forecolor="#FFFFFF" uuid="e64fc6b1-a684-4d8d-a444-59190abac011"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="7" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="7" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="98" y="0" width="53" height="20" uuid="bd9c72c8-50f8-4d30-adfa-3d9040725345"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{comprobanteventa_numventa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="0" width="92" height="20" uuid="ef9beac6-022a-4e24-a944-3f0c58f821f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{detalleventa_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="0" width="92" height="20" uuid="66d47182-4a26-4621-96cd-c6e0b336910d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{detalleventa_precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="151" y="0" width="133" height="20" uuid="7ac729e4-df4e-471a-a9b3-9c089bac5421"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{producto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="19" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="41" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="530" y="11" width="100" height="30" uuid="12a48d7c-9a77-41f4-b36f-2aa4c58824a1"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="11" width="100" height="30" uuid="8d7d2bee-0d6a-46c6-a169-b4a02942db99"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="11" width="140" height="30" uuid="6dffd111-a1d4-4a34-80a5-b209badd233b"/>
+				<textElement>
+					<font fontName="Gadugi"/>
+				</textElement>
+				<text><![CDATA[Bioquímica del Norte Andino]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bf17a8f7-0a41-4542-a54b-7392aca3ebb3">
+	<property name="ireport.zoom" value="1.4641000000000037"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dsCategoriaProducto" uuid="04296f6c-0dbf-4750-a05d-ef6b49176bd4">
+		<queryString language="SQL">
+			<![CDATA[select count(*) as total,ct.nombre as categoria from producto pr
+inner join categoria ct on ct.codcategoria=pr.codcategoria
+group by ct.codcategoria ;
+]]>
+		</queryString>
+		<field name="total" class="java.lang.Long"/>
+		<field name="categoria" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[select pr.codproducto, pr.nombre, pr.descripcion, pr.precioventa, pr.preciocompra, pr.stock,pr.vigencia, pr.fechavencimiento, ma.nombre as marca, ct.nombre as categoria from producto pr
+inner join marca ma on ma.codmarca=pr.codmarca
+inner join categoria ct on ct.codcategoria=pr.codcategoria]]>
+	</queryString>
+	<field name="codproducto" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="precioventa" class="java.math.BigDecimal"/>
+	<field name="preciocompra" class="java.math.BigDecimal"/>
+	<field name="stock" class="java.lang.Integer"/>
+	<field name="vigencia" class="java.lang.Boolean"/>
+	<field name="fechavencimiento" class="java.sql.Date"/>
+	<field name="marca" class="java.lang.String"/>
+	<field name="categoria" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-19" y="-114" width="593" height="80" backcolor="#54F893" uuid="64744ec4-4734-4b76-9df8-cf8c88e73fc9"/>
+				<staticText>
+					<reportElement x="140" y="20" width="210" height="50" forecolor="#FFFFFF" uuid="66eb240a-f84d-47cd-8030-159fa54511af"/>
+					<textElement>
+						<font fontName="Gadugi" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PRODUCTO]]></text>
+				</staticText>
+				<image>
+					<reportElement x="40" y="20" width="50" height="50" uuid="93f01bf2-1b12-49d8-b8be-7aad401fd651"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
+				<textField pattern="M/d/yy h:mm a">
+					<reportElement x="500" y="20" width="86" height="14" forecolor="#FFFFFF" uuid="a9050646-902e-436d-9bf5-5e05f306bf4e"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="392" y="40" width="178" height="30" forecolor="#FFFFFF" uuid="6f277b89-8731-4402-8601-dae80e5b21bf"/>
+					<textElement>
+						<font fontName="Gadugi" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Listado de productos]]></text>
+				</staticText>
+			</frame>
+			<rectangle radius="4">
+				<reportElement mode="Opaque" x="1" y="1" width="555" height="28" backcolor="#000000" uuid="6c584329-3c6c-432c-acf3-e4609c685b19"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="316" y="0" width="75" height="29" forecolor="#FFFFFF" uuid="9845eb38-cc6c-4f31-8392-10fe00202324">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a641ac4e-a549-4ae4-bd70-bf3b019e15e1"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P. Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="0" width="55" height="29" forecolor="#FFFFFF" uuid="c441644f-d99d-4c9d-9f64-c2354d5a11a4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a7fdb0ce-da74-40bf-b4e4-46b31e73bc33"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="0" width="85" height="29" forecolor="#FFFFFF" uuid="ac51167c-cb1a-4aa7-b353-ab370f032aaf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="feb79f12-affa-4a61-bfb9-6d138d9fc098"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="0" width="105" height="29" forecolor="#FFFFFF" uuid="fd960a12-f04f-49b7-ac79-8ca44b7a0eb0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cca925b1-68c2-41e4-8983-d73913281be7"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="0" width="95" height="29" forecolor="#FFFFFF" uuid="b620c2f9-4c76-466d-ab4d-c92d04ec691d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f4f1dcef-aa5c-4d9a-a6d3-4db08592900f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="0" width="85" height="29" forecolor="#FFFFFF" uuid="22193649-cff8-4d7f-88f4-0febf06b12e7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e78897a5-b3bc-4be4-8a3b-b7d7ddd1d12f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[P. Venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="0" width="80" height="29" forecolor="#FFFFFF" uuid="cf1a5a85-bc07-4ac3-8ab6-5aa9187a7cf5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f4f1dcef-aa5c-4d9a-a6d3-4db08592900f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marca]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="6" y="0" width="50" height="20" uuid="9101c076-0302-4aec-8b7b-b3f146393e71"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codproducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="0" width="71" height="20" uuid="50285875-1f3c-407b-95bf-35656bf3654c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="100" height="20" uuid="82485cd9-8fad-4486-961c-9614db2b3b5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="0" width="75" height="20" uuid="aa9b2c58-cbbd-4af2-88cc-d03776d71f75"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{precioventa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="0" width="55" height="20" uuid="620326f7-71ae-47c6-b2c7-d54fd7a22e46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{preciocompra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="75" height="20" uuid="612f6f6f-e456-455f-ada9-d4dbdfa7a903"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="0" width="85" height="20" uuid="38007a1d-0bc5-4066-b43e-e4234b0bf4e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="17" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="440" y="21" width="100" height="30" uuid="2c1c0689-58c3-4845-8bdd-0e6d795a908c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="21" width="140" height="30" uuid="6c16097b-240b-424e-9226-2fe137e13454"/>
+				<textElement>
+					<font fontName="Gadugi"/>
+				</textElement>
+				<text><![CDATA[Bioquímica del Norte Andino]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="540" y="21" width="100" height="30" uuid="4e501c9d-40d1-42ec-b3d7-70b01be3e710"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="237" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="65" y="33" width="457" height="204" uuid="feadbebf-9f52-4b4c-ac60-cfb9449df005"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="dsCategoriaProducto" uuid="7d0a2914-4b08-465c-9b4d-fc7f6a994ebe"/>
+					</dataset>
+					<keyExpression><![CDATA[$F{categoria}]]></keyExpression>
+					<valueExpression><![CDATA[$F{total}]]></valueExpression>
+					<labelExpression><![CDATA[$F{categoria} + "-" + $F{total}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<staticText>
+				<reportElement x="150" y="4" width="309" height="29" forecolor="#000000" uuid="4f039ee3-8965-4d6d-864d-b01c8e799263">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="feb79f12-affa-4a61-bfb9-6d138d9fc098"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRÁFICO CANTIDAD DE PRODUCTOS POR CATEGORIA]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
