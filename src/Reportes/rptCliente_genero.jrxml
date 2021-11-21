@@ -1,29 +1,275 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7633cba-5b38-4ffc-a8c2-491ce9c5895a">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="bdCliente" uuid="8da6a684-2931-434a-89fd-3f38eee67b18">
+		<queryString language="SQL">
+			<![CDATA[select case sexo when true then 'Masculino' else 'Femenino' end as sexo, count(*) as total  from cliente
+group by sexo
+]]>
+		</queryString>
+		<field name="sexo" class="java.lang.String"/>
+		<field name="total" class="java.lang.Long"/>
+		<group name="sexo">
+			<groupExpression><![CDATA[$F{sexo}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[select *, case sexo when true then 'Masculino' else 'Femenino' end as sexoC,
+(nombres ||' '|| apellidos) as nombresCom,
+case vigencia
+when  'false' then 'vigente' else 'no vigente' end as estado
+from cliente]]>
+	</queryString>
+	<field name="codcliente" class="java.lang.Integer"/>
+	<field name="numdocumento" class="java.lang.String"/>
+	<field name="tipodocumento" class="java.lang.String"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="apellidos" class="java.lang.String"/>
+	<field name="fechanac" class="java.sql.Date"/>
+	<field name="sexo" class="java.lang.Boolean"/>
+	<field name="ciudad" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<field name="vigencia" class="java.lang.Boolean"/>
+	<field name="sexoc" class="java.lang.String"/>
+	<field name="nombrescom" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="68" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#54F893" uuid="27287cc1-0103-4815-8e63-58f7e2eff9fb"/>
+				<staticText>
+					<reportElement x="140" y="20" width="210" height="50" forecolor="#FFFFFF" uuid="93d44305-829a-45b4-99d8-a1aa9b06f164"/>
+					<textElement>
+						<font fontName="Gadugi" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PROVEEDOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="416" y="45" width="169" height="30" forecolor="#FFFFFF" uuid="7265c9ad-e38e-42c2-95ff-b05746d1e66e"/>
+					<textElement>
+						<font fontName="Gadugi" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Listado de proveedores]]></text>
+				</staticText>
+				<textField pattern="M/d/yy h:mm a">
+					<reportElement x="500" y="20" width="86" height="14" forecolor="#FFFFFF" uuid="40265559-ced5-4c21-ae6e-4e5dd6d53b50"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="53" y="20" width="50" height="50" uuid="343ef2c6-5c5b-449d-97c7-881a257bdbbd"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<rectangle radius="4">
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="33" backcolor="#36304A" uuid="8c34f1e8-bdb5-429d-96a9-c5cb4ed9c430"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="50" height="33" forecolor="#FFFFFF" uuid="66cd7123-8137-427d-97bf-7812fce09e19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="50" height="33" forecolor="#FFFFFF" uuid="abcf5638-06aa-4d2a-8422-6c338a4192f5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Doc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="33" forecolor="#FFFFFF" uuid="4b0fe16a-3425-418d-a74f-5fc9790a20c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="70" height="33" forecolor="#FFFFFF" uuid="bcb72c8c-e3ab-4039-a56b-86a08b418215"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[F. Nac]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="50" height="33" forecolor="#FFFFFF" uuid="a1bc79ae-a3ec-46a4-9598-e8822be93819"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="0" width="50" height="33" forecolor="#FFFFFF" uuid="138bb9a9-539d-4cf0-af09-1403087de91b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ciudad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="60" height="33" forecolor="#FFFFFF" uuid="4abbb25a-0b69-4cd3-a394-f1685c6f3736"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="70" height="33" forecolor="#FFFFFF" uuid="b1622e11-fadd-4fd3-a1f4-7efa190d3777"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="50" height="33" forecolor="#FFFFFF" uuid="4a0d5a90-844c-446a-944b-8a57938c8984"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vigencia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="50" height="20" uuid="95a23391-dbee-456c-a1b2-ed357b80b74e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codcliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="0" width="50" height="20" uuid="55da6c07-554c-4207-ada7-1edc109e8ca4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{numdocumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="70" height="20" uuid="98f83abe-aee8-4122-874f-d3adb811c3ed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fechanac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="50" height="20" uuid="ed625f95-9e78-4a10-a57f-a3ed7f6c691f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="0" width="60" height="20" uuid="7c7a8c2a-92a8-4d1e-8956-4e0c4ae35c5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="70" height="20" uuid="86676e84-dcdb-47ec-a9a1-8facc52ac843"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="d425cd78-b366-413c-a8b6-7af309e02407"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombrescom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="50" height="20" uuid="539babdd-2820-4c21-9ab3-6bfd6550075e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sexoc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="1" width="50" height="20" uuid="2272d9fd-c9d5-4791-9946-0288b2157c99"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="15" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="140" height="30" uuid="4c1ba0d2-471d-4c34-b5b4-41d8a3ef58c5"/>
+				<textElement>
+					<font fontName="Gadugi"/>
+				</textElement>
+				<text><![CDATA[Bioquímica del Norte Andino]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="530" y="0" width="100" height="30" uuid="3aeb7888-ebf0-4555-b354-589f7fa7fe11"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="100" height="30" uuid="3df1e372-9700-4e7c-a597-43c237587407"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="149" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="0" y="0" width="296" height="149" uuid="773ebca1-f8a7-4616-89c0-c32a0d113435"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="bdCliente" uuid="e207735c-18c2-45ab-8705-a375ecf7e532"/>
+					</dataset>
+					<keyExpression><![CDATA[$F{sexo}]]></keyExpression>
+					<valueExpression><![CDATA[$F{total}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<stackedBar3DChart>
+				<chart>
+					<reportElement x="300" y="0" width="230" height="149" uuid="a7726054-0ec6-462f-995f-c8cf24abca70"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset>
+						<datasetRun subDataset="bdCliente" uuid="3e9ed6b0-a9ef-4c96-bd46-5da73e3ba6f6"/>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Clientes por género"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{sexo}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{total}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</stackedBar3DChart>
+		</band>
+	</summary>
 </jasperReport>

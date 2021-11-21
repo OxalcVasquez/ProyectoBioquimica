@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="18e711c0-2d93-4d81-aa8b-f1c3030f23d4">
-	<property name="ireport.zoom" value="1.7715610000000013"/>
+	<property name="ireport.zoom" value="1.7715610000000017"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
@@ -47,74 +47,77 @@ order by trabajador]]>
 	<group name="ventas_trabajador">
 		<groupExpression><![CDATA[$F{trabajador_codtrabajador}]]></groupExpression>
 		<groupHeader>
-			<band height="21">
+			<band height="34">
+				<rectangle radius="4">
+					<reportElement mode="Opaque" x="0" y="1" width="555" height="33" backcolor="#36304A" uuid="6991ecdb-5894-448a-a514-5b43df8d85bf"/>
+				</rectangle>
 				<staticText>
-					<reportElement x="24" y="0" width="61" height="20" uuid="4108570a-740c-4c73-b8e3-38ed9e00bfa0"/>
+					<reportElement x="24" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="4108570a-740c-4c73-b8e3-38ed9e00bfa0"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font isBold="true"/>
+						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Nº Venta]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="85" y="0" width="61" height="20" uuid="0f049e2a-bae6-4ac9-9023-b4ac881f923e"/>
+					<reportElement x="85" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="0f049e2a-bae6-4ac9-9023-b4ac881f923e"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font isBold="true"/>
+						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Nº Conpr.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="146" y="0" width="61" height="20" uuid="fd6cf768-50ab-4e96-8ae5-357725c999fd"/>
+					<reportElement x="146" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="fd6cf768-50ab-4e96-8ae5-357725c999fd"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font isBold="true"/>
+						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Tipo]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="207" y="0" width="61" height="20" uuid="96aff0e3-1eb3-4c97-a603-390cfe5110a9"/>
+					<reportElement x="207" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="96aff0e3-1eb3-4c97-a603-390cfe5110a9"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font isBold="true"/>
+						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Total]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="268" y="0" width="61" height="20" uuid="4faba169-dbb1-41b1-bde7-0a76f7b807be"/>
+					<reportElement x="268" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="4faba169-dbb1-41b1-bde7-0a76f7b807be"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font isBold="true"/>
+						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Fecha]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="329" y="0" width="61" height="20" uuid="e8c20a43-65ab-4f6c-823d-17a80e709e9e"/>
+					<reportElement x="329" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="e8c20a43-65ab-4f6c-823d-17a80e709e9e"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font isBold="true"/>
+						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Hora]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="390" y="0" width="65" height="20" uuid="3eadc538-8428-4cd5-8805-244bf474eef2"/>
+					<reportElement x="390" y="0" width="78" height="34" forecolor="#FFFFFF" uuid="3eadc538-8428-4cd5-8805-244bf474eef2"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font isBold="true"/>
+						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Cod. Cliente]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="455" y="0" width="61" height="20" uuid="6d07978a-d1f4-4c25-824e-8595d2648c0d"/>
+					<reportElement x="468" y="0" width="72" height="34" forecolor="#FFFFFF" uuid="6d07978a-d1f4-4c25-824e-8595d2648c0d"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font isBold="true"/>
+						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Sub Total]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="23">
+			<band height="21">
 				<textField>
-					<reportElement x="500" y="0" width="55" height="20" uuid="e020d4e6-d006-48e6-ba34-e43a4f0c4036"/>
+					<reportElement x="530" y="0" width="25" height="20" uuid="e020d4e6-d006-48e6-ba34-e43a4f0c4036"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$V{comprobanteventa_numventa_1}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="420" y="0" width="80" height="20" uuid="fb9ce838-373b-4a9e-9b66-9966a924b871"/>
+					<reportElement x="446" y="0" width="80" height="20" uuid="fb9ce838-373b-4a9e-9b66-9966a924b871"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
@@ -158,7 +161,7 @@ order by trabajador]]>
 		<band height="17" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="25" splitType="Stretch">
+		<band height="21" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="37" height="20" uuid="bc83902e-25e1-4d3a-93dc-cc2b38176111"/>
 				<textElement>
@@ -234,18 +237,15 @@ order by trabajador]]>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_hora}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="390" y="0" width="65" height="20" uuid="2a754d59-2fd1-4cf8-bcef-13dcb387b706"/>
+				<reportElement x="390" y="0" width="78" height="20" uuid="2a754d59-2fd1-4cf8-bcef-13dcb387b706"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_codcliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="455" y="0" width="61" height="20" uuid="c1e0bbae-2556-4bb9-aca1-38fc2b70adf6"/>
+				<reportElement x="468" y="0" width="72" height="20" uuid="c1e0bbae-2556-4bb9-aca1-38fc2b70adf6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_subtotal}]]></textFieldExpression>
 			</textField>
-			<rectangle>
-				<reportElement mode="Transparent" x="24" y="0" width="492" height="20" uuid="a624a3a0-c15c-4f9d-be56-79e63a8c25bf"/>
-			</rectangle>
 		</band>
 	</detail>
 	<columnFooter>

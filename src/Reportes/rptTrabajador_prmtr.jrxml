@@ -3,11 +3,15 @@
 	<property name="ireport.zoom" value="1.948717100000002"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="cod" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select codtrabajador,(nombres||' '||apellidos)as nombres,dni,telefono,correo,direccion,
 case sexo when true then 'Masculino' else 'Femenino' end as sexo,fechanac,
 case cargo when 'V' then 'Venderor' when 'A' then 'Administrador' when 'Y' then 'Ayudante' when 'C' then 'Caja' end as cargo,
-case vigencia when true then 'Vigente' else 'No Vigente' end as vigencia from trabajador]]>
+case vigencia when true then 'Vigente' else 'No Vigente' end as vigencia from trabajador
+where codtrabajador = $P{cod}]]>
 	</queryString>
 	<field name="codtrabajador" class="java.lang.Integer"/>
 	<field name="nombres" class="java.lang.String"/>
