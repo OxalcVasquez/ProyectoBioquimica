@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f1861b23-3a54-4b22-b3e7-a7365f040c2f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dsProveedorCiudad" uuid="8c5c083b-9c7b-44e1-8355-7b0ee489216d">
+		<queryString language="SQL">
+			<![CDATA[select 
+ciudad,
+count(*) as total
+from  proveedor
+group by ciudad]]>
+		</queryString>
+		<field name="ciudad" class="java.lang.String"/>
+		<field name="total" class="java.lang.Long"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[select p.*, 
+case p.rubro when 'A' then 'Agrícola' when 'Q' then 'Química' end as rub,
+case p.estado when false then 'No vigente' when true then 'Vigente' end as est
+from proveedor p]]>
+	</queryString>
+	<field name="ruc" class="java.lang.String"/>
+	<field name="razonsocial" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<field name="web" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="ciudad" class="java.lang.String"/>
+	<field name="rubro" class="java.lang.String"/>
+	<field name="estado" class="java.lang.Boolean"/>
+	<field name="rub" class="java.lang.String"/>
+	<field name="est" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-10" y="-134" width="595" height="80" backcolor="#54F893" uuid="ebeb2673-6867-4755-9bf0-234fec6572ac"/>
+				<staticText>
+					<reportElement x="99" y="19" width="204" height="50" forecolor="#FFFFFF" uuid="8b1fb8d1-9ba4-42a8-89f4-86a36839beb6"/>
+					<textElement>
+						<font fontName="Gadugi" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[COMPRAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="344" y="47" width="228" height="30" forecolor="#FFFFFF" uuid="5b89366a-0286-4c48-a52c-c9c4567b5c06"/>
+					<textElement>
+						<font fontName="Gadugi" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Listado de compras por mes y año]]></text>
+				</staticText>
+				<textField pattern="M/d/yy h:mm a">
+					<reportElement x="498" y="20" width="86" height="14" forecolor="#FFFFFF" uuid="936d4fc3-f78e-4382-95c6-afd640903249"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="32" y="17" width="50" height="50" uuid="9c4672cd-bce3-45aa-a908-0051f4f8d929"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="-10" y="-134" width="595" height="80" backcolor="#54F893" uuid="bd9115d2-882f-47d7-be28-c89895678004"/>
+				<staticText>
+					<reportElement x="99" y="19" width="204" height="50" forecolor="#FFFFFF" uuid="baf29d23-128c-4671-931e-f4c9deff6ad7"/>
+					<textElement>
+						<font fontName="Gadugi" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[COMPRAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="344" y="47" width="228" height="30" forecolor="#FFFFFF" uuid="0dadf53e-bddc-45c3-8f28-a86e507b9c70"/>
+					<textElement>
+						<font fontName="Gadugi" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Listado de compras por mes y año]]></text>
+				</staticText>
+				<textField pattern="M/d/yy h:mm a">
+					<reportElement x="498" y="20" width="86" height="14" forecolor="#FFFFFF" uuid="a465921e-eb1b-48bb-ae62-e30cae815054"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="32" y="17" width="50" height="50" uuid="6e984a56-09a4-450c-b6f3-06022bf17747"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="-10" y="-134" width="595" height="80" backcolor="#54F893" uuid="c09bffad-fccc-4a1b-8a1f-bf49290a7a9a"/>
+				<staticText>
+					<reportElement x="99" y="19" width="204" height="50" forecolor="#FFFFFF" uuid="6c778543-adc1-4ed3-89d2-2987e62be0ec"/>
+					<textElement>
+						<font fontName="Gadugi" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[COMPRAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="344" y="47" width="228" height="30" forecolor="#FFFFFF" uuid="2df4ade7-6182-448b-aeac-f1586bfe5082"/>
+					<textElement>
+						<font fontName="Gadugi" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Listado de compras por mes y año]]></text>
+				</staticText>
+				<textField pattern="M/d/yy h:mm a">
+					<reportElement x="498" y="20" width="86" height="14" forecolor="#FFFFFF" uuid="d64e3378-e14c-43d1-aeaf-42f723538b1b"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="32" y="17" width="50" height="50" uuid="1da49cbb-2dec-40fc-9b0e-f38316dda437"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="-19" y="-20" width="595" height="80" backcolor="#54F893" uuid="e579e3f1-248c-43ce-8d2f-f84dda62c927"/>
+				<staticText>
+					<reportElement x="99" y="18" width="244" height="50" forecolor="#FFFFFF" uuid="3d1ca94f-20fc-4aa0-9b45-ba6abc0ec5c7"/>
+					<textElement>
+						<font fontName="Gadugi" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PROVEEDORES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="366" y="47" width="206" height="30" forecolor="#FFFFFF" uuid="dccedd12-7685-4278-b6e1-5168a9e83d93"/>
+					<textElement>
+						<font fontName="Gadugi" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Gráfico por ciudad]]></text>
+				</staticText>
+				<textField pattern="M/d/yy h:mm a">
+					<reportElement x="498" y="19" width="86" height="14" forecolor="#FFFFFF" uuid="5ef92d50-fde8-4a33-b540-660f62ea4757"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="32" y="16" width="50" height="50" uuid="f6d71e27-d324-458b-8c24-f49a92dac8af"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<rectangle radius="4">
+				<reportElement mode="Opaque" x="0" y="0" width="560" height="29" backcolor="#36304A" uuid="545557fa-7144-434c-ab9e-d124cecabafc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="101" y="1" width="77" height="29" forecolor="#FFFFFF" uuid="9dbb0451-f06b-4fce-9f52-62e1a2b04db2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Raz. Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="1" width="68" height="29" forecolor="#FFFFFF" uuid="e67ca710-d8e4-4839-82a9-1ced52c0d177"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rubro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="246" y="1" width="78" height="29" forecolor="#FFFFFF" uuid="c5d07ed8-f2e7-4075-8600-0d53953d4197"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ciudad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="1" width="91" height="29" forecolor="#FFFFFF" uuid="c3b3640d-e3a9-4fb2-a612-054c977d546f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RUC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="0" width="116" height="29" forecolor="#FFFFFF" uuid="1c0978d5-9fb0-4ab1-ad06-77ca5e6ab499"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="0" width="116" height="29" forecolor="#FFFFFF" uuid="7db1852a-cec4-403f-8d9e-2998b28c3880"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contacto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="52" splitType="Stretch">
+			<textField>
+				<reportElement x="101" y="15" width="77" height="20" uuid="c8cff2d4-ab3f-4633-b0aa-6dce22cdfe02"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{razonsocial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="20" width="100" height="15" uuid="08e270e9-46e1-47f1-940a-ab22fa8e538b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="35" width="100" height="15" uuid="a91d3955-243a-4631-976e-83e4c183d73a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{web}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="247" y="15" width="77" height="20" uuid="4fbc9f45-a3e1-451b-a058-e4522f84d061"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ciudad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="15" width="100" height="20" uuid="e7c230df-f2ff-45c8-965b-ac20cb903d16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{est}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="15" width="91" height="20" uuid="78754ba3-2e0b-41fb-b26f-dceb1b62930b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ruc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="15" width="68" height="20" uuid="e0982637-63c1-4c30-bb52-c10dc536df6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rub}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="2" width="100" height="18" uuid="64ca4b0f-efde-41ea-bc4a-ebfdc597a63e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="50" width="555" height="1" uuid="9f43fbb4-bd94-4b06-abc2-a054bd00af57"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="441" y="12" width="100" height="30" uuid="d90f8fa4-37c9-4d4f-8791-6a311741b87e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="541" y="12" width="100" height="30" uuid="e5d0e776-7ae0-4121-ab97-7fd5ba976c38"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="12" width="140" height="30" uuid="12f73a93-7ca1-46e4-992c-ce29326d097a"/>
+				<textElement>
+					<font fontName="Gadugi"/>
+				</textElement>
+				<text><![CDATA[Bioquímica del Norte Andino]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="187" splitType="Stretch">
+			<barChart>
+				<chart>
+					<reportElement x="141" y="43" width="236" height="136" uuid="662aabd5-3147-48e8-a13d-d134d018c0e5"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset>
+						<datasetRun subDataset="dsProveedorCiudad" uuid="c262645b-e71b-48cc-afad-d3c0d97b2f1c"/>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Proveedores por ciudad"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{ciudad}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{total}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+			<staticText>
+				<reportElement x="141" y="13" width="236" height="20" uuid="0beb84e4-6636-452b-b838-b29123994118"/>
+				<textElement textAlignment="Center">
+					<font fontName="Gadugi" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROVEEDORES POR CIUDAD]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
