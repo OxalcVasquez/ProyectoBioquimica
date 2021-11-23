@@ -18,8 +18,7 @@ inner join cliente c on v.codcliente = c.codcliente where
 extract(year from (fecha))  = $P{anio}
 and
 extract(month from (fecha))  = $P{mes}
-;
-]]>
+;]]>
 	</queryString>
 	<field name="numventa" class="java.lang.Integer"/>
 	<field name="numcomprobante" class="java.lang.String"/>
@@ -40,7 +39,7 @@ extract(month from (fecha))  = $P{mes}
 	<title>
 		<band height="60" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-19" y="-20" width="595" height="80" backcolor="#54F893" uuid="01f1d60e-9285-4668-be46-0800c6b0b56f"/>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="80" backcolor="#54F893" uuid="01f1d60e-9285-4668-be46-0800c6b0b56f"/>
 				<staticText>
 					<reportElement x="111" y="19" width="266" height="50" forecolor="#FFFFFF" uuid="21258c4b-09a5-47e0-9668-6b5301c04f12"/>
 					<textElement>
