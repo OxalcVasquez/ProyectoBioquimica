@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 5.5.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptProductosPorMarca" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0bb414fc-59c2-4d0b-a76b-d01d2c9bcbde">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="BDPROYECTO"/>
+	<style name="Style1" mode="Opaque" backcolor="rgba(84, 248, 147, 0.15686275)">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{vigencia}.booleanValue()==false]]></conditionExpression>
+			<style mode="Opaque" backcolor="rgba(252, 151, 151, 0.15686275)"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT producto.codproducto as cod,
+	producto.nombre,
+	producto.descripcion,
+	producto.precioventa,
+	producto.preciocompra,
+	producto.stock,
+	producto.vigencia,
+	producto.fechavencimiento,
+	marca.nombre as marca,
+	categoria.nombre as categoria
+FROM producto
+	INNER JOIN marca ON 
+	 producto.codmarca = marca.codmarca 
+	INNER JOIN categoria ON 
+	 producto.codcategoria = categoria.codcategoria
+	 order by producto.codmarca]]>
+	</queryString>
+	<field name="cod" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cod"/>
+		<property name="com.jaspersoft.studio.field.label" value="cod"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="descripcion"/>
+		<property name="com.jaspersoft.studio.field.label" value="descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="precioventa" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="precioventa"/>
+		<property name="com.jaspersoft.studio.field.label" value="precioventa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="preciocompra" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="preciocompra"/>
+		<property name="com.jaspersoft.studio.field.label" value="preciocompra"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="stock" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="stock"/>
+		<property name="com.jaspersoft.studio.field.label" value="stock"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="vigencia" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="vigencia"/>
+		<property name="com.jaspersoft.studio.field.label" value="vigencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="fechavencimiento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fechavencimiento"/>
+		<property name="com.jaspersoft.studio.field.label" value="fechavencimiento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="producto"/>
+	</field>
+	<field name="marca" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="marca"/>
+		<property name="com.jaspersoft.studio.field.label" value="marca"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="marca"/>
+	</field>
+	<field name="categoria" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="categoria"/>
+		<property name="com.jaspersoft.studio.field.label" value="categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="categoria"/>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{marca}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="9323bc51-a063-4b5f-91ab-c0b6498a4261"/>
+					<textElement>
+						<font fontName="Gadugi" size="12"/>
+					</textElement>
+					<text><![CDATA[Marca]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Transparent" x="100" y="0" width="455" height="32" forecolor="#01987A" backcolor="#E6E6E6" uuid="2285a7f9-4a8b-4eb1-9ece-c7af78543d2d"/>
+					<textElement>
+						<font fontName="Gadugi" size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{marca}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="80" backcolor="#54F893" uuid="1b5f34cd-8f59-49c1-aa99-efa6f5eabcb2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<staticText>
+					<reportElement x="120" y="20" width="218" height="50" forecolor="#FFFFFF" uuid="4265baa7-675e-4eb9-8bdf-ed3039ac8c8f"/>
+					<textElement>
+						<font fontName="Gadugi" size="34" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PRODUCTOS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="370" y="43" width="204" height="20" forecolor="#FFFFFF" uuid="5c71cdb4-5e7c-4c32-bfc7-4feae3367f86"/>
+					<textElement textAlignment="Right">
+						<font fontName="Gadugi" size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Listado de productos por marca]]></text>
+				</staticText>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="479" y="20" width="96" height="13" forecolor="#FFFFFF" uuid="508624cd-3e2d-4486-8397-31ad39876a24"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="40" y="20" width="50" height="50" uuid="d198b74d-eeb1-424a-be6b-d4540a1f08ca"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30">
+			<rectangle radius="4">
+				<reportElement mode="Opaque" x="-3" y="-4" width="560" height="29" backcolor="#36304A" uuid="6f3f9d58-0e2d-44ba-8dde-cc20fcc95e85"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="50" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="e3e57781-d34f-4077-a5fc-0b9bbfa13a59">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4bf1b03-cec9-49a3-8c2f-f82403385a52"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="50" y="0" width="80" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="6ea341dd-f9a5-4fcc-a95c-f5a6b1da2dbf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7585bf62-d011-4688-b0cd-052fc6f490c7"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="136" y="0" width="68" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="a2c713ac-aa2e-4f5f-b4e9-d3a8972e7a18">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a35f115a-cdcf-4e0c-ba92-af26e98c7ae1"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="210" y="0" width="51" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="7286b68e-f2fd-47c2-9bde-0edfef59bf1f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d897690-9289-4b84-88c6-5ae536686d13"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S/ Venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="270" y="0" width="61" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="d08ee16e-6dff-42b2-b760-96906c9cc357">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a0517959-d3e2-46a7-a0ce-0160fb412e2e"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S/ Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="341" y="0" width="50" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="82563ab4-deb8-4fb7-bc51-c7e6149c8c28">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ceac69b-305d-44b1-98e4-4d876e95b7de"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="400" y="0" width="69" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="7e7780b3-ab9f-4429-91c5-b40da65f54c3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1a46b38d-a046-4bfb-acef-cda8f0f44427"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha vcto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="470" y="0" width="79" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="313f318a-300b-41e3-a583-c2f7fa40db20">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4a34d47-97ef-45c2-90b7-23d6dec80240"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Categoría]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="69">
+			<rectangle radius="4">
+				<reportElement style="Style1" x="-3" y="2" width="560" height="57" uuid="36a7e486-97b6-4991-bd08-7cb70112a3a1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="15" width="50" height="30" uuid="71250561-e78c-4420-aa83-a8ab9f482ef4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4bf1b03-cec9-49a3-8c2f-f82403385a52"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="50" y="15" width="80" height="30" uuid="8cb7562b-1364-4223-8777-6f12b844a15f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7585bf62-d011-4688-b0cd-052fc6f490c7"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="136" y="15" width="65" height="30" uuid="fe0296f0-ea95-4765-88d1-ee0bc967d442">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a35f115a-cdcf-4e0c-ba92-af26e98c7ae1"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="210" y="15" width="51" height="30" uuid="c28fd695-885e-41ec-8291-1e2ddb07487a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d897690-9289-4b84-88c6-5ae536686d13"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioventa}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="270" y="15" width="60" height="30" uuid="7ac00a42-a34a-44df-ae32-770090e41871">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a0517959-d3e2-46a7-a0ce-0160fb412e2e"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{preciocompra}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="341" y="15" width="50" height="30" uuid="611f2ecb-67ad-48c2-995a-fbf7121f2437">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ceac69b-305d-44b1-98e4-4d876e95b7de"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stock}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="M/d/yy">
+				<reportElement x="400" y="15" width="69" height="30" uuid="c35e8ab3-9812-4fbe-af72-b39dc12c1a8b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1a46b38d-a046-4bfb-acef-cda8f0f44427"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="rtf">
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fechavencimiento}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="470" y="15" width="79" height="30" uuid="3aa26410-b89a-4cef-84b7-32c8fb2e99e8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4a34d47-97ef-45c2-90b7-23d6dec80240"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="32">
+			<staticText>
+				<reportElement x="0" y="0" width="140" height="30" uuid="377e3d6e-4c6d-41f7-88cc-6bec9266e8c5"/>
+				<textElement>
+					<font fontName="Gadugi"/>
+				</textElement>
+				<text><![CDATA[Bioquímica del Norte Andino]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="430" y="0" width="100" height="30" uuid="41859e11-8e60-43a6-90ce-c71d610a1781"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="530" y="0" width="100" height="30" uuid="9957674c-8307-4ef4-85a4-e258b5850a90"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
