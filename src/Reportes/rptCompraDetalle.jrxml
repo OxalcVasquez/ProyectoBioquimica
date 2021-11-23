@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="46f88db1-f831-4e1f-a250-80ba7f47d025">
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="codigo" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select D.*, (precio*cantidad) as subtotal,P.nombre as producto from detalleCompra D 
+inner join producto P on P.codproducto=D.codproducto 
+where codcomprobante= $P{codigo}]]>
+	</queryString>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<field name="precio" class="java.math.BigDecimal"/>
+	<field name="codcomprobante" class="java.lang.Integer"/>
+	<field name="codproducto" class="java.lang.Integer"/>
+	<field name="subtotal" class="java.math.BigDecimal"/>
+	<field name="producto" class="java.lang.String"/>
+	<variable name="subtotal_1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{subtotal}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<rectangle radius="4">
+				<reportElement mode="Opaque" x="47" y="0" width="470" height="29" backcolor="#36304A" uuid="2a356a82-2a73-425f-9651-d83e193fa857"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="325" y="0" width="92" height="29" forecolor="#FFFFFF" uuid="13ef30b6-af10-4588-a2fb-0d618545feb8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="0" width="53" height="29" forecolor="#FFFFFF" uuid="30e14a45-660a-4987-a7fe-4ad27ff218a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÓD.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="133" height="29" forecolor="#FFFFFF" uuid="2e9133c6-d2e8-479d-9f12-7dbcb848bf63"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="0" width="92" height="29" forecolor="#FFFFFF" uuid="8a2cbac1-54b1-4ddf-969d-40e18e7204f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="92" height="29" forecolor="#FFFFFF" uuid="32e9c7ec-2d11-4a48-95f3-23d5d0f86fc9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-145" width="595" height="80" backcolor="#54F893" uuid="ad89e751-b1a0-408c-8cda-c1bf9abaf65b"/>
+				<staticText>
+					<reportElement x="111" y="19" width="266" height="50" forecolor="#FFFFFF" uuid="906b7a06-6fdc-4be4-98fc-eab65702b02e"/>
+					<textElement>
+						<font fontName="Gadugi" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[COMPRAS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="467" y="50" width="107" height="30" forecolor="#FFFFFF" uuid="9d8a3508-2659-413e-bf85-f7941e1efa04"/>
+					<textElement>
+						<font fontName="Gadugi" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Detalle compra]]></text>
+				</staticText>
+				<image>
+					<reportElement x="40" y="20" width="50" height="50" uuid="ce66edfb-5276-4800-89fe-e80f28b65c48"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
+				<textField pattern="M/d/yy h:mm a">
+					<reportElement x="500" y="20" width="86" height="14" forecolor="#FFFFFF" uuid="fbd3bf87-d80e-497c-9d2b-514852fe7810"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement x="47" y="0" width="53" height="20" uuid="42f6579f-faa1-464d-94c2-9488828875b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codcomprobante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="133" height="20" uuid="169f5403-c32b-412b-b428-91a1fd469e7a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{producto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="0" width="92" height="20" uuid="3d7b5a23-9298-4291-b33d-cb2be52dd377"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="325" y="0" width="92" height="20" uuid="274ceced-3c37-48bb-a6a7-d4c4942ff8c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="92" height="20" uuid="666f3773-2f8b-409e-aeda-d0db57fb3386"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subtotal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="24" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="41" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="140" height="30" uuid="1382541c-56ab-4577-9998-18e1a468d32a"/>
+				<textElement>
+					<font fontName="Gadugi"/>
+				</textElement>
+				<text><![CDATA[Bioquímica del Norte Andino]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="530" y="10" width="100" height="30" uuid="335beebe-72a8-4070-b1ce-15f9789ace39"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="10" width="100" height="30" uuid="a748410c-6bad-4d0e-a1b4-a36356bbc121"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="338" y="13" width="92" height="29" forecolor="#000000" uuid="980d599c-1f93-4f4c-8a2b-746f7c5e8596"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="430" y="13" width="100" height="29" uuid="352add01-5f70-4a51-949d-e237315f5ddc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{subtotal_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
