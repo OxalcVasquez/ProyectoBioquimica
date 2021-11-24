@@ -458,8 +458,14 @@ public class jdManMarca extends javax.swing.JDialog {
         // TODO add your handling code here:
         try {
             if (!txtCodigo.getText().isEmpty()) {
-                objMarca.eliminarMarca(Integer.parseInt(txtCodigo.getText()));
-                limpiarControles();
+                if (objMarca.verificarNumProductosMarca(Integer.parseInt(txtCodigo.getText()))) {
+                    objMarca.eliminarMarca(Integer.parseInt(txtCodigo.getText()));
+                    limpiarControles();
+                } else {
+                    JOptionPane.showMessageDialog(this, "La marca no puede ser eliminada, ya que tiene productos de pertenencia");
+
+                }
+
             } else {
                 JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de Marca a eliminar");
             }

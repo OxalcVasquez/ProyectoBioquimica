@@ -6,7 +6,10 @@
 package capaNegocio;
 
 import capaDatos.clsJDBCConexion;
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Types;
 
 /**
  *
@@ -17,6 +20,9 @@ public class clsCategoria {
     clsJDBCConexion objConexion = new clsJDBCConexion();
     String strSQL;
     ResultSet rs = null;
+      Connection con;
+    CallableStatement cs = null;
+
 
     public Integer generarCodigoCategoria() throws Exception {
         strSQL = "select coalesce(max(codCategoria),0)+1 as codigo from categoria";
@@ -32,6 +38,20 @@ public class clsCategoria {
         return 0;
     }
     
+     public Boolean verificarNumProductosCategoria(Integer cod) throws Exception {
+        strSQL = "{ ? = call f_verificar_numproductos_categoria(?)}";
+        try {
+            objConexion.conectarBD(); //ConectaBd
+            con = objConexion.getCon(); //Jala Conexión de CapaDatos
+            cs = con.prepareCall(strSQL);//Prepara la función
+            cs.setInt(2, cod);
+            cs.registerOutParameter(1, Types.BOOLEAN);
+            cs.executeUpdate();
+            return cs.getBoolean(1);
+        } catch (Exception e) {
+            throw new Exception("Error al verificar el producto");
+        }
+    }
      public Integer obtenerCodigoCategoria(String nombre) throws Exception {
         strSQL = "select codCategoria from categoria where nombre='"+nombre+"'";
 

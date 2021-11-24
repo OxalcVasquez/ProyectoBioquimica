@@ -6,7 +6,10 @@
 package capaNegocio;
 
 import capaDatos.clsJDBCConexion;
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Types;
 
 /**
  *
@@ -17,6 +20,8 @@ public class clsProducto {
     clsJDBCConexion objConexion = new clsJDBCConexion();
     String strSQL;
     ResultSet rs = null;
+    Connection con;
+    CallableStatement cs = null;
 
     public Integer generarCodigoProducto() throws Exception {
         strSQL = "select coalesce(max(codProducto),0)+1 as codigo from producto";
@@ -59,10 +64,11 @@ public class clsProducto {
         }
 
     }
+
     public ResultSet buscarProductos(String nombre) throws Exception {
         strSQL = "select p.*,c.nombre as categoria,m.nombre as marca from producto p "
                 + "inner join categoria c on p.codcategoria = c.codcategoria "
-                + "inner join marca m  on p.codmarca = m.codmarca where p.nombre like '"+ nombre + "%'";
+                + "inner join marca m  on p.codmarca = m.codmarca where p.nombre like '" + nombre + "%'";
 
         try {
             rs = objConexion.consultarBD(strSQL);
@@ -72,11 +78,11 @@ public class clsProducto {
         }
 
     }
-    
-      public ResultSet buscarProductosCategoria(String categoria) throws Exception {
+
+    public ResultSet buscarProductosCategoria(String categoria) throws Exception {
         strSQL = "select p.*,c.nombre as categoria,m.nombre as marca from producto p "
                 + "inner join categoria c on p.codcategoria = c.codcategoria "
-                + "inner join marca m  on p.codmarca = m.codmarca where c.nombre = '"+ categoria + "'";
+                + "inner join marca m  on p.codmarca = m.codmarca where c.nombre = '" + categoria + "'";
 
         try {
             rs = objConexion.consultarBD(strSQL);
@@ -135,6 +141,21 @@ public class clsProducto {
             throw new Exception("Error al eliminar producto");
         }
 
+    }
+
+    public Boolean verificarProductoEnVenta(Integer cod) throws Exception {
+        strSQL = "{ ? = call f_verificar_venta_productos(?)}";
+        try {
+            objConexion.conectarBD(); //ConectaBd
+            con = objConexion.getCon(); //Jala Conexión de CapaDatos
+            cs = con.prepareCall(strSQL);//Prepara la función
+            cs.setInt(2, cod);
+            cs.registerOutParameter(1, Types.BOOLEAN);
+            cs.executeUpdate();
+            return cs.getBoolean(1);
+        } catch (Exception e) {
+            throw new Exception("Error al verificar el producto");
+        }
     }
 
     public void darBajaProducto(Integer cod) throws Exception {

@@ -6,7 +6,10 @@
 package capaNegocio;
 
 import capaDatos.clsJDBCConexion;
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Types;
 
 /**
  *
@@ -17,6 +20,9 @@ public class clsMarca {
     clsJDBCConexion objConexion = new clsJDBCConexion();
     String strSQL;
     ResultSet rs = null;
+      Connection con;
+    CallableStatement cs = null;
+
 
     public Integer generarCodigoMarca() throws Exception {
         strSQL = "select coalesce(max(codMarca),0)+1 as codigo from Marca";
@@ -116,6 +122,21 @@ public class clsMarca {
             throw new Exception("Error al eliminar Marca");
         }
 
+    }
+    
+        public Boolean verificarNumProductosMarca(Integer cod) throws Exception {
+        strSQL = "{ ? = call f_verificar_numproductos_marca(?)}";
+        try {
+            objConexion.conectarBD(); //ConectaBd
+            con = objConexion.getCon(); //Jala Conexión de CapaDatos
+            cs = con.prepareCall(strSQL);//Prepara la función
+            cs.setInt(2, cod);
+            cs.registerOutParameter(1, Types.BOOLEAN);
+            cs.executeUpdate();
+            return cs.getBoolean(1);
+        } catch (Exception e) {
+            throw new Exception("Error al verificar el producto");
+        }
     }
 
     public void darBajaMarca(Integer cod) throws Exception {
