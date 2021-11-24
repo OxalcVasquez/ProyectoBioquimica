@@ -86,4 +86,26 @@ public class clsProveedor {
         }
             
      }
+     public boolean validarVigencia(String ruc) throws Exception{
+        strSQL="select estado from proveedor where ruc ='"+ruc+"'";
+        try {
+            rs=objConectar.consultarBD(strSQL);
+            if(rs.next()){
+                return rs.getBoolean("estado");
+            }
+        } catch (Exception e) {
+              throw new Exception(e.getMessage());
+        }
+        return false;
+    }
+     public void actualizarestado(String ruc) throws Exception{
+        strSQL="update  proveedor set estado= true where ruc ='"+ruc+"'";
+        try {
+           objConectar.ejecutarBD(strSQL);
+           
+        } catch (Exception e) {
+              throw new Exception(e.getMessage());
+        }
+        
+    }
 }

@@ -6,6 +6,8 @@
 package capaNegocio;
 
 import capaDatos.clsJDBCConexion;
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -17,17 +19,25 @@ public class clsComprobanteCompra {
      clsJDBCConexion objConexion = new clsJDBCConexion();
     String strSQL;
     ResultSet rs = null;
+       Connection con;
+    CallableStatement cs = null;
     
     public Integer generarCodigoCCompra() throws Exception {
-        strSQL = "select coalesce(max(codcomprobante),0)+1 as codigo from comprobanteCompra";
-
+        strSQL = "select f_codCompra();";
         try {
-            rs = objConexion.consultarBD(strSQL);
+            objConexion.conectarBD();
+            con = objConexion.getCon();
+            cs = con.prepareCall(strSQL);
+            rs = cs.executeQuery();
             if (rs.next()) {
-                return rs.getInt("codigo");
+                return rs.getInt("f_codCompra");
             }
         } catch (Exception e) {
-            throw new Exception("Error al generar código de la compra!");
+            throw new Exception("Error al generar código de la compra");
+
+        } finally {
+            objConexion.desconectarBD();
+            cs.close();
         }
         return 0;
     }
@@ -73,26 +83,57 @@ public class clsComprobanteCompra {
 
     }
 
-     public void modificarComprobanteCompra(Integer codC,String numC,String tipo,Double total,String fecha, String ruc) throws Exception {
-        strSQL = " UPDATE comprobanteCompra SET  numcomprobante='" + numC+ "',tipo='" + tipo + "',total=" + total + ",fecha='" + fecha + "',rucproveedor=" + ruc + " WHERE codcomprobante=" + codC + ";";
+     public void modificarComprobanteCompra(Integer codC,String numC,String tipo,Double total,String fecha, String ruc, ArrayList Detalle, ArrayList detalleModificado) throws Exception {
+        //strSQL = " UPDATE comprobanteCompra SET  numcomprobante='" + numC+ "',tipo='" + tipo + "',total=" + total + ",fecha='" + fecha + "',rucproveedor=" + ruc + " WHERE codcomprobante=" + codC + ";";
 
+        ArrayList consultas = new ArrayList();
+
+        for (int i = 0; i < Detalle.size(); i++) {
+            Object[] datos = (Object[]) Detalle.get(i);
+            consultas.add((String) "UPDATE producto set stock=stock-" + datos[2] + " where codproducto=" + datos[4]);
+            consultas.add((String) "DELETE FROM  detallecompra where codcomprobante=" + codC);
+
+        }
+
+        consultas.add((String) "DELETE FROM  comprobanteCompra where codcomprobante=" + codC);
+
+        consultas.add((String) "INSERT INTO comprobanteCompra(codcomprobante,numcomprobante,tipo,total,fecha,rucproveedor) "
+                + "	VALUES (" + codC + ", '" + numC + "','" + tipo + "'," + total + ",'" + fecha + "', '" + ruc + "');");
+
+        for (int i = 0; i < detalleModificado.size(); i++) {
+            Object[] datos = (Object[]) detalleModificado.get(i);
+            consultas.add((String) "INSERT INTO detalleCompra(cantidad, precio, codcomprobante, codproducto) VALUES (" + datos[2] + "," + datos[1] + ", " + codC + ", " + datos[4] + ")");
+            consultas.add((String) "UPDATE producto set stock=stock+" + datos[2] + " where codproducto=" + datos[4]);
+
+        }
         try {
-            objConexion.ejecutarBD(strSQL);
+            objConexion.ejecutartBDTransacciones(consultas);
 
         } catch (Exception e) {
-            throw new Exception("Error al modificar comprobante compra");
+            throw new Exception(e);
         }
 
     }
      
-      public void eliminarComprobanteCompra(Integer codC) throws Exception {
-        strSQL = " DELETE FROM comprobanteCompra WHERE codcomprobante=" + codC + ";";
+      public void eliminarComprobanteCompra(Integer codC, ArrayList Detalle) throws Exception {
+        //strSQL = " DELETE FROM comprobanteCompra WHERE codcomprobante=" + codC + ";";
+
+        ArrayList consultas = new ArrayList();
+
+        for (int i = 0; i < Detalle.size(); i++) {
+            Object[] datos = (Object[]) Detalle.get(i);
+            consultas.add((String) "UPDATE producto set stock=stock-" + datos[2] + " where codproducto=" + datos[4]);
+            consultas.add((String) "DELETE FROM  detallecompra where codcomprobante=" + codC);
+
+        }
+
+        consultas.add((String) "DELETE FROM  comprobanteCompra WHERE codcomprobante=" + codC);
 
         try {
-            objConexion.ejecutarBD(strSQL);
+            objConexion.ejecutartBDTransacciones(consultas);
 
         } catch (Exception e) {
-            throw new Exception("Error al eliminar comprobante compra");
+            throw new Exception(e);
         }
 
     }
@@ -109,4 +150,6 @@ public class clsComprobanteCompra {
         }
 
     }
+      
+         
 }
