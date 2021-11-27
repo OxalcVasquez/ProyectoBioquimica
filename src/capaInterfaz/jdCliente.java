@@ -336,7 +336,7 @@ clsCliente objC = new clsCliente();
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chkVigencia)
                             .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -363,7 +363,7 @@ clsCliente objC = new clsCliente();
                         .addComponent(botonMedGradiente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonMedGradiente3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -495,7 +495,9 @@ clsCliente objC = new clsCliente();
                 txtCodigo.setText(objC.generarCodigoCliente().toString());
                 txtNombre.requestFocus();
             }else{
-                btnNuevo.setText("Nuevo");
+                
+                if(!txtNombre.getText().equals("") || !txtApellidos.getText().equals("") || !txtTelefono.getText().equals("") || !txtCorreo.getText().equals("") || !txtDNI.getText().equals("") || !txtCiudad.getText().equals("") || !(jdCalendar.getDate()==null)){
+                    btnNuevo.setText("Nuevo");
                 
                 if(cboSexo.getSelectedItem().toString().equals("Masculino")){
                     sexo=true;
@@ -512,6 +514,11 @@ clsCliente objC = new clsCliente();
                 objC.registrarCliente(Integer.parseInt(txtCodigo.getText()), txtDNI.getText(), tipoDoc, txtNombre.getText(), txtApellidos.getText(), fecha, sexo, txtCiudad.getText(), txtTelefono.getText(), txtCorreo.getText(), chkVigencia.isSelected());
                 limpiarControles();
                 listarCliente();
+                
+                }else {
+                    JOptionPane.showMessageDialog(this, "Llene todos los campos");
+                }
+                
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
