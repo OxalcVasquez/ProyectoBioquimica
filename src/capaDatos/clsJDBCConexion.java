@@ -23,6 +23,14 @@ public class clsJDBCConexion {
         this.password = "d794791d083f061a077dabd47961b43acd04e71ae2798d5136c38fd6308c1547";
         this.con = null;
     }
+    
+    public void desconetarBD() throws Exception{
+        try{
+            con.close();
+        } catch(SQLException e){
+            throw new Exception("Error al conectar a la BD...");
+        }   
+    }
 
     //Conexión a BD
     public void conectarBD() throws Exception {

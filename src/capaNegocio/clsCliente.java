@@ -6,7 +6,10 @@
 package capaNegocio;
 
 import capaDatos.clsJDBCConexion;
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -16,7 +19,10 @@ public class clsCliente {
 
     clsJDBCConexion objConexion = new clsJDBCConexion();
     String strSQL;
-    ResultSet rs = null;
+    Statement sent;
+    Connection con;
+    ResultSet rs=null;
+    CallableStatement cs=null;
 
     public Integer generarCodigoCliente() throws Exception {
         strSQL = "select coalesce(max(codCliente),0)+1 as codigo from cliente";
@@ -33,13 +39,19 @@ public class clsCliente {
     }
 
     public ResultSet listarCliente() throws Exception {
-        strSQL = "select * from cliente";
+        strSQL = "select * from f_clientes()";
 
         try {
-            rs = objConexion.consultarBD(strSQL);
+            objConexion.conectarBD();
+            con=objConexion.getCon();
+            cs=con.prepareCall(strSQL);
+            rs=cs.executeQuery();
             return rs;
         } catch (Exception e) {
-            throw new Exception("Error al listar cliente");
+            throw new Exception("Error al consultar habitacion!");
+        }finally{
+            objConexion.desconetarBD();
+            cs.close();
         }
 
     }
