@@ -24,12 +24,12 @@ public class clsProducto {
     CallableStatement cs = null;
 
     public Integer generarCodigoProducto() throws Exception {
-        strSQL = "select coalesce(max(codProducto),0)+1 as codigo from producto";
+        strSQL = "select f_generar_codproducto();";
 
         try {
             rs = objConexion.consultarBD(strSQL);
             if (rs.next()) {
-                return rs.getInt("codigo");
+                return rs.getInt("f_generar_codproducto");
             }
         } catch (Exception e) {
             throw new Exception("Error al generar código del producto!");
@@ -38,9 +38,7 @@ public class clsProducto {
     }
 
     public ResultSet listarProductos() throws Exception {
-        strSQL = "select p.*,c.nombre as categoria,m.nombre as marca from producto p "
-                + "inner join categoria c on p.codcategoria = c.codcategoria "
-                + "inner join marca m  on p.codmarca = m.codmarca";
+        strSQL = "select * from f_listarProductos(); 				";
 
         try {
             rs = objConexion.consultarBD(strSQL);
@@ -52,46 +50,53 @@ public class clsProducto {
     }
 
     public ResultSet buscarProducto(Integer cod) throws Exception {
-        strSQL = "select p.*,c.nombre as categoria,m.nombre as marca from producto p "
-                + "inner join categoria c on p.codcategoria = c.codcategoria "
-                + "inner join marca m  on p.codmarca = m.codmarca where codProducto=" + cod + "";
+        strSQL = "select * from f_buscarProducto(" + cod + ")";
 
         try {
             rs = objConexion.consultarBD(strSQL);
             return rs;
         } catch (Exception e) {
-            throw new Exception("Error al listar producto");
+            throw new Exception("Error al buscar producto");
         }
 
     }
 
     public ResultSet buscarProductos(String nombre) throws Exception {
-        strSQL = "select p.*,c.nombre as categoria,m.nombre as marca from producto p "
-                + "inner join categoria c on p.codcategoria = c.codcategoria "
-                + "inner join marca m  on p.codmarca = m.codmarca where p.nombre like '" + nombre + "%'";
+        strSQL = "select * from f_buscarProductosNombres('"+nombre+"')";
 
         try {
             rs = objConexion.consultarBD(strSQL);
             return rs;
         } catch (Exception e) {
-            throw new Exception("Error al listar producto");
+            throw new Exception("Error al buscar productos");
         }
 
     }
 
     public ResultSet buscarProductosCategoria(String categoria) throws Exception {
-        strSQL = "select p.*,c.nombre as categoria,m.nombre as marca from producto p "
-                + "inner join categoria c on p.codcategoria = c.codcategoria "
-                + "inner join marca m  on p.codmarca = m.codmarca where c.nombre = '" + categoria + "'";
+        strSQL = "select * from f_buscarProductosCategoria('" + categoria + "')";
 
         try {
             rs = objConexion.consultarBD(strSQL);
             return rs;
         } catch (Exception e) {
-            throw new Exception("Error al listar producto");
+            throw new Exception("Error al listar productos por categoria");
         }
 
     }
+    
+     public ResultSet buscarProductosMarca(String marc) throws Exception {
+        strSQL = "select * from f_buscarProductosMarca('" + marc + "')";
+
+        try {
+            rs = objConexion.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("Error al listar productos por marca");
+        }
+
+    }
+     
 
     public ResultSet listarProductosVigentes() throws Exception {
         strSQL = "select * from producto where vigencia=true";
@@ -158,6 +163,22 @@ public class clsProducto {
         }
     }
 
+    public Boolean verificarStock(Integer cod) throws Exception {
+        strSQL = "{ ? = call f_verificar_stock_producto(?)}";
+        try {
+            objConexion.conectarBD(); //ConectaBd
+            con = objConexion.getCon(); //Jala Conexión de CapaDatos
+            cs = con.prepareCall(strSQL);//Prepara la función
+            cs.setInt(2, cod);
+            cs.registerOutParameter(1, Types.BOOLEAN);
+            cs.executeUpdate();
+            return cs.getBoolean(1);
+        } catch (Exception e) {
+            throw new Exception("Error al verificar stock producto");
+        }
+    }
+    
+    
     public void darBajaProducto(Integer cod) throws Exception {
         strSQL = "UPDATE producto SET vigencia=false WHERE codProducto=" + cod + ";";
 

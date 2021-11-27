@@ -46,6 +46,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         setBackground(new Color(0, 0, 0, 0));
 
         cboCategoria.setUI(ComboMed.createUI(cboCategoria));
+        cboMarca.setUI(ComboMed.createUI(cboMarca));
         tblDatos.getTableHeader().setDefaultRenderer(new ColorTabla());
     }
 
@@ -152,6 +153,11 @@ public class jdBuscarProductos extends javax.swing.JDialog {
 
         cboMarca.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         cboMarca.setForeground(new java.awt.Color(51, 51, 51));
+        cboMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMarcaActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel11.setText("Marca");
@@ -377,6 +383,8 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         try {
             listarProductos(objProducto.listarProductos());
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+
         }
     }//GEN-LAST:event_formWindowOpened
 
@@ -399,6 +407,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         try {
             listarProductos(objProducto.buscarProductos(txtNombre.getText().toUpperCase()));
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
 
         }
     }//GEN-LAST:event_txtNombreKeyReleased
@@ -408,6 +417,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
         try {
             listarProductos(objProducto.buscarProductosCategoria(cboCategoria.getSelectedItem().toString()));
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
 
         }
     }//GEN-LAST:event_cboCategoriaActionPerformed
@@ -431,10 +441,21 @@ public class jdBuscarProductos extends javax.swing.JDialog {
             }
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
         }
 
 
     }//GEN-LAST:event_btnSeleccionarActionPerformed
+
+    private void cboMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMarcaActionPerformed
+        // TODO add your handling code here:
+        try {
+            listarProductos(objProducto.buscarProductosMarca(cboMarca.getSelectedItem().toString()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+
+        }
+    }//GEN-LAST:event_cboMarcaActionPerformed
 
     /**
      * @param args the command line arguments
