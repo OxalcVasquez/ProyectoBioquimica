@@ -176,6 +176,11 @@ public class jdManMarca extends javax.swing.JDialog {
         });
 
         btnSalir2.setText("Salir");
+        btnSalir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -470,7 +475,7 @@ public class jdManMarca extends javax.swing.JDialog {
                         objMarca.eliminarMarca(Integer.parseInt(txtCodigo.getText()));
                         new MensajeMed().mostrar(this, "Se elimino la marca correctamente", 2);
                     }
-                    objMarca.eliminarMarca(Integer.parseInt(txtCodigo.getText()));
+                    
                     limpiarControles();
 
                 } else {
@@ -511,6 +516,10 @@ public class jdManMarca extends javax.swing.JDialog {
         txtCodigo.setText(String.valueOf(tblDatos.getValueAt(tblDatos.getSelectedRow(), 0)));
         btnBuscarActionPerformed(null);
     }//GEN-LAST:event_tblDatosMouseClicked
+
+    private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalir2ActionPerformed
 
     /**
      * @param args the command line arguments

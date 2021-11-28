@@ -8,6 +8,7 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaInterfaz.Componentes.MensajeMed;
 import capaNegocio.clsCliente;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -77,8 +78,9 @@ clsCliente objC = new clsCliente();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         cboDoc = new javax.swing.JComboBox<>();
-        chkVigencia = new javax.swing.JCheckBox();
         botonMedGradiente3 = new capaInterfaz.Componentes.BotonMedGradiente();
+        botonEliminar1 = new capaInterfaz.Componentes.BotonMedGradiente();
+        chkVigencia = new capaInterfaz.Componentes.CheckMed();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -229,10 +231,22 @@ clsCliente objC = new clsCliente();
         cboDoc.setForeground(new java.awt.Color(51, 51, 51));
         cboDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "Carnet Extranjeria" }));
 
-        chkVigencia.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        chkVigencia.setText("(Vigencia)");
-
         botonMedGradiente3.setText("Salir");
+
+        botonEliminar1.setText("Dar de baja");
+        botonEliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminar1ActionPerformed(evt);
+            }
+        });
+
+        chkVigencia.setSelected(false);
+        chkVigencia.setText("(Vigente)");
+        chkVigencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkVigenciaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -247,7 +261,8 @@ clsCliente objC = new clsCliente();
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(botonMedGradiente3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonMedGradiente3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
@@ -264,7 +279,7 @@ clsCliente objC = new clsCliente();
                                         .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(chkVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(chkVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -334,8 +349,8 @@ clsCliente objC = new clsCliente();
                             .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(11, 11, 11)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkVigencia)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(chkVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -356,6 +371,7 @@ clsCliente objC = new clsCliente();
                             .addComponent(cboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,9 +380,10 @@ clsCliente objC = new clsCliente();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonMedGradiente3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 850, 650));
@@ -516,12 +533,12 @@ clsCliente objC = new clsCliente();
                 listarCliente();
                 
                 }else {
-                    JOptionPane.showMessageDialog(this, "Llene todos los campos");
+                    new MensajeMed().mostrar(this, "Llene todos los campos", 0);
                 }
                 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -532,19 +549,20 @@ clsCliente objC = new clsCliente();
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         try {
             if(txtCodigo.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "Ingrese código a eliminar...");
+                new MensajeMed().mostrar(this, "Ingrese código a eliminar...", 0);
             }else{
                 if(objC.verfificarCli(Integer.parseInt(txtCodigo.getText()))){
                 objC.eliminarCliente(Integer.parseInt(txtCodigo.getText()));
                 limpiarControles();
-                listarCliente();               
+                listarCliente(); 
+                new MensajeMed().mostrar(this, "Se elimino el cliente correctamente", 2);
                 }else{
-                    JOptionPane.showMessageDialog(this, "No se puede eliminar este cliente porque tiene compras asignadas.");
+                    new MensajeMed().mostrar(this, "No se puede eliminar este cliente porque tiene compras asignadas.", 3);
                 }
 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_botonEliminarActionPerformed
 
@@ -552,7 +570,10 @@ clsCliente objC = new clsCliente();
         Boolean sexo;
         String tipoDoc="";
         try {
-            if(cboSexo.getSelectedItem().toString().equals("Masculino")){
+            if(txtCodigo.getText().isEmpty()){
+                new MensajeMed().mostrar(this, "Ingrese código a modificar...", 0);
+            }else{
+                if(cboSexo.getSelectedItem().toString().equals("Masculino")){
                     sexo=true;
                 } else{
                     sexo=false;
@@ -565,10 +586,13 @@ clsCliente objC = new clsCliente();
             
             objC.modificarCliente(Integer.parseInt(txtCodigo.getText()), txtDNI.getText(), tipoDoc, txtNombre.getText(), txtApellidos.getText(), fecha, sexo, txtCiudad.getText(), txtTelefono.getText(), txtCorreo.getText(), chkVigencia.isSelected());
             limpiarControles();
+            new MensajeMed().mostrar(this, "Se modifico al cliente correctamente", 2);
             listarCliente();
+            }
+            
 //            listarEmpleado();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_botonMedGradiente2ActionPerformed
 
@@ -583,7 +607,7 @@ clsCliente objC = new clsCliente();
         String tipoD;
         try{
             if(txtCodigo.getText().equals("")){
-                JOptionPane.showMessageDialog(this, "Ingrese codigo a buscar");
+                new MensajeMed().mostrar(this, "Ingrese código a buscar...", 0);
                 txtDNI.requestFocus();
             }else{
                 rsEm=objC.buscarCliente(Integer.parseInt(txtCodigo.getText()));
@@ -610,15 +634,34 @@ clsCliente objC = new clsCliente();
 //                    chkVigencia.setSelected(rsEm.getBoolean("Vigencia"));
                     
                 }else{
-                    JOptionPane.showMessageDialog(this, "Codigo no registrado");
+                    new MensajeMed().mostrar(this, "Codigo no registrado", 3);
                     limpiarControles();
                 }
             }
 
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void botonEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminar1ActionPerformed
+        try {
+            if(txtCodigo.getText().isEmpty()){
+                new MensajeMed().mostrar(this, "Ingrese código a dar de baja...", 0);
+            }else{
+                objC.darBajaCliente(Integer.parseInt(txtCodigo.getText()));
+                limpiarControles();
+                listarCliente(); 
+                new MensajeMed().mostrar(this, "Se dio de baja al cliente correctamente", 2);
+            }
+        } catch (Exception e) {
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
+        }
+    }//GEN-LAST:event_botonEliminar1ActionPerformed
+
+    private void chkVigenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkVigenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkVigenciaActionPerformed
 
     private void limpiarControles(){
         txtCodigo.setText("");
@@ -663,7 +706,7 @@ clsCliente objC = new clsCliente();
                modelo.addRow(new Object[]{rsListaTH.getInt("codCliente"),rsListaTH.getString("numdocumento"),rsListaTH.getString("nombres"),rsListaTH.getString("ciudad"),rsListaTH.getString("telefono"),sexo,vig});
             }
         } catch (Exception e) {
-             JOptionPane.showMessageDialog(this, e.getMessage());
+             new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }
     /**
@@ -725,6 +768,7 @@ clsCliente objC = new clsCliente();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private capaInterfaz.Componentes.BotonMedGradiente botonEliminar;
+    private capaInterfaz.Componentes.BotonMedGradiente botonEliminar1;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente2;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente3;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar;
@@ -732,7 +776,7 @@ clsCliente objC = new clsCliente();
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboDoc;
     private javax.swing.JComboBox<String> cboSexo;
-    private javax.swing.JCheckBox chkVigencia;
+    private capaInterfaz.Componentes.CheckMed chkVigencia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
