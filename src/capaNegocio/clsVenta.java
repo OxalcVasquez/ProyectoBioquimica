@@ -36,7 +36,7 @@ public class clsVenta {
                 return rs.getInt("f_generarNumVenta");
             }
         } catch (Exception e) {
-            throw new Exception("Error al ejecutar rla funcion");
+            throw new Exception("Error al ejecutar la funcion generar numero de venta");
 
         } finally {
             objConexion.desconectarBD();
@@ -44,9 +44,9 @@ public class clsVenta {
         }
         return 0;
     }
-    
-      public Integer obtenerNumVenta(String tip,String com) throws Exception {
-        strSQL = "select f_obtenerNumVenta('"+tip+"','"+com+"');";
+
+    public Integer obtenerNumVenta(String tip, String com) throws Exception {
+        strSQL = "select f_obtenerNumVenta('" + tip + "','" + com + "');";
         try {
             objConexion.conectarBD();
             con = objConexion.getCon();
@@ -56,7 +56,7 @@ public class clsVenta {
                 return rs.getInt("f_obtenerNumVenta");
             }
         } catch (Exception e) {
-            throw new Exception("Error al ejecutar rla funcion");
+            throw new Exception("Error al ejecutar la funcion obtener numero venta");
 
         } finally {
             objConexion.desconectarBD();
@@ -64,8 +64,6 @@ public class clsVenta {
         }
         return 0;
     }
-
-      
 
     public Boolean verificarVenta(String numcom, String tipo) throws Exception {
         strSQL = "select * from comprobanteventa where numcomprobante='" + numcom + "' and tipo='" + tipo + "'";
@@ -80,9 +78,6 @@ public class clsVenta {
         }
         return true;
     }
-    
-    
-    
 
     public ResultSet listarVentas() throws Exception {
         strSQL = "select v.*,c.nombres ||' '|| c.apellidos as cliente,t.nombres ||' '|| t.apellidos as trabajador from comprobanteVenta as v "
@@ -105,7 +100,7 @@ public class clsVenta {
             rs = objConexion.consultarBD(strSQL);
             return rs;
         } catch (Exception e) {
-            throw new Exception("Error al listar ventas");
+            throw new Exception("Error al bucsar venta");
         }
 
     }
@@ -118,7 +113,7 @@ public class clsVenta {
             rs = objConexion.consultarBD(strSQL);
             return rs;
         } catch (Exception e) {
-            throw new Exception("Error al listar ventas");
+            throw new Exception("Error al buscar detalles de la venta");
         }
 
     }
@@ -138,7 +133,7 @@ public class clsVenta {
             objConexion.ejecutartBDTransacciones(consultas);
 
         } catch (Exception e) {
-            throw new Exception(e);
+            throw new Exception("Error al registrar venta");
         }
 
     }
@@ -168,7 +163,8 @@ public class clsVenta {
             objConexion.ejecutartBDTransacciones(consultas);
 
         } catch (Exception e) {
-            throw new Exception(e);
+            throw new Exception("Error al modificar venta");
+
         }
 
     }
@@ -189,7 +185,9 @@ public class clsVenta {
             objConexion.ejecutartBDTransacciones(consultas);
 
         } catch (Exception e) {
-            throw new Exception(e);
+
+            throw new Exception("Error al eliminar venta");
+
         }
 
     }
