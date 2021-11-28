@@ -8,6 +8,7 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaInterfaz.Componentes.MensajeMed;
 import capaNegocio.clsTrabajador;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -548,13 +549,13 @@ public class jdTrabajador extends javax.swing.JDialog {
                
                 
                 objTra.guardarTrabajador(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),txtTelefono.getText(),txtCorreo.getText(), txtDireccion.getText(),sexo,fecha,cargo,chkEstado.isSelected());
-                JOptionPane.showMessageDialog(this,"Trabajador Registrado correctamente");
+                new MensajeMed().mostrar(this,"Trabajador Registrado correctamente",2);
                 limpiarContenido();
                 listarTrabajador(); 
             }
         } catch (Exception e) {
         
-            JOptionPane.showMessageDialog(this, e.getMessage());
+             new MensajeMed().mostrar(this, e.getMessage(),3);
         }
   
     }//GEN-LAST:event_btnNuevoActionPerformed
@@ -562,16 +563,16 @@ public class jdTrabajador extends javax.swing.JDialog {
     private void gradientButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradientButton3ActionPerformed
         try {
            if( txtCodigo.getText().equals("")){
-           JOptionPane.showMessageDialog(this,"Es necesario el codigo del trabajador");   
+           new MensajeMed().mostrar(this,"Es necesario el codigo del trabajador",0);   
            }else{
            
                objTra.darbajaTR(Integer.parseInt(txtCodigo.getText()));
-               JOptionPane.showMessageDialog(this,"Se dio de baja al trabajador");
+                new MensajeMed().mostrar(this,"Se dio de baja al trabajador",2);
                listarTrabajador();
                limpiarContenido();
            }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+             new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }//GEN-LAST:event_gradientButton3ActionPerformed
 
@@ -582,7 +583,7 @@ public class jdTrabajador extends javax.swing.JDialog {
         try {
         
             if(txtCodigo.getText().equals("")){
-                JOptionPane.showMessageDialog(this, "Es necesario el codigo del trabajador");
+                 new MensajeMed().mostrar(this, "Es necesario el codigo del trabajador",0);
             }else{
                 rs = objTra.buscar(Integer.parseInt(txtCodigo.getText()));
                 while(rs.next()){
@@ -609,7 +610,7 @@ public class jdTrabajador extends javax.swing.JDialog {
             }
             
         } catch (Exception e) {
-         JOptionPane.showMessageDialog(this, e.getMessage());
+          new MensajeMed().mostrar(this, e.getMessage(),3);
         }
         
         
@@ -633,7 +634,7 @@ public class jdTrabajador extends javax.swing.JDialog {
         Character cargo = null;
         try {
              if(txtCodigo.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Es necesario el codigo del trabajador");    
+             new MensajeMed().mostrar(this,"Es necesario el codigo del trabajador",0);    
             }else{
              if(cboSexo.getSelectedItem().equals("Masculino")) sexo = true;
              if(cboSexo.getSelectedItem().equals("Femenino")) sexo = false;
@@ -645,12 +646,12 @@ public class jdTrabajador extends javax.swing.JDialog {
              String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdtFecha.getDate());
              
              objTra.actualizarTrabajador(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(),txtApellido.getText(), txtDNI.getText(),txtTelefono.getText(), txtCorreo.getText(),txtDireccion.getText(),sexo,fecha,cargo,chkEstado.isSelected());
-                  JOptionPane.showMessageDialog(this,"Se actualizo al trabajador"); 
+                   new MensajeMed().mostrar(this,"Se actualizo al trabajador",2); 
                   listarTrabajador();
                   limpiarContenido();
              }
         } catch (Exception e) {
-             JOptionPane.showMessageDialog(this, e.getMessage());
+              new MensajeMed().mostrar(this, e.getMessage(),3);
         }
         
         
@@ -662,26 +663,25 @@ public class jdTrabajador extends javax.swing.JDialog {
         try {
         
             if(txtCodigo.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Es necesario el codigo del trabajador");    
+             new MensajeMed().mostrar(this,"Es necesario el codigo del trabajador",0);    
             }else{
             
-                int confirmacion = JOptionPane.showConfirmDialog(this,"¿Estás seguro de la eliminación? El usuario será eliminado","Eliminación",JOptionPane.YES_NO_OPTION);
+                int confirmacion =new MensajeMed().mostrar(this,"¿Estás seguro de la eliminación? El usuario será eliminado",1);
                 if(confirmacion == JOptionPane.YES_OPTION){
                  objTra.eliminarTrabajador(Integer.parseInt(txtCodigo.getText()));
-                 JOptionPane.showMessageDialog(this,"Se elimino al trabajador "); 
+                 new MensajeMed().mostrar(this,"Se elimino al trabajador ",2); 
                  listarTrabajador();
                  limpiarContenido();
             }else{
-                  JOptionPane.showMessageDialog(this,"No se elimino al trabajador"); 
+                  new MensajeMed().mostrar(this,"No se elimino al trabajador",3); 
                   listarTrabajador();
                   limpiarContenido();
                 }
                
             }
         } catch (Exception e) {
-             JOptionPane.showMessageDialog(this, e.getMessage());
+             new MensajeMed().mostrar(this, e.getMessage(),3);
         }
-        
         
         
         

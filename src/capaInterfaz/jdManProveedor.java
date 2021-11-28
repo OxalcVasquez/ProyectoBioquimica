@@ -8,6 +8,7 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaInterfaz.Componentes.MensajeMed;
 import capaNegocio.clsProveedor;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -488,7 +489,7 @@ clsProveedor objProv = new clsProveedor();
            String rubro="";
         try {
             if(txtRuc.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "Ingrese ruc a buscar...");
+                 new MensajeMed().mostrar(this, "Ingrese ruc a buscar...",0);
                 txtRuc.requestFocus();
             }else{
                 rsPr=objProv.buscarProv(txtRuc.getText());
@@ -505,12 +506,12 @@ clsProveedor objProv = new clsProveedor();
                   
                     chkEstado.setSelected(rsPr.getBoolean("estado"));
                 }else{
-                    JOptionPane.showMessageDialog(this, "Ruc no registrado...");
+                    new MensajeMed().mostrar(this, "Ruc no registrado...",0);
                     
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -531,15 +532,15 @@ clsProveedor objProv = new clsProveedor();
                     if (cboRubro.getSelectedItem().equals("Químico")) rubro="Q";
                     
                     objProv.registrarProv(txtRuc.getText(),txtRAZ.getText(), txtCorreo.getText(), txtWeb.getText(), txtTel.getText(), txtCiudad.getText(), rubro, chkEstado.isSelected());
-                  JOptionPane.showMessageDialog(this, "Registro correcto");
+                  new MensajeMed().mostrar(this, "Se registró correctamente.", 2);
                   listarProveedores();
                 }else{
-                     JOptionPane.showMessageDialog(this, "Ruc ya está registrado!");
+                     new MensajeMed().mostrar(this, "Ruc ya está registrado!",3);
 
                 }
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -547,13 +548,14 @@ clsProveedor objProv = new clsProveedor();
         // TODO add your handling code here:
          try {
             if(txtRuc.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "Ingrese ruc a dar de baja...");
+                new MensajeMed().mostrar(this, "Ingrese ruc a dar de baja...",0);
             }else{
                 objProv.darBajaHab(txtRuc.getText());
+                new MensajeMed().mostrar(this, "Se dio de baja correctamente.", 2);
                 listarProveedores();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }//GEN-LAST:event_btnDarBajaActionPerformed
 
@@ -561,13 +563,20 @@ clsProveedor objProv = new clsProveedor();
         // TODO add your handling code here:
          try {
             if(txtRuc.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "Ingrese ruc a dar de baja...");
+                new MensajeMed().mostrar(this, "Ingrese ruc a dar de baja...",0);
             }else{
-                objProv.darBajaHab(txtRuc.getText());
+                String rubro=" ";
+              
+                    if (cboRubro.getSelectedItem().equals("Agrícola")) rubro="A";
+                    if (cboRubro.getSelectedItem().equals("Veterinario")) rubro="V";
+                    if (cboRubro.getSelectedItem().equals("Químico")) rubro="Q";
+                objProv.modificarProv(txtRuc.getText(),txtRAZ.getText(), txtCorreo.getText(), txtWeb.getText(), txtTel.getText(), txtCiudad.getText(), rubro, chkEstado.isSelected());
+                new MensajeMed().mostrar(this, "Se modificó correctamente", 2);
                 listarProveedores();
+                 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -575,17 +584,21 @@ clsProveedor objProv = new clsProveedor();
         // TODO add your handling code here:
           try {
             if(txtRuc.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "Ingrese ruc a eliminar...");
+                new MensajeMed().mostrar(this, "Ingrese ruc a eliminar...",0);
             }else{
                 if(objProv.verfificarPro(txtRuc.getText())){
+                    int rpta = new MensajeMed().mostrar(this, "Está seguro de eliminar proveedor?", 1);
+                    if (rpta == JOptionPane.YES_OPTION) {
                 objProv.eliminarProv(txtRuc.getText());
+                new MensajeMed().mostrar(this, "Se eliminó correctamente", 2);
+                    }
                 listarProveedores();
                 }else{
-                    JOptionPane.showMessageDialog(this, "No se puede eliminar este proveedor porque tiene compras asignadas.");
+                    new MensajeMed().mostrar(this, "No se puede eliminar este proveedor porque tiene compras asignadas.",3);
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

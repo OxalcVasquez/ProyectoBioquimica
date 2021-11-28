@@ -8,6 +8,7 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaInterfaz.Componentes.MensajeMed;
 import capaNegocio.clsComprobanteCompra;
 import capaNegocio.clsDetalleCompra;
 import capaNegocio.clsProducto;
@@ -441,7 +442,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                 btnNuevoProductoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 270, -1, -1));
+        jPanel2.add(btnNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 260, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 740));
 
@@ -528,7 +529,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
             Object[] datos = (Object[]) listaDetalle.get(i);
             if (datos[0].equals(txtProducto.getText())) {
                 listaDetalle.remove(i);
-                JOptionPane.showMessageDialog(this, "Producto eliminado correctamente");
+                new MensajeMed().mostrar(this, "Producto eliminado correctamente",2);
                 listarDetalle(listaDetalle);
             }
         }
@@ -548,7 +549,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 
         try {
             if (txtruc.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Ingrese ruc a buscar...");
+                new MensajeMed().mostrar(this, "Ingrese ruc a buscar...",0);
                 txtruc.requestFocus();
             } else {
                 
@@ -556,24 +557,25 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
                 if (rsPr.next()) {
                     if (objProv.validarVigencia(txtruc.getText())) {
                     txtRaz.setText(rsPr.getString("razonsocial"));
-}else{
-                    int a=JOptionPane.showConfirmDialog(null,"Proveedor inactivo, desea activarlo?","Activacion",JOptionPane.YES_NO_OPTION );
-                if(a==0){
-                  objProv.actualizarestado(txtruc.getText()); 
+}else{int rpta = new MensajeMed().mostrar(this, "Proveedor inactivo, desea activarlo?", 1);
+                    if (rpta == JOptionPane.YES_OPTION) {
+                objProv.actualizarestado(txtruc.getText()); 
                   txtRaz.setText(rsPr.getString("razonsocial"));
-                }else{
-                    txtruc.requestFocus();
-                }
+                new MensajeMed().mostrar(this, "Se activó correctamente", 2);
+                    }else{
+                               txtruc.requestFocus(); 
+                    }
+  
                 }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Ruc no registrado...");
+                    new MensajeMed().mostrar(this, "Ruc no registrado...",0);
                     btnNuevoPrveedor.requestFocus();
                 }   
                 
                 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }//GEN-LAST:event_btnBuscarProvActionPerformed
 
@@ -589,6 +591,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
             obj.setVisible(true);
             ruc = txtruc.getText();
         } catch (Exception e) {
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }//GEN-LAST:event_btnNuevoPrveedorActionPerformed
 private String obtenerTipoComprobante() {
@@ -616,13 +619,13 @@ private String obtenerTipoComprobante() {
                     
                     detalleEliminar,
                     listaDetalle);
-            JOptionPane.showMessageDialog(this, "Se ha modificado correctamente");
+            new MensajeMed().mostrar(this, "Se modificó correctamente", 2);
             
             listarCompras();
             limpirDetalle();
             
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex);
+            new MensajeMed().mostrar(this, ex.getMessage(),3);
         }
     }//GEN-LAST:event_botonMedGradiente1ActionPerformed
 
@@ -647,13 +650,14 @@ private String obtenerTipoComprobante() {
                         sdf.format(jdcFechaCompra.getDate()),
                         txtruc.getText(),
                         listaDetalle);
+                new MensajeMed().mostrar(this, "Se registró correctamente.", 2);
                 listarCompras();
                 limpiarVenta();
                 limpirDetalle();
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }//GEN-LAST:event_btnNuevaComprsActionPerformed
 
@@ -678,6 +682,7 @@ private String obtenerTipoComprobante() {
             jsCantidad.setPrecio(txtPrecio, precio);
 
         } catch (Exception e) {
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -699,12 +704,12 @@ private String obtenerTipoComprobante() {
 
 
             } else {
-                JOptionPane.showMessageDialog(this, "El producto ya se encuentre en la compra");
+                new MensajeMed().mostrar(this, "El producto ya se encuentre en la compra",3);
 
             }
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex);
+            new MensajeMed().mostrar(this, ex.getMessage(),3);
         }
     }//GEN-LAST:event_btnMasActionPerformed
 
@@ -752,7 +757,7 @@ private String obtenerTipoComprobante() {
      
         try {
             if (txtnumcompra.getText().equals("")) {
-                JOptionPane.showMessageDialog(this, "Ingrese el número de compra a buscar!");
+                new MensajeMed().mostrar(this, "Ingrese el número de compra a buscar!",0);
             } else {
                 rsCompra = objCom.buscarCompra(Integer.parseInt(txtnumcompra.getText()));
                 rsDetalle=objDetalle.listarDetalle(Integer.parseInt(txtnumcompra.getText()));
@@ -782,12 +787,12 @@ private String obtenerTipoComprobante() {
 
                     
                 } else {
-                    JOptionPane.showMessageDialog(this, "Número de comprobante no existe!");
+                    new MensajeMed().mostrar(this, "Número de comprobante no existe!",0);
                     limpiarVenta();
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
 
     }//GEN-LAST:event_btnBuscarComActionPerformed
@@ -818,17 +823,17 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
     private void botonMedGradiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente3ActionPerformed
          // TODO add your handling code here:
          try {
-            int rpta = JOptionPane.showConfirmDialog(this, "Está seguro de eliminar la compra seleccionada");
+            int rpta = new MensajeMed().mostrar(this, "Está seguro de eliminar la compra seleccionada",1);
             if (rpta == JOptionPane.YES_OPTION) {
                 if (!txtnumcompra.getText().isEmpty()) {
                     objCom.eliminarComprobanteCompra(Integer.parseInt(txtnumcompra.getText()), datosDetalle(objDetalle.listarDetalle(Integer.parseInt(txtnumcompra.getText()))));
-                    JOptionPane.showMessageDialog(this, "Se ha eliminado la compra correctamente");
+                    new MensajeMed().mostrar(this, "Se ha eliminado la compra correctamente",2);
                     limpiarVenta();
                     limpirDetalle();
                     
                     
                 } else {
-                    JOptionPane.showMessageDialog(this, "Por favor ingrese el numero de venta a eliminar");
+                    new MensajeMed().mostrar(this, "Por favor ingrese el número de venta a eliminar",1);
                     
                 }
             }
@@ -979,7 +984,7 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
     }
 
