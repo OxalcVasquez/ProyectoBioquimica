@@ -475,7 +475,6 @@ public class jdManMarca extends javax.swing.JDialog {
                         objMarca.eliminarMarca(Integer.parseInt(txtCodigo.getText()));
                         new MensajeMed().mostrar(this, "Se elimino la marca correctamente", 2);
                     }
-                    
                     limpiarControles();
 
                 } else {
@@ -518,7 +517,7 @@ public class jdManMarca extends javax.swing.JDialog {
     }//GEN-LAST:event_tblDatosMouseClicked
 
     private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnSalir2ActionPerformed
 
     /**

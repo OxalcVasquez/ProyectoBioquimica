@@ -232,6 +232,11 @@ clsCliente objC = new clsCliente();
         cboDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "Carnet Extranjeria" }));
 
         botonMedGradiente3.setText("Salir");
+        botonMedGradiente3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMedGradiente3ActionPerformed(evt);
+            }
+        });
 
         botonEliminar1.setText("Dar de baja");
         botonEliminar1.addActionListener(new java.awt.event.ActionListener() {
@@ -662,6 +667,10 @@ clsCliente objC = new clsCliente();
     private void chkVigenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkVigenciaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chkVigenciaActionPerformed
+
+    private void botonMedGradiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente3ActionPerformed
+        dispose();
+    }//GEN-LAST:event_botonMedGradiente3ActionPerformed
 
     private void limpiarControles(){
         txtCodigo.setText("");
