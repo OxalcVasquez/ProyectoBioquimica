@@ -8,6 +8,7 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaInterfaz.Componentes.MensajeMed;
 import capaNegocio.*;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -42,7 +43,7 @@ public class jdGestionarProducto extends javax.swing.JDialog {
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
-
+        cboMarca.setUI(ComboMed.createUI(cboMarca));
         cboCategoria.setUI(ComboMed.createUI(cboCategoria));
         tblDatos.getTableHeader().setDefaultRenderer(new ColorTabla());
     }
@@ -249,71 +250,69 @@ public class jdGestionarProducto extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(32, 32, 32)
+                                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtPVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addGap(57, 57, 57)
+                                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel3)
+                                                .addGap(48, 48, 48)
+                                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel10)
                                             .addGap(18, 18, 18)
-                                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtPCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(94, 94, 94)))
+                                    .addGap(57, 57, 57)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtPVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(97, 97, 97)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel6)
+                                                .addComponent(jLabel8)
+                                                .addComponent(jLabel9)
+                                                .addComponent(jLabel11)))
                                         .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel2)
-                                            .addGap(57, 57, 57)
-                                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addGap(48, 48, 48)
-                                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtPCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(94, 94, 94)))
-                                .addGap(57, 57, 57)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(97, 97, 97)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel11)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel7)))
-                                .addGap(69, 69, 69)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(chkVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jdcVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(btnDarBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel7)))
+                                    .addGap(69, 69, 69)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cboMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(chkVigencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jdcVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(55, 55, 55)
+                                    .addComponent(btnDarBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 919, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(210, 210, 210))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -378,9 +377,9 @@ public class jdGestionarProducto extends javax.swing.JDialog {
                     .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGap(10, 10, 10))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 950, 650));
@@ -484,7 +483,7 @@ public class jdGestionarProducto extends javax.swing.JDialog {
                 model.addElement(rsMarcas.getString("nombre"));
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
 
         }
 
@@ -501,7 +500,7 @@ public class jdGestionarProducto extends javax.swing.JDialog {
                 model.addElement(rsCategoria.getString("nombre"));
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
 
         }
 
@@ -546,7 +545,7 @@ public class jdGestionarProducto extends javax.swing.JDialog {
 
                 if (validarCampos()) {
                     objProducto.registrarProducto(Integer.parseInt(txtCodigo.getText()),
-                            txtNombre.getText(),
+                            txtNombre.getText().toUpperCase(),
                             txtDescripcion.getText(),
                             Double.parseDouble(txtPVenta.getText()),
                             Double.parseDouble(txtPCompra.getText()),
@@ -555,19 +554,22 @@ public class jdGestionarProducto extends javax.swing.JDialog {
                             sdf.format(jdcVencimiento.getDate()),
                             objMarca.obtenerCodigoMarca(cboMarca.getSelectedItem().toString()),
                             objCat.obtenerCodigoCategoria(cboCategoria.getSelectedItem().toString()));
+                    new MensajeMed().mostrar(this, "Se registro correctamente el producto", 2);
+
                 }
 
                 listarProductos();
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
+
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
     public Boolean validarCampos() {
         if (txtNombre.getText().isEmpty() || txtCodigo.getText().isEmpty() || txtDescripcion.getText().isEmpty()
                 || txtPCompra.getText().isEmpty() || txtPVenta.getText().isEmpty() || txtStock.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
+            new MensajeMed().mostrar(this, "Por favor complete todos los campos", 0);
             return false;
         }
         return true;
@@ -606,7 +608,8 @@ public class jdGestionarProducto extends javax.swing.JDialog {
 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
+
         }
     }
 
@@ -617,13 +620,16 @@ public class jdGestionarProducto extends javax.swing.JDialog {
             if (!txtCodigo.getText().isEmpty()) {
                 objProducto.darBajaProducto(Integer.parseInt(txtCodigo.getText()));
                 listarProductos();
+                new MensajeMed().mostrar(this, "Se dio de baja al producto", 2);
 
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de product a dar de baja");
+                new MensajeMed().mostrar(this, "Por favor ingrese el codigo del producto a dar de baja", 0);
+//                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de product a dar de baja");
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
+
         }
     }//GEN-LAST:event_btnDarBajaActionPerformed
 
@@ -642,6 +648,8 @@ public class jdGestionarProducto extends javax.swing.JDialog {
                         sdf.format(jdcVencimiento.getDate()),
                         objMarca.obtenerCodigoMarca(cboMarca.getSelectedItem().toString()),
                         objCat.obtenerCodigoCategoria(cboCategoria.getSelectedItem().toString()));
+                new MensajeMed().mostrar(this, "Se modifico el producto", 2);
+
                 listarProductos();
 
             } else {
@@ -659,22 +667,29 @@ public class jdGestionarProducto extends javax.swing.JDialog {
             if (!txtCodigo.getText().isEmpty()) {
                 if (!objProducto.verificarProductoEnVenta(Integer.parseInt(txtCodigo.getText()))) {
                     if (objProducto.verificarStock(Integer.parseInt(txtCodigo.getText()))) {
-                        objProducto.eliminarProducto(Integer.parseInt(txtCodigo.getText()));
+                        int rpta = new MensajeMed().mostrar(this, "Esta seguro de eliminar el producto", 1);
+                        if(rpta == JOptionPane.YES_OPTION){
+                         objProducto.eliminarProducto(Integer.parseInt(txtCodigo.getText()));
+                        new MensajeMed().mostrar(this, "Se elimino el producto", 2);
+                        }
+                       
+
                         listarProductos();
                     } else {
-                        JOptionPane.showMessageDialog(this, "El producto no puede ser eliminado ya que tiene stock en su haber");
+                        new MensajeMed().mostrar(this, "El producto no puede ser eliminado ya que tiene stock en su haber", 1);
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "El producto no puede ser eliminado ya que esta presente en ventas");
+                    new MensajeMed().mostrar(this, "El producto no puede ser eliminado ya que esta presente en ventas", 1);
                 }
 
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de producto a eliminar");
+                new MensajeMed().mostrar(this, "Por favor ingrese codigo de producto a eliminar", 0);
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
+
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -706,16 +721,16 @@ public class jdGestionarProducto extends javax.swing.JDialog {
                     cboMarca.setSelectedItem(rsProducto.getString("marca"));
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "No se encuentra registrada el producto buscado");
+                    new MensajeMed().mostrar(this, "No se encuentra registrada el producto buscado", 0);
 
                 }
 
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a buscar");
+                new MensajeMed().mostrar(this, "Por favor ingrese codigo de categoria a buscar", 0);
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 

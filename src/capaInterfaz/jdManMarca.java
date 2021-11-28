@@ -8,6 +8,7 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaInterfaz.Componentes.MensajeMed;
 import capaNegocio.clsMarca;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -320,7 +321,7 @@ public class jdManMarca extends javax.swing.JDialog {
     }//GEN-LAST:event_formMousePressed
     public Boolean validarCampos() {
         if (txtNombre.getText().isEmpty() || txtCodigo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
+            new MensajeMed().mostrar(this, "Por favor complete todos los campos", 0);
             return false;
         }
         return true;
@@ -352,7 +353,7 @@ public class jdManMarca extends javax.swing.JDialog {
 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
 
     }
@@ -388,16 +389,16 @@ public class jdManMarca extends javax.swing.JDialog {
                     chkVigencia.setSelected(rsMarca.getBoolean("vigencia"));
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "No se encuentra registrada la Marca buscada");
-
+                    new MensajeMed().mostrar(this, "No se encuentra registrada la Marca buscada", 0);
                 }
 
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de Marca a buscar");
+                new MensajeMed().mostrar(this, "Por favor ingrese codigo de Marca a buscar", 0);
+
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
     public void limpiarControles() {
@@ -422,6 +423,8 @@ public class jdManMarca extends javax.swing.JDialog {
                 //Guardar 
                 if (validarCampos()) {
                     objMarca.registrarMarca(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(), chkVigencia.isSelected());
+                    new MensajeMed().mostrar(this, "Se registro la marca correctamente", 2);
+
                     listarMarcas();
                     limpiarControles();
                 }
@@ -429,7 +432,7 @@ public class jdManMarca extends javax.swing.JDialog {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -445,12 +448,15 @@ public class jdManMarca extends javax.swing.JDialog {
 
                 objMarca.modificarMarca(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(), chkVigencia.isSelected());
                 limpiarControles();
+                new MensajeMed().mostrar(this, "Se modifico la marca correctamente", 2);
+
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de Marca a modificar");
+                new MensajeMed().mostrar(this, "Por favor ingrese codigo de Marca a modificar", 0);
+
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -459,19 +465,25 @@ public class jdManMarca extends javax.swing.JDialog {
         try {
             if (!txtCodigo.getText().isEmpty()) {
                 if (objMarca.verificarNumProductosMarca(Integer.parseInt(txtCodigo.getText()))) {
+                    int rpta = new MensajeMed().mostrar(this, "Esta seguro de eliminar la marca?", 1);
+                    if (rpta == JOptionPane.YES_OPTION) {
+                        objMarca.eliminarMarca(Integer.parseInt(txtCodigo.getText()));
+                        new MensajeMed().mostrar(this, "Se elimino la marca correctamente", 2);
+                    }
                     objMarca.eliminarMarca(Integer.parseInt(txtCodigo.getText()));
                     limpiarControles();
+
                 } else {
-                    JOptionPane.showMessageDialog(this, "La marca no puede ser eliminada, ya que tiene productos de pertenencia");
+                    new MensajeMed().mostrar(this, "La marca no puede ser eliminada, ya que tiene productos de pertenencia", 0);
 
                 }
 
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de Marca a eliminar");
+                new MensajeMed().mostrar(this, "Por favor ingrese codigo de Marca a eliminar", 0);
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -481,14 +493,16 @@ public class jdManMarca extends javax.swing.JDialog {
         try {
             if (!txtCodigo.getText().isEmpty()) {
                 objMarca.darBajaMarca(Integer.parseInt(txtCodigo.getText()));
+                new MensajeMed().mostrar(this, "Se dio de baja correctamente", 2);
+
                 limpiarControles();
 
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de Marca a modificar");
+                new MensajeMed().mostrar(this, "Por favor ingrese codigo de Marca a modificar", 0);
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnDarBajaActionPerformed
 

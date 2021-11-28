@@ -8,6 +8,7 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaInterfaz.Componentes.MensajeMed;
 import capaNegocio.clsCategoria;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -320,7 +321,7 @@ public class jdManCategoria extends javax.swing.JDialog {
     }//GEN-LAST:event_formMousePressed
     public Boolean validarCampos() {
         if (txtNombre.getText().isEmpty() || txtCodigo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos");
+            new MensajeMed().mostrar(this, "Por favor complete todos los campos", 0);
             return false;
         }
         return true;
@@ -352,7 +353,7 @@ public class jdManCategoria extends javax.swing.JDialog {
 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
 
     }
@@ -388,16 +389,17 @@ public class jdManCategoria extends javax.swing.JDialog {
                     chkVigencia.setSelected(rsCategoria.getBoolean("vigencia"));
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "No se encuentra registrada la categoria buscada");
+
+                    new MensajeMed().mostrar(this, "No se encuentra registrada la categoria buscada", 0);
 
                 }
 
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a buscar");
+                new MensajeMed().mostrar(this, "Por favor ingrese codigo de categoria a buscar", 0);
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
     public void limpiarControles() {
@@ -422,6 +424,8 @@ public class jdManCategoria extends javax.swing.JDialog {
                 //Guardar 
                 if (validarCampos()) {
                     objCategoria.registrarCategoria(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(), chkVigencia.isSelected());
+                    new MensajeMed().mostrar(this, "Se registro la categoria correctamente", 2);
+
                     listarCategorias();
                     limpiarControles();
                 }
@@ -429,7 +433,7 @@ public class jdManCategoria extends javax.swing.JDialog {
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
@@ -444,13 +448,16 @@ public class jdManCategoria extends javax.swing.JDialog {
             if (!txtCodigo.getText().isEmpty()) {
 
                 objCategoria.modificarCategoria(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(), chkVigencia.isSelected());
+                new MensajeMed().mostrar(this, "La categoria fue modificada correctamente", 2);
+
                 limpiarControles();
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a modificar");
+                new MensajeMed().mostrar(this, "Por favor ingrese codigo de categoria a modificar", 0);
+
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -459,19 +466,25 @@ public class jdManCategoria extends javax.swing.JDialog {
         try {
             if (!txtCodigo.getText().isEmpty()) {
                 if (objCategoria.verificarNumProductosCategoria(Integer.parseInt(txtCodigo.getText()))) {
-                    objCategoria.eliminarCategoria(Integer.parseInt(txtCodigo.getText()));
+                    int rpta = new MensajeMed().mostrar(this, "Esta seguro de eliminar la categoria?", 1);
+
+                    if (rpta == JOptionPane.YES_OPTION) {
+                        objCategoria.eliminarCategoria(Integer.parseInt(txtCodigo.getText()));
+                        new MensajeMed().mostrar(this, "La categoria fue eliminada correctamente", 2);
+                    }
+
                     limpiarControles();
                 } else {
-                    JOptionPane.showMessageDialog(this, "La categoria no puede ser eliminada, ya que tiene productos de pertenencia");
+                    new MensajeMed().mostrar(this, "La categoria no puede ser eliminada, ya que tiene productos de pertenencia", 0);
 
                 }
 
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a eliminar");
+                new MensajeMed().mostrar(this, "Por favor ingrese codigo de categoria a eliminar", 0);
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -481,14 +494,17 @@ public class jdManCategoria extends javax.swing.JDialog {
         try {
             if (!txtCodigo.getText().isEmpty()) {
                 objCategoria.darBajaCategoria(Integer.parseInt(txtCodigo.getText()));
+                new MensajeMed().mostrar(this, "La categoria fue dada de baja", 2);
+
                 limpiarControles();
 
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingrese codigo de categoria a modificar");
+                new MensajeMed().mostrar(this, "Por favor ingrese codigo de categoria a modificar", 0);
+
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnDarBajaActionPerformed
 
