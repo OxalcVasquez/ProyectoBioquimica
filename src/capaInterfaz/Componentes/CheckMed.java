@@ -31,4 +31,13 @@ public class CheckMed extends JCheckBox {
             }
         });
     }
+    @Override
+    public void setSelected(boolean bln) {
+        super.setSelected(bln);
+        if (isSelected()) {
+            setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/checked.png")));
+        } else {
+            setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/unchecked.png")));
+        }
+    }
 }
