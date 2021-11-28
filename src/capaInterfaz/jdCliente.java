@@ -534,9 +534,14 @@ clsCliente objC = new clsCliente();
             if(txtCodigo.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "Ingrese código a eliminar...");
             }else{
+                if(objC.verfificarCli(Integer.parseInt(txtCodigo.getText()))){
                 objC.eliminarCliente(Integer.parseInt(txtCodigo.getText()));
                 limpiarControles();
-                listarCliente();
+                listarCliente();               
+                }else{
+                    JOptionPane.showMessageDialog(this, "No se puede eliminar este cliente porque tiene compras asignadas.");
+                }
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());

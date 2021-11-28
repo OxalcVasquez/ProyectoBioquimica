@@ -573,13 +573,16 @@ clsProveedor objProv = new clsProveedor();
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-         try {
+          try {
             if(txtRuc.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this, "Ingrese ruc a eliminar...");
             }else{
+                if(objProv.verfificarPro(txtRuc.getText())){
                 objProv.eliminarProv(txtRuc.getText());
                 listarProveedores();
-                
+                }else{
+                    JOptionPane.showMessageDialog(this, "No se puede eliminar este proveedor porque tiene compras asignadas.");
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());

@@ -154,4 +154,24 @@ public class clsCliente {
         }
 
     }
+    
+    public Boolean verfificarCli(Integer id) throws Exception{
+        strSQL="select f_verificarCliente("+id+") ";
+        try {
+            objConexion.conectarBD();
+            con=objConexion.getCon();
+            cs=con.prepareCall(strSQL);
+            rs=cs.executeQuery();
+            if (rs.next()){
+            return rs.getBoolean("f_verificarCliente");
+            }
+            
+        } catch (Exception e) {
+            throw new Exception(e);
+        }finally{
+            objConexion.desconectarBD();
+            cs.close();
+        }
+        return false;
+    } 
 }

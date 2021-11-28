@@ -6,6 +6,8 @@
 package capaNegocio;
 
 import capaDatos.clsJDBCConexion;
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.ResultSet;
 
 /**
@@ -16,6 +18,8 @@ public class clsProveedor {
     clsJDBCConexion objConectar = new clsJDBCConexion();
     String strSQL;
     ResultSet rs = null;
+          Connection con;
+    CallableStatement cs = null;
     public ResultSet listarProveedores() throws Exception{
         strSQL="select*from proveedor";
         try {
@@ -108,4 +112,24 @@ public class clsProveedor {
         }
         
     }
+     public Boolean verfificarPro(String ruc) throws Exception{
+        strSQL="select f_verificarProveedor('"+ruc+"')";
+        try {
+            objConectar.conectarBD();
+            con=objConectar.getCon();
+            cs=con.prepareCall(strSQL);
+            rs=cs.executeQuery();
+            if (rs.next()){
+            return rs.getBoolean("f_verificarProveedor");
+            }
+            
+        } catch (Exception e) {
+            throw new Exception(e);
+        }finally{
+            objConectar.desconectarBD();
+            cs.close();
+        }
+        return false;
+    } 
+     
 }
