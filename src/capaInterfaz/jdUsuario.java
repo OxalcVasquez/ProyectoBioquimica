@@ -8,6 +8,7 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaInterfaz.Componentes.MensajeMed;
 import capaNegocio.clsUsuario;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -17,8 +18,12 @@ import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -41,6 +46,15 @@ public class jdUsuario extends javax.swing.JDialog {
         
         
         tblUsuario.getTableHeader().setDefaultRenderer(new ColorTabla());
+    }
+        public void alinearTabla(JTable tabla) {
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        TableModel tableModel = tabla.getModel();
+
+        for (int columnIndex = 0; columnIndex < tableModel.getColumnCount(); columnIndex++) {
+            tblUsuario.getColumnModel().getColumn(columnIndex).setCellRenderer(rightRenderer);
+        }
     }
 
     /**
@@ -127,6 +141,7 @@ public class jdUsuario extends javax.swing.JDialog {
 
             }
         ));
+        tblUsuario.setRowHeight(30);
         tblUsuario.setSelectionBackground(new java.awt.Color(104, 228, 176));
         tblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -254,8 +269,8 @@ public class jdUsuario extends javax.swing.JDialog {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(28, 28, 28)
-                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
                                         .addComponent(jLabel18)
                                         .addGap(14, 14, 14))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -302,7 +317,7 @@ public class jdUsuario extends javax.swing.JDialog {
                                 .addComponent(btnSalir2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(botonMedGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(gradientButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,8 +357,7 @@ public class jdUsuario extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5))
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(txtCodigoTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -536,6 +550,7 @@ public class jdUsuario extends javax.swing.JDialog {
              while(rs.next()){
              modelo.addElement(rs.getString("trabajador")); 
              }
+             alinearTabla(tblUsuario);
         } catch (Exception e) {
              JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -577,7 +592,8 @@ public class jdUsuario extends javax.swing.JDialog {
         try {
         
             if(txtCodigo.getText().equals("")){
-                JOptionPane.showMessageDialog(this, "Es necesario el codigo del usuario");
+                new MensajeMed().mostrar(this, "Es necesario el codigo del usuario", 0);
+                
             }else{
                 rs = objUsu.buscar(Integer.parseInt(txtCodigo.getText()));
                 while(rs.next()){
@@ -630,11 +646,11 @@ public class jdUsuario extends javax.swing.JDialog {
     
           try {
            if( txtCodigo.getText().equals("")){
-           JOptionPane.showMessageDialog(this,"Es necesario el codigo del usuario");   
+            new MensajeMed().mostrar(this, "Ingrese código a modificar...", 0);
            }else{
            
                objUsu.actualizar(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtContraseña.getText(),chkEstado.isSelected(),txtFecha.getText(),Integer.parseInt(txtCodigoTra.getText()));
-               JOptionPane.showMessageDialog(this,"Se modifico el usuario");
+               new MensajeMed().mostrar(this, "Se modifico al cliente correctamente", 2);
                listarUsuario();
                limpiarContenido();
            }
@@ -649,11 +665,11 @@ public class jdUsuario extends javax.swing.JDialog {
     private void botonMedGradiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente1ActionPerformed
          try {
            if( txtCodigo.getText().equals("")){
-           JOptionPane.showMessageDialog(this,"Es necesario el codigo del usuario");   
+            new MensajeMed().mostrar(this, "Ingrese código a dar de baja...", 0);
            }else{
            
                objUsu.eliminar(Integer.parseInt(txtCodigo.getText()));
-               JOptionPane.showMessageDialog(this,"Se elimino al usuario");
+               new MensajeMed().mostrar(this, "Se dio de baja al cliente correctamente", 2);
                listarUsuario();
                limpiarContenido();
            }
