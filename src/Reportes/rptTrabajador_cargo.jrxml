@@ -1,29 +1,269 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5c1a6c2f-092b-4a58-a234-2266065001bf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dbTrabajador" uuid="39c72df7-0594-41ad-acff-59d7521cdadd">
+		<queryString language="SQL">
+			<![CDATA[select case cargo when 'V' then 'Venderor' when 'A' then 'Administrador' when 'Y' then 'Ayudante' when 'C' then 'Caja' end as cargo, count(*) as total from trabajador
+group by cargo]]>
+		</queryString>
+		<field name="cargo" class="java.lang.String"/>
+		<field name="total" class="java.lang.Long"/>
+		<group name="cargo">
+			<groupExpression><![CDATA[$F{cargo}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[select codtrabajador,(nombres||' '||apellidos)as nombres,dni,telefono,correo,direccion,
+case sexo when true then 'Masculino' else 'Femenino' end as sexo,fechanac,
+case cargo when 'V' then 'Venderor' when 'A' then 'Administrador' when 'Y' then 'Ayudante' when 'C' then 'Caja' end as cargo,
+case vigencia when true then 'Vigente' else 'No Vigente' end as vigencia from trabajador]]>
+	</queryString>
+	<field name="codtrabajador" class="java.lang.Integer"/>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="dni" class="java.lang.String"/>
+	<field name="telefono" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<field name="direccion" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="fechanac" class="java.sql.Date"/>
+	<field name="cargo" class="java.lang.String"/>
+	<field name="vigencia" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#10AB83" uuid="83b74da9-28f8-4e3a-92d1-acc6a4a73265"/>
+				<staticText>
+					<reportElement x="140" y="20" width="225" height="50" forecolor="#FFFFFF" uuid="03746e96-a413-4629-9000-a1cec5e70529"/>
+					<textElement>
+						<font fontName="Gadugi" size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[TRABAJADOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="416" y="45" width="169" height="30" forecolor="#FFFFFF" uuid="47bdb5b9-7c2f-47dd-98bc-bce8a4c9016d"/>
+					<textElement>
+						<font fontName="Gadugi" size="16" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Listado de trabajadores]]></text>
+				</staticText>
+				<textField pattern="M/d/yy h:mm a">
+					<reportElement x="500" y="20" width="86" height="14" forecolor="#FFFFFF" uuid="e89a5f4c-7963-4566-9369-28b3e8ba570e"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="53" y="20" width="50" height="50" uuid="d14f2745-34bf-49ed-b6b0-26a6b61e0982"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<rectangle radius="4">
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="33" backcolor="#36304A" uuid="39a114ee-f964-49a2-99c5-9d5517d2da13"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="493" y="0" width="62" height="33" forecolor="#FFFFFF" uuid="7caf3629-b680-46f8-b038-76976bb460a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vigencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="0" width="33" height="33" forecolor="#FFFFFF" uuid="30f9f704-f296-44f1-9bb5-66cec2fa51a0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="0" width="59" height="33" forecolor="#FFFFFF" uuid="25c37afa-de17-4482-b878-687fccde3d55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="0" width="70" height="33" forecolor="#FFFFFF" uuid="62a68f70-aa91-4f96-8eaa-f9e9c119c6b2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="0" width="64" height="33" forecolor="#FFFFFF" uuid="4cbe4974-e0ac-416f-93b0-32958b88dcc0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="0" width="68" height="33" forecolor="#FFFFFF" uuid="3852160f-9abf-429a-b59c-d1074ecbcd6f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="0" width="60" height="33" forecolor="#FFFFFF" uuid="e28fdfed-db9f-4b0a-a7e4-70e08eb2b41e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="0" width="55" height="33" forecolor="#FFFFFF" uuid="3bfa7cf9-614a-4f2b-b918-6ad85f7a029e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="0" width="87" height="33" forecolor="#FFFFFF" uuid="c86c58a4-2f3c-47f5-acb2-f92f78aa4ce7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="31" height="20" uuid="595b85d6-6f6f-4217-b859-5b307046ee9f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codtrabajador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="31" y="0" width="87" height="20" uuid="b845dfae-4bd4-4d11-bf42-7ba9725af0cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="0" width="64" height="20" uuid="8ee9ebeb-50df-4777-a992-456dfd1ca1ab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="182" y="0" width="60" height="20" uuid="998d56e5-eefc-40a6-bc22-6edc258d2f99"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="0" width="59" height="20" uuid="4d9bab39-bf73-4e94-bee7-3a20df2bb681"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="0" width="70" height="20" uuid="0c7f85b1-be77-427a-bad7-e90a36ed8cc7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="0" width="56" height="20" uuid="10cb1777-3996-452a-8b06-4eae9bd26fa1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="427" y="0" width="67" height="20" uuid="d69a8811-fbd0-4d13-a40a-e94a7626f7ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="0" width="61" height="20" uuid="cc1a6fb3-7d7d-46c4-b05e-267be6c09f78"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{vigencia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="66" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="530" y="0" width="100" height="30" uuid="a32c634b-eb8d-4617-9779-469f62cb6fcf"/>
+				<textElement textAlignment="Left">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="100" height="30" uuid="315a95e1-8e7e-40b3-a0f9-d989350bded0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Gadugi"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="140" height="30" uuid="e6c7df41-9220-4c81-bee7-ff3be0ad9e78"/>
+				<textElement>
+					<font fontName="Gadugi"/>
+				</textElement>
+				<text><![CDATA[Bioquímica del Norte Andino]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="183" splitType="Stretch">
+			<pieChart>
+				<chart>
+					<reportElement x="0" y="0" width="290" height="180" uuid="e9f45fee-d61e-479b-a5a4-fa112a04960f"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset>
+						<datasetRun subDataset="dbTrabajador" uuid="de625822-b755-4e2f-86dd-1a1362713b37"/>
+					</dataset>
+					<keyExpression><![CDATA[$F{cargo}]]></keyExpression>
+					<valueExpression><![CDATA[$F{total}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<stackedBar3DChart>
+				<chart>
+					<reportElement x="290" y="0" width="265" height="183" uuid="ecc24579-c9cc-4430-bcdd-acbf04bd35ce"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset>
+						<datasetRun subDataset="dbTrabajador" uuid="50e07191-0f02-48a2-820a-d6165f9d2b9c"/>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Cargos de Trabajadores"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{cargo}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{total}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</stackedBar3DChart>
+		</band>
+	</summary>
 </jasperReport>

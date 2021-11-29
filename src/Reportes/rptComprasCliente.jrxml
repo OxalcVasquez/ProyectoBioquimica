@@ -203,7 +203,7 @@ order by cliente_codcliente]]>
 	<title>
 		<band height="60" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-21" y="-20" width="595" height="80" backcolor="#54F893" uuid="f445c8e9-8e07-4e50-aafb-4f0bcb42327c"/>
+				<reportElement mode="Opaque" x="-21" y="-20" width="595" height="80" backcolor="#10AB83" uuid="f445c8e9-8e07-4e50-aafb-4f0bcb42327c"/>
 				<staticText>
 					<reportElement x="111" y="19" width="266" height="50" forecolor="#FFFFFF" uuid="9cdd3042-1ffe-40f0-baf6-3aa6495e3c6a"/>
 					<textElement>

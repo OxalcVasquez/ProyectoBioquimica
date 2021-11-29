@@ -167,7 +167,7 @@ order by proveedor."ruc"]]>
 	<columnHeader>
 		<band height="8" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-114" width="595" height="80" backcolor="#54F893" uuid="d8453130-2dce-4968-bd7d-a299efe8dc2f"/>
+				<reportElement mode="Opaque" x="-20" y="-114" width="595" height="80" backcolor="#10AB83" uuid="d8453130-2dce-4968-bd7d-a299efe8dc2f"/>
 				<staticText>
 					<reportElement x="99" y="19" width="252" height="50" forecolor="#FFFFFF" uuid="bc7e8b28-4929-4b98-936a-98c8bee9208d"/>
 					<textElement>

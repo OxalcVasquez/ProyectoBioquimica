@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d2f6b53c-6298-4417-8cb0-1742b523e908">
+	<property name="ireport.zoom" value="1.4641000000000008"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString language="SQL">
@@ -40,7 +40,7 @@ order by categoria."codcategoria"]]>
 		<groupHeader>
 			<band height="50">
 				<textField>
-					<reportElement x="136" y="12" width="290" height="38" forecolor="#00CC33" uuid="5be8e370-498b-4321-9010-2d83c30d252d"/>
+					<reportElement x="146" y="12" width="290" height="38" forecolor="#10AB83" uuid="5be8e370-498b-4321-9010-2d83c30d252d"/>
 					<textElement>
 						<font fontName="Gadugi" size="24"/>
 					</textElement>
@@ -65,7 +65,7 @@ order by categoria."codcategoria"]]>
 	<title>
 		<band height="61" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-19" width="595" height="80" backcolor="#54F893" uuid="9be2825e-b670-40b9-92f0-13e5f40d0711">
+				<reportElement mode="Opaque" x="-20" y="-19" width="595" height="80" backcolor="#10AB83" uuid="9be2825e-b670-40b9-92f0-13e5f40d0711">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<staticText>
@@ -176,62 +176,62 @@ order by categoria."codcategoria"]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="39" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="555" height="37" backcolor="#CCFFFF" uuid="d3257a1b-5aae-4258-80c7-54e6d6a83e2a"/>
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#FFFFFF" uuid="d3257a1b-5aae-4258-80c7-54e6d6a83e2a"/>
 			</rectangle>
 			<textField>
-				<reportElement x="6" y="7" width="50" height="20" uuid="73b93bc4-7bc3-44e5-a5d2-de8148a8eab8"/>
-				<textElement textAlignment="Center">
+				<reportElement x="6" y="0" width="50" height="20" uuid="73b93bc4-7bc3-44e5-a5d2-de8148a8eab8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Gadugi"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{producto_codproducto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="56" y="7" width="80" height="20" uuid="a9cb3cf0-f243-4687-9fd5-0751eb09d2ae"/>
-				<textElement textAlignment="Center">
+				<reportElement x="56" y="0" width="80" height="20" uuid="a9cb3cf0-f243-4687-9fd5-0751eb09d2ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Gadugi"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{producto_nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="142" y="7" width="74" height="20" uuid="4808c9dc-443f-4a91-b20f-946a3bb16446"/>
-				<textElement textAlignment="Center">
+				<reportElement x="142" y="0" width="74" height="20" uuid="4808c9dc-443f-4a91-b20f-946a3bb16446"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Gadugi"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{producto_descripcion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="216" y="7" width="51" height="20" uuid="bd6eed50-756d-48fb-872d-2bc1fe17a1aa"/>
-				<textElement textAlignment="Center">
+				<reportElement x="216" y="0" width="51" height="20" uuid="bd6eed50-756d-48fb-872d-2bc1fe17a1aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Gadugi"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{producto_precioventa}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="276" y="7" width="61" height="20" uuid="3e9a390b-65fa-48bb-a8e2-d22f54a15770"/>
-				<textElement textAlignment="Center">
+				<reportElement x="276" y="0" width="61" height="20" uuid="3e9a390b-65fa-48bb-a8e2-d22f54a15770"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Gadugi"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{producto_preciocompra}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="347" y="7" width="50" height="20" uuid="4b5a24c6-51b9-40b4-8667-f4da50c1f308"/>
-				<textElement textAlignment="Center">
+				<reportElement x="347" y="0" width="50" height="20" uuid="4b5a24c6-51b9-40b4-8667-f4da50c1f308"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Gadugi"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{producto_stock}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="406" y="7" width="70" height="20" uuid="58c76dbc-cf95-48a0-bf33-0dcb18e2c244"/>
-				<textElement textAlignment="Center">
+				<reportElement x="405" y="0" width="70" height="20" uuid="58c76dbc-cf95-48a0-bf33-0dcb18e2c244"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Gadugi"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{producto_fechavencimiento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="476" y="7" width="79" height="20" uuid="87753353-f321-4965-ac59-ca2ae2a35ca5"/>
-				<textElement textAlignment="Center">
+				<reportElement x="475" y="0" width="79" height="20" uuid="87753353-f321-4965-ac59-ca2ae2a35ca5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Gadugi"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{producto_vigencia}]]></textFieldExpression>
@@ -251,7 +251,7 @@ order by categoria."codcategoria"]]>
 				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="-24" y="0" width="140" height="30" uuid="616ad745-52a5-40c1-8273-455e2706ba92"/>
+				<reportElement x="6" y="0" width="140" height="30" uuid="616ad745-52a5-40c1-8273-455e2706ba92"/>
 				<textElement>
 					<font fontName="Gadugi"/>
 				</textElement>

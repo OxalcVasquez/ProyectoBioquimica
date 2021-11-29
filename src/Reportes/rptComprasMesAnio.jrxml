@@ -86,7 +86,7 @@ extract(month from (fecha))  = $P{mes}]]>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-144" width="595" height="80" backcolor="#54F893" uuid="d16678c9-9acf-4ade-8127-6f5f0f67e4af"/>
+				<reportElement mode="Opaque" x="-20" y="-144" width="595" height="80" backcolor="#10AB83" uuid="d16678c9-9acf-4ade-8127-6f5f0f67e4af"/>
 				<staticText>
 					<reportElement x="99" y="19" width="204" height="50" forecolor="#FFFFFF" uuid="d2b6fd5b-6f1d-4a1e-b216-f8e8dd1f53da"/>
 					<textElement>

@@ -92,7 +92,7 @@ fecha=$P{fecha}]]>
 				<reportElement mode="Opaque" x="-2" y="0" width="560" height="29" backcolor="#36304A" uuid="28ecd93a-1950-4191-9698-103271277b0d"/>
 			</rectangle>
 			<frame>
-				<reportElement mode="Opaque" x="-21" y="-114" width="595" height="80" backcolor="#54F893" uuid="1cbb20d9-86d5-445f-aa20-f47ad1a02068"/>
+				<reportElement mode="Opaque" x="-21" y="-114" width="595" height="80" backcolor="#10AB83" uuid="1cbb20d9-86d5-445f-aa20-f47ad1a02068"/>
 				<staticText>
 					<reportElement x="99" y="19" width="204" height="50" forecolor="#FFFFFF" uuid="ce904e3a-329f-421a-9382-9d7eba8c09ac"/>
 					<textElement>

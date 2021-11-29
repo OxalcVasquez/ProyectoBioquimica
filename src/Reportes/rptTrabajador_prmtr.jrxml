@@ -29,7 +29,7 @@ where codtrabajador = $P{cod}]]>
 	<title>
 		<band height="67" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#54F893" uuid="704341e5-2927-48ee-a96a-0573664c3401"/>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#10AB83" uuid="704341e5-2927-48ee-a96a-0573664c3401"/>
 				<staticText>
 					<reportElement x="140" y="20" width="225" height="50" forecolor="#FFFFFF" uuid="8860dedf-8d1f-4cff-afef-95e9486f66a0"/>
 					<textElement>

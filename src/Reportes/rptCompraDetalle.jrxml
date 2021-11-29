@@ -74,7 +74,7 @@ where codcomprobante= $P{codigo}]]>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-145" width="595" height="80" backcolor="#54F893" uuid="ad89e751-b1a0-408c-8cda-c1bf9abaf65b"/>
+				<reportElement mode="Opaque" x="-20" y="-145" width="595" height="80" backcolor="#10AB83" uuid="ad89e751-b1a0-408c-8cda-c1bf9abaf65b"/>
 				<staticText>
 					<reportElement x="111" y="19" width="266" height="50" forecolor="#FFFFFF" uuid="906b7a06-6fdc-4be4-98fc-eab65702b02e"/>
 					<textElement>

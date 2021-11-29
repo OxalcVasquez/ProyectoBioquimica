@@ -7,8 +7,7 @@
 		<queryString language="SQL">
 			<![CDATA[select count(*) as total,ct.nombre as categoria from producto pr
 inner join categoria ct on ct.codcategoria=pr.codcategoria
-group by ct.codcategoria ;
-]]>
+group by ct.codcategoria ;]]>
 		</queryString>
 		<field name="total" class="java.lang.Long"/>
 		<field name="categoria" class="java.lang.String"/>
@@ -40,7 +39,7 @@ inner join categoria ct on ct.codcategoria=pr.codcategoria]]>
 	<columnHeader>
 		<band height="29" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-19" y="-114" width="593" height="80" backcolor="#54F893" uuid="64744ec4-4734-4b76-9df8-cf8c88e73fc9"/>
+				<reportElement mode="Opaque" x="-19" y="-114" width="593" height="80" backcolor="#10AB83" uuid="64744ec4-4734-4b76-9df8-cf8c88e73fc9"/>
 				<staticText>
 					<reportElement x="140" y="20" width="210" height="50" forecolor="#FFFFFF" uuid="66eb240a-f84d-47cd-8030-159fa54511af"/>
 					<textElement>

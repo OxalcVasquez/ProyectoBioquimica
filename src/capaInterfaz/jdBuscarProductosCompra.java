@@ -16,8 +16,12 @@ import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -46,6 +50,8 @@ public class jdBuscarProductosCompra extends javax.swing.JDialog {
         setBackground(new Color(0, 0, 0, 0));
 
         cboCategoria.setUI(ComboMed.createUI(cboCategoria));
+                cboMarca.setUI(ComboMed.createUI(cboCategoria));
+
         tblDatos.getTableHeader().setDefaultRenderer(new ColorTabla());
     }
 
@@ -100,6 +106,8 @@ public class jdBuscarProductosCompra extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel3.setText("Nombre:");
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
         tblDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -108,7 +116,9 @@ public class jdBuscarProductosCompra extends javax.swing.JDialog {
 
             }
         ));
-        tblDatos.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        tblDatos.setRowHeight(24);
+        tblDatos.setSelectionBackground(new java.awt.Color(16, 171, 131));
+        tblDatos.setShowVerticalLines(false);
         tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDatosMouseClicked(evt);
@@ -209,7 +219,7 @@ public class jdBuscarProductosCompra extends javax.swing.JDialog {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 960, 470));
 
-        jPanel1.setBackground(new java.awt.Color(84, 248, 147));
+        jPanel1.setBackground(new java.awt.Color(16, 171, 131));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -233,9 +243,9 @@ public class jdBuscarProductosCompra extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(239, Short.MAX_VALUE)
+                .addContainerGap(256, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(236, 236, 236)
+                .addGap(219, 219, 219)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
@@ -247,9 +257,9 @@ public class jdBuscarProductosCompra extends javax.swing.JDialog {
                         .addGap(15, 15, 15)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(25, 25, 25)
                         .addComponent(jLabel1)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 158));
@@ -285,6 +295,15 @@ public class jdBuscarProductosCompra extends javax.swing.JDialog {
         setLocation(evt.getXOnScreen() - posX, evt.getYOnScreen() - posY);
     }//GEN-LAST:event_formMouseDragged
 
+    public void alinearTabla(JTable tabla) {
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        TableModel tableModel = tabla.getModel();
+
+        for (int columnIndex = 0; columnIndex < tableModel.getColumnCount(); columnIndex++) {
+            tabla.getColumnModel().getColumn(columnIndex).setCellRenderer(rightRenderer);
+        }
+    }
     public void listarMarcas() {
         ResultSet rsMarcas = null;
         DefaultComboBoxModel model = new DefaultComboBoxModel();
@@ -362,6 +381,7 @@ public class jdBuscarProductosCompra extends javax.swing.JDialog {
                 });
 
             }
+            alinearTabla(tblDatos);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }

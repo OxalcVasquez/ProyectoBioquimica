@@ -22,7 +22,7 @@ case estado when  'false' then 'vigente' else 'no vigente' end as estado from pr
 	<title>
 		<band height="67" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#54F893" uuid="ee6e69ce-cc43-4df6-ad90-e79389ea5bb9"/>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#10AB83" uuid="ee6e69ce-cc43-4df6-ad90-e79389ea5bb9"/>
 				<staticText>
 					<reportElement x="140" y="20" width="210" height="50" forecolor="#FFFFFF" uuid="6df4a2b1-0275-4a43-81c5-c7e01b4b388f"/>
 					<textElement>

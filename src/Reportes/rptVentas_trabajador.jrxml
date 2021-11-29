@@ -132,7 +132,7 @@ order by trabajador]]>
 	<title>
 		<band height="79" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#54F893" uuid="7567afde-b4b5-4450-a0f2-efd9b77abb4e"/>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#10AB83" uuid="7567afde-b4b5-4450-a0f2-efd9b77abb4e"/>
 				<staticText>
 					<reportElement x="20" y="20" width="446" height="50" forecolor="#FFFFFF" uuid="00233029-60a6-4eeb-aeac-629255a7fc16"/>
 					<textElement>

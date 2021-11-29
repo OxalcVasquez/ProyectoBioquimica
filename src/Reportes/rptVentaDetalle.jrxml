@@ -7,9 +7,8 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[
-select D.*, (precio*cantidad) as subtotal,P.nombre as producto from detalleventa D inner join producto P on P.codproducto=D.codproducto 
-where numventa=$P{numero};		]]>
+		<![CDATA[select D.*, (precio*cantidad) as subtotal,P.nombre as producto from detalleventa D inner join producto P on P.codproducto=D.codproducto 
+where numventa=$P{numero};]]>
 	</queryString>
 	<field name="cantidad" class="java.lang.Integer"/>
 	<field name="precio" class="java.math.BigDecimal"/>
@@ -26,7 +25,7 @@ where numventa=$P{numero};		]]>
 	<title>
 		<band height="62" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-18" width="595" height="80" backcolor="#54F893" uuid="2b083c7d-a157-4faf-93d6-e917acff4651"/>
+				<reportElement mode="Opaque" x="-20" y="-18" width="595" height="80" backcolor="#10AB83" uuid="2b083c7d-a157-4faf-93d6-e917acff4651"/>
 				<staticText>
 					<reportElement x="111" y="19" width="266" height="50" forecolor="#FFFFFF" uuid="0cb9febb-add2-474e-b67e-d84849e786bc"/>
 					<textElement>

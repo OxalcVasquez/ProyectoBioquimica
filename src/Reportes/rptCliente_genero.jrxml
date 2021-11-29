@@ -6,8 +6,7 @@
 	<subDataset name="bdCliente" uuid="8da6a684-2931-434a-89fd-3f38eee67b18">
 		<queryString language="SQL">
 			<![CDATA[select case sexo when true then 'Masculino' else 'Femenino' end as sexo, count(*) as total  from cliente
-group by sexo
-]]>
+group by sexo]]>
 		</queryString>
 		<field name="sexo" class="java.lang.String"/>
 		<field name="total" class="java.lang.Long"/>
@@ -42,7 +41,7 @@ from cliente]]>
 	<title>
 		<band height="68" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#54F893" uuid="27287cc1-0103-4815-8e63-58f7e2eff9fb"/>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#10AB83" uuid="27287cc1-0103-4815-8e63-58f7e2eff9fb"/>
 				<staticText>
 					<reportElement x="140" y="20" width="210" height="50" forecolor="#FFFFFF" uuid="93d44305-829a-45b4-99d8-a1aa9b06f164"/>
 					<textElement>
