@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1a6c8297-92f0-48c3-82d1-2c2fcb6772be">
 	<property name="ireport.zoom" value="2.3579476910000037"/>
-	<property name="ireport.x" value="63"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -28,8 +28,7 @@ FROM
      INNER JOIN "public"."cliente" cliente ON comprobanteventa."codcliente" = cliente."codcliente"
      INNER JOIN "public"."trabajador" trabajador ON comprobanteventa."codtrabajador" = trabajador."codtrabajador"
 	 INNER JOIN producto p  ON detalleventa."codproducto" = p."codproducto"
-order by comprobanteventa."numventa"
-]]>
+order by comprobanteventa."numventa"]]>
 	</queryString>
 	<field name="comprobanteventa_numventa" class="java.lang.Integer"/>
 	<field name="comprobanteventa_numcomprobante" class="java.lang.String"/>
@@ -185,7 +184,7 @@ order by comprobanteventa."numventa"
 	<title>
 		<band height="59" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-21" width="595" height="80" backcolor="#54F893" uuid="7a9f882b-fcd4-4638-baa5-859144010562"/>
+				<reportElement mode="Opaque" x="-20" y="-21" width="595" height="80" backcolor="#10AB83" uuid="7a9f882b-fcd4-4638-baa5-859144010562"/>
 				<staticText>
 					<reportElement x="111" y="19" width="266" height="50" forecolor="#FFFFFF" uuid="27367d01-5788-448d-b50a-63fe43ff609e"/>
 					<textElement>
