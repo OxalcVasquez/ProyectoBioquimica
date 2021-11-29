@@ -65,5 +65,11 @@ public class TextoMed extends JTextField implements FocusListener {
         super.setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK));
     }
 
+    @Override
+    public void setText(String string){
+        super.setText(string);
+        this.setFont(new Font("Gadugi", Font.PLAIN, 18));
+        this.setForeground(Color.BLACK);
+    }
 
 }
