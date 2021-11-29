@@ -16,6 +16,7 @@ import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -47,6 +48,10 @@ public class jdTrabajador extends javax.swing.JDialog {
         cboCargo.setUI(ComboMed.createUI(cboCargo));
         tblTrabajador.getTableHeader().setDefaultRenderer(new ColorTabla());
         btnBuscar2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jdCalendar.setIcon(new ImageIcon(getClass().getResource("/Iconos/calendario.png")));
+        jdCalendar.getCalendarButton().setContentAreaFilled(false);
+        jdCalendar.setBackground(Color.WHITE);
+        jdCalendar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -85,7 +90,7 @@ public class jdTrabajador extends javax.swing.JDialog {
         gradientButton4 = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel12 = new javax.swing.JLabel();
         btnEliminar = new capaInterfaz.Componentes.BotonMedGradiente();
-        jdtFecha = new com.toedter.calendar.JDateChooser();
+        jdCalendar = new com.toedter.calendar.JDateChooser();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -120,7 +125,7 @@ public class jdTrabajador extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel2.setText("Codigo:");
 
         btnNuevo.setText("Nuevo");
@@ -130,25 +135,25 @@ public class jdTrabajador extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel3.setText("Nombre:");
 
-        jLabel4.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel4.setText("Telefono:");
 
-        jLabel5.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel5.setText("Correo:");
 
-        jLabel10.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel10.setText("DNI:");
 
-        jLabel7.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel7.setText("Dirección :");
 
-        jLabel6.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel6.setText("Fecha Nac.");
 
-        jLabel8.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel8.setText("Sexo:");
 
         cboSexo.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
@@ -169,7 +174,7 @@ public class jdTrabajador extends javax.swing.JDialog {
 
             }
         ));
-        tblTrabajador.setRowHeight(24);
+        tblTrabajador.setRowHeight(30);
         tblTrabajador.setSelectionBackground(new java.awt.Color(16, 171, 131));
         tblTrabajador.setShowVerticalLines(false);
         tblTrabajador.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -212,7 +217,7 @@ public class jdTrabajador extends javax.swing.JDialog {
         txtDireccion.setText("");
         txtDireccion.setPlaceholder("");
 
-        jLabel9.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel9.setText("Apellidos :");
 
         txtApellido.setText("");
@@ -223,7 +228,7 @@ public class jdTrabajador extends javax.swing.JDialog {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel11.setText("Cargo :");
 
         cboCargo.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
@@ -244,7 +249,7 @@ public class jdTrabajador extends javax.swing.JDialog {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Gadugi", 1, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel12.setText("Estado : ");
 
         btnEliminar.setText("Eliminar");
@@ -331,7 +336,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                             .addComponent(cboSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jdtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jdCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
@@ -343,8 +348,8 @@ public class jdTrabajador extends javax.swing.JDialog {
                 .addGap(74, 74, 74))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -375,7 +380,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jdtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -441,7 +446,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                         .addGap(26, 26, 26))))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 850, 650));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 840, 650));
 
         jPanel1.setBackground(new java.awt.Color(16, 171, 131));
 
@@ -467,9 +472,9 @@ public class jdTrabajador extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(252, Short.MAX_VALUE)
+                .addContainerGap(249, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(118, 118, 118)
+                .addGap(171, 171, 171)
                 .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );
@@ -481,12 +486,12 @@ public class jdTrabajador extends javax.swing.JDialog {
                         .addGap(15, 15, 15)
                         .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(24, 24, 24)
                         .addComponent(jLabel1)))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 158));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 158));
         jPanel1.setBorder(BorderFactory.createMatteBorder(3, 3, 0, 3, Color.GRAY));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -495,14 +500,14 @@ public class jdTrabajador extends javax.swing.JDialog {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 950, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 630, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 900, 630));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 950, 630));
         jPanel3.setBorder(BorderFactory.createMatteBorder(0, 3, 3, 3, Color.GRAY));
 
         pack();
@@ -581,7 +586,7 @@ public class jdTrabajador extends javax.swing.JDialog {
            txtDNI.setText("");
             txtCorreo.setText("");
              txtDireccion.setText("");
-              jdtFecha.setDate(null);
+              jdCalendar.setDate(null);
                txtTelefono.setText("");
                 cboCargo.setSelectedItem(null);
                  cboSexo.setSelectedItem(null);
@@ -639,7 +644,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                 if(cboCargo.getSelectedItem().equals("Administrador")) cargo = 'A';
                 if(cboCargo.getSelectedItem().equals("Apoyo")) cargo = 'Y';
                 
-                String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdtFecha.getDate()); 
+                String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdCalendar.getDate()); 
                
                 
                 objTra.guardarTrabajador(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),txtTelefono.getText(),txtCorreo.getText(), txtDireccion.getText(),sexo,fecha,cargo,chkEstado.isSelected());
@@ -696,7 +701,7 @@ public class jdTrabajador extends javax.swing.JDialog {
              if(cboCargo.getSelectedItem().equals("Administrador")) cargo = 'A';
              if(cboCargo.getSelectedItem().equals("Apoyo")) cargo = 'Y';
              
-             String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdtFecha.getDate());
+             String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdCalendar.getDate());
              
              objTra.actualizarTrabajador(Integer.parseInt(txtCodigo.getText()), txtNombre.getText(),txtApellido.getText(), txtDNI.getText(),txtTelefono.getText(), txtCorreo.getText(),txtDireccion.getText(),sexo,fecha,cargo,chkEstado.isSelected());
                    new MensajeMed().mostrar(this,"Se actualizo al trabajador",2); 
@@ -770,7 +775,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                     txtCorreo.setText(rs.getString("correo"));
                     txtDNI.setText(rs.getString("dni"));
                     txtDireccion.setText(rs.getString("direccion"));
-                    jdtFecha.setDate(rs.getDate("fechanac"));
+                    jdCalendar.setDate(rs.getDate("fechanac"));
                     txtTelefono.setText(rs.getString("telefono"));
                     
                     if(rs.getBoolean("sexo")== true) sexo = "Masculino";
@@ -992,7 +997,7 @@ public class jdTrabajador extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private com.toedter.calendar.JDateChooser jdtFecha;
+    private com.toedter.calendar.JDateChooser jdCalendar;
     private javax.swing.JTable tblTrabajador;
     private capaInterfaz.Componentes.TextoMed txtApellido;
     private capaInterfaz.Componentes.TextoMed txtCodigo;
