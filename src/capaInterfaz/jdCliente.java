@@ -40,12 +40,11 @@ clsCliente objC = new clsCliente();
         setBackground(new Color(0, 0, 0, 0));
         
         cboSexo.setUI(ComboMed.createUI(cboSexo));
+        cboDoc.setUI(ComboMed.createUI(cboDoc));
         tblCliente.getTableHeader().setDefaultRenderer(new ColorTabla());
         
         jdCalendar.setIcon(new ImageIcon(getClass().getResource("/Iconos/calendario.png")));
         jdCalendar.getCalendarButton().setContentAreaFilled(false);
-        //jdCalendar.getCalendarButton().setOpaque(false);
-        //jdCalendar.getCalendarButton().setBorderPainted(false);
         jdCalendar.setBackground(Color.WHITE);
         jdCalendar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
@@ -157,6 +156,7 @@ clsCliente objC = new clsCliente();
         cboSexo.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         cboSexo.setForeground(new java.awt.Color(51, 51, 51));
         cboSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
+        cboSexo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         tblCliente.setFont(new java.awt.Font("Gadugi", 0, 14)); // NOI18N
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(

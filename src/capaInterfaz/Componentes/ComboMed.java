@@ -7,6 +7,7 @@ package capaInterfaz.Componentes;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import javax.swing.BorderFactory;
@@ -27,6 +28,7 @@ public class ComboMed extends BasicComboBoxUI {
     private Color red = new Color(104, 228, 176);
 
     public static ComboBoxUI createUI(JComponent c) {
+        c.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         return new ComboMed();
 
     }
