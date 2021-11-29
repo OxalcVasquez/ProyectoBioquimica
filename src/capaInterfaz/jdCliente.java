@@ -192,6 +192,11 @@ clsCliente objC = new clsCliente();
 
         txtTelefono.setText("");
         txtTelefono.setPlaceholder("");
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
 
         txtCorreo.setText("");
         txtCorreo.setPlaceholder("");
@@ -538,7 +543,7 @@ clsCliente objC = new clsCliente();
                 listarCliente();
                 
                 }else {
-                    new MensajeMed().mostrar(this, "Llene todos los campos", 0);
+                    new MensajeMed().mostrar(this, "Por favor complete todos los campos", 0);
                 }
                 
             }
@@ -671,6 +676,14 @@ clsCliente objC = new clsCliente();
     private void botonMedGradiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente3ActionPerformed
         dispose();
     }//GEN-LAST:event_botonMedGradiente3ActionPerformed
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        char c = evt.getKeyChar();//metodo solo para ingresar numeros
+        if (c < '0' || c > '9') {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
 
     private void limpiarControles(){
         txtCodigo.setText("");
