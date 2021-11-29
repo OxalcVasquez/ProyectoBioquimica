@@ -25,7 +25,7 @@ where numventa=$P{numero};]]>
 	<title>
 		<band height="62" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="-20" y="-18" width="595" height="80" backcolor="#10AB83" uuid="2b083c7d-a157-4faf-93d6-e917acff4651"/>
+				<reportElement mode="Opaque" x="-20" y="-21" width="596" height="83" backcolor="#10AB83" uuid="2b083c7d-a157-4faf-93d6-e917acff4651"/>
 				<staticText>
 					<reportElement x="111" y="19" width="266" height="50" forecolor="#FFFFFF" uuid="0cb9febb-add2-474e-b67e-d84849e786bc"/>
 					<textElement>

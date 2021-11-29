@@ -728,9 +728,9 @@ public class jdVenta extends javax.swing.JDialog {
             modelo.addRow(datos);
 
         }
-        alinearTabla(tblDetalle);
 
         tblDetalle.setModel(modelo);
+        alinearTabla(tblDetalle);
 
     }
 
@@ -1003,6 +1003,7 @@ public class jdVenta extends javax.swing.JDialog {
                 listaDetalle.add(producto);
                 listarDetalle(listaDetalle);
                 actualizarTotal();
+
                 new MensajeMed().mostrar(this, "El producto fue agregado correctamente", 2);
 
 //                txtTotal.setText(String.valueOf(rsProducto.getDouble("precioventa") * jsCantidad.getCantidad()));
@@ -1072,6 +1073,9 @@ public class jdVenta extends javax.swing.JDialog {
                             listaDetalle);
                     new MensajeMed().mostrar(this, "La venta fue registrada correctamente", 2);
 
+                    jdComprobanteVenta objFrm = new jdComprobanteVenta(null, true);
+                    objFrm.detalle(Integer.parseInt(txtNumero.getText()));
+                    objFrm.setVisible(true);
                     limpiarControloes();
 
                 } else {
