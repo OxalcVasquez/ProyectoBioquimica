@@ -62,6 +62,8 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
 btnBusCompra.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 btnProv.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+btnAñadir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+btnQuitar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         cboComp.setUI(ComboMed.createUI(cboComp));
         tblCompras.getTableHeader().setDefaultRenderer(new ColorTabla());
         tblDetalle.getTableHeader().setDefaultRenderer(new ColorTabla());
@@ -109,7 +111,6 @@ btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     private void initComponents() {
 
         jPanel2 = new RoundedPanel();
-        btnMenos = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente1 = new capaInterfaz.Componentes.BotonMedGradiente();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -144,19 +145,18 @@ btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jLabel21 = new javax.swing.JLabel();
         btnNuevaComprs = new capaInterfaz.Componentes.BotonMedGradiente();
         jsCantidad = new capaInterfaz.Componentes.spinnerMed();
-        btnMas = new capaInterfaz.Componentes.BotonMedGradiente();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDetalle = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         btnNuevoProducto = new capaInterfaz.Componentes.BotonMedGradiente();
-        jLabel14 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
         btnProv = new javax.swing.JLabel();
         btnProd = new javax.swing.JLabel();
+        btnAñadir = new javax.swing.JLabel();
+        btnQuitar = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -183,14 +183,6 @@ btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnMenos.setText("Quitar");
-        btnMenos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenosActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnMenos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 100, -1));
 
         botonMedGradiente1.setText("Modificar");
         botonMedGradiente1.addActionListener(new java.awt.event.ActionListener() {
@@ -422,14 +414,6 @@ btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jPanel2.add(btnNuevaComprs, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 430, 170, -1));
         jPanel2.add(jsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, -1, -1));
 
-        btnMas.setText("Añadir");
-        btnMas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMasActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnMas, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 100, -1));
-
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         tblDetalle.setModel(new javax.swing.table.DefaultTableModel(
@@ -453,7 +437,7 @@ btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         });
         jScrollPane2.setViewportView(tblDetalle);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 530, 180));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 530, 180));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ICONO.png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 150, 130));
@@ -466,9 +450,6 @@ btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         });
         jPanel2.add(btnNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 260, -1, -1));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/agregar.png"))); // NOI18N
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
-
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editar.png"))); // NOI18N
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, -1, -1));
 
@@ -480,9 +461,6 @@ btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/agregar.png"))); // NOI18N
         jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 430, -1, -1));
-
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/baja.png"))); // NOI18N
-        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, -1, -1));
 
         btnProv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
         btnProv.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -499,6 +477,22 @@ btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
         });
         jPanel2.add(btnProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 260, -1, -1));
+
+        btnAñadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/mas.png"))); // NOI18N
+        btnAñadir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAñadirMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnAñadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, -1, -1));
+
+        btnQuitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/menos.png"))); // NOI18N
+        btnQuitar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnQuitarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnQuitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1090, 740));
 
@@ -578,19 +572,16 @@ btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
-
-    private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
-        // TODO add your handling code here:
-        for (int i = 0; i < listaDetalle.size(); i++) {
+public void quitar(){
+   for (int i = 0; i < listaDetalle.size(); i++) {
             Object[] datos = (Object[]) listaDetalle.get(i);
             if (datos[0].equals(txtProducto.getText())) {
                 listaDetalle.remove(i);
                 new MensajeMed().mostrar(this, "Producto eliminado correctamente",2);
                 listarDetalle(listaDetalle);
             }
-        }
-    }//GEN-LAST:event_btnMenosActionPerformed
-
+        }  
+}
     private void txtnumcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumcompraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnumcompraActionPerformed
@@ -736,9 +727,9 @@ private void buscarProdu(){
             new MensajeMed().mostrar(this, e.getMessage(),3);
         }        
     }
-    private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
-        // TODO add your handling code here:
-        try {
+
+private void anadir(){
+     try {
 
             if (validarDetalle(txtProducto.getText())) {
                 Object producto[] = new Object[5];
@@ -761,8 +752,7 @@ private void buscarProdu(){
         } catch (Exception ex) {
             new MensajeMed().mostrar(this, ex.getMessage(),3);
         }
-    }//GEN-LAST:event_btnMasActionPerformed
-
+}
     private void txtrucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtrucKeyTyped
         // TODO add your handling code here:
         // TODO add your handling code here:
@@ -903,6 +893,16 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
          // TODO add your handling code here:
          buscarProv();
     }//GEN-LAST:event_btnProvMouseClicked
+
+    private void btnAñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAñadirMouseClicked
+        // TODO add your handling code here:
+        anadir();
+    }//GEN-LAST:event_btnAñadirMouseClicked
+
+    private void btnQuitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuitarMouseClicked
+         // TODO add your handling code here:
+        quitar();
+    }//GEN-LAST:event_btnQuitarMouseClicked
     public void actualizarTotal() {
         Double total = 0.0;
         for (int i = 0; i < tblDetalle.getRowCount(); i++) {
@@ -1128,14 +1128,14 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente1;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente2;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente3;
+    private javax.swing.JLabel btnAñadir;
     private javax.swing.JLabel btnBusCompra;
-    private capaInterfaz.Componentes.BotonMedGradiente btnMas;
-    private capaInterfaz.Componentes.BotonMedGradiente btnMenos;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevaComprs;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevoProducto;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevoPrveedor;
     private javax.swing.JLabel btnProd;
     private javax.swing.JLabel btnProv;
+    private javax.swing.JLabel btnQuitar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboComp;
     private javax.swing.JLabel jLabel1;
@@ -1143,7 +1143,6 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1155,7 +1154,6 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

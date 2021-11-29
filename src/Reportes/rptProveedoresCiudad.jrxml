@@ -16,7 +16,7 @@ group by ciudad]]>
 	</subDataset>
 	<queryString>
 		<![CDATA[select p.*, 
-case p.rubro when 'A' then 'Agrícola' when 'Q' then 'Química' end as rub,
+case p.rubro when 'A' then 'Agrícola' when 'Q' then 'Química' when 'V' then 'Veterinario' end as rub,
 case p.estado when false then 'No vigente' when true then 'Vigente' end as est
 from proveedor p]]>
 	</queryString>
