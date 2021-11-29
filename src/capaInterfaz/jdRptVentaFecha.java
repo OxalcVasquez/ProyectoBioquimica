@@ -7,9 +7,12 @@ package capaInterfaz;
 
 import capaNegocio.clsReporte;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.swing.JRViewer;
 
@@ -24,21 +27,24 @@ public class jdRptVentaFecha extends javax.swing.JDialog {
      */
     private String nombreReporte;
 
- 
     public jdRptVentaFecha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.visorReporte.setVisible(false);
+        jdcFecha.setIcon(new ImageIcon(getClass().getResource("/Iconos/calendario.png")));
+        jdcFecha.getCalendarButton().setContentAreaFilled(false);
+        jdcFecha.setBackground(Color.WHITE);
+        jdcFecha.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
-       public String getNombreReporte() {
+    public String getNombreReporte() {
         return nombreReporte;
     }
 
     public void setNombreReporte(String nombreReporte) {
         this.nombreReporte = nombreReporte;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,6 +82,7 @@ public class jdRptVentaFecha extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(16, 171, 131));
         jLabel2.setText("Fecha:");
 
         btnVer.setText("Ver ventas");
@@ -94,23 +101,19 @@ public class jdRptVentaFecha extends javax.swing.JDialog {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(31, 31, 31)
                 .addComponent(btnVer, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))))
+                    .addComponent(btnVer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdcFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -137,19 +140,18 @@ public class jdRptVentaFecha extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-      
 
 
     }//GEN-LAST:event_formWindowOpened
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
-          try {
+        try {
             Container contenedor = this.visorReporte;
             contenedor.setLayout(new BorderLayout());
             //Agregar paramtros
-            Map<String,Object> param = new HashMap<>();
-            param.put("fecha",jdcFecha.getDate());
-            JRViewer vistaRep = new clsReporte().reporteInterno("rptVentasPorFecha.jasper",param);
+            Map<String, Object> param = new HashMap<>();
+            param.put("fecha", jdcFecha.getDate());
+            JRViewer vistaRep = new clsReporte().reporteInterno("rptVentasPorFecha.jasper", param);
             contenedor.add(vistaRep);
             this.visorReporte.setVisible(true);
         } catch (Exception e) {
