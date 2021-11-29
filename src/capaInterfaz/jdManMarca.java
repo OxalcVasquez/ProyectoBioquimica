@@ -142,6 +142,7 @@ public class jdManMarca extends javax.swing.JDialog {
         tblDatos.setFillsViewportHeight(true);
         tblDatos.setRowHeight(24);
         tblDatos.setSelectionBackground(new java.awt.Color(16, 171, 131));
+        tblDatos.setShowVerticalLines(false);
         tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDatosMouseClicked(evt);

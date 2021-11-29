@@ -150,6 +150,7 @@ public class jdManCategoria extends javax.swing.JDialog {
         ));
         tblDatos.setRowHeight(27);
         tblDatos.setSelectionBackground(new java.awt.Color(16, 171, 131));
+        tblDatos.setShowVerticalLines(false);
         tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDatosMouseClicked(evt);
