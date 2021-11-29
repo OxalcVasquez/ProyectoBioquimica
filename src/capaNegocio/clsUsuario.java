@@ -76,12 +76,12 @@ public class clsUsuario {
     
     public ResultSet listarUsuario() throws Exception{
     
-        strSQL = "select * from usuario";
+        strSQL = "select u.*, (t.nombres || ' ' || t.apellidos) as nombreTrabajador from usuario u inner join trabajador t on u.codtrabajador = t.codtrabajador";
         try {
            return  rs = obj.consultarBD(strSQL);
             
         } catch (Exception e) {
-             throw new Exception("No se pudo guardar");
+             throw new Exception("No se pudo listar ");
         }
     }
     

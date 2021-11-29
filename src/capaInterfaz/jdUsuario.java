@@ -299,9 +299,10 @@ public class jdUsuario extends javax.swing.JDialog {
                             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cboTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigoTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cboTrabajador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCodigoTra, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                        .addGap(33, 33, 33))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
@@ -319,7 +320,7 @@ public class jdUsuario extends javax.swing.JDialog {
                                 .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(botonMedGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(gradientButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -522,7 +523,7 @@ public class jdUsuario extends javax.swing.JDialog {
         modelo.addColumn("Contraseña");
         modelo.addColumn("Vigencia");
         modelo.addColumn("Fecha Registro");
-        modelo.addColumn("Cod. Trabajador");
+        modelo.addColumn("Trabajador");
       
         
         tblUsuario.setModel(modelo);
@@ -530,7 +531,7 @@ public class jdUsuario extends javax.swing.JDialog {
         try {
             rs = objUsu.listarUsuario();
             while(rs.next()){
-                modelo.addRow(new Object[]{rs.getInt("codusuario"), rs.getString("nombreusuario"),rs.getString("contraseñausuario"), rs.getBoolean("vigencia"),rs.getString("fecharegistro"),rs.getInt("codtrabajador") });
+                modelo.addRow(new Object[]{rs.getInt("codusuario"), rs.getString("nombreusuario"),rs.getString("contraseñausuario"), rs.getBoolean("vigencia"),rs.getString("fecharegistro"),rs.getString("nombreTrabajador") });
             }
             
         } catch (Exception e) {
