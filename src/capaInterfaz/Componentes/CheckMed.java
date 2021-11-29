@@ -5,6 +5,7 @@
  */
 package capaInterfaz.Componentes;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JCheckBox;
@@ -20,6 +21,7 @@ public class CheckMed extends JCheckBox {
         this.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/checked.png")));
         this.setOpaque(false);
         this.setFont(new Font("Gadugi", Font.PLAIN, 18));
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

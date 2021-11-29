@@ -10,6 +10,7 @@ package capaInterfaz.Componentes;
  * @author CMFerrer
  */
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -103,6 +104,7 @@ public class BotonMedGradiente extends JButton implements MouseListener {
         this.borderColor = Color.GREEN;
         this.setFont(new Font("Gadugi", Font.BOLD, 18));
         this.setForeground(Color.WHITE);
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addMouseListener(this);
     }
  
@@ -120,6 +122,7 @@ public class BotonMedGradiente extends JButton implements MouseListener {
         this.color2 = DEFAULT_COLOR_2;
         this.align = DEFAULT_ALIGN;
         this.borderColor = Color.BLACK;
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addMouseListener(this);
     }
  
@@ -134,6 +137,7 @@ public class BotonMedGradiente extends JButton implements MouseListener {
         this.color2 = DEFAULT_COLOR_2;
         this.align = DEFAULT_ALIGN;
         this.borderColor = Color.BLACK;
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addMouseListener(this);
     }
  
@@ -148,6 +152,7 @@ public class BotonMedGradiente extends JButton implements MouseListener {
         this.color2 = DEFAULT_COLOR_2;
         this.align = DEFAULT_ALIGN;
         this.borderColor = Color.BLACK;
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addMouseListener(this);
     }
  
@@ -163,6 +168,7 @@ public class BotonMedGradiente extends JButton implements MouseListener {
         this.color2 = DEFAULT_COLOR_2;
         this.align = DEFAULT_ALIGN;
         this.borderColor = Color.BLACK;
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addMouseListener(this);
     }
  
@@ -181,6 +187,7 @@ public class BotonMedGradiente extends JButton implements MouseListener {
         this.color2 = color2;
         this.align = align;
         this.borderColor = Color.BLACK;
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addMouseListener(this);
     }
  
@@ -201,6 +208,7 @@ public class BotonMedGradiente extends JButton implements MouseListener {
         this.color2 = color2;
         this.align = align;
         this.borderColor = Color.BLACK;
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addMouseListener(this);
     }
  
@@ -221,6 +229,7 @@ public class BotonMedGradiente extends JButton implements MouseListener {
         this.color2 = color2;
         this.align = align;
         this.borderColor = Color.BLACK;
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addMouseListener(this);
     }
  
@@ -242,6 +251,7 @@ public class BotonMedGradiente extends JButton implements MouseListener {
         this.color2 = color2;
         this.align = align;
         this.borderColor = Color.BLACK;
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         addMouseListener(this);
     }
  

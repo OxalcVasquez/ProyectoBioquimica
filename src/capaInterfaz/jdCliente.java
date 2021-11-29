@@ -11,10 +11,12 @@ import capaInterfaz.Componentes.ComboMed;
 import capaInterfaz.Componentes.MensajeMed;
 import capaNegocio.clsCliente;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
@@ -39,6 +41,13 @@ clsCliente objC = new clsCliente();
         
         cboSexo.setUI(ComboMed.createUI(cboSexo));
         tblCliente.getTableHeader().setDefaultRenderer(new ColorTabla());
+        
+        jdCalendar.setIcon(new ImageIcon(getClass().getResource("/Iconos/calendario.png")));
+        jdCalendar.getCalendarButton().setContentAreaFilled(false);
+        //jdCalendar.getCalendarButton().setOpaque(false);
+        //jdCalendar.getCalendarButton().setBorderPainted(false);
+        jdCalendar.setBackground(Color.WHITE);
+        jdCalendar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**
