@@ -19,8 +19,12 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -52,7 +56,7 @@ public class jdGestionarProducto extends javax.swing.JDialog {
         jdcVencimiento.getCalendarButton().setContentAreaFilled(false);
         jdcVencimiento.setBackground(Color.WHITE);
         jdcVencimiento.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        lblBy.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnBuscar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
     }
 
@@ -94,7 +98,7 @@ public class jdGestionarProducto extends javax.swing.JDialog {
         btnModificar = new capaInterfaz.Componentes.BotonMedGradiente();
         btnDarBaja = new capaInterfaz.Componentes.BotonMedGradiente();
         btnEliminar = new capaInterfaz.Componentes.BotonMedGradiente();
-        lblBy = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -176,7 +180,8 @@ public class jdGestionarProducto extends javax.swing.JDialog {
 
             }
         ));
-        tblDatos.setSelectionBackground(new java.awt.Color(104, 228, 176));
+        tblDatos.setRowHeight(24);
+        tblDatos.setSelectionBackground(new java.awt.Color(16, 171, 131));
         tblDatos.setShowVerticalLines(false);
         tblDatos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -282,13 +287,13 @@ public class jdGestionarProducto extends javax.swing.JDialog {
         });
         jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 400, 170, -1));
 
-        lblBy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
-        lblBy.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblByMouseClicked(evt);
+                btnBuscarMouseClicked(evt);
             }
         });
-        jPanel2.add(lblBy, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 12, -1, 40));
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 12, -1, 40));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/agregar.png"))); // NOI18N
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 270, -1, -1));
@@ -378,6 +383,15 @@ public class jdGestionarProducto extends javax.swing.JDialog {
         posY = evt.getY();
     }//GEN-LAST:event_formMousePressed
 
+    public void alinearTabla(JTable tabla) {
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        TableModel tableModel = tabla.getModel();
+
+        for (int columnIndex = 0; columnIndex < tableModel.getColumnCount(); columnIndex++) {
+            tabla.getColumnModel().getColumn(columnIndex).setCellRenderer(rightRenderer);
+        }
+    }
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         // TODO add your handling code here:
         setLocation(evt.getXOnScreen() - posX, evt.getYOnScreen() - posY);
@@ -530,6 +544,7 @@ public class jdGestionarProducto extends javax.swing.JDialog {
                 });
 
             }
+            alinearTabla(tblDatos);
         } catch (Exception e) {
             new MensajeMed().mostrar(this, e.getMessage(), 3);
 
@@ -556,9 +571,8 @@ public class jdGestionarProducto extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnDarBajaActionPerformed
 
-
-    private void buscarProducto(){
-      try {
+    private void buscarProducto() {
+        try {
             if (!txtCodigo.getText().isEmpty()) {
                 ResultSet rsProducto = objProducto.buscarProducto(Integer.parseInt(txtCodigo.getText()));
                 if (rsProducto.next()) {
@@ -660,11 +674,11 @@ public class jdGestionarProducto extends javax.swing.JDialog {
         buscarProducto();
     }//GEN-LAST:event_tblDatosMouseClicked
 
-    private void lblByMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblByMouseClicked
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         // TODO add your handling code here:
-    buscarProducto();
-        
-    }//GEN-LAST:event_lblByMouseClicked
+        buscarProducto();
+
+    }//GEN-LAST:event_btnBuscarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -772,6 +786,7 @@ public class jdGestionarProducto extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnBuscar;
     private capaInterfaz.Componentes.BotonMedGradiente btnDarBaja;
     private capaInterfaz.Componentes.BotonMedGradiente btnEliminar;
     private capaInterfaz.Componentes.BotonMedGradiente btnModificar;
@@ -803,7 +818,6 @@ public class jdGestionarProducto extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser jdcVencimiento;
     private java.awt.Label label1;
-    private javax.swing.JLabel lblBy;
     private javax.swing.JTable tblDatos;
     private capaInterfaz.Componentes.TextoMed txtCodigo;
     private capaInterfaz.Componentes.TextoMed txtDescripcion;
