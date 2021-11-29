@@ -81,7 +81,7 @@ public class ComboMed extends BasicComboBoxUI {
                 list.setSelectionBackground(Color.WHITE);
                 list.setSelectionForeground(Color.BLACK);
                 if (isSelected) {
-                    setBackground(new Color(84, 248, 147));
+                    setBackground(new Color(16,171,131));
                     setForeground(Color.WHITE);
                 } else {
                     setBackground(Color.WHITE);

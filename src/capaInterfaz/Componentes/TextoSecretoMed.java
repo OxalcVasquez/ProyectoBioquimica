@@ -46,7 +46,7 @@ public class TextoSecretoMed extends JPasswordField implements FocusListener{
             super.setEchoChar('•');
         }
         
-        super.setBorder(new MatteBorder(0, 0, 1, 0, new Color(79, 119, 254)));
+        super.setBorder(new MatteBorder(0, 0, 1, 0, new Color(16,171,131)));
     }
 
     @Override

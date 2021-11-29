@@ -98,10 +98,10 @@ public class BotonMedGradiente extends JButton implements MouseListener {
      */
     public BotonMedGradiente() {
         super();
-        this.color1 = new Color(84,248,147); //DEFAULT_COLOR_1
-        this.color2 = new Color(104,228,176);//DEFAULT_COLOR_2
+        this.color1 = new Color(16,171,131); //DEFAULT_COLOR_1
+        this.color2 = new Color(36,202,159);//DEFAULT_COLOR_2
         this.align = LEFT_TO_RIGHT;
-        this.borderColor = Color.GREEN;
+        this.borderColor = new Color(16,171,131);
         this.setFont(new Font("Gadugi", Font.BOLD, 18));
         this.setForeground(Color.WHITE);
         this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
