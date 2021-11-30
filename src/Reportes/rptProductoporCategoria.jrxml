@@ -38,9 +38,12 @@ order by categoria."codcategoria"]]>
 	<group name="prodcat">
 		<groupExpression><![CDATA[$F{categoria_codcategoria}]]></groupExpression>
 		<groupHeader>
-			<band height="50">
+			<band height="84">
+				<rectangle radius="4">
+					<reportElement mode="Opaque" x="-1" y="55" width="560" height="29" backcolor="#36304A" uuid="cc1eba82-caed-4345-9702-6332282b5e88"/>
+				</rectangle>
 				<textField>
-					<reportElement x="146" y="12" width="290" height="38" forecolor="#10AB83" uuid="5be8e370-498b-4321-9010-2d83c30d252d"/>
+					<reportElement x="146" y="0" width="290" height="38" forecolor="#10AB83" uuid="5be8e370-498b-4321-9010-2d83c30d252d"/>
 					<textElement>
 						<font fontName="Gadugi" size="24"/>
 					</textElement>
@@ -52,6 +55,78 @@ order by categoria."codcategoria"]]>
 						<font fontName="Gadugi" size="12"/>
 					</textElement>
 					<text><![CDATA[Categoria]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="5" y="53" width="50" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="3fad654f-084e-4a8f-84a6-e129e17f135c">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4bf1b03-cec9-49a3-8c2f-f82403385a52"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Código]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="475" y="53" width="79" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="423bd86f-67c6-4bbc-8d97-6e1f7593ff1e">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4a34d47-97ef-45c2-90b7-23d6dec80240"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Vigencia]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="215" y="54" width="51" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="a9a86ab6-3e81-4fc9-bf43-f31ec3c22b60">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d897690-9289-4b84-88c6-5ae536686d13"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[S/ Venta]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="346" y="54" width="50" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="f48c976f-8dee-4b39-bcd9-ad914309df81">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ceac69b-305d-44b1-98e4-4d876e95b7de"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Stock]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="141" y="54" width="68" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="97b95adc-28b9-43d1-9216-d24c1dd2cdc5">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a35f115a-cdcf-4e0c-ba92-af26e98c7ae1"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Descripcion]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="405" y="54" width="69" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="5de367dc-2ea2-4d22-8b57-b92787a37164">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1a46b38d-a046-4bfb-acef-cda8f0f44427"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha vcto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="55" y="54" width="80" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="84d0add0-16b7-4690-81c1-12de89ea4150">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7585bf62-d011-4688-b0cd-052fc6f490c7"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nombre]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="275" y="54" width="61" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="af0e0e6a-1259-4b7b-98d7-2f611a7d9573">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a0517959-d3e2-46a7-a0ce-0160fb412e2e"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Gadugi" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[S/ Compra]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
@@ -97,83 +172,7 @@ order by categoria."codcategoria"]]>
 		<band height="11" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="39" splitType="Stretch">
-			<rectangle radius="4">
-				<reportElement mode="Opaque" x="0" y="5" width="560" height="29" backcolor="#36304A" uuid="cc1eba82-caed-4345-9702-6332282b5e88"/>
-			</rectangle>
-			<staticText>
-				<reportElement mode="Transparent" x="6" y="6" width="50" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="3fad654f-084e-4a8f-84a6-e129e17f135c">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4bf1b03-cec9-49a3-8c2f-f82403385a52"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Código]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="476" y="6" width="79" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="423bd86f-67c6-4bbc-8d97-6e1f7593ff1e">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e4a34d47-97ef-45c2-90b7-23d6dec80240"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Vigencia]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="216" y="7" width="51" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="a9a86ab6-3e81-4fc9-bf43-f31ec3c22b60">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d897690-9289-4b84-88c6-5ae536686d13"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[S/ Venta]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="347" y="7" width="50" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="f48c976f-8dee-4b39-bcd9-ad914309df81">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1ceac69b-305d-44b1-98e4-4d876e95b7de"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Stock]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="142" y="7" width="68" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="97b95adc-28b9-43d1-9216-d24c1dd2cdc5">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a35f115a-cdcf-4e0c-ba92-af26e98c7ae1"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Descripcion]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="406" y="7" width="69" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="5de367dc-2ea2-4d22-8b57-b92787a37164">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1a46b38d-a046-4bfb-acef-cda8f0f44427"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Fecha vcto]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="56" y="7" width="80" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="84d0add0-16b7-4690-81c1-12de89ea4150">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7585bf62-d011-4688-b0cd-052fc6f490c7"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nombre]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="276" y="7" width="61" height="20" forecolor="#FFFFFF" backcolor="#E6E6E6" uuid="af0e0e6a-1259-4b7b-98d7-2f611a7d9573">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a0517959-d3e2-46a7-a0ce-0160fb412e2e"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[S/ Compra]]></text>
-			</staticText>
-		</band>
+		<band height="13" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
