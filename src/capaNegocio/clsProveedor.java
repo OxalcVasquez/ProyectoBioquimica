@@ -31,11 +31,11 @@ public class clsProveedor {
     }
     
     public void registrarProv(String ruc,String razSocial,String correo, String web, String tel,String ciudad,String rubro,Boolean estado) throws Exception{
-        strSQL="insert into proveedor values('"+ruc+"', '"+razSocial+"','"+correo+"', '"+web+"','"+tel+"','"+ciudad+"','"+rubro+"',"+estado+")";
+        strSQL="select pa_registrarProveedor('"+ruc+"', '"+razSocial+"','"+correo+"', '"+web+"','"+tel+"','"+ciudad+"','"+rubro+"',"+estado+")";
         try {
-            objConectar.ejecutarBD(strSQL);
+            objConectar.consultarBD(strSQL);
         } catch (Exception e) {
-            throw new Exception("Error al registrar Proveedor");
+            throw new Exception(e);
         }
     }
     

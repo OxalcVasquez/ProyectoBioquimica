@@ -43,7 +43,7 @@ public class clsComprobanteCompra {
     }
     
     public ResultSet listarComprobanteCompra() throws Exception {
-        strSQL = "select C.*, P.razonsocial from comprobanteCompra C inner join proveedor P on p.ruc=C.rucproveedor";
+        strSQL = "select C.*, P.razonsocial from comprobanteCompra C inner join proveedor P on p.ruc=C.rucproveedor order by C.codcomprobante";
 
         try {
             rs = objConexion.consultarBD(strSQL);

@@ -53,9 +53,7 @@ public class jdRptDetalleCompra extends javax.swing.JDialog {
         visorReporte = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         btnVer = new capaInterfaz.Componentes.BotonMedGradiente();
-        cboTipo = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         txtNumero = new capaInterfaz.Componentes.TextoMed();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -86,15 +84,8 @@ public class jdRptDetalleCompra extends javax.swing.JDialog {
             }
         });
 
-        cboTipo.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        cboTipo.setForeground(new java.awt.Color(51, 51, 51));
-        cboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Boleta Electrónica", "Factura", "Factura Electrónica" }));
-
         jLabel13.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jLabel13.setText("Número:");
-
-        jLabel14.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
-        jLabel14.setText("Tipo Comp:");
+        jLabel13.setText("Número compra:");
 
         txtNumero.setForeground(new java.awt.Color(0, 0, 0));
         txtNumero.setText("");
@@ -110,36 +101,23 @@ public class jdRptDetalleCompra extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(cboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(27, 27, 27)
                 .addComponent(btnVer, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(252, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(32, 32, 32)
-                    .addComponent(jLabel14)
-                    .addContainerGap(872, Short.MAX_VALUE)))
+                .addContainerGap(532, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 17, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(46, Short.MAX_VALUE)
-                    .addComponent(jLabel14)
-                    .addGap(26, 26, 26)))
+                .addGap(0, 25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -267,9 +245,7 @@ public class jdRptDetalleCompra extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private capaInterfaz.Componentes.BotonMedGradiente btnVer;
-    private javax.swing.JComboBox<String> cboTipo;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel1;
     private capaInterfaz.Componentes.TextoMed txtNumero;
     private javax.swing.JDesktopPane visorReporte;

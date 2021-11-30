@@ -490,6 +490,7 @@ private void buscarPro(){
                     objProv.registrarProv(txtRuc.getText(),txtRAZ.getText(), txtCorreo.getText(), txtWeb.getText(), txtTel.getText(), txtCiudad.getText(), rubro, chkEstado.isSelected());
                   new MensajeMed().mostrar(this, "Se registró correctamente.", 2);
                   listarProveedores();
+                  limpiar();
                 }else{
                      new MensajeMed().mostrar(this, "Ruc ya está registrado!",3);
 
@@ -511,6 +512,7 @@ private void buscarPro(){
                 objProv.darBajaHab(txtRuc.getText());
                 new MensajeMed().mostrar(this, "Se dio de baja correctamente.", 2);
                 listarProveedores();
+                limpiar();
             }
         } catch (Exception e) {
             new MensajeMed().mostrar(this, e.getMessage(),3);
@@ -531,6 +533,7 @@ private void buscarPro(){
                 objProv.modificarProv(txtRuc.getText(),txtRAZ.getText(), txtCorreo.getText(), txtWeb.getText(), txtTel.getText(), txtCiudad.getText(), rubro, chkEstado.isSelected());
                 new MensajeMed().mostrar(this, "Se modificó correctamente", 2);
                 listarProveedores();
+                limpiar();
                  
             }
         } catch (Exception e) {
@@ -549,6 +552,7 @@ private void buscarPro(){
                     if (rpta == JOptionPane.YES_OPTION) {
                 objProv.eliminarProv(txtRuc.getText());
                 new MensajeMed().mostrar(this, "Se eliminó correctamente", 2);
+                limpiar();
                     }
                 listarProveedores();
                 }else{
@@ -598,7 +602,17 @@ private void buscarPro(){
          // TODO add your handling code here:
          buscarPro();
     }//GEN-LAST:event_btnBusMouseClicked
- private void listarProveedores(){
+ private void limpiar(){
+     txtCiudad.setText("");
+     txtCorreo.setText("");
+     txtWeb.setText("");
+     txtTel.setText("");
+     txtRAZ.setText("");
+     txtRuc.setText("");
+     chkEstado.setEnabled(false);
+     cboRubro.setSelectedIndex(0);
+ }
+    private void listarProveedores(){
         ResultSet rsPr =null;
         String rubro="";
         DefaultTableModel modeloPr=new DefaultTableModel();
