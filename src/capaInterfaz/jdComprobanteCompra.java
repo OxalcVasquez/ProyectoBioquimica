@@ -689,7 +689,7 @@ private String obtenerTipoComprobante() {
                 //Guardar 
                 objCom.registrarCompraTran(Integer.parseInt(txtnumcompra.getText()),
                         txtnumComprobante.getText(),
-                        cboComp.getSelectedItem().toString().substring(0, 1),
+                        obtenerTipoComprobante(),
                         Double.parseDouble(txtTotal.getText()),
                         sdf.format(jdcFechaCompra.getDate()),
                         txtruc.getText(),
@@ -710,7 +710,7 @@ private String obtenerTipoComprobante() {
     }//GEN-LAST:event_txtPrecioActionPerformed
 private void buscarProdu(){
       try {
-            jdBuscarProductos objFrmBuscar = new jdBuscarProductos(null, true);
+            jdBuscarProductosCompra objFrmBuscar = new jdBuscarProductosCompra(null, true);
             objFrmBuscar.setVisible(true);
 //            txtProducto.setText(objFrmBuscar.codigo +" "+objFrmBuscar.producto);
             txtProducto.setText(objFrmBuscar.producto);
@@ -1005,7 +1005,13 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
     public void limpirDetalle() {
         txtPrecio.setText("");
         jsCantidad.setCantidad(1);
+        txtTotal.setText("---------");
+       listaDetalle= new ArrayList();
+        listarDetalle(listaDetalle);
+        
     }
+    
+ 
 
     public void listarCompras() {
         ResultSet rsLista = null;

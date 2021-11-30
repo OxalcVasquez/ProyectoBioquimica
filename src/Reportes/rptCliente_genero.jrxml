@@ -47,14 +47,14 @@ from cliente]]>
 					<textElement>
 						<font fontName="Gadugi" size="36" isBold="false"/>
 					</textElement>
-					<text><![CDATA[PROVEEDOR]]></text>
+					<text><![CDATA[CLIENTES]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="416" y="45" width="169" height="30" forecolor="#FFFFFF" uuid="7265c9ad-e38e-42c2-95ff-b05746d1e66e"/>
+					<reportElement x="450" y="34" width="124" height="53" forecolor="#FFFFFF" uuid="7265c9ad-e38e-42c2-95ff-b05746d1e66e"/>
 					<textElement>
 						<font fontName="Gadugi" size="16" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Listado de proveedores]]></text>
+					<text><![CDATA[Gráfico clientes por género]]></text>
 				</staticText>
 				<textField pattern="M/d/yy h:mm a">
 					<reportElement x="500" y="20" width="86" height="14" forecolor="#FFFFFF" uuid="40265559-ced5-4c21-ae6e-4e5dd6d53b50"/>
@@ -64,132 +64,219 @@ from cliente]]>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 				<image>
-					<reportElement x="53" y="20" width="50" height="50" uuid="343ef2c6-5c5b-449d-97c7-881a257bdbbd"/>
+					<reportElement x="41" y="20" width="50" height="50" uuid="343ef2c6-5c5b-449d-97c7-881a257bdbbd"/>
 					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
 				</image>
 			</frame>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="16" splitType="Stretch"/>
+		<band height="22" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="35" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<rectangle radius="4">
-				<reportElement mode="Opaque" x="0" y="0" width="555" height="33" backcolor="#36304A" uuid="8c34f1e8-bdb5-429d-96a9-c5cb4ed9c430"/>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="29" backcolor="#36304A" uuid="8c34f1e8-bdb5-429d-96a9-c5cb4ed9c430"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="0" y="0" width="50" height="33" forecolor="#FFFFFF" uuid="66cd7123-8137-427d-97bf-7812fce09e19"/>
+				<reportElement x="100" y="0" width="100" height="29" forecolor="#FFFFFF" uuid="4b0fe16a-3425-418d-a74f-5fc9790a20c6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cod]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="50" y="0" width="50" height="33" forecolor="#FFFFFF" uuid="abcf5638-06aa-4d2a-8422-6c338a4192f5"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nº Doc]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="100" y="0" width="100" height="33" forecolor="#FFFFFF" uuid="4b0fe16a-3425-418d-a74f-5fc9790a20c6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
+					<font fontName="Gadugi" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombres]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="200" y="0" width="70" height="33" forecolor="#FFFFFF" uuid="bcb72c8c-e3ab-4039-a56b-86a08b418215"/>
+				<reportElement x="200" y="0" width="70" height="29" forecolor="#FFFFFF" uuid="bcb72c8c-e3ab-4039-a56b-86a08b418215"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
+					<font fontName="Gadugi" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[F. Nac]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="270" y="0" width="50" height="33" forecolor="#FFFFFF" uuid="a1bc79ae-a3ec-46a4-9598-e8822be93819"/>
+				<reportElement x="270" y="0" width="50" height="29" forecolor="#FFFFFF" uuid="a1bc79ae-a3ec-46a4-9598-e8822be93819"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
+					<font fontName="Gadugi" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Sexo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="320" y="0" width="50" height="33" forecolor="#FFFFFF" uuid="138bb9a9-539d-4cf0-af09-1403087de91b"/>
+				<reportElement x="320" y="0" width="50" height="29" forecolor="#FFFFFF" uuid="138bb9a9-539d-4cf0-af09-1403087de91b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
+					<font fontName="Gadugi" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ciudad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="370" y="0" width="60" height="33" forecolor="#FFFFFF" uuid="4abbb25a-0b69-4cd3-a394-f1685c6f3736"/>
+				<reportElement x="370" y="0" width="60" height="29" forecolor="#FFFFFF" uuid="4abbb25a-0b69-4cd3-a394-f1685c6f3736"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
+					<font fontName="Gadugi" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Teléfono]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="430" y="0" width="70" height="33" forecolor="#FFFFFF" uuid="b1622e11-fadd-4fd3-a1f4-7efa190d3777"/>
+				<reportElement x="430" y="0" width="70" height="29" forecolor="#FFFFFF" uuid="b1622e11-fadd-4fd3-a1f4-7efa190d3777"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
+					<font fontName="Gadugi" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Correo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="500" y="0" width="50" height="33" forecolor="#FFFFFF" uuid="4a0d5a90-844c-446a-944b-8a57938c8984"/>
+				<reportElement x="500" y="0" width="50" height="29" forecolor="#FFFFFF" uuid="4a0d5a90-844c-446a-944b-8a57938c8984"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Gadugi" size="12" isBold="true"/>
+					<font fontName="Gadugi" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Vigencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="50" height="27" forecolor="#FFFFFF" uuid="66cd7123-8137-427d-97bf-7812fce09e19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cod]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="2" width="50" height="27" forecolor="#FFFFFF" uuid="abcf5638-06aa-4d2a-8422-6c338a4192f5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Doc]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="21" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="50" height="20" uuid="95a23391-dbee-456c-a1b2-ed357b80b74e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.0" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{codcliente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="50" y="0" width="50" height="20" uuid="55da6c07-554c-4207-ada7-1edc109e8ca4"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.0" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{numdocumento}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="200" y="0" width="70" height="20" uuid="98f83abe-aee8-4122-874f-d3adb811c3ed"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.0" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{fechanac}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="320" y="0" width="50" height="20" uuid="ed625f95-9e78-4a10-a57f-a3ed7f6c691f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.0" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ciudad}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="370" y="0" width="60" height="20" uuid="7c7a8c2a-92a8-4d1e-8956-4e0c4ae35c5e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.0" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="430" y="0" width="70" height="20" uuid="86676e84-dcdb-47ec-a9a1-8facc52ac843"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.0" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="0" width="100" height="20" uuid="d425cd78-b366-413c-a8b6-7af309e02407"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.0" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nombrescom}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="270" y="0" width="50" height="20" uuid="539babdd-2820-4c21-9ab3-6bfd6550075e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.0" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{sexoc}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="500" y="1" width="50" height="20" uuid="2272d9fd-c9d5-4791-9946-0288b2157c99"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="500" y="0" width="50" height="20" uuid="2272d9fd-c9d5-4791-9946-0288b2157c99"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0" lineStyle="Dashed"/>
+					<topPen lineWidth="0.0" lineStyle="Dashed"/>
+					<leftPen lineWidth="0.0" lineStyle="Dashed"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="19" width="555" height="1" uuid="4059456b-37ef-42be-8882-1ba590f81428"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

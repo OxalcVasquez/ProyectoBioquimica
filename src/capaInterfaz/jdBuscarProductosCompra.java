@@ -442,7 +442,7 @@ public class jdBuscarProductosCompra extends javax.swing.JDialog {
                 if (rsProducto.next()) {
 
                     rsProducto = objProducto.buscarProducto(Integer.parseInt(codigo));
-
+                     this.dispose();
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Por favor seleccione un producto");

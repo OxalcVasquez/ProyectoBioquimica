@@ -47,79 +47,133 @@ order by trabajador]]>
 	<group name="ventas_trabajador">
 		<groupExpression><![CDATA[$F{trabajador_codtrabajador}]]></groupExpression>
 		<groupHeader>
-			<band height="34">
+			<band height="66">
 				<rectangle radius="4">
-					<reportElement mode="Opaque" x="0" y="1" width="555" height="33" backcolor="#36304A" uuid="6991ecdb-5894-448a-a514-5b43df8d85bf"/>
+					<reportElement mode="Opaque" x="0" y="33" width="555" height="33" backcolor="#36304A" uuid="6991ecdb-5894-448a-a514-5b43df8d85bf"/>
 				</rectangle>
 				<staticText>
-					<reportElement x="24" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="4108570a-740c-4c73-b8e3-38ed9e00bfa0"/>
+					<reportElement x="24" y="32" width="61" height="34" forecolor="#FFFFFF" uuid="4108570a-740c-4c73-b8e3-38ed9e00bfa0"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Nº Venta]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="85" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="0f049e2a-bae6-4ac9-9023-b4ac881f923e"/>
+					<reportElement x="85" y="32" width="61" height="34" forecolor="#FFFFFF" uuid="0f049e2a-bae6-4ac9-9023-b4ac881f923e"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Nº Conpr.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="146" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="fd6cf768-50ab-4e96-8ae5-357725c999fd"/>
+					<reportElement x="146" y="32" width="61" height="34" forecolor="#FFFFFF" uuid="fd6cf768-50ab-4e96-8ae5-357725c999fd"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Tipo]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="207" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="96aff0e3-1eb3-4c97-a603-390cfe5110a9"/>
+					<reportElement x="207" y="32" width="61" height="34" forecolor="#FFFFFF" uuid="96aff0e3-1eb3-4c97-a603-390cfe5110a9"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Total]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="268" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="4faba169-dbb1-41b1-bde7-0a76f7b807be"/>
+					<reportElement x="268" y="32" width="61" height="34" forecolor="#FFFFFF" uuid="4faba169-dbb1-41b1-bde7-0a76f7b807be"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Fecha]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="329" y="0" width="61" height="34" forecolor="#FFFFFF" uuid="e8c20a43-65ab-4f6c-823d-17a80e709e9e"/>
+					<reportElement x="329" y="32" width="61" height="34" forecolor="#FFFFFF" uuid="e8c20a43-65ab-4f6c-823d-17a80e709e9e"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Hora]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="390" y="0" width="78" height="34" forecolor="#FFFFFF" uuid="3eadc538-8428-4cd5-8805-244bf474eef2"/>
+					<reportElement x="390" y="32" width="78" height="34" forecolor="#FFFFFF" uuid="3eadc538-8428-4cd5-8805-244bf474eef2"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Cod. Cliente]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="468" y="0" width="72" height="34" forecolor="#FFFFFF" uuid="6d07978a-d1f4-4c25-824e-8595d2648c0d"/>
+					<reportElement x="468" y="32" width="72" height="34" forecolor="#FFFFFF" uuid="6d07978a-d1f4-4c25-824e-8595d2648c0d"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="Gadugi" size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Sub Total]]></text>
 				</staticText>
+				<line>
+					<reportElement x="0" y="27" width="555" height="1" uuid="5e249fd7-fdb9-4f34-9fcb-3c599e9595f4"/>
+				</line>
+				<staticText>
+					<reportElement x="25" y="9" width="37" height="20" uuid="bc83902e-25e1-4d3a-93dc-cc2b38176111"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cod :]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="62" y="9" width="22" height="20" uuid="9eeb3974-f9d1-4f3c-96e3-4c6e43755495"/>
+					<textElement>
+						<font fontName="Gadugi"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{trabajador_codtrabajador}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="106" y="9" width="46" height="20" uuid="9328f8f2-8bf5-4529-9707-3e97ec9fcdee"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nombre :]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="152" y="9" width="46" height="20" uuid="e76f3fae-67a0-4db6-90ab-f33551ee0b94"/>
+					<textElement>
+						<font fontName="Gadugi"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{trabajador_nombres}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="263" y="9" width="37" height="20" uuid="0e7f2e72-a4c8-405e-bbea-4a310f6d2e02"/>
+					<textElement>
+						<font fontName="Gadugi" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Dni :]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="300" y="9" width="100" height="20" uuid="306e05f1-5699-4b10-9640-e1ba65c3a669"/>
+					<textElement>
+						<font fontName="Gadugi"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{trabajador_dni}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="198" y="9" width="46" height="20" uuid="302e1771-9c3b-4295-9c6f-bd87a596a97e"/>
+					<textElement>
+						<font fontName="Gadugi"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{trabajador_apellidos}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 		<groupFooter>
 			<band height="21">
 				<textField>
 					<reportElement x="530" y="0" width="25" height="20" uuid="e020d4e6-d006-48e6-ba34-e43a4f0c4036"/>
-					<textElement verticalAlignment="Middle"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Gadugi"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$V{comprobanteventa_numventa_1}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="446" y="0" width="80" height="20" uuid="fb9ce838-373b-4a9e-9b66-9966a924b871"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font isBold="true"/>
+						<font fontName="Gadugi" isBold="true"/>
 					</textElement>
 					<text><![CDATA[Nº de Ventas :]]></text>
 				</staticText>
@@ -130,18 +184,18 @@ order by trabajador]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="69" splitType="Stretch">
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#10AB83" uuid="7567afde-b4b5-4450-a0f2-efd9b77abb4e"/>
 				<staticText>
-					<reportElement x="20" y="20" width="446" height="50" forecolor="#FFFFFF" uuid="00233029-60a6-4eeb-aeac-629255a7fc16"/>
+					<reportElement x="84" y="18" width="409" height="50" forecolor="#FFFFFF" uuid="00233029-60a6-4eeb-aeac-629255a7fc16"/>
 					<textElement>
 						<font fontName="Gadugi" size="36" isBold="false"/>
 					</textElement>
-					<text><![CDATA[VENTAS - TRABAJADOR]]></text>
+					<text><![CDATA[VENTAS TRABAJADOR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="416" y="34" width="169" height="53" forecolor="#FFFFFF" uuid="1d8e70cd-5a1f-4599-81f1-9b34298620bc"/>
+					<reportElement x="450" y="34" width="134" height="53" forecolor="#FFFFFF" uuid="1d8e70cd-5a1f-4599-81f1-9b34298620bc"/>
 					<textElement>
 						<font fontName="Gadugi" size="16" isBold="false"/>
 					</textElement>
@@ -154,102 +208,81 @@ order by trabajador]]>
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
+				<image>
+					<reportElement x="29" y="18" width="50" height="50" uuid="66e62e2a-426b-480a-9b09-15830c89c8c7"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
 			</frame>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="17" splitType="Stretch"/>
+		<band height="9" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="21" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="0" width="37" height="20" uuid="bc83902e-25e1-4d3a-93dc-cc2b38176111"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cod :]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="37" y="0" width="22" height="20" uuid="9eeb3974-f9d1-4f3c-96e3-4c6e43755495"/>
-				<textFieldExpression><![CDATA[$F{trabajador_codtrabajador}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="81" y="0" width="46" height="20" uuid="9328f8f2-8bf5-4529-9707-3e97ec9fcdee"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nombre :]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="127" y="0" width="46" height="20" uuid="e76f3fae-67a0-4db6-90ab-f33551ee0b94"/>
-				<textFieldExpression><![CDATA[$F{trabajador_nombres}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="238" y="0" width="37" height="20" uuid="0e7f2e72-a4c8-405e-bbea-4a310f6d2e02"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Dni :]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="275" y="0" width="100" height="20" uuid="306e05f1-5699-4b10-9640-e1ba65c3a669"/>
-				<textFieldExpression><![CDATA[$F{trabajador_dni}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="173" y="0" width="46" height="20" uuid="302e1771-9c3b-4295-9c6f-bd87a596a97e"/>
-				<textFieldExpression><![CDATA[$F{trabajador_apellidos}]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="0" y="20" width="555" height="1" uuid="5e249fd7-fdb9-4f34-9fcb-3c599e9595f4"/>
-			</line>
-		</band>
+		<band height="21" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement x="24" y="0" width="61" height="20" uuid="d22d7a48-b374-4790-adb2-51ea8d2cf614"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_numventa}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="85" y="0" width="61" height="20" uuid="3c117226-bfda-43b7-950b-3e2ba32d0579"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_numcomprobante}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="146" y="0" width="61" height="20" uuid="c80cebfb-3eca-4476-a594-3025fa0174e3"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_tipo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="207" y="0" width="61" height="20" uuid="9242ca44-c31a-4c67-b4c4-a9bc411a0ec0"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_total}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="268" y="0" width="61" height="20" uuid="bd911162-f381-4c7f-92a4-aba4b37f9776"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_fecha}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="329" y="0" width="61" height="20" uuid="01dcbcfd-1d79-47d1-8674-7e284798ee46"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_hora}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="390" y="0" width="78" height="20" uuid="2a754d59-2fd1-4cf8-bcef-13dcb387b706"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_codcliente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="468" y="0" width="72" height="20" uuid="c1e0bbae-2556-4bb9-aca1-38fc2b70adf6"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{comprobanteventa_subtotal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="20" splitType="Stretch"/>
+		<band height="27" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="35" splitType="Stretch">

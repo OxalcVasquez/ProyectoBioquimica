@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2d999fb-6529-411e-bf63-022a0815a3a0">
-	<property name="ireport.zoom" value="1.9487171000000025"/>
+	<property name="ireport.zoom" value="1.4641000000000017"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
@@ -24,7 +24,7 @@ case estado when  'false' then 'vigente' else 'no vigente' end as estado from pr
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#10AB83" uuid="ee6e69ce-cc43-4df6-ad90-e79389ea5bb9"/>
 				<staticText>
-					<reportElement x="140" y="20" width="210" height="50" forecolor="#FFFFFF" uuid="6df4a2b1-0275-4a43-81c5-c7e01b4b388f"/>
+					<reportElement x="103" y="20" width="210" height="50" forecolor="#FFFFFF" uuid="6df4a2b1-0275-4a43-81c5-c7e01b4b388f"/>
 					<textElement>
 						<font fontName="Gadugi" size="36" isBold="false"/>
 					</textElement>
@@ -44,6 +44,10 @@ case estado when  'false' then 'vigente' else 'no vigente' end as estado from pr
 					</textElement>
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
+				<image>
+					<reportElement x="34" y="20" width="50" height="50" uuid="883c3f48-3802-45be-97e4-8fc21321a362"/>
+					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
+				</image>
 			</frame>
 		</band>
 	</title>
@@ -131,14 +135,6 @@ case estado when  'false' then 'vigente' else 'no vigente' end as estado from pr
 	</columnHeader>
 	<detail>
 		<band height="28" splitType="Stretch">
-			<rectangle radius="4">
-				<reportElement mode="Transparent" x="0" y="3" width="555" height="17" backcolor="#54F893" uuid="5f2b64c0-3559-4f03-974b-89a000cdad9d"/>
-			</rectangle>
-			<textField>
-				<reportElement x="0" y="0" width="83" height="20" uuid="1122c762-b08b-4922-bafd-0143cc1ea9cd"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ruc}]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="83" y="0" width="78" height="20" uuid="78756fa8-a36b-4ee3-bad6-ccba471e957a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
@@ -174,6 +170,17 @@ case estado when  'false' then 'vigente' else 'no vigente' end as estado from pr
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="83" height="20" uuid="1122c762-b08b-4922-bafd-0143cc1ea9cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ruc}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="27" width="555" height="1" uuid="9b1042b8-8a07-4f27-8ef5-e11ed0ce0290"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

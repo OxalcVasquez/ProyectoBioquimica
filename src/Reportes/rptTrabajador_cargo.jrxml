@@ -45,11 +45,11 @@ case vigencia when true then 'Vigente' else 'No Vigente' end as vigencia from tr
 					<text><![CDATA[TRABAJADOR]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="416" y="45" width="169" height="30" forecolor="#FFFFFF" uuid="47bdb5b9-7c2f-47dd-98bc-bce8a4c9016d"/>
+					<reportElement x="416" y="34" width="169" height="53" forecolor="#FFFFFF" uuid="47bdb5b9-7c2f-47dd-98bc-bce8a4c9016d"/>
 					<textElement>
 						<font fontName="Gadugi" size="16" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Listado de trabajadores]]></text>
+					<text><![CDATA[Gráfico trabajadores por cargo]]></text>
 				</staticText>
 				<textField pattern="M/d/yy h:mm a">
 					<reportElement x="500" y="20" width="86" height="14" forecolor="#FFFFFF" uuid="e89a5f4c-7963-4566-9369-28b3e8ba570e"/>

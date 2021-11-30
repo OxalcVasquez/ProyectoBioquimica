@@ -3,7 +3,7 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="JDBC Bioquimica"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="ireport.zoom" value="1.6105100000000012"/>
-	<property name="ireport.x" value="8"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Style1" mode="Opaque" backcolor="rgba(84, 248, 147, 0.15686275)">
 		<conditionalStyle>
@@ -97,7 +97,7 @@ inner join categoria ct on ct.codcategoria=pr.codcategoria]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Gadugi" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Descripcion]]></text>
+				<text><![CDATA[Descripción]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="260" y="0" width="80" height="30" forecolor="#FFFFFF" uuid="7d600251-f7ea-4d97-94be-48d13f826f71">
@@ -124,7 +124,7 @@ inner join categoria ct on ct.codcategoria=pr.codcategoria]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Gadugi" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Categoria]]></text>
+				<text><![CDATA[Categoría]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

@@ -27,7 +27,7 @@ case vigencia when true then 'Vigente' else 'No Vigente' end as vigencia from tr
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="87" backcolor="#10AB83" uuid="704341e5-2927-48ee-a96a-0573664c3401"/>
 				<staticText>
-					<reportElement x="140" y="20" width="225" height="50" forecolor="#FFFFFF" uuid="8860dedf-8d1f-4cff-afef-95e9486f66a0"/>
+					<reportElement x="96" y="20" width="225" height="50" forecolor="#FFFFFF" uuid="8860dedf-8d1f-4cff-afef-95e9486f66a0"/>
 					<textElement>
 						<font fontName="Gadugi" size="36" isBold="false"/>
 					</textElement>
@@ -48,7 +48,7 @@ case vigencia when true then 'Vigente' else 'No Vigente' end as vigencia from tr
 					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 				</textField>
 				<image>
-					<reportElement x="53" y="20" width="50" height="50" uuid="07d8202b-76bc-4d26-bdfc-ae733a4eead5"/>
+					<reportElement x="30" y="20" width="50" height="50" uuid="07d8202b-76bc-4d26-bdfc-ae733a4eead5"/>
 					<imageExpression><![CDATA["../Iconos/ICONO2.png"]]></imageExpression>
 				</image>
 			</frame>
@@ -131,49 +131,73 @@ case vigencia when true then 'Vigente' else 'No Vigente' end as vigencia from tr
 		<band height="27" splitType="Stretch">
 			<textField>
 				<reportElement x="-2" y="0" width="33" height="20" uuid="09fe920b-5ed4-4ca6-ab7c-e50bc1b9cef3"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{codtrabajador}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="31" y="0" width="87" height="20" uuid="5bef10fe-42c1-41fd-ae0b-4fff66bba11d"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="118" y="0" width="64" height="20" uuid="a2e0a589-f074-4093-b7be-85137ba82bca"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="182" y="0" width="60" height="20" uuid="df095556-4f09-4fc3-be60-293bcd1fd35a"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="242" y="0" width="59" height="20" uuid="82748141-0fc9-446d-a000-eda0338af65b"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="301" y="0" width="70" height="20" uuid="bd8f9217-53f1-4a9f-bc07-1ec3fa907f9f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="371" y="0" width="55" height="20" uuid="fc558bbc-bb73-4c76-9db4-e1ac30c92854"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="425" y="0" width="68" height="20" uuid="7d2ba82a-e126-4610-8e0b-9a72b34dbc9d"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{cargo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="493" y="0" width="62" height="20" uuid="0e37655c-49e3-4976-9692-7c8a60e41c1a"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Gadugi"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{vigencia}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="26" width="555" height="1" uuid="bd0c36be-282c-482f-b297-78dc7a3d4227"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
