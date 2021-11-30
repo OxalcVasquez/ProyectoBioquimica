@@ -172,6 +172,9 @@ inner join categoria ct on ct.codcategoria=pr.codcategoria]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
 			</textField>
+			<rectangle radius="10">
+				<reportElement style="Style1" x="0" y="0" width="555" height="26" forecolor="#FFFFFF" uuid="1ec2e014-b88d-410e-b7d2-82cbc58eb9e4"/>
+			</rectangle>
 		</band>
 	</detail>
 	<columnFooter>
