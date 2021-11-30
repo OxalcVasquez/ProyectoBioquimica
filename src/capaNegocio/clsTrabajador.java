@@ -114,6 +114,19 @@ public class clsTrabajador {
         }
         
     }
+     //Proceso Almacenado
+    public ResultSet listarTra() throws Exception{
+    
+        strSQL = "select * from fn_listartrabajador()";
+        try {
+            rs= obj.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("No se pudo listar ");
+        
+        }
+    
+    }
     
     public ResultSet listarTrabajador() throws Exception{
     
@@ -124,6 +137,20 @@ public class clsTrabajador {
         } catch (Exception e) {
              throw new Exception("No se pudo listar");
         }
+    }
+    
+    //Proceso almacenado 
+        
+    public ResultSet buscarTra(Integer cod) throws Exception {
+        strSQL = "select * from fn_Buscartrabajador(" + cod + ")";
+
+        try {
+            rs = obj.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("Error al buscar producto");
+        }
+
     }
     
     public ResultSet buscar(Integer cod) throws Exception{

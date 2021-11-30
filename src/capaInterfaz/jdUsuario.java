@@ -519,7 +519,7 @@ public class jdUsuario extends javax.swing.JDialog {
         tblUsuario.setModel(modelo);
         
         try {
-            rs = objUsu.listarUsuario();
+            rs = objUsu.listarUsu();
             while(rs.next()){
                 modelo.addRow(new Object[]{rs.getInt("codusuario"), rs.getString("nombreusuario"),rs.getString("contraseñausuario"), rs.getBoolean("vigencia"),rs.getString("fecharegistro"),rs.getString("nombreTrabajador") });
             }
@@ -587,7 +587,7 @@ public class jdUsuario extends javax.swing.JDialog {
                 new MensajeMed().mostrar(this, "Es necesario el codigo del usuario", 0);
                 
             }else{
-                rs = objUsu.buscar(Integer.parseInt(txtCodigo.getText()));
+                rs = objUsu.buscarUsu(Integer.parseInt(txtCodigo.getText()));
                 while(rs.next()){
                     txtNombre.setText(rs.getString("nombreusuario"));
                     txtContraseña.setText(rs.getString("contraseñausuario"));

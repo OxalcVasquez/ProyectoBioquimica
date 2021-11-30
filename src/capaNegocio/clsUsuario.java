@@ -100,6 +100,19 @@ public class clsUsuario {
         }
      
     }
+    //Proceso Almacenado
+    public ResultSet listarUsu() throws Exception{
+    
+        strSQL = "select * from fn_listarUsuarios()";
+        try {
+            rs= obj.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("No se pudo listar ");
+        
+        }
+    
+    }
     
     public ResultSet listarUsuario() throws Exception{
     
@@ -120,6 +133,20 @@ public class clsUsuario {
         } catch (Exception e) {
             throw new Exception("No se pudo dar de baja");
         }
+    }
+    
+    //Proceso almacenado 
+        
+    public ResultSet buscarUsu(Integer cod) throws Exception {
+        strSQL = "select * from  fn_BuscarUsuarios(" + cod + ")";
+
+        try {
+            rs = obj.consultarBD(strSQL);
+            return rs;
+        } catch (Exception e) {
+            throw new Exception("Error al buscar producto");
+        }
+
     }
         
     public ResultSet buscar(Integer cod) throws Exception{
