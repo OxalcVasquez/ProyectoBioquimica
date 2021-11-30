@@ -194,7 +194,7 @@ clsProveedor objProv = new clsProveedor();
         });
         jScrollPane1.setViewportView(tblDatos);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 555, 242));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 555, 242));
 
         txtRuc.setForeground(new java.awt.Color(0, 0, 0));
         txtRuc.setText("");
@@ -478,8 +478,10 @@ private void buscarPro(){
          String rubro="";
     
         try {
-            
-              
+            if(txtRuc.getText().isEmpty() || txtRAZ.getText().isEmpty() || txtCorreo.getText().isEmpty() || txtTel.getText().isEmpty() || txtCiudad.getText().isEmpty()){
+                new MensajeMed().mostrar(this, "Complete todos los campos",0);
+            } else {
+                
                 if (objProv.validar(txtRuc.getText())){
                     if (cboRubro.getSelectedItem().equals("Agrícola")) rubro="A";
                     if (cboRubro.getSelectedItem().equals("Veterinario")) rubro="V";
@@ -492,6 +494,8 @@ private void buscarPro(){
                      new MensajeMed().mostrar(this, "Ruc ya está registrado!",3);
 
                 }
+            }
+              
             
         } catch (Exception e) {
             new MensajeMed().mostrar(this, e.getMessage(),3);
