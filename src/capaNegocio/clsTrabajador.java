@@ -61,6 +61,16 @@ public class clsTrabajador {
         return 0;
     }
     
+     public void registrarTrabajador(Integer codtrabajador,String nombres,String apellidos,String dni,String telefono,String correo,String direccion,Boolean sexo,String fechanac,Character cargo,Boolean vigencia) throws Exception{
+        strSQL = "select fn_registrarTrabajador("+codtrabajador+",'"+nombres+"','"+apellidos+"','"+dni+" ','"+telefono+" ','"+correo+" ','"+direccion+"',"+sexo+",'"+fechanac+"','"+cargo+"',"+vigencia+")";
+        try {
+         obj.consultarBD(strSQL);
+        } catch (Exception e) {
+            throw new Exception("No se pudo guardar");
+        } 
+     }
+     
+    
     public void guardarTrabajador(Integer codtrabajador,String nombres,String apellidos,String dni,String telefono,String correo,String direccion,Boolean sexo,String fechanac,Character cargo,Boolean vigencia) throws Exception{
     
         strSQL = "insert into trabajador (codtrabajador,nombres,apellidos,dni,telefono,correo,direccion,sexo,fechanac,cargo,vigencia) values ("+codtrabajador+",'"+nombres+"','"+apellidos+"','"+dni+" ','"+telefono+" ','"+correo+" ','"+direccion+"',"+sexo+",'"+fechanac+"','"+cargo+"',"+vigencia+")";
@@ -72,6 +82,8 @@ public class clsTrabajador {
         }
      
     }
+
+    
     public void actualizarTrabajador(Integer codtrabajador,String nombres,String apellidos,String dni,String telefono,String correo,String direccion,Boolean sexo,String fechanac,Character cargo,Boolean vigencia) throws Exception{
     
         strSQL = "update trabajador set codtrabajador = "+codtrabajador+",nombres = '"+nombres+"',apellidos = '"+apellidos+"',dni = '"+dni+"',telefono ='"+telefono+"',correo = '"+correo+"',direccion = '"+direccion+"',sexo ="+sexo+", fechanac = '"+fechanac+"',cargo = '"+cargo+"',vigencia = "+vigencia+" where codtrabajador = "+codtrabajador+"";
@@ -105,12 +117,12 @@ public class clsTrabajador {
     
     public ResultSet listarTrabajador() throws Exception{
     
-        strSQL = "select * from trabajador";
+        strSQL = "select codtrabajador,nombres,apellidos,dni,telefono,correo,direccion,sexo,fechanac,cargo,case vigencia when true then 'Vigente' else 'No vigente' end as vigencia from trabajador order by apellidos";
         try {
            return  rs = obj.consultarBD(strSQL);
             
         } catch (Exception e) {
-             throw new Exception("No se pudo guardar");
+             throw new Exception("No se pudo listar");
         }
     }
     
