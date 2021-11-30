@@ -76,7 +76,6 @@ public class jdUsuario extends javax.swing.JDialog {
         txtNombre = new capaInterfaz.Componentes.TextoMed();
         txtFecha = new capaInterfaz.Componentes.TextoMed();
         jLabel9 = new javax.swing.JLabel();
-        txtContraseña = new capaInterfaz.Componentes.TextoMed();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         cboTrabajador = new javax.swing.JComboBox<>();
@@ -94,6 +93,7 @@ public class jdUsuario extends javax.swing.JDialog {
         gradientButton4 = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente1 = new capaInterfaz.Componentes.BotonMedGradiente();
         gradientButton3 = new capaInterfaz.Componentes.BotonMedGradiente();
+        txtContraseña = new capaInterfaz.Componentes.TextoSecretoMed();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -141,7 +141,7 @@ public class jdUsuario extends javax.swing.JDialog {
 
             }
         ));
-        tblUsuario.setRowHeight(30);
+        tblUsuario.setRowHeight(27);
         tblUsuario.setSelectionBackground(new java.awt.Color(104, 228, 176));
         tblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -171,14 +171,6 @@ public class jdUsuario extends javax.swing.JDialog {
 
         jLabel9.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel9.setText("Contraseña :");
-
-        txtContraseña.setText("");
-        txtContraseña.setPlaceholder("");
-        txtContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtContraseñaKeyTyped(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel12.setText("Estado : ");
@@ -255,57 +247,59 @@ public class jdUsuario extends javax.swing.JDialog {
             }
         });
 
+        txtContraseña.setText("");
+        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseñaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(chkEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(28, 28, 28)
                                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(26, 26, 26)
-                                        .addComponent(jLabel18)
-                                        .addGap(14, 14, 14))
+                                        .addComponent(jLabel18))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel9))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel6)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(62, 62, 62)
-                                        .addComponent(jLabel12)
-                                        .addGap(24, 24, 24)))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(chkEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(45, 45, 45)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cboTrabajador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCodigoTra, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
-                        .addGap(33, 33, 33))
+                            .addComponent(txtCodigoTra, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -320,7 +314,7 @@ public class jdUsuario extends javax.swing.JDialog {
                                 .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(botonMedGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(gradientButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,13 +335,15 @@ public class jdUsuario extends javax.swing.JDialog {
                             .addComponent(jLabel3)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chkEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(chkEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,8 +360,9 @@ public class jdUsuario extends javax.swing.JDialog {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(txtCodigoTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(34, 34, 34)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel15)
@@ -385,11 +382,8 @@ public class jdUsuario extends javax.swing.JDialog {
                         .addGap(32, 32, 32)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel20)
-                            .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                            .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 850, 610));
@@ -497,10 +491,6 @@ public class jdUsuario extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void txtContraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraseñaKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaKeyTyped
-
     private void limpiarContenido(){
     
         txtCodigo.setText("");
@@ -520,9 +510,9 @@ public class jdUsuario extends javax.swing.JDialog {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombres");
-        modelo.addColumn("Contraseña");
+        modelo.addColumn("Password");
         modelo.addColumn("Vigencia");
-        modelo.addColumn("Fecha Registro");
+        modelo.addColumn("Registro");
         modelo.addColumn("Trabajador");
       
         
@@ -533,7 +523,7 @@ public class jdUsuario extends javax.swing.JDialog {
             while(rs.next()){
                 modelo.addRow(new Object[]{rs.getInt("codusuario"), rs.getString("nombreusuario"),rs.getString("contraseñausuario"), rs.getBoolean("vigencia"),rs.getString("fecharegistro"),rs.getString("nombreTrabajador") });
             }
-            
+             alinearTabla(tblUsuario);
         } catch (Exception e) {
        JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -555,7 +545,7 @@ public class jdUsuario extends javax.swing.JDialog {
              while(rs.next()){
              modelo.addElement(rs.getString("trabajador")); 
              }
-             alinearTabla(tblUsuario);
+            
         } catch (Exception e) {
              JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -633,8 +623,8 @@ public class jdUsuario extends javax.swing.JDialog {
                 txtNombre.requestFocus(); 
             }else{
                 btnNuevo.setText("Nuevo");
-                objUsu.guardarUsuario(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtContraseña.getText(),chkEstado.isSelected(),txtFecha.getText(),Integer.parseInt(txtCodigoTra.getText()));
-                JOptionPane.showMessageDialog(this,"Usuaio registrado correctamente");
+                objUsu.registrar(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtContraseña.getPassword(),chkEstado.isSelected(),txtFecha.getText(),objUsu.generarCodigoRecuperacion(16),Integer.parseInt(txtCodigoTra.getText()));
+                
                 limpiarContenido();
                 listarUsuario(); 
             }
@@ -655,7 +645,7 @@ public class jdUsuario extends javax.swing.JDialog {
            }else{
            
                objUsu.actualizar(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtContraseña.getText(),chkEstado.isSelected(),txtFecha.getText(),Integer.parseInt(txtCodigoTra.getText()));
-               new MensajeMed().mostrar(this, "Se modifico al cliente correctamente", 2);
+               new MensajeMed().mostrar(this, "Se modifico correctamente", 2);
                listarUsuario();
                limpiarContenido();
            }
@@ -674,7 +664,7 @@ public class jdUsuario extends javax.swing.JDialog {
            }else{
            
                objUsu.eliminar(Integer.parseInt(txtCodigo.getText()));
-               new MensajeMed().mostrar(this, "Se dio de baja al cliente correctamente", 2);
+               new MensajeMed().mostrar(this, "Se elimino corectamente", 2);
                listarUsuario();
                limpiarContenido();
            }
@@ -690,7 +680,7 @@ public class jdUsuario extends javax.swing.JDialog {
            }else{
            
                objUsu.darbaja(Integer.parseInt(txtCodigo.getText()));
-               JOptionPane.showMessageDialog(this,"Se dio de baja al usuario");
+               new MensajeMed().mostrar(this, "Se dio de baja corectamente", 2);
                listarUsuario();
                limpiarContenido();
            }
@@ -698,6 +688,10 @@ public class jdUsuario extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }      
     }//GEN-LAST:event_gradientButton3ActionPerformed
+
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseñaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1026,7 +1020,7 @@ public class jdUsuario extends javax.swing.JDialog {
     private javax.swing.JTable tblUsuario;
     private capaInterfaz.Componentes.TextoMed txtCodigo;
     private capaInterfaz.Componentes.TextoMed txtCodigoTra;
-    private capaInterfaz.Componentes.TextoMed txtContraseña;
+    private capaInterfaz.Componentes.TextoSecretoMed txtContraseña;
     private capaInterfaz.Componentes.TextoMed txtFecha;
     private capaInterfaz.Componentes.TextoMed txtNombre;
     // End of variables declaration//GEN-END:variables

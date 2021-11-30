@@ -230,7 +230,9 @@ public class clsUsuario {
 
     //new MensajeMed().mostrar(this, "<html><div style='text-align: center;'>¡Usuario creado correctamente!<br><br>Su código de recuperación es: <strong>"+cod+"</strong></div><br></html>", 2);
     // Registro de usuario
-    public void registrar(Integer cod, String usu, char[] cont, String recu, Integer tra) throws Exception {
+    
+   
+    public void registrar(Integer cod, String usu, char[] cont, Boolean vig, String fec,String recu, Integer tra) throws Exception {
 
         try {
             // iterations = 10
@@ -242,7 +244,7 @@ public class clsUsuario {
 
             String hashRecu = argon2.hash(iterations, 65536, 4, recu.toCharArray());
 
-            strSQL = "insert into usuario(codusuario,nombreusuario,contraseñausuario,codigorecuperacion,vigencia,fecharegistro,codtrabajador) values (" + cod + ",'" + usu + "', '" + hashPass + "','" + hashRecu + "', true, current_date," + tra + ")";
+            strSQL = "insert into usuario(codusuario,nombreusuario,contraseñausuario,codigorecuperacion,vigencia,fecharegistro,codtrabajador) values (" + cod + ",'" + usu + "', '" + hashPass + "','" + hashRecu + "',"+vig+" ,"+fec+"," + tra + ")";
 
             obj.ejecutarBD(strSQL);
 
