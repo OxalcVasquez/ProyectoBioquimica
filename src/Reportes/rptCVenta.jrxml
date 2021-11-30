@@ -9,7 +9,7 @@
 	<queryString>
 		<![CDATA[select D.*, (precio*cantidad) as valorventa,
 P.nombre as producto,v.*,
-case v.tipo when 'B' then 'Boleta' when 'BF' then 'Boleta Electronica' when 'F' then 'Factura' else 'Factura Electronica' end as tipodes
+case v.tipo when 'B' then 'Boleta' when 'BE' then 'Boleta Electronica' when 'F' then 'Factura' else 'Factura Electronica' end as tipodes
 ,c.nombres ||' '|| c.apellidos as cliente,c.numdocumento,
 case  c.tipodocumento when 'D' then 'DNI' when 'P' then 'Pasaporte' else 'C. Extrangeria' end AS cliente_tipodocumento,
 c.ciudad
