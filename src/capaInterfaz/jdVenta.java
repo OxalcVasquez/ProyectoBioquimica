@@ -164,6 +164,7 @@ public class jdVenta extends javax.swing.JDialog {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        botonMedGradiente4 = new capaInterfaz.Componentes.BotonMedGradiente();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -276,8 +277,13 @@ public class jdVenta extends javax.swing.JDialog {
         });
         jPanel2.add(btnBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 270, -1, -1));
 
-        botonMedGradiente2.setText("Salir");
-        jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 670, 170, -1));
+        botonMedGradiente2.setText("Ver comprobante");
+        botonMedGradiente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMedGradiente2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 720, 190, -1));
 
         botonMedGradiente3.setText("Eliminar");
         botonMedGradiente3.addActionListener(new java.awt.event.ActionListener() {
@@ -537,6 +543,9 @@ public class jdVenta extends javax.swing.JDialog {
 
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/agregar.png"))); // NOI18N
         jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, -1, 30));
+
+        botonMedGradiente4.setText("Salir");
+        jPanel2.add(botonMedGradiente4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 670, 170, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 780));
 
@@ -1211,7 +1220,7 @@ public class jdVenta extends javax.swing.JDialog {
                 alinearTabla(tblDetalle);
 
             } else {
-                new MensajeMed().mostrar(this,"Por favor ingrese el numero de venta", 0);
+                new MensajeMed().mostrar(this, "Por favor ingrese el numero de venta", 0);
                 txtNumero.requestFocus();
 
             }
@@ -1252,6 +1261,19 @@ public class jdVenta extends javax.swing.JDialog {
         // TODO add your handling code here:
         eliminarProducto();
     }//GEN-LAST:event_btnEliminarProductoMouseClicked
+
+    private void botonMedGradiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente2ActionPerformed
+        // TODO add your handling code here:
+        if (!txtNumero.getText().isEmpty()) {
+            jdComprobanteVenta objFrm = new jdComprobanteVenta(null, true);
+            objFrm.detalle(Integer.parseInt(txtNumero.getText()));
+            objFrm.setVisible(true);
+        } else {
+            new MensajeMed().mostrar(this, "Por favor ingrese el numero de venta", 0);
+            txtNumero.requestFocus();
+        }
+
+    }//GEN-LAST:event_botonMedGradiente2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1362,6 +1384,7 @@ public class jdVenta extends javax.swing.JDialog {
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente1;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente2;
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente3;
+    private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente4;
     private javax.swing.JLabel btnAgregarPro;
     private capaInterfaz.Componentes.BotonMedGradiente btnBuscar3;
     private javax.swing.JLabel btnBuscarCliente;
