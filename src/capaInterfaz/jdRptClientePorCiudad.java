@@ -79,7 +79,7 @@ public class jdRptClientePorCiudad extends javax.swing.JDialog {
             contenedor.add(vistaRep);
             this.visorReporte.setVisible(true);
         } catch (Exception ex) {
-            Logger.getLogger(jdRptCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(jdRptClientePorCiudad.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowOpened
 

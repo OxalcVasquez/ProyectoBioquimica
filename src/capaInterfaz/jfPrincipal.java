@@ -108,6 +108,9 @@ public class jfPrincipal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
         Operaciones = new javax.swing.JScrollPane();
         panelOperaciones = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -116,24 +119,39 @@ public class jfPrincipal extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
         Consultas = new javax.swing.JScrollPane();
         panelConsultas = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        AcercaDe = new javax.swing.JScrollPane();
+        panelAcercaDe = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
         Reportes = new javax.swing.JScrollPane();
         panelReportes = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         botonMed7 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed39 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed4 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed3 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed1 = new capaInterfaz.Componentes.BotonMedSecundario();
         jPanel17 = new javax.swing.JPanel();
@@ -141,48 +159,29 @@ public class jfPrincipal extends javax.swing.JFrame {
         botonMed8 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed6 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed5 = new capaInterfaz.Componentes.BotonMedSecundario();
+        botonMed9 = new capaInterfaz.Componentes.BotonMedSecundario();
         jPanel18 = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         botonMed12 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed11 = new capaInterfaz.Componentes.BotonMedSecundario();
+        botonMed27 = new capaInterfaz.Componentes.BotonMedSecundario();
         jPanel19 = new javax.swing.JPanel();
         jLabel44 = new javax.swing.JLabel();
-        botonMed18 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed17 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed16 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed15 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed14 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed13 = new capaInterfaz.Componentes.BotonMedSecundario();
         jPanel20 = new javax.swing.JPanel();
         jLabel46 = new javax.swing.JLabel();
-        botonMed40 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed19 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed20 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed21 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed22 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed23 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed24 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed25 = new capaInterfaz.Componentes.BotonMedSecundario();
         jPanel21 = new javax.swing.JPanel();
         jLabel48 = new javax.swing.JLabel();
-        botonMed41 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed26 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed28 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed29 = new capaInterfaz.Componentes.BotonMedSecundario();
         botonMed30 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed31 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed32 = new capaInterfaz.Componentes.BotonMedSecundario();
-        jPanel22 = new javax.swing.JPanel();
-        jLabel50 = new javax.swing.JLabel();
-        botonMed42 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed33 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed34 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed35 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed36 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed37 = new capaInterfaz.Componentes.BotonMedSecundario();
-        botonMed38 = new capaInterfaz.Componentes.BotonMedSecundario();
-        AcercaDe = new javax.swing.JScrollPane();
-        panelAcercaDe = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BIOQUIMICA");
@@ -313,7 +312,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         btnMantenimiento.setText("MANTENIMIENTOS");
         btnMantenimiento.setBorder(null);
         btnMantenimiento.setContentAreaFilled(false);
-        btnMantenimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMantenimiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMantenimiento.setFocusable(false);
         btnMantenimiento.setPreferredSize(new java.awt.Dimension(133, 27));
         btnMantenimiento.addActionListener(new java.awt.event.ActionListener() {
@@ -330,7 +329,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         btnOperaciones.setText("OPERACIONES");
         btnOperaciones.setBorder(null);
         btnOperaciones.setContentAreaFilled(false);
-        btnOperaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnOperaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnOperaciones.setFocusable(false);
         btnOperaciones.setPreferredSize(new java.awt.Dimension(100, 27));
         btnOperaciones.addActionListener(new java.awt.event.ActionListener() {
@@ -347,7 +346,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         btnConsultas.setText("CONSULTAS");
         btnConsultas.setBorder(null);
         btnConsultas.setContentAreaFilled(false);
-        btnConsultas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnConsultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnConsultas.setFocusable(false);
         btnConsultas.setPreferredSize(new java.awt.Dimension(100, 27));
         btnConsultas.addActionListener(new java.awt.event.ActionListener() {
@@ -365,7 +364,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         btnReportes.setText("REPORTES");
         btnReportes.setBorder(null);
         btnReportes.setContentAreaFilled(false);
-        btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReportes.setFocusable(false);
         btnReportes.setPreferredSize(new java.awt.Dimension(100, 27));
         btnReportes.addActionListener(new java.awt.event.ActionListener() {
@@ -383,7 +382,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         btnAcercaDe.setText("ACERCA DE");
         btnAcercaDe.setBorder(null);
         btnAcercaDe.setContentAreaFilled(false);
-        btnAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAcercaDe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAcercaDe.setFocusable(false);
         btnAcercaDe.setPreferredSize(new java.awt.Dimension(100, 27));
         btnAcercaDe.addActionListener(new java.awt.event.ActionListener() {
@@ -401,7 +400,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         btnUsuario.setText("MI USUARIO");
         btnUsuario.setBorder(null);
         btnUsuario.setContentAreaFilled(false);
-        btnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuario.setFocusable(false);
         btnUsuario.setPreferredSize(new java.awt.Dimension(100, 27));
         btnUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -417,6 +416,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         jButton1.setToolTipText("Cerrar sesión");
         jButton1.setBorder(null);
         jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -697,6 +697,7 @@ public class jfPrincipal extends javax.swing.JFrame {
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/MenuRegistrarTrabajador.png"))); // NOI18N
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel11MouseClicked(evt);
@@ -820,11 +821,11 @@ public class jfPrincipal extends javax.swing.JFrame {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel10.setBackground(new java.awt.Color(149, 165, 166));
+        jLabel10.setBackground(new java.awt.Color(244, 201, 55));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("REGISTRAR RUBRO");
+        jLabel10.setText("REGISTRAR MARCA");
         jLabel10.setOpaque(true);
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -839,7 +840,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
@@ -850,37 +851,72 @@ public class jfPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
         );
 
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel55.setBackground(new java.awt.Color(221, 85, 255));
+        jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel55.setText("REGISTRAR MARCA");
+        jLabel55.setOpaque(true);
+
+        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel56.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/MantenimientoCategoria.png"))); // NOI18N
+        jLabel56.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel56MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel56, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelMantenimientoLayout = new javax.swing.GroupLayout(panelMantenimiento);
         panelMantenimiento.setLayout(panelMantenimientoLayout);
         panelMantenimientoLayout.setHorizontalGroup(
             panelMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMantenimientoLayout.createSequentialGroup()
-                .addContainerGap(161, Short.MAX_VALUE)
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addGroup(panelMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(panelMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelMantenimientoLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(195, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(77, 77, 77)
+                .addGroup(panelMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(85, 85, 85)
+                .addGroup(panelMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         panelMantenimientoLayout.setVerticalGroup(
             panelMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMantenimientoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMantenimientoLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(panelMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(panelMantenimientoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(504, Short.MAX_VALUE))
+                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62))
         );
 
         Mantenimiento.setViewportView(panelMantenimiento);
@@ -958,86 +994,16 @@ public class jfPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
         );
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jLabel24.setBackground(new java.awt.Color(243, 156, 18));
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("ATENDER PEDIDO");
-        jLabel24.setOpaque(true);
-
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/MenuAtenderPedido.png"))); // NOI18N
-        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel25MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
-        );
-
-        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jLabel26.setBackground(new java.awt.Color(149, 165, 166));
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("ASIGNAR PROVEEDOR RUBRO");
-        jLabel26.setOpaque(true);
-
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/MenuAsignarProveedorRubro.png"))); // NOI18N
-        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel27MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-            .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout panelOperacionesLayout = new javax.swing.GroupLayout(panelOperaciones);
         panelOperaciones.setLayout(panelOperacionesLayout);
         panelOperacionesLayout.setHorizontalGroup(
             panelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOperacionesLayout.createSequentialGroup()
-                .addContainerGap(334, Short.MAX_VALUE)
-                .addGroup(panelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(340, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addGroup(panelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(322, Short.MAX_VALUE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(329, Short.MAX_VALUE))
         );
         panelOperacionesLayout.setVerticalGroup(
             panelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1046,11 +1012,7 @@ public class jfPrincipal extends javax.swing.JFrame {
                 .addGroup(panelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(panelOperacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(504, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
 
         Operaciones.setViewportView(panelOperaciones);
@@ -1116,6 +1078,123 @@ public class jfPrincipal extends javax.swing.JFrame {
 
         panelBody.add(Consultas, "consultas");
 
+        AcercaDe.setBorder(null);
+        AcercaDe.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        panelAcercaDe.setBackground(new java.awt.Color(255, 255, 255));
+        panelAcercaDe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel12.setBackground(new java.awt.Color(16, 171, 131));
+
+        jLabel2.setFont(new java.awt.Font("Gadugi", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("BIOQUÍMICA DEL NORTE ANDINO S.A.C");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addContainerGap(292, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(38, 38, 38))
+        );
+
+        panelAcercaDe.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 150));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/bioAcercaDe.png"))); // NOI18N
+        panelAcercaDe.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Gadugi", 0, 24)); // NOI18N
+        jLabel4.setText("<html>BRINDAMOS SOLUCIONES EFICIENTES Y RENTABLES, A TRAVÉS<br>DE UN EXCELENTE SERVICIO TÉCNICO CON PRODUCTOS <br>DE ALTA CALIDAD.</html>");
+        panelAcercaDe.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabel16.setText("<html><strong>DEPARTAMENTO</strong> CAJAMARCA, PERÚ</html>");
+        panelAcercaDe.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 420, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabel22.setText("<html><strong>ACTIVIDAD COMERCIAL</strong> SERVICIOS AGRÍCOLAS, GANADERAS</html>");
+        panelAcercaDe.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, -1, -1));
+
+        jLabel34.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabel34.setText("<html><strong>UBICACIÓN</strong> JR. SAN MARTÍN NRO. 477 (COSTADO DE FUNERARIA CABRERA)</html>");
+        panelAcercaDe.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, -1, -1));
+
+        jLabel35.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabel35.setText("<html><strong>DISTRITO</strong> CHOTA</html>");
+        panelAcercaDe.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, -1, -1));
+
+        jLabel36.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
+        jLabel36.setText("<html><strong>PROVINCIA</strong> CHOTA</html>");
+        panelAcercaDe.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, -1, -1));
+
+        jPanel13.setBackground(new java.awt.Color(16, 171, 131));
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1140, Short.MAX_VALUE)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+
+        panelAcercaDe.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 1140, -1));
+
+        jLabel37.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        jLabel37.setText("VÁSQUEZ FERNÁNDEZ, JORDAN OXALC");
+        panelAcercaDe.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 1120, -1, -1));
+
+        jLabel39.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        jLabel39.setText("ALVARADO ALVA, EMILY JHASMIN");
+        panelAcercaDe.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 850, -1, -1));
+
+        jLabel41.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        jLabel41.setText("MEDINA FERRER, CARLOS MANUEL");
+        panelAcercaDe.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 850, -1, -1));
+
+        jLabel43.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        jLabel43.setText("PEÑA VIGIL, RODRIGO ALONZO");
+        panelAcercaDe.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 850, -1, -1));
+
+        jLabel45.setFont(new java.awt.Font("Gadugi", 0, 16)); // NOI18N
+        jLabel45.setText("ROJAS GALLEGOS, CRISTIAN MANUEL");
+        panelAcercaDe.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 1120, -1, -1));
+
+        jLabel47.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Emi.png"))); // NOI18N
+        panelAcercaDe.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 650, -1, -1));
+
+        jLabel49.setBackground(new java.awt.Color(98, 98, 98));
+        jLabel49.setFont(new java.awt.Font("Gadugi", 1, 24)); // NOI18N
+        jLabel49.setText("INTEGRANTES");
+        panelAcercaDe.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 570, -1, -1));
+
+        jLabel51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Med.png"))); // NOI18N
+        panelAcercaDe.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 660, -1, -1));
+
+        jLabel52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Rod.png"))); // NOI18N
+        panelAcercaDe.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 660, -1, -1));
+
+        jLabel53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cris.png"))); // NOI18N
+        panelAcercaDe.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 940, -1, -1));
+
+        jLabel54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Oxi.png"))); // NOI18N
+        panelAcercaDe.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 940, -1, -1));
+
+        AcercaDe.setViewportView(panelAcercaDe);
+
+        panelBody.add(AcercaDe, "acerca-de");
+
         Reportes.setBorder(null);
         Reportes.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -1134,31 +1213,15 @@ public class jfPrincipal extends javax.swing.JFrame {
         jLabel38.setOpaque(true);
         jPanel16.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 40));
 
-        botonMed7.setText("PROVEEDOR DADO EL N° COMPROBANTE");
+        botonMed7.setText("PROVEEDORES POR CIUDAD - GRÁFICO");
         botonMed7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed7ActionPerformed(evt);
             }
         });
-        jPanel16.add(botonMed7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, -1, -1));
+        jPanel16.add(botonMed7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
 
-        botonMed39.setText("PORCENTAJE DE PROVEEDORES DADO LA CIUDAD");
-        botonMed39.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed39ActionPerformed(evt);
-            }
-        });
-        jPanel16.add(botonMed39, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
-
-        botonMed4.setText("DADO EL RUBRO MOSTRAR PROVEEDOR");
-        botonMed4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed4ActionPerformed(evt);
-            }
-        });
-        jPanel16.add(botonMed4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, -1, -1));
-
-        botonMed3.setText("LISTAR PROVEEDORES DADO LA CIUDAD");
+        botonMed3.setText("COMPRAS POR PROVEEDOR - GRUPAL");
         botonMed3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed3ActionPerformed(evt);
@@ -1166,7 +1229,12 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel16.add(botonMed3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
-        botonMed1.setText("LISTAR PROVEEDORES POR RUBRO");
+        botonMed1.setText("LISTADO DE PROVEEDORES");
+        botonMed1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonMed1MouseClicked(evt);
+            }
+        });
         botonMed1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed1ActionPerformed(evt);
@@ -1187,7 +1255,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         jLabel40.setOpaque(true);
         jPanel17.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 40));
 
-        botonMed8.setText("COMPROBANTE DE VENTA POR MES");
+        botonMed8.setText("DETALLE DE VENTA - PARAMETRIZADO INDIVIDUAL ");
         botonMed8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed8ActionPerformed(evt);
@@ -1195,7 +1263,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel17.add(botonMed8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 280, 30));
 
-        botonMed6.setText("COMPROBANTES DE VENTA POR FECHA");
+        botonMed6.setText("VENTAS POR DÍA - PARAMETRIZADO");
         botonMed6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed6ActionPerformed(evt);
@@ -1203,13 +1271,21 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel17.add(botonMed6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 280, 30));
 
-        botonMed5.setText("VENTAS DIARIAS DADO EL MES Y AÑO");
+        botonMed5.setText("VENTAS POR MES Y AÑO - PARAMETRIZADO");
         botonMed5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed5ActionPerformed(evt);
             }
         });
         jPanel17.add(botonMed5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 280, 30));
+
+        botonMed9.setText("DETALLES POR VENTAS - GRUPAL");
+        botonMed9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMed9ActionPerformed(evt);
+            }
+        });
+        jPanel17.add(botonMed9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 30));
 
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
         jPanel18.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1223,21 +1299,29 @@ public class jfPrincipal extends javax.swing.JFrame {
         jLabel42.setOpaque(true);
         jPanel18.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 40));
 
-        botonMed12.setText("COMPROBANTES DE PAGO POR PROVEEDOR");
+        botonMed12.setText("DETALLE POR COMPRA - PARAMETRIZADO");
         botonMed12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed12ActionPerformed(evt);
             }
         });
-        jPanel18.add(botonMed12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 260, 30));
+        jPanel18.add(botonMed12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 260, 30));
 
-        botonMed11.setText("COMPROBANTES DE COMPRA POR FECHA");
+        botonMed11.setText("COMPRAS POR MES Y AÑO - PARAMETRIZADO");
         botonMed11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed11ActionPerformed(evt);
             }
         });
         jPanel18.add(botonMed11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 260, 30));
+
+        botonMed27.setText("COMPRAS POR DÍA - PARAMETRIZADO");
+        botonMed27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMed27ActionPerformed(evt);
+            }
+        });
+        jPanel18.add(botonMed27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 260, 30));
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
         jPanel19.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1251,31 +1335,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         jLabel44.setOpaque(true);
         jPanel19.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 40));
 
-        botonMed18.setText("MOSTRAR TRABAJADORES POR EDAD");
-        botonMed18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed18ActionPerformed(evt);
-            }
-        });
-        jPanel19.add(botonMed18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 280, 30));
-
-        botonMed17.setText("TRABAJADOR CON MAS VENTAS");
-        botonMed17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed17ActionPerformed(evt);
-            }
-        });
-        jPanel19.add(botonMed17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 280, 30));
-
-        botonMed16.setText("TRABAJADOR CON MAYOR EDAD POR PUESTO");
-        botonMed16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed16ActionPerformed(evt);
-            }
-        });
-        jPanel19.add(botonMed16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 30));
-
-        botonMed15.setText("LISTAR TRABAJADORES POR SEXO");
+        botonMed15.setText("VENTAS POR TRABAJDOR - PARAMETRIZADO Y GRUPO");
         botonMed15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed15ActionPerformed(evt);
@@ -1283,7 +1343,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel19.add(botonMed15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 280, 30));
 
-        botonMed14.setText("PORCENTAJE DE TRABAJADORES POR SEXO");
+        botonMed14.setText("TRABAJADORES POR CARGO - PARAMETRIZADO");
         botonMed14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed14ActionPerformed(evt);
@@ -1291,7 +1351,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel19.add(botonMed14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 280, 30));
 
-        botonMed13.setText("LISTAR TRABAJADORES POR PUESTO");
+        botonMed13.setText("LISTADO DE TRABAJADORES");
         botonMed13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed13ActionPerformed(evt);
@@ -1311,15 +1371,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         jLabel46.setOpaque(true);
         jPanel20.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 40));
 
-        botonMed40.setText("PRODUCTOS MAYORES A UN PRECIO INGRESADO");
-        botonMed40.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed40ActionPerformed(evt);
-            }
-        });
-        jPanel20.add(botonMed40, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 280, 30));
-
-        botonMed19.setText("LISTAR PRODUCTOS POR NÚMERO DE PEDIDO");
+        botonMed19.setText("LISTADO DE PRODUCTOS");
         botonMed19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed19ActionPerformed(evt);
@@ -1327,7 +1379,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel20.add(botonMed19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 280, 30));
 
-        botonMed20.setText("PRODUCTOS AGOTADOS");
+        botonMed20.setText("PRODUCTOS POR CATEGORÍA - GRUPO");
         botonMed20.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed20ActionPerformed(evt);
@@ -1335,7 +1387,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel20.add(botonMed20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 280, 30));
 
-        botonMed21.setText("PRODUCTOS MÁS COMPRADOS A PROVEEDORES");
+        botonMed21.setText("PRODUCTOS POR MARCA - GRUPO");
         botonMed21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed21ActionPerformed(evt);
@@ -1343,37 +1395,13 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel20.add(botonMed21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 280, 30));
 
-        botonMed22.setText("PRODUCTOS POR CATEGORIA");
+        botonMed22.setText("PRODUCTOS POR CATEGORÍA - GRÁFICO");
         botonMed22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed22ActionPerformed(evt);
             }
         });
         jPanel20.add(botonMed22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 30));
-
-        botonMed23.setText("PRODUCTOS CON MAYOR PESO");
-        botonMed23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed23ActionPerformed(evt);
-            }
-        });
-        jPanel20.add(botonMed23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 280, 30));
-
-        botonMed24.setText("PRODUCTO CON MAYOR STOCK");
-        botonMed24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed24ActionPerformed(evt);
-            }
-        });
-        jPanel20.add(botonMed24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 280, 30));
-
-        botonMed25.setText("STOCK MAYOR A UNA CANTIDAD DADA");
-        botonMed25.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed25ActionPerformed(evt);
-            }
-        });
-        jPanel20.add(botonMed25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 280, 30));
 
         jPanel21.setBackground(new java.awt.Color(255, 255, 255));
         jPanel21.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1388,15 +1416,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         jLabel48.setOpaque(true);
         jPanel21.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 40));
 
-        botonMed41.setText("CLIENTE MÁS JOVEN DADA LA CIUDAD");
-        botonMed41.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed41ActionPerformed(evt);
-            }
-        });
-        jPanel21.add(botonMed41, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 260, -1));
-
-        botonMed26.setText("PORCENTAJE CLIENTES HOMBRES Y MUJERES");
+        botonMed26.setText("LISTADO DE CLIENTES");
         botonMed26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed26ActionPerformed(evt);
@@ -1404,7 +1424,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel21.add(botonMed26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 260, -1));
 
-        botonMed28.setText("CLIENTE MAYOR COMPRA");
+        botonMed28.setText("COMPRAS POR CLIENTE - GRUPAL");
         botonMed28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed28ActionPerformed(evt);
@@ -1412,7 +1432,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel21.add(botonMed28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 260, -1));
 
-        botonMed29.setText("CLIENTE MAYOR POR CIUDAD");
+        botonMed29.setText("CLIENTES POR CIUDAD - GRÁFICO");
         botonMed29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed29ActionPerformed(evt);
@@ -1420,7 +1440,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel21.add(botonMed29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 260, -1));
 
-        botonMed30.setText("CLIENTE CON MAYOR EDAD");
+        botonMed30.setText("CLIENTES POR GÉNERO - GRÁFICO");
         botonMed30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMed30ActionPerformed(evt);
@@ -1428,110 +1448,23 @@ public class jfPrincipal extends javax.swing.JFrame {
         });
         jPanel21.add(botonMed30, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 260, -1));
 
-        botonMed31.setText("PORCENTAJE DE CLIENTES POR CIUDAD");
-        botonMed31.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed31ActionPerformed(evt);
-            }
-        });
-        jPanel21.add(botonMed31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 260, -1));
-
-        botonMed32.setText("PROMEDIO DE EDAD POR SEXO");
-        botonMed32.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed32ActionPerformed(evt);
-            }
-        });
-        jPanel21.add(botonMed32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 260, -1));
-
-        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel22.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel50.setBackground(new java.awt.Color(149, 165, 166));
-        jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel50.setText("PEDIDO");
-        jLabel50.setOpaque(true);
-        jPanel22.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 40));
-
-        botonMed42.setText("PRODUCTOS POR PEDIDO");
-        botonMed42.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed42ActionPerformed(evt);
-            }
-        });
-        jPanel22.add(botonMed42, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 370, -1));
-
-        botonMed33.setText("LISTAR PEDIDOS POR ESTADO");
-        botonMed33.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed33ActionPerformed(evt);
-            }
-        });
-        jPanel22.add(botonMed33, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 370, -1));
-
-        botonMed34.setText("DADO EL CODIGO DEL PEDIDO  MOSTRAR TRABAJADOR Y CLIENTE");
-        botonMed34.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed34ActionPerformed(evt);
-            }
-        });
-        jPanel22.add(botonMed34, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 370, -1));
-
-        botonMed35.setText("PORCENTAJE DE PEDIDOS ENVIADOS Y POR ENVIAR");
-        botonMed35.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed35ActionPerformed(evt);
-            }
-        });
-        jPanel22.add(botonMed35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 370, -1));
-
-        botonMed36.setText("PEDIDOS POR AGENCIA");
-        botonMed36.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed36ActionPerformed(evt);
-            }
-        });
-        jPanel22.add(botonMed36, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 370, -1));
-
-        botonMed37.setText("PEDIDOS MENSUALES POR CIUDAD");
-        botonMed37.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed37ActionPerformed(evt);
-            }
-        });
-        jPanel22.add(botonMed37, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 370, -1));
-
-        botonMed38.setText("PEDIDOS POR CIUDAD");
-        botonMed38.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonMed38ActionPerformed(evt);
-            }
-        });
-        jPanel22.add(botonMed38, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 370, -1));
-
         javax.swing.GroupLayout panelReportesLayout = new javax.swing.GroupLayout(panelReportes);
         panelReportes.setLayout(panelReportesLayout);
         panelReportesLayout.setHorizontalGroup(
             panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelReportesLayout.createSequentialGroup()
                 .addContainerGap(154, Short.MAX_VALUE)
-                .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelReportesLayout.createSequentialGroup()
-                        .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(50, 50, 50)
-                        .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(50, 50, 50)
-                        .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addGroup(panelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
         panelReportesLayout.setVerticalGroup(
@@ -1547,23 +1480,12 @@ public class jfPrincipal extends javax.swing.JFrame {
                     .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36)
-                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         Reportes.setViewportView(panelReportes);
 
         panelBody.add(Reportes, "reportes");
-
-        AcercaDe.setBorder(null);
-        AcercaDe.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        panelAcercaDe.setBackground(new java.awt.Color(245, 245, 245));
-        panelAcercaDe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        AcercaDe.setViewportView(panelAcercaDe);
-
-        panelBody.add(AcercaDe, "acerca-de");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1754,151 +1676,129 @@ public class jfPrincipal extends javax.swing.JFrame {
 
     }
 
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-    }//GEN-LAST:event_jLabel11MouseClicked
-
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        new jdCliente(this, true).setVisible(true);
     }//GEN-LAST:event_jLabel12MouseClicked
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        new jdGestionarProducto(this, true).setVisible(true);
     }//GEN-LAST:event_jLabel13MouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        new jdManProveedor(this, true).setVisible(true);
     }//GEN-LAST:event_jLabel14MouseClicked
 
-    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-    }//GEN-LAST:event_jLabel15MouseClicked
-
     private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        new jdComprobanteCompra(this, true).setVisible(true);
     }//GEN-LAST:event_jLabel19MouseClicked
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        new jdComprobanteVenta(this, true).setVisible(true);
     }//GEN-LAST:event_jLabel21MouseClicked
 
-    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
-    }//GEN-LAST:event_jLabel25MouseClicked
-
-    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
-    }//GEN-LAST:event_jLabel27MouseClicked
-
     private void botonMed1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed1ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptProveedor.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed1ActionPerformed
 
     private void botonMed3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed3ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptProveedorCompras.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed3ActionPerformed
 
-    private void botonMed4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed4ActionPerformed
-    }//GEN-LAST:event_botonMed4ActionPerformed
-
     private void botonMed5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed5ActionPerformed
+        new jdRptVentaMesAnio(this, true).setVisible(true);
     }//GEN-LAST:event_botonMed5ActionPerformed
 
     private void botonMed6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed6ActionPerformed
-
+        new jdRptVentaFecha(this, true).setVisible(true);
     }//GEN-LAST:event_botonMed6ActionPerformed
 
     private void botonMed8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed8ActionPerformed
-
+        new jdRptDetalleVenta(this, true).setVisible(true);
     }//GEN-LAST:event_botonMed8ActionPerformed
 
     private void botonMed11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed11ActionPerformed
+        new jdRptCompraMesAnio(this, true).setVisible(true);
     }//GEN-LAST:event_botonMed11ActionPerformed
 
     private void botonMed12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed12ActionPerformed
+        new jdRptDetalleCompra(this, true).setVisible(true);
     }//GEN-LAST:event_botonMed12ActionPerformed
 
     private void botonMed13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed13ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptTrabajador.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed13ActionPerformed
 
     private void botonMed14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed14ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptTrabajador_cargo.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed14ActionPerformed
 
     private void botonMed15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed15ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptVentas_trabajador.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed15ActionPerformed
 
-    private void botonMed16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed16ActionPerformed
-    }//GEN-LAST:event_botonMed16ActionPerformed
-
-    private void botonMed17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed17ActionPerformed
-    }//GEN-LAST:event_botonMed17ActionPerformed
-
-    private void botonMed18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed18ActionPerformed
-    }//GEN-LAST:event_botonMed18ActionPerformed
-
     private void botonMed19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed19ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptProductos.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed19ActionPerformed
 
     private void botonMed20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed20ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptProductoporCategoria.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed20ActionPerformed
 
     private void botonMed21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed21ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptProductosPorMarca.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed21ActionPerformed
 
     private void botonMed22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed22ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptProductosGraCat.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed22ActionPerformed
 
-    private void botonMed23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed23ActionPerformed
-    }//GEN-LAST:event_botonMed23ActionPerformed
-
-    private void botonMed24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed24ActionPerformed
-    }//GEN-LAST:event_botonMed24ActionPerformed
-
-    private void botonMed25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed25ActionPerformed
-    }//GEN-LAST:event_botonMed25ActionPerformed
-
     private void botonMed26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed26ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptCliente.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed26ActionPerformed
 
     private void botonMed28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed28ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptComprasCliente.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed28ActionPerformed
 
     private void botonMed29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed29ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptClientePorCiudad.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed29ActionPerformed
 
     private void botonMed30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed30ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptCliente_genero.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_botonMed30ActionPerformed
 
-    private void botonMed31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed31ActionPerformed
-    }//GEN-LAST:event_botonMed31ActionPerformed
-
-    private void botonMed32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed32ActionPerformed
-    }//GEN-LAST:event_botonMed32ActionPerformed
-
-    private void botonMed33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed33ActionPerformed
-    }//GEN-LAST:event_botonMed33ActionPerformed
-
-    private void botonMed34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed34ActionPerformed
-    }//GEN-LAST:event_botonMed34ActionPerformed
-
-    private void botonMed35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed35ActionPerformed
-    }//GEN-LAST:event_botonMed35ActionPerformed
-
-    private void botonMed36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed36ActionPerformed
-    }//GEN-LAST:event_botonMed36ActionPerformed
-
-    private void botonMed37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed37ActionPerformed
-    }//GEN-LAST:event_botonMed37ActionPerformed
-
-    private void botonMed38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed38ActionPerformed
-    }//GEN-LAST:event_botonMed38ActionPerformed
-
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptProducto.jasper");
+        repo.setVisible(true);
     }//GEN-LAST:event_jLabel29MouseClicked
-
-    private void botonMed39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed39ActionPerformed
-    }//GEN-LAST:event_botonMed39ActionPerformed
-
-    private void botonMed40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed40ActionPerformed
-    }//GEN-LAST:event_botonMed40ActionPerformed
-
-    private void botonMed41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed41ActionPerformed
-    }//GEN-LAST:event_botonMed41ActionPerformed
-
-    private void botonMed7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed7ActionPerformed
-    }//GEN-LAST:event_botonMed7ActionPerformed
-
-    private void botonMed42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed42ActionPerformed
-    }//GEN-LAST:event_botonMed42ActionPerformed
 
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         // TODO add your handling code here:
@@ -1930,7 +1830,7 @@ public class jfPrincipal extends javax.swing.JFrame {
             // Replace the textField by the preferencia User and Password who will be stock
             String[] usuario = miUsuario.inicioSesion(preferencia.get("User", ""), preferencia.get("Password", "").toCharArray());
 
-            imagen(lblImagen, "src/Iconos/" + usuario[0] + ".png");
+            imagen(lblImagen, "/Iconos/" + usuario[0] + ".png");
             lblCodigo.setText(usuario[1]);
             lblCargo.setText(usuario[2]);
             lblNombre.setText(usuario[3]);
@@ -1947,7 +1847,7 @@ public class jfPrincipal extends javax.swing.JFrame {
             jdInicioSesion sesion = new jdInicioSesion(this, true);
             sesion.setVisible(true);
             this.setVisible(true);
-            imagen(lblImagen, "src/Iconos/" + sesion.usuario[0] + ".png");
+            imagen(lblImagen, "/Iconos/" + sesion.usuario[0] + ".png");
             lblCodigo.setText(sesion.usuario[1]);
             lblCargo.setText(sesion.usuario[2]);
             lblNombre.setText(sesion.usuario[3]);
@@ -1978,8 +1878,45 @@ public class jfPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+        new jdTrabajador(this, true).setVisible(true);
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        new jdManMarca(this, true).setVisible(true);
+    }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void jLabel56MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel56MouseClicked
+        // TODO add your handling code here:
+        new jdManCategoria(this, true).setVisible(true);
+    }//GEN-LAST:event_jLabel56MouseClicked
+
+    private void botonMed7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed7ActionPerformed
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptProveedoresCiudad.jasper");
+        repo.setVisible(true);
+    }//GEN-LAST:event_botonMed7ActionPerformed
+
+    private void botonMed9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed9ActionPerformed
+        // TODO add your handling code here:
+        jdVerReportes repo = new jdVerReportes(this, true);
+        repo.setNombreReporte("rptDetalleVentaGr.jasper");
+        repo.setVisible(true);
+    }//GEN-LAST:event_botonMed9ActionPerformed
+
+    private void botonMed27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed27ActionPerformed
+        // TODO add your handling code here:
+        new jdRptCompraDia(this, true).setVisible(true);
+    }//GEN-LAST:event_botonMed27ActionPerformed
+
+    private void botonMed1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMed1MouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_botonMed1MouseClicked
+
     private void imagen(JLabel lbl, String ruta) {
-        ImageIcon imagen = new ImageIcon(ruta);
+        ImageIcon imagen = new ImageIcon(getClass().getResource(ruta));
         Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH));
 
         lbl.setIcon(icono);
@@ -2000,38 +1937,21 @@ public class jfPrincipal extends javax.swing.JFrame {
     private capaInterfaz.Componentes.BotonMedSecundario botonMed13;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed14;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed15;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed16;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed17;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed18;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed19;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed20;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed21;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed22;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed23;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed24;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed25;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed26;
+    private capaInterfaz.Componentes.BotonMedSecundario botonMed27;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed28;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed29;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed3;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed30;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed31;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed32;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed33;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed34;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed35;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed36;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed37;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed38;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed39;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed4;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed40;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed41;
-    private capaInterfaz.Componentes.BotonMedSecundario botonMed42;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed5;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed6;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed7;
     private capaInterfaz.Componentes.BotonMedSecundario botonMed8;
+    private capaInterfaz.Componentes.BotonMedSecundario botonMed9;
     private javax.swing.JButton btnAcercaDe;
     private javax.swing.JButton btnConsultas;
     private javax.swing.JButton btnMantenimiento;
@@ -2049,37 +1969,55 @@ public class jfPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
@@ -2087,14 +2025,12 @@ public class jfPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lblAcercaDe;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblCodigo;

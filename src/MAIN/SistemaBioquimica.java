@@ -18,6 +18,7 @@ public class SistemaBioquimica {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.setProperty("sun.java2d.uiScale", "1.0");
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -35,7 +36,7 @@ public class SistemaBioquimica {
             java.util.logging.Logger.getLogger(jfPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         jfPrincipal principal = new jfPrincipal();
-        principal.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Iconos/hotel.png")));
+        principal.setIconImage(Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Iconos/ICONO2.png")));
     }
     
 }

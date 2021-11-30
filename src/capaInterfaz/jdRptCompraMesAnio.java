@@ -153,6 +153,7 @@ public class jdRptCompraMesAnio extends javax.swing.JDialog {
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
         try {
+            visorReporte.removeAll();
             Container contenedor = this.visorReporte;
             contenedor.setLayout(new BorderLayout());
             //Agregar paramtros

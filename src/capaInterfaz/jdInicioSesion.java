@@ -65,7 +65,7 @@ public class jdInicioSesion extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(parent);
 
-        imagen(lblImagen, "src/Iconos/inicio.png");
+        imagen(lblImagen, "/Iconos/inicio.png");
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
@@ -489,7 +489,7 @@ public class jdInicioSesion extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel7MouseExited
 
     private void imagen(JLabel lbl, String ruta) {
-        ImageIcon imagen = new ImageIcon(ruta);
+        ImageIcon imagen = new ImageIcon(getClass().getResource(ruta));
         Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(lbl.getWidth(), lbl.getHeight(), Image.SCALE_SMOOTH));
 
         lbl.setIcon(icono);
