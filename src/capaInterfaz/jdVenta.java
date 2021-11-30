@@ -1063,6 +1063,8 @@ public class jdVenta extends javax.swing.JDialog {
         // TODO add your handling code here:
         try {
             if (btnNuevo.getText().equals("Nuevo")) {
+                limpiarControloes();
+
                 btnNuevo.setText("Guardar");
                 txtNumero.setText(objVenta.generarNumVenta().toString());
                 txtNroComprobante.requestFocus();

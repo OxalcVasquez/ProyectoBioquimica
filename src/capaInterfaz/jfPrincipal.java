@@ -858,7 +858,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         jLabel55.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel55.setForeground(new java.awt.Color(255, 255, 255));
         jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel55.setText("REGISTRAR MARCA");
+        jLabel55.setText("REGISTRAR CATEGORIA");
         jLabel55.setOpaque(true);
 
         jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1693,7 +1693,7 @@ public class jfPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel19MouseClicked
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        new jdComprobanteVenta(this, true).setVisible(true);
+        new jdVenta(this, true).setVisible(true);
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void botonMed1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMed1ActionPerformed
@@ -1796,7 +1796,7 @@ public class jfPrincipal extends javax.swing.JFrame {
 
     private void jLabel29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel29MouseClicked
         jdVerReportes repo = new jdVerReportes(this, true);
-        repo.setNombreReporte("rptProducto.jasper");
+        repo.setNombreReporte("rptProductos.jasper");
         repo.setVisible(true);
     }//GEN-LAST:event_jLabel29MouseClicked
 
