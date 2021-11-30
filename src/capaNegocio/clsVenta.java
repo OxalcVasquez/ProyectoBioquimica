@@ -82,7 +82,7 @@ public class clsVenta {
     public ResultSet listarVentas() throws Exception {
         strSQL = "select v.*,c.nombres ||' '|| c.apellidos as cliente,t.nombres ||' '|| t.apellidos as trabajador from comprobanteVenta as v "
                 + "inner join trabajador t on v.codtrabajador = t.codtrabajador "
-                + "inner join cliente c on v.codcliente = c.codcliente";
+                + "inner join cliente c on v.codcliente = c.codcliente order by v.numventa";
 
         try {
             rs = objConexion.consultarBD(strSQL);
