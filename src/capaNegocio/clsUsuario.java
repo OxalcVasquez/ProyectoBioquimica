@@ -134,6 +134,23 @@ public class clsUsuario {
      
     }
     
+    public String Nomtrabajador(int cod) throws Exception{
+    
+       strSQL="select (trabajador.nombres ||' '|| trabajador.apellidos )  as trabajador  from trabajador where codtrabajador ="+cod+" ";
+        try {
+            rs = obj.consultarBD(strSQL);
+            if(rs.next()){
+            
+                return rs.getString("trabajador");
+            }
+            
+        } catch (Exception e) {
+           throw new Exception("No se pudo encontrar a los trabajadores");
+        }
+        return null;
+    }
+    
+    
     public ResultSet cboTrabajadores() throws Exception{
     
         strSQL = "select  (trabajador.nombres ||' '|| trabajador.apellidos )  as trabajador  from usuario u inner join trabajador  on u.codtrabajador = trabajador.codtrabajador group by  (trabajador.nombres ||' '|| trabajador.apellidos ) ";

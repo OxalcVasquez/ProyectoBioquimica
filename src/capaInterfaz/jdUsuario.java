@@ -575,10 +575,7 @@ public class jdUsuario extends javax.swing.JDialog {
         } catch (Exception e) {
              JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        
-        
-        
-        
+
     }//GEN-LAST:event_cboTrabajadorActionPerformed
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
@@ -597,6 +594,7 @@ public class jdUsuario extends javax.swing.JDialog {
                     txtFecha.setText(rs.getString("fecharegistro"));
                     chkEstado.setSelected(rs.getBoolean("vigencia"));
                     txtCodigoTra.setText(String.valueOf(rs.getInt("codtrabajador")));
+                    cboTrabajador.setSelectedItem(objUsu.Nomtrabajador(Integer.parseInt(txtCodigo.getText())));
   
                 }
             }
