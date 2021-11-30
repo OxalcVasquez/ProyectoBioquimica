@@ -89,10 +89,10 @@ public class clsMarca {
     }
 
     public void registrarMarca(Integer cod, String nombre, Boolean vigencia) throws Exception {
-        strSQL = "INSERT INTO Marca(codMarca, nombre, vigencia) VALUES (" + cod + ", '" + nombre + "', " + vigencia + ");";
+        strSQL = "select pa_registrarMarca(" + cod + ", '" + nombre + "', " + vigencia + ");";
 
         try {
-            objConexion.ejecutarBD(strSQL);
+          objConexion.consultarBD(strSQL);
 
         } catch (Exception e) {
             throw new Exception("Error al registrar Marca");
