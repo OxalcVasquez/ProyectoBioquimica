@@ -233,7 +233,7 @@ public class jdTrabajador extends javax.swing.JDialog {
 
         cboCargo.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         cboCargo.setForeground(new java.awt.Color(51, 51, 51));
-        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente", "Vendedor", "Administrador", "Apoyo" }));
+        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cajero", "Vendedor", "Administrador", "Apoyo" }));
 
         gradientButton3.setText("Dar Baja");
         gradientButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -782,7 +782,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                             if(rs.getBoolean("sexo") == false) sexo = "Femenino";
                     cboSexo.setSelectedItem(sexo);
                     
-                    if(rs.getString("cargo").equals("C")) cargo = "Caja";
+                    if(rs.getString("cargo").equals("C")) cargo = "Cajero";
                     if(rs.getString("cargo").equals("V")) cargo = "Vendedor";
                     if(rs.getString("cargo").equals("A")) cargo = "Administrador";
                     if(rs.getString("cargo").equals("Y")) cargo = "Apoyo";
