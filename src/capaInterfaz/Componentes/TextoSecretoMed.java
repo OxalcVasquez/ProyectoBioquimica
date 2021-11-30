@@ -33,6 +33,7 @@ public class TextoSecretoMed extends JPasswordField implements FocusListener{
         super.setText("Tu contraseña");
         super.setEchoChar((char)0);
     }
+
     
     @Override
     public void focusGained(FocusEvent fe) {
