@@ -112,10 +112,9 @@ public class clsProducto {
 
     public void registrarProducto(Integer cod, String nom, String des, Double precioV, Double precioC, Integer stock, Boolean vigencia, String fechaV, Integer codMarca, Integer codCategoria) throws Exception {
 
-        strSQL = "INSERT INTO producto (codproducto, nombre, descripcion, precioventa, preciocompra, stock, vigencia, fechavencimiento, codmarca, codcategoria) "
-                + " VALUES (" + cod + ", '" + nom + "', '" + des + "', " + precioV + ", " + precioC + ", " + stock + ", " + vigencia + ", '" + fechaV + "', " + codMarca + ", " + codCategoria + ");";
+        strSQL = "select pa_registrarProducto(" + cod + ", '" + nom + "', '" + des + "', " + precioV + ", " + precioC + ", " + stock + ", " + vigencia + ", '" + fechaV + "', " + codMarca + ", " + codCategoria + ");";
         try {
-            objConexion.ejecutarBD(strSQL);
+            objConexion.consultarBD(strSQL);
 
         } catch (Exception e) {
             throw new Exception("Error al registrar producto");

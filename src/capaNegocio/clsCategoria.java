@@ -103,10 +103,10 @@ public class clsCategoria {
     }
     
     public void registrarCategoria(Integer cod, String nombre, Boolean vigencia) throws Exception {
-        strSQL = "INSERT INTO categoria(codcategoria, nombre, vigencia) VALUES (" + cod + ", '" + nombre + "', " + vigencia + ");";
+        strSQL = "select pa_registrarCategoria(" + cod + ", '" + nombre + "', " + vigencia + ");";
 
         try {
-            objConexion.ejecutarBD(strSQL);
+            objConexion.consultarBD(strSQL);
 
         } catch (Exception e) {
             throw new Exception("Error al registrar categoria");

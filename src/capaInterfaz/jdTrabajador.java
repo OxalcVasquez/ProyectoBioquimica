@@ -233,7 +233,7 @@ public class jdTrabajador extends javax.swing.JDialog {
 
         cboCargo.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         cboCargo.setForeground(new java.awt.Color(51, 51, 51));
-        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cajero", "Vendedor", "Administrador", "Apoyo" }));
+        cboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "Administrador", "Apoyo" }));
 
         gradientButton3.setText("Dar Baja");
         gradientButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -349,12 +349,12 @@ public class jdTrabajador extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13)
                     .addComponent(jLabel16))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -363,7 +363,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                     .addComponent(gradientButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,19 +410,22 @@ public class jdTrabajador extends javax.swing.JDialog {
                             .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cboCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(chkEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(chkEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
+                                .addGap(2, 2, 2)
                                 .addComponent(jLabel13)
                                 .addGap(19, 19, 19))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,11 +442,8 @@ public class jdTrabajador extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel17)
-                            .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))))
+                            .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(54, 54, 54))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 840, 650));
@@ -618,7 +618,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                 if(rs.getString("cargo").equals("V")) cargo = "Vendedor";
                 if(rs.getString("cargo").equals("A")) cargo = "Administrador";
                 if(rs.getString("cargo").equals("Y")) cargo = "Apoyo";
-                modelo.addRow(new Object[]{rs.getString("codtrabajador"),rs.getString("nombres"),rs.getString("apellidos"),rs.getString("dni"),rs.getString("telefono"),rs.getString("correo"),cargo,rs.getBoolean("vigencia") });
+                modelo.addRow(new Object[]{rs.getString("codtrabajador"),rs.getString("nombres"),rs.getString("apellidos"),rs.getString("dni"),rs.getString("telefono"),rs.getString("correo"),cargo,rs.getString("vigencia") });
             }
             alinearTabla(tblTrabajador);
         } catch (Exception e) {
@@ -647,7 +647,7 @@ public class jdTrabajador extends javax.swing.JDialog {
                 String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdCalendar.getDate()); 
                
                 
-                objTra.guardarTrabajador(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),txtTelefono.getText(),txtCorreo.getText(), txtDireccion.getText(),sexo,fecha,cargo,chkEstado.isSelected());
+                objTra.registrarTrabajador(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtApellido.getText(),txtDNI.getText(),txtTelefono.getText(),txtCorreo.getText(), txtDireccion.getText(),sexo,fecha,cargo,chkEstado.isSelected());
                 new MensajeMed().mostrar(this,"Trabajador Registrado correctamente",2);
                 limpiarContenido();
                 listarTrabajador(); 
