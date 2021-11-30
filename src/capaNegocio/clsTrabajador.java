@@ -60,7 +60,7 @@ public class clsTrabajador {
         }
         return 0;
     }
-    
+    //Proceso Almacenado
      public void registrarTrabajador(Integer codtrabajador,String nombres,String apellidos,String dni,String telefono,String correo,String direccion,Boolean sexo,String fechanac,Character cargo,Boolean vigencia) throws Exception{
         strSQL = "select fn_registrarTrabajador("+codtrabajador+",'"+nombres+"','"+apellidos+"','"+dni+" ','"+telefono+" ','"+correo+" ','"+direccion+"',"+sexo+",'"+fechanac+"','"+cargo+"',"+vigencia+")";
         try {

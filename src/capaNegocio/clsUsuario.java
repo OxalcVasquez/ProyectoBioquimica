@@ -62,6 +62,26 @@ public class clsUsuario {
         return 0;
     }
     
+    //Proceso Almacenado
+    public void registrarUsuario(Integer codusuario,String nombreusuario,char[] contraseñausuario,Boolean vigencia,String fecharegistro,String recu,Integer codtrabajador) throws Exception{
+
+        try {
+         int iterations = Argon2Helper.findIterations(argon2, 500, 65536, 4);
+
+        String hashPass = argon2.hash(iterations, 65536, 4, contraseñausuario);
+
+        String hashRecu = argon2.hash(iterations, 65536, 4, recu.toCharArray());
+        
+        strSQL = "select fn_registrarUsuario("+codusuario+",'"+nombreusuario+"','"+ hashPass+"','"+hashRecu+"',"+vigencia+",'"+fecharegistro+"',"+codtrabajador+")";
+        
+        obj.consultarBD(strSQL);
+        } catch (Exception e) {
+            throw new Exception("No se pudo guardar");
+        } 
+     }
+    
+    
+    
     public void guardarUsuario(Integer codusuario,String nombreusuario,char[] contraseñausuario,Boolean vigencia,String fecharegistro,String recu,Integer codtrabajador) throws Exception{
     
         try {
