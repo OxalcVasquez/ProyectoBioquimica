@@ -611,6 +611,7 @@ public class jdCliente extends javax.swing.JDialog {
                     String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdCalendar.getDate());
 
                     objC.registrarCliente(Integer.parseInt(txtCodigo.getText()), txtDNI.getText(), tipoDoc, txtNombre.getText(), txtApellidos.getText(), fecha, sexo, txtCiudad.getText(), txtTelefono.getText(), txtCorreo.getText(), chkVigencia.isSelected());
+                    new MensajeMed().mostrar(this, "Se agrego el cliente correctamente", 2);
                     limpiarControles();
                     listarCliente();
 
