@@ -447,11 +447,11 @@ public class jdVenta extends javax.swing.JDialog {
 
         jLabel24.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel24.setText("Trabajador:");
-        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 730, -1, -1));
+        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 720, -1, -1));
 
         cboTrabajador.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         cboTrabajador.setForeground(new java.awt.Color(51, 51, 51));
-        jPanel2.add(cboTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 720, 280, -1));
+        jPanel2.add(cboTrabajador, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 720, 280, 40));
         jPanel2.add(jsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
         txtNroDocumento.setText("");
@@ -1152,62 +1152,69 @@ public class jdVenta extends javax.swing.JDialog {
 
     private void buscarVenta() {
         try {
-            ResultSet rsVenta = objVenta.buscarVenta(Integer.parseInt(txtNumero.getText()));
-            ResultSet rsDetalle = objVenta.buscarDetalleVenta(Integer.parseInt(txtNumero.getText()));
-            listaDetalle = datosDetalle(objVenta.buscarDetalleVenta(Integer.parseInt(txtNumero.getText())));
+            if (!txtNumero.getText().isEmpty()) {
+                ResultSet rsVenta = objVenta.buscarVenta(Integer.parseInt(txtNumero.getText()));
+                ResultSet rsDetalle = objVenta.buscarDetalleVenta(Integer.parseInt(txtNumero.getText()));
+                listaDetalle = datosDetalle(objVenta.buscarDetalleVenta(Integer.parseInt(txtNumero.getText())));
 
-            if (rsVenta.next()) {
+                if (rsVenta.next()) {
 
-                listarDetalle(listaDetalle);
-                jsCantidad.setPrecio(txtPrecio, precio);
+                    listarDetalle(listaDetalle);
+                    jsCantidad.setPrecio(txtPrecio, precio);
 
-                jdcFecha.setDate(rsVenta.getDate("fecha"));
-                if (rsVenta.getString("tipo").equals("B")) {
-                    cboTipo.setSelectedIndex(0);
+                    jdcFecha.setDate(rsVenta.getDate("fecha"));
+                    if (rsVenta.getString("tipo").equals("B")) {
+                        cboTipo.setSelectedIndex(0);
 
-                } else if (rsVenta.getString("tipo").equals("BE")) {
-                    cboTipo.setSelectedIndex(1);
+                    } else if (rsVenta.getString("tipo").equals("BE")) {
+                        cboTipo.setSelectedIndex(1);
 
-                } else if (rsVenta.getString("tipo").equals("F")) {
-                    cboTipo.setSelectedIndex(2);
-
-                } else {
-                    cboTipo.setSelectedIndex(3);
-
-                }
-                ResultSet rsCliente = objCliente.buscarCliente(rsVenta.getInt("codcliente"));
-                if (rsCliente.next()) {
-                    //DNI, Pasaporte, Carnet Extranjería, Libreta Militar
-
-                    if (rsCliente.getString("tipodocumento").equals("D")) {
-                        cboTipoDoc.setSelectedIndex(0);
-                    } else if (rsCliente.getString("tipodocumento").equals("P")) {
-                        cboTipoDoc.setSelectedIndex(1);
-
-                    } else if (rsCliente.getString("tipodocumento").equals("C")) {
-                        cboTipoDoc.setSelectedIndex(2);
+                    } else if (rsVenta.getString("tipo").equals("F")) {
+                        cboTipo.setSelectedIndex(2);
 
                     } else {
-                        cboTipoDoc.setSelectedIndex(3);
+                        cboTipo.setSelectedIndex(3);
 
                     }
-                    txtNroDocumento.setText(rsCliente.getString("numdocumento"));
+                    ResultSet rsCliente = objCliente.buscarCliente(rsVenta.getInt("codcliente"));
+                    if (rsCliente.next()) {
+                        //DNI, Pasaporte, Carnet Extranjería, Libreta Militar
 
-                    txtCliente.setText(rsCliente.getString("nombres") + " " + rsCliente.getString("apellidos"));
+                        if (rsCliente.getString("tipodocumento").equals("D")) {
+                            cboTipoDoc.setSelectedIndex(0);
+                        } else if (rsCliente.getString("tipodocumento").equals("P")) {
+                            cboTipoDoc.setSelectedIndex(1);
+
+                        } else if (rsCliente.getString("tipodocumento").equals("C")) {
+                            cboTipoDoc.setSelectedIndex(2);
+
+                        } else {
+                            cboTipoDoc.setSelectedIndex(3);
+
+                        }
+                        txtNroDocumento.setText(rsCliente.getString("numdocumento"));
+
+                        txtCliente.setText(rsCliente.getString("nombres") + " " + rsCliente.getString("apellidos"));
+                    }
+
+                    ResultSet rsTrabajador = objTrabajador.buscar(rsVenta.getInt("codtrabajador"));
+                    if (rsTrabajador.next()) {
+                        cboTrabajador.setSelectedItem(rsTrabajador.getString("codtrabajador") + "-" + rsTrabajador.getString("nombres") + " " + rsTrabajador.getString("apellidos"));
+                    }
+
+                    txtNroComprobante.setText(rsVenta.getString("numcomprobante"));
+                    txtTotal.setText(String.valueOf(rsVenta.getDouble("total")));
+                    txtIGV.setText(String.valueOf(rsVenta.getDouble("igv")));
+                    txtSubTotal.setText(String.valueOf(rsVenta.getDouble("subtotal")));
+
                 }
+                alinearTabla(tblDetalle);
 
-                ResultSet rsTrabajador = objTrabajador.buscar(rsVenta.getInt("codtrabajador"));
-                if (rsTrabajador.next()) {
-                    cboTrabajador.setSelectedItem(rsTrabajador.getString("codtrabajador") + "-" + rsTrabajador.getString("nombres") + " " + rsTrabajador.getString("apellidos"));
-                }
-
-                txtNroComprobante.setText(rsVenta.getString("numcomprobante"));
-                txtTotal.setText(String.valueOf(rsVenta.getDouble("total")));
-                txtIGV.setText(String.valueOf(rsVenta.getDouble("igv")));
-                txtSubTotal.setText(String.valueOf(rsVenta.getDouble("subtotal")));
+            } else {
+                new MensajeMed().mostrar(this,"Por favor ingrese el numero de venta", 0);
+                txtNumero.requestFocus();
 
             }
-            alinearTabla(tblDetalle);
 
         } catch (Exception e) {
             new MensajeMed().mostrar(this, e.getMessage(), 3);
