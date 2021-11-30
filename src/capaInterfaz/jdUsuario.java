@@ -623,7 +623,8 @@ public class jdUsuario extends javax.swing.JDialog {
                 txtNombre.requestFocus(); 
             }else{
                 btnNuevo.setText("Nuevo");
-                objUsu.registrar(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtContraseña.getPassword(),chkEstado.isSelected(),txtFecha.getText(),objUsu.generarCodigoRecuperacion(16),Integer.parseInt(txtCodigoTra.getText()));
+                //(Integer codusuario,String nombreusuario,char[] contraseñausuario,Boolean vigencia,String fecharegistro,String recu,Integer codtrabajador)
+                objUsu.guardarUsuario(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtContraseña.getPassword(),chkEstado.isSelected(),txtFecha.getText(),objUsu.generarCodigoRecuperacion(16),Integer.parseInt(txtCodigoTra.getText()));
                 
                 limpiarContenido();
                 listarUsuario(); 

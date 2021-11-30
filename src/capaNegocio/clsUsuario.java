@@ -62,10 +62,17 @@ public class clsUsuario {
         return 0;
     }
     
-    public void guardarUsuario(Integer codusuario,String nombreusuario,String contraseñausuario,Boolean vigencia,String fecharegistro,Integer codtrabajador) throws Exception{
+    public void guardarUsuario(Integer codusuario,String nombreusuario,char[] contraseñausuario,Boolean vigencia,String fecharegistro,String recu,Integer codtrabajador) throws Exception{
     
-        strSQL = "insert into usuario (codusuario,nombreusuario,contraseñausuario,vigencia,fecharegistro,codtrabajador) values ("+codusuario+",'"+nombreusuario+"','"+contraseñausuario+"',"+vigencia+",'"+fecharegistro+"',"+codtrabajador+")";
         try {
+            int iterations = Argon2Helper.findIterations(argon2, 500, 65536, 4);
+
+            String hashPass = argon2.hash(iterations, 65536, 4, contraseñausuario);
+
+            String hashRecu = argon2.hash(iterations, 65536, 4, recu.toCharArray());
+            
+            strSQL = "insert into usuario (codusuario,nombreusuario,contraseñausuario,codigorecuperacion,vigencia,fecharegistro,codtrabajador) values ("+codusuario+",'"+nombreusuario+"','"+ hashPass+"','"+hashRecu+"',"+vigencia+",'"+fecharegistro+"',"+codtrabajador+")";
+
             obj.ejecutarBD(strSQL);
             
         } catch (Exception e) {
@@ -232,7 +239,7 @@ public class clsUsuario {
     // Registro de usuario
     
    
-    public void registrar(Integer cod, String usu, char[] cont, Boolean vig, String fec,String recu, Integer tra) throws Exception {
+    public void registrar(Integer cod, String usu, char[] cont,String recu, Integer tra) throws Exception {
 
         try {
             // iterations = 10
@@ -244,7 +251,7 @@ public class clsUsuario {
 
             String hashRecu = argon2.hash(iterations, 65536, 4, recu.toCharArray());
 
-            strSQL = "insert into usuario(codusuario,nombreusuario,contraseñausuario,codigorecuperacion,vigencia,fecharegistro,codtrabajador) values (" + cod + ",'" + usu + "', '" + hashPass + "','" + hashRecu + "',"+vig+" ,"+fec+"," + tra + ")";
+            strSQL = "insert into usuario (codusuario,nombreusuario,contraseñausuario,codigorecuperacion,vigencia,fecharegistro,codtrabajador) values ("+cod+",'"+usu+"','"+ hashPass+"','"+hashRecu+"',true,current_date,"+tra+")";
 
             obj.ejecutarBD(strSQL);
 
