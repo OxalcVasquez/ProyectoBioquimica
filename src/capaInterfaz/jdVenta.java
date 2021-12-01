@@ -545,6 +545,11 @@ public class jdVenta extends javax.swing.JDialog {
         jPanel2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 490, -1, 30));
 
         botonMedGradiente4.setText("Salir");
+        botonMedGradiente4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMedGradiente4ActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonMedGradiente4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 670, 170, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1070, 780));
@@ -652,6 +657,13 @@ public class jdVenta extends javax.swing.JDialog {
                 listarDetalle(listaDetalle);
             }
 
+        }
+        actualizarTotal();
+        
+        if (tblDetalle.getRowCount() == 0) {
+            txtIGV.setText("");
+            txtSubTotal.setText("");
+            txtTotal.setText("");
         }
 
     }
@@ -1262,6 +1274,7 @@ public class jdVenta extends javax.swing.JDialog {
     private void btnEliminarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarProductoMouseClicked
         // TODO add your handling code here:
         eliminarProducto();
+
     }//GEN-LAST:event_btnEliminarProductoMouseClicked
 
     private void botonMedGradiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente2ActionPerformed
@@ -1276,6 +1289,11 @@ public class jdVenta extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_botonMedGradiente2ActionPerformed
+
+    private void botonMedGradiente4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente4ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_botonMedGradiente4ActionPerformed
 
     /**
      * @param args the command line arguments

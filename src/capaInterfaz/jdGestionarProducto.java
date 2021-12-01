@@ -545,10 +545,12 @@ public class jdGestionarProducto extends javax.swing.JDialog {
 
             }
             alinearTabla(tblDatos);
+            
         } catch (Exception e) {
             new MensajeMed().mostrar(this, e.getMessage(), 3);
 
         }
+        limpiarControles();
     }
 
     private void btnDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarBajaActionPerformed
@@ -571,6 +573,16 @@ public class jdGestionarProducto extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnDarBajaActionPerformed
 
+    private void limpiarControles(){
+    txtCodigo.setText("");
+    txtNombre.setText("");
+    txtDescripcion.setText("");
+    txtPVenta.setText("");
+    txtPCompra.setText("");
+    txtStock.setText("");
+  
+    
+    }
     private void buscarProducto() {
         try {
             if (!txtCodigo.getText().isEmpty()) {

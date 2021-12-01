@@ -207,6 +207,11 @@ public class jdManCategoria extends javax.swing.JDialog {
         jPanel2.add(btnDarBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 170, -1));
 
         btnSalir2.setText("Salir");
+        btnSalir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnSalir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 170, -1));
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
@@ -503,6 +508,11 @@ public class jdManCategoria extends javax.swing.JDialog {
 
         buscar();
     }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnSalir2ActionPerformed
 
     /**
      * @param args the command line arguments
