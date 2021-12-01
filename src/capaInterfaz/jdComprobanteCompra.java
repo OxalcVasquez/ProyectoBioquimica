@@ -577,9 +577,15 @@ public void quitar(){
             Object[] datos = (Object[]) listaDetalle.get(i);
             if (datos[0].equals(txtProducto.getText())) {
                 listaDetalle.remove(i);
-                new MensajeMed().mostrar(this, "Producto eliminado correctamente",2);
+                new MensajeMed().mostrar(this, "Producto eliminado correctamente", 2);
                 listarDetalle(listaDetalle);
             }
+
+        }
+        actualizarTotal();
+        
+        if (tblDetalle.getRowCount() == 0) {
+            txtTotal.setText("");
         }  
 }
     private void txtnumcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumcompraActionPerformed

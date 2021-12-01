@@ -956,7 +956,18 @@ public class jdVenta extends javax.swing.JDialog {
             ResultSet rsCliente = null;
             rsCliente = objCliente.buscarClientePorDocumento(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0));
             if (rsCliente.next()) {
+                if (objCliente.validarVigencia(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0))) {
                 txtCliente.setText(rsCliente.getString("nombres") + " " + rsCliente.getString("apellidos"));
+                }else{int rpta = new MensajeMed().mostrar(this, "Cliente inactivo, desea activarlo?", 1);
+                    if (rpta == JOptionPane.YES_OPTION) {
+                objCliente.actualizarestado(txtNroDocumento.getText(), cboTipoDoc.getSelectedItem().toString().charAt(0)); 
+                  txtCliente.setText(rsCliente.getString("nombres") + " " + rsCliente.getString("apellidos"));
+                new MensajeMed().mostrar(this, "Se activó correctamente", 2);
+                    }else{
+                               txtNroDocumento.requestFocus(); 
+                    }
+  
+                }
             } else {
                 new MensajeMed().mostrar(this, "No se encuentra el cliente registrado, por favor registrelo", 0);
 

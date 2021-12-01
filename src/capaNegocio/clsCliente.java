@@ -173,4 +173,28 @@ public class clsCliente {
         }
         return false;
     } 
+    
+    public boolean validarVigencia(String dn, char tip) throws Exception{
+        strSQL="select vigencia from cliente where numdocumento='" + dn + "' and tipodocumento='"+tip+"' ;";
+        try {
+            rs=objConexion.consultarBD(strSQL);
+            if(rs.next()){
+                return rs.getBoolean("vigencia");
+            }
+        } catch (Exception e) {
+              throw new Exception(e.getMessage());
+        }
+        return false;
+    }
+    
+    public void actualizarestado(String dn, char tip) throws Exception{
+        strSQL="update cliente set vigencia = true where numdocumento='" + dn + "' and tipodocumento='"+tip+"' ;";
+        try {
+           objConexion.ejecutarBD(strSQL);
+           
+        } catch (Exception e) {
+              throw new Exception(e.getMessage());
+        }
+        
+    }
 }
