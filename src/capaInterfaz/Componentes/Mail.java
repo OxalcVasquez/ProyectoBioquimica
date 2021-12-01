@@ -64,7 +64,7 @@ public class Mail {
         multipart.addBodyPart(messageBodyPart);
 
         messageBodyPart = new MimeBodyPart();
-        DataSource fds = new FileDataSource("src/Iconos/logo.png");
+        DataSource fds = new FileDataSource("src/Iconos/ICONO2.png");
 
         messageBodyPart.setDataHandler(new DataHandler(fds));
         messageBodyPart.setHeader("Content-ID", "<image>");
@@ -566,8 +566,8 @@ public class Mail {
                     + "                                                                    style=\"Margin:0;padding-top:20px;padding-bottom:20px;padding-left:30px;padding-right:30px\">\n"
                     + "                                                                    <p\n"
                     + "                                                                        style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;line-height:27px;color:#666666;font-size:18px\">\n"
-                    + "                                                                        Hola xxxxxxxxxx.<br>Estas recibiendo este correo\n"
-                    + "                                                                        electr&oacute;nico porque has olvidado tu contrase&oacute;a de\n"
+                    + "                                                                        Hola " + rsUsuario.getString("nombres") + " " + rsUsuario.getString("apellidos") + ".<br>Estas recibiendo este correo\n"
+                    + "                                                                        electr&oacute;nico porque has olvidado tu contrase&nacute;a de\n"
                     + "                                                                        su cuenta.</p>\n"
                     + "                                                                </td>\n"
                     + "                                                            </tr>\n"
@@ -583,9 +583,7 @@ public class Mail {
                     + "                                                            <tr style=\"border-collapse:collapse\">\n"
                     + "                                                                <td class=\"es-m-txt-l\" align=\"left\"\n"
                     + "                                                                    style=\"padding:0;Margin:0;padding-top:20px;padding-left:30px;padding-right:30px\">\n"
-                    + "                                                                    <a target=\"_blank\" href=\"https://viewstripo.email/\"\n"
-                    + "                                                                        style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#10ab83;font-size:18px\">XXX.XXXXXXX.XXX\n"
-                    + "                                                                        / XXXXXXXXXXXXX</a></td>\n"
+                    + "<p style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;text-align: center;color:#10ab83;font-size:18px\">"+ codRecuperacion + "</p></td>\n"
                     + "                                                            </tr>\n"
                     + "                                                            <tr style=\"border-collapse:collapse\">\n"
                     + "                                                                <td class=\"es-m-txt-l\" align=\"left\"\n"
@@ -737,7 +735,7 @@ public class Mail {
                     + "                                                                                href=\"#\"\n"
                     + "                                                                                style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#111111;font-size:14px\">visual&iacute;zalo\n"
                     + "                                                                                en la\n"
-                    + "                                                                                aplicación&nbsp;</a>&nbsp;</strong>.</p>\n"
+                    + "                                                                                aplicaci&otilde;n&nbsp;</a>&nbsp;</strong>.</p>\n"
                     + "                                                                </td>\n"
                     + "                                                            </tr>\n"
                     + "                                                            <tr style=\"border-collapse:collapse\">\n"
@@ -748,7 +746,7 @@ public class Mail {
                     + "                                                                        Si estos correos electr&oacute;nicos se vuelven\n"
                     + "                                                                        molestos, no dude en&nbsp;<strong><a\n"
                     + "                                                                                target=\"_blank\"\n"
-                    + "                                                                                href=\"https://my.stripo.email/cabinet/\"\n"
+                    + "                                                                                href=\"#\"\n"
                     + "                                                                                style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#111111;font-size:14px\">darse\n"
                     + "                                                                                de baja</a></strong>.</p>\n"
                     + "                                                                </td>\n"
@@ -822,7 +820,7 @@ public class Mail {
         multipart.addBodyPart(messageBodyPart);
 
         messageBodyPart = new MimeBodyPart();
-        DataSource fds = new FileDataSource("src/Iconos/ICONO.png");
+        DataSource fds = new FileDataSource("src/Iconos/ICONO2.png");
 
         messageBodyPart.setDataHandler(new DataHandler(fds));
         messageBodyPart.setHeader("Content-ID", "<image>");

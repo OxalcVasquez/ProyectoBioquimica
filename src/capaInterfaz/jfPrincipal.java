@@ -676,7 +676,7 @@ public class jfPrincipal extends javax.swing.JFrame {
                         .addGroup(panelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel32)
                             .addComponent(lblFechaRegistro))))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         Usuario.setViewportView(panelUsuario);
