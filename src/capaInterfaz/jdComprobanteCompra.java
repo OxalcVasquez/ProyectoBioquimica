@@ -356,6 +356,11 @@ btnQuitar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jPanel2.add(btnNuevoPrveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 160, -1, -1));
 
         botonMedGradiente2.setText("Salir");
+        botonMedGradiente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMedGradiente2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(botonMedGradiente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 610, 170, -1));
 
         botonMedGradiente3.setText("Eliminar");
@@ -909,6 +914,11 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
          // TODO add your handling code here:
         quitar();
     }//GEN-LAST:event_btnQuitarMouseClicked
+
+    private void botonMedGradiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente2ActionPerformed
+         // TODO add your handling code here:
+         this.dispose();
+    }//GEN-LAST:event_botonMedGradiente2ActionPerformed
     public void actualizarTotal() {
         Double total = 0.0;
         for (int i = 0; i < tblDetalle.getRowCount(); i++) {

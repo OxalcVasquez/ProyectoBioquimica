@@ -253,6 +253,11 @@ public class jdGestionarProducto extends javax.swing.JDialog {
         jPanel2.add(jdcVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 210, 189, -1));
 
         btnSalir2.setText("Salir");
+        btnSalir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnSalir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 550, 170, -1));
 
         btnNuevo.setText("Nuevo");
@@ -691,6 +696,11 @@ public class jdGestionarProducto extends javax.swing.JDialog {
         buscarProducto();
 
     }//GEN-LAST:event_btnBuscarMouseClicked
+
+    private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
+         // TODO add your handling code here:
+         this.dispose();
+    }//GEN-LAST:event_btnSalir2ActionPerformed
 
     /**
      * @param args the command line arguments
