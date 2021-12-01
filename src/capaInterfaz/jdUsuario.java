@@ -509,8 +509,7 @@ public class jdUsuario extends javax.swing.JDialog {
         
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
-        modelo.addColumn("Nombres");
-        modelo.addColumn("Password");
+        modelo.addColumn("Nombres");    
         modelo.addColumn("Vigencia");
         modelo.addColumn("Registro");
         modelo.addColumn("Trabajador");
@@ -521,7 +520,7 @@ public class jdUsuario extends javax.swing.JDialog {
         try {
             rs = objUsu.listarUsu();
             while(rs.next()){
-                modelo.addRow(new Object[]{rs.getInt("codusuario"), rs.getString("nombreusuario"),rs.getString("contraseñausuario"), rs.getBoolean("vigencia"),rs.getString("fecharegistro"),rs.getString("nombreTrabajador") });
+                modelo.addRow(new Object[]{rs.getInt("codusuario"), rs.getString("nombreusuario"), rs.getBoolean("vigencia"),rs.getString("fecharegistro"),rs.getString("nombreTrabajador") });
             }
              alinearTabla(tblUsuario);
         } catch (Exception e) {
@@ -590,7 +589,7 @@ public class jdUsuario extends javax.swing.JDialog {
                 rs = objUsu.buscarUsu(Integer.parseInt(txtCodigo.getText()));
                 while(rs.next()){
                     txtNombre.setText(rs.getString("nombreusuario"));
-                    txtContraseña.setText(rs.getString("contraseñausuario"));
+                    txtContraseña.setText("");
                     txtFecha.setText(rs.getString("fecharegistro"));
                     chkEstado.setSelected(rs.getBoolean("vigencia"));
                     txtCodigoTra.setText(String.valueOf(rs.getInt("codtrabajador")));

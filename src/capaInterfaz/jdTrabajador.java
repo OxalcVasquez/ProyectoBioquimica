@@ -726,10 +726,16 @@ public class jdTrabajador extends javax.swing.JDialog {
             
                 int confirmacion =new MensajeMed().mostrar(this,"¿Estás seguro de la eliminación? El usuario será eliminado",1);
                 if(confirmacion == JOptionPane.YES_OPTION){
+                    
+                if(objTra.validarTrabajador(Integer.parseInt(txtCodigo.getText())) == true){
                  objTra.eliminarTrabajador(Integer.parseInt(txtCodigo.getText()));
                  new MensajeMed().mostrar(this,"Se elimino al trabajador ",2); 
                  listarTrabajador();
-                 limpiarContenido();
+                 limpiarContenido();   
+                }else{
+                new MensajeMed().mostrar(this,"No puede eliminarse trabajadores con ventas",0); 
+                }    
+  
             }else{
                   new MensajeMed().mostrar(this,"No se elimino al trabajador",3); 
                   listarTrabajador();

@@ -9,6 +9,7 @@ import capaDatos.clsJDBCConexion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.ArrayList;
 
 /**
@@ -60,6 +61,26 @@ public class clsTrabajador {
         }
         return 0;
     }
+        
+      public Boolean validarTrabajador (Integer cod) throws Exception{
+        strSQL="select f_verificar_trabajador_ventas("+cod+")";
+        try {
+            obj.conectarBD();
+            con=obj.getCon();
+            cs=con.prepareCall(strSQL);
+            rs=cs.executeQuery();
+            if (rs.next()){
+            return rs.getBoolean("f_verificar_trabajador_ventas");
+            }   
+        } catch (Exception e) {
+            throw new Exception("Error al verificar el trabajador");
+        }finally{
+            obj.desconectarBD();
+            cs.close();
+        }
+        return false;
+    }
+     
     //Proceso Almacenado
      public void registrarTrabajador(Integer codtrabajador,String nombres,String apellidos,String dni,String telefono,String correo,String direccion,Boolean sexo,String fechanac,Character cargo,Boolean vigencia) throws Exception{
         strSQL = "select fn_registrarTrabajador("+codtrabajador+",'"+nombres+"','"+apellidos+"','"+dni+" ','"+telefono+" ','"+correo+" ','"+direccion+"',"+sexo+",'"+fechanac+"','"+cargo+"',"+vigencia+")";
