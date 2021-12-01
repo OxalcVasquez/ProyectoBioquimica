@@ -3,9 +3,12 @@ package capaInterfaz;
 
 import capaNegocio.clsReporte;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.swing.JRViewer;
 
@@ -21,6 +24,10 @@ public class jdRptCompraDia extends javax.swing.JDialog {
     public jdRptCompraDia(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        jdcFecha.setIcon(new ImageIcon(getClass().getResource("/Iconos/calendario.png")));
+        jdcFecha.getCalendarButton().setContentAreaFilled(false);
+        jdcFecha.setBackground(Color.WHITE);
+        jdcFecha.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.visorReporte.setVisible(false);
     }
 
@@ -71,7 +78,7 @@ public class jdRptCompraDia extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel2.setText("Fecha:");
 
-        btnVer.setText("Ver ventas");
+        btnVer.setText("Ver compras");
         btnVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerActionPerformed(evt);
