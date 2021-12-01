@@ -18,9 +18,9 @@ public class clsJDBCConexion {
     //Constructor de clases
     public clsJDBCConexion() {
         this.driver = "org.postgresql.Driver";
-        this.url = "jdbc:postgresql://ec2-3-221-100-217.compute-1.amazonaws.com:5432/d325lbe00ak265";
-        this.user = "mypimcwxsyjsvp";
-        this.password = "d794791d083f061a077dabd47961b43acd04e71ae2798d5136c38fd6308c1547";
+        this.url = "jdbc:postgresql://localhost:5432/BD_BIOQUIMICA";
+        this.user = "postgres";
+        this.password = "72721763";
         this.con = null;
     }
     

@@ -376,7 +376,7 @@ public class jdInicioSesion extends javax.swing.JDialog {
 
                     CardLayout card = (CardLayout) Ventanas.getLayout();
 
-                    imagen(lblImagen, "src/Iconos/code.png");
+                    imagen(lblImagen, "/Iconos/code.png");
                     jPanel2.repaint();
                     //txtCodigoRecuperacion.setText("");
                     //txtCodigoRecuperacion.requestFocus();
@@ -419,7 +419,7 @@ public class jdInicioSesion extends javax.swing.JDialog {
         // TODO add your handling code here:
         CardLayout card = (CardLayout) Ventanas.getLayout();
 
-        imagen(lblImagen, "src/Iconos/inicio.png");
+        imagen(lblImagen, "/Iconos/inicio.png");
         jPanel2.repaint();
         card.show(Ventanas, "inicioSesion");
         limpiar();

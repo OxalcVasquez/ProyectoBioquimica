@@ -411,7 +411,7 @@ public class clsUsuario {
             int iterations = Argon2Helper.findIterations(argon2, 500, 65536, 4);
 
             String hashRecu = argon2.hash(iterations, 65536, 4, codR.toCharArray());
-            strSQLar.add("update usuario usu set codigorecuperacion = ? from trabajador tra where usu.nombreusuario = ? returning nombres,apellidos,correo");
+            strSQLar.add("update usuario usu set codigorecuperacion = ? from trabajador tra where usu.codtrabajador = tra.codtrabajador and usu.nombreusuario = ? returning nombres,apellidos,correo");
             strSQLar.add(hashRecu);
             strSQLar.add(usu);
             
