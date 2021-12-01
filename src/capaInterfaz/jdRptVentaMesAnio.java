@@ -30,7 +30,7 @@ public class jdRptVentaMesAnio extends javax.swing.JDialog {
         initComponents();
         this.visorReporte.setVisible(false);
         cboTipo.setUI(ComboMed.createUI(cboTipo));
-
+        setLocationRelativeTo(parent);
     }
 
     public String getNombreReporte() {

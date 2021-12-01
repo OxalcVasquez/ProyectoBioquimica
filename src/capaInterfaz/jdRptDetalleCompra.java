@@ -30,6 +30,7 @@ public class jdRptDetalleCompra extends javax.swing.JDialog {
     public jdRptDetalleCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(parent);
         this.visorReporte.setVisible(false);
     }
 

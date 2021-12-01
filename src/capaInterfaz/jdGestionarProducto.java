@@ -45,7 +45,7 @@ public class jdGestionarProducto extends javax.swing.JDialog {
     public jdGestionarProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        setLocationRelativeTo(parent);
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));

@@ -30,6 +30,7 @@ public class jdRptVentaFecha extends javax.swing.JDialog {
     public jdRptVentaFecha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(parent);
         this.visorReporte.setVisible(false);
         jdcFecha.setIcon(new ImageIcon(getClass().getResource("/Iconos/calendario.png")));
         jdcFecha.getCalendarButton().setContentAreaFilled(false);

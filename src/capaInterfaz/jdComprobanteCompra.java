@@ -51,7 +51,7 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
     public jdComprobanteCompra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        setLocationRelativeTo(parent);
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
@@ -59,11 +59,11 @@ public class jdComprobanteCompra extends javax.swing.JDialog {
         jdcFechaCompra.getCalendarButton().setContentAreaFilled(false);
         jdcFechaCompra.setBackground(Color.WHITE);
         jdcFechaCompra.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-btnBusCompra.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-btnProv.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-btnAñadir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-btnQuitar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnBusCompra.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnProv.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnProd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnAñadir.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        btnQuitar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         cboComp.setUI(ComboMed.createUI(cboComp));
         tblCompras.getTableHeader().setDefaultRenderer(new ColorTabla());
         tblDetalle.getTableHeader().setDefaultRenderer(new ColorTabla());
@@ -90,8 +90,8 @@ btnQuitar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     public Double getPrecio() {
         return this.precio;
     }
-    
-        public void alinearTabla(JTable tabla) {
+
+    public void alinearTabla(JTable tabla) {
         DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
         rightRenderer.setHorizontalAlignment(SwingConstants.CENTER);
         TableModel tableModel = tabla.getModel();
@@ -577,8 +577,8 @@ btnQuitar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
-public void quitar(){
-   for (int i = 0; i < listaDetalle.size(); i++) {
+    public void quitar() {
+        for (int i = 0; i < listaDetalle.size(); i++) {
             Object[] datos = (Object[]) listaDetalle.get(i);
             if (datos[0].equals(txtProducto.getText())) {
                 listaDetalle.remove(i);
@@ -588,11 +588,11 @@ public void quitar(){
 
         }
         actualizarTotal();
-        
+
         if (tblDetalle.getRowCount() == 0) {
             txtTotal.setText("");
-        }  
-}
+        }
+    }
     private void txtnumcompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumcompraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnumcompraActionPerformed
@@ -600,39 +600,39 @@ public void quitar(){
     private void txtnumComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnumComprobanteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnumComprobanteActionPerformed
-private void buscarProv(){
-     ResultSet rsPr = null;
+    private void buscarProv() {
+        ResultSet rsPr = null;
 
         try {
             if (txtruc.getText().isEmpty()) {
-                new MensajeMed().mostrar(this, "Ingrese ruc a buscar...",0);
+                new MensajeMed().mostrar(this, "Ingrese ruc a buscar...", 0);
                 txtruc.requestFocus();
             } else {
-                
-                 rsPr = objProv.buscarProv(txtruc.getText());
+
+                rsPr = objProv.buscarProv(txtruc.getText());
                 if (rsPr.next()) {
                     if (objProv.validarVigencia(txtruc.getText())) {
-                    txtRaz.setText(rsPr.getString("razonsocial"));
-}else{int rpta = new MensajeMed().mostrar(this, "Proveedor inactivo, desea activarlo?", 1);
-                    if (rpta == JOptionPane.YES_OPTION) {
-                objProv.actualizarestado(txtruc.getText()); 
-                  txtRaz.setText(rsPr.getString("razonsocial"));
-                new MensajeMed().mostrar(this, "Se activó correctamente", 2);
-                    }else{
-                               txtruc.requestFocus(); 
+                        txtRaz.setText(rsPr.getString("razonsocial"));
+                    } else {
+                        int rpta = new MensajeMed().mostrar(this, "Proveedor inactivo, desea activarlo?", 1);
+                        if (rpta == JOptionPane.YES_OPTION) {
+                            objProv.actualizarestado(txtruc.getText());
+                            txtRaz.setText(rsPr.getString("razonsocial"));
+                            new MensajeMed().mostrar(this, "Se activó correctamente", 2);
+                        } else {
+                            txtruc.requestFocus();
+                        }
+
                     }
-  
-                }
                 } else {
-                    new MensajeMed().mostrar(this, "Ruc no registrado...",0);
+                    new MensajeMed().mostrar(this, "Ruc no registrado...", 0);
                     btnNuevoPrveedor.requestFocus();
-                }   
-                
-                
+                }
+
             }
         } catch (Exception e) {
-            new MensajeMed().mostrar(this, e.getMessage(),3);
-        }         
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
+        }
     }
     private void txtProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductoActionPerformed
         // TODO add your handling code here:
@@ -646,22 +646,22 @@ private void buscarProv(){
             obj.setVisible(true);
             ruc = txtruc.getText();
         } catch (Exception e) {
-            new MensajeMed().mostrar(this, e.getMessage(),3);
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnNuevoPrveedorActionPerformed
-private String obtenerTipoComprobante() {
-        
+    private String obtenerTipoComprobante() {
+
         String tipo[] = cboComp.getSelectedItem().toString().split(" ");
         if (tipo.length > 1) {
             return (tipo[0].substring(0, 1) + tipo[1].substring(0, 1));
         } else {
             return tipo[0].substring(0, 1);
-            
+
         }
     }
     private void botonMedGradiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente1ActionPerformed
-         // TODO add your handling code here:
-         try {
+        // TODO add your handling code here:
+        try {
             Integer numCompra = Integer.parseInt(txtnumcompra.getText());
             ResultSet rsVentaTemporal = objCom.buscarCompra(numCompra);
             ArrayList detalleEliminar = datosDetalle(objDetalle.listarDetalle(numCompra));
@@ -671,16 +671,15 @@ private String obtenerTipoComprobante() {
                     Double.parseDouble(txtTotal.getText()),
                     sdf.format(jdcFechaCompra.getDate()),
                     txtruc.getText(),
-                    
                     detalleEliminar,
                     listaDetalle);
             new MensajeMed().mostrar(this, "Se modificó correctamente", 2);
-            
+
             listarCompras();
             limpirDetalle();
-            
+
         } catch (Exception ex) {
-            new MensajeMed().mostrar(this, ex.getMessage(),3);
+            new MensajeMed().mostrar(this, ex.getMessage(), 3);
         }
     }//GEN-LAST:event_botonMedGradiente1ActionPerformed
 
@@ -712,15 +711,15 @@ private String obtenerTipoComprobante() {
             }
 
         } catch (Exception e) {
-            new MensajeMed().mostrar(this, e.getMessage(),3);
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }//GEN-LAST:event_btnNuevaComprsActionPerformed
 
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioActionPerformed
-private void buscarProdu(){
-      try {
+    private void buscarProdu() {
+        try {
             jdBuscarProductosCompra objFrmBuscar = new jdBuscarProductosCompra(null, true);
             objFrmBuscar.setVisible(true);
 //            txtProducto.setText(objFrmBuscar.codigo +" "+objFrmBuscar.producto);
@@ -735,12 +734,12 @@ private void buscarProdu(){
             jsCantidad.setPrecio(txtPrecio, precio);
 
         } catch (Exception e) {
-            new MensajeMed().mostrar(this, e.getMessage(),3);
-        }        
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
+        }
     }
 
-private void anadir(){
-     try {
+    private void anadir() {
+        try {
 
             if (validarDetalle(txtProducto.getText())) {
                 Object producto[] = new Object[5];
@@ -754,16 +753,15 @@ private void anadir(){
                 listarDetalle(listaDetalle);
                 actualizarTotal();
 
-
             } else {
-                new MensajeMed().mostrar(this, "El producto ya se encuentre en la compra",3);
+                new MensajeMed().mostrar(this, "El producto ya se encuentre en la compra", 3);
 
             }
 
         } catch (Exception ex) {
-            new MensajeMed().mostrar(this, ex.getMessage(),3);
+            new MensajeMed().mostrar(this, ex.getMessage(), 3);
         }
-}
+    }
     private void txtrucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtrucKeyTyped
         // TODO add your handling code here:
         // TODO add your handling code here:
@@ -793,24 +791,23 @@ private void anadir(){
     private void tblDetalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDetalleMouseClicked
         // TODO add your handling code here:
         txtProducto.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 0)));
-            jsCantidad.setCantidad(Integer.parseInt(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 2).toString()));
-            txtPrecio.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 3)));
-            jsCantidad.setPrecio(txtPrecio,Double.parseDouble(txtPrecio.getText())/jsCantidad.getCantidad());
-            
-        
+        jsCantidad.setCantidad(Integer.parseInt(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 2).toString()));
+        txtPrecio.setText(String.valueOf(tblDetalle.getValueAt(tblDetalle.getSelectedRow(), 3)));
+        jsCantidad.setPrecio(txtPrecio, Double.parseDouble(txtPrecio.getText()) / jsCantidad.getCantidad());
+
+
     }//GEN-LAST:event_tblDetalleMouseClicked
 
-    private void buscarCom(){
-             ResultSet rsCompra = null;
-         ResultSet rsDetalle = null;
-         
-     
+    private void buscarCom() {
+        ResultSet rsCompra = null;
+        ResultSet rsDetalle = null;
+
         try {
             if (txtnumcompra.getText().equals("")) {
-                new MensajeMed().mostrar(this, "Ingrese el número de compra a buscar!",0);
+                new MensajeMed().mostrar(this, "Ingrese el número de compra a buscar!", 0);
             } else {
                 rsCompra = objCom.buscarCompra(Integer.parseInt(txtnumcompra.getText()));
-                rsDetalle=objDetalle.listarDetalle(Integer.parseInt(txtnumcompra.getText()));
+                rsDetalle = objDetalle.listarDetalle(Integer.parseInt(txtnumcompra.getText()));
                 listaDetalle = datosDetalle(objDetalle.listarDetalle(Integer.parseInt(txtnumcompra.getText())));
                 if (rsCompra.next()) {
                     listarDetalle(listaDetalle);
@@ -820,39 +817,37 @@ private void anadir(){
                     txtnumComprobante.setText(rsCompra.getString("numcomprobante"));
                     txtTotal.setText(rsCompra.getString("total"));
 
-                    
                     if (rsCompra.getString("tipo").equals("B")) {
-                    cboComp.setSelectedIndex(0);
-                    
-                } else if (rsCompra.getString("tipo").equals("BE")) {
-                    cboComp.setSelectedIndex(1);
-                    
-                } else if (rsCompra.getString("tipo").equals("F")) {
-                    cboComp.setSelectedIndex(2);
-                    
-                } else {
-                    cboComp.setSelectedIndex(3);
-                    
-                }
+                        cboComp.setSelectedIndex(0);
 
-                    
+                    } else if (rsCompra.getString("tipo").equals("BE")) {
+                        cboComp.setSelectedIndex(1);
+
+                    } else if (rsCompra.getString("tipo").equals("F")) {
+                        cboComp.setSelectedIndex(2);
+
+                    } else {
+                        cboComp.setSelectedIndex(3);
+
+                    }
+
                 } else {
-                    new MensajeMed().mostrar(this, "Número de comprobante no existe!",0);
+                    new MensajeMed().mostrar(this, "Número de comprobante no existe!", 0);
                     limpiarVenta();
                 }
             }
         } catch (Exception e) {
-            new MensajeMed().mostrar(this, e.getMessage(),3);
-        }  
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
+        }
     }
     private void btnNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProductoActionPerformed
         // TODO add your handling code here:
         jdGestionarProducto obj = new jdGestionarProducto(null, true);
         obj.setVisible(true);
     }//GEN-LAST:event_btnNuevoProductoActionPerformed
-public ArrayList datosDetalle(ResultSet rsDetalle) {
+    public ArrayList datosDetalle(ResultSet rsDetalle) {
         ArrayList detalle = new ArrayList();
-        
+
         try {
             while (rsDetalle.next()) {
                 Object detalleDatos[] = new Object[5];
@@ -862,48 +857,47 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
                 detalleDatos[3] = rsDetalle.getDouble("precio") * rsDetalle.getInt("cantidad");
                 detalleDatos[4] = rsDetalle.getInt("codproducto");
                 detalle.add(detalleDatos);
-                
+
             }
         } catch (Exception e) {
         }
         return detalle;
     }
     private void botonMedGradiente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente3ActionPerformed
-         // TODO add your handling code here:
-         try {
-            int rpta = new MensajeMed().mostrar(this, "Está seguro de eliminar la compra seleccionada",1);
+        // TODO add your handling code here:
+        try {
+            int rpta = new MensajeMed().mostrar(this, "Está seguro de eliminar la compra seleccionada", 1);
             if (rpta == JOptionPane.YES_OPTION) {
                 if (!txtnumcompra.getText().isEmpty()) {
                     objCom.eliminarComprobanteCompra(Integer.parseInt(txtnumcompra.getText()), datosDetalle(objDetalle.listarDetalle(Integer.parseInt(txtnumcompra.getText()))));
-                    new MensajeMed().mostrar(this, "Se ha eliminado la compra correctamente",2);
+                    new MensajeMed().mostrar(this, "Se ha eliminado la compra correctamente", 2);
                     limpiarVenta();
                     limpirDetalle();
                     listarCompras();
-                    
-                    
+
                 } else {
-                    new MensajeMed().mostrar(this, "Por favor ingrese el número de venta a eliminar",1);
-                    
+                    new MensajeMed().mostrar(this, "Por favor ingrese el número de venta a eliminar", 1);
+
                 }
             }
-            
+
         } catch (Exception e) {
         }
     }//GEN-LAST:event_botonMedGradiente3ActionPerformed
 
     private void btnBusCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBusCompraMouseClicked
-          // TODO add your handling code here:
-         buscarCom();
+        // TODO add your handling code here:
+        buscarCom();
     }//GEN-LAST:event_btnBusCompraMouseClicked
 
     private void btnProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdMouseClicked
-         // TODO add your handling code here:
-         buscarProdu();
+        // TODO add your handling code here:
+        buscarProdu();
     }//GEN-LAST:event_btnProdMouseClicked
 
     private void btnProvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProvMouseClicked
-         // TODO add your handling code here:
-         buscarProv();
+        // TODO add your handling code here:
+        buscarProv();
     }//GEN-LAST:event_btnProvMouseClicked
 
     private void btnAñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAñadirMouseClicked
@@ -912,13 +906,13 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
     }//GEN-LAST:event_btnAñadirMouseClicked
 
     private void btnQuitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuitarMouseClicked
-         // TODO add your handling code here:
+        // TODO add your handling code here:
         quitar();
     }//GEN-LAST:event_btnQuitarMouseClicked
 
     private void botonMedGradiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente2ActionPerformed
-         // TODO add your handling code here:
-         this.dispose();
+        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_botonMedGradiente2ActionPerformed
     public void actualizarTotal() {
         Double total = 0.0;
@@ -929,7 +923,7 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
         }
     }
 
-   public void listarDetalle(ResultSet rsDetalle) {
+    public void listarDetalle(ResultSet rsDetalle) {
         try {
             DefaultTableModel modelo = new DefaultTableModel();
 //        modelo.addColumn("Cod.");
@@ -952,13 +946,13 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
                     rsDetalle.getDouble("precio"),
                     rsDetalle.getInt("cantidad"),
                     rsDetalle.getDouble("precio") * rsDetalle.getInt("cantidad"),});
-                
+
             }
-            
+
             tblDetalle.setModel(modelo);
         } catch (Exception e) {
         }
-        
+
     }
 
     public void listarDetalle(ArrayList lista) {
@@ -990,7 +984,7 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
                     datos[2] = jsCantidad.getCantidad();
                     Double precio = (Double) tblDetalle.getModel().getValueAt(i, j + 1);
                     tblDetalle.setValueAt(jsCantidad.getCantidad() * precio, i, j + 3);
-                   
+
                     datos[3] = tblDetalle.getModel().getValueAt(i, j + 3);
 
                 }
@@ -1023,12 +1017,10 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
         txtPrecio.setText("");
         jsCantidad.setCantidad(1);
         txtTotal.setText("---------");
-       listaDetalle= new ArrayList();
+        listaDetalle = new ArrayList();
         listarDetalle(listaDetalle);
-        
+
     }
-    
- 
 
     public void listarCompras() {
         ResultSet rsLista = null;
@@ -1070,7 +1062,7 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
             }
             alinearTabla(tblCompras);
         } catch (Exception e) {
-            new MensajeMed().mostrar(this, e.getMessage(),3);
+            new MensajeMed().mostrar(this, e.getMessage(), 3);
         }
     }
 

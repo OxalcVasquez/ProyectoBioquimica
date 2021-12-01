@@ -24,6 +24,7 @@ public class jdRptCompraMesAnio extends javax.swing.JDialog {
     public jdRptCompraMesAnio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(parent);
         this.visorReporte.setVisible(false);
     }
 

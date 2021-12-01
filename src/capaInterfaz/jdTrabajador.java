@@ -43,7 +43,7 @@ public class jdTrabajador extends javax.swing.JDialog {
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
-        
+        setLocationRelativeTo(parent);
         cboSexo.setUI(ComboMed.createUI(cboSexo));
         cboCargo.setUI(ComboMed.createUI(cboCargo));
         tblTrabajador.getTableHeader().setDefaultRenderer(new ColorTabla());

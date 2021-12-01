@@ -43,7 +43,7 @@ clsProveedor objProv = new clsProveedor();
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
-        
+        setLocationRelativeTo(parent);
         cboRubro.setUI(ComboMed.createUI(cboRubro));
         tblDatos.getTableHeader().setDefaultRenderer(new ColorTabla());
         

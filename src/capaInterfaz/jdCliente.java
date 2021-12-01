@@ -44,7 +44,7 @@ public class jdCliente extends javax.swing.JDialog {
         getContentPane().setBackground(new Color(0, 0, 0, 0));
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
-
+        setLocationRelativeTo(parent);
         cboSexo.setUI(ComboMed.createUI(cboSexo));
         cboDoc.setUI(ComboMed.createUI(cboDoc));
 

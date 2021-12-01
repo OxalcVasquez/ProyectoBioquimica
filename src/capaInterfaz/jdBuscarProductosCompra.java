@@ -8,6 +8,7 @@ package capaInterfaz;
 import capaInterfaz.Componentes.ColorTabla;
 import capaInterfaz.Componentes.RoundedPanel;
 import capaInterfaz.Componentes.ComboMed;
+import capaInterfaz.Componentes.MensajeMed;
 import capaNegocio.*;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -445,10 +446,11 @@ public class jdBuscarProductosCompra extends javax.swing.JDialog {
                      this.dispose();
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Por favor seleccione un producto");
+                new MensajeMed().mostrar(this, "Por favor seleccione un producto",0);
             }
 
         } catch (Exception e) {
+            new MensajeMed().mostrar(this, e.getMessage(),3);
         }
 
 
