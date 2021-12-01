@@ -878,6 +878,7 @@ public ArrayList datosDetalle(ResultSet rsDetalle) {
                     new MensajeMed().mostrar(this, "Se ha eliminado la compra correctamente",2);
                     limpiarVenta();
                     limpirDetalle();
+                    listarCompras();
                     
                     
                 } else {
