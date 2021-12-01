@@ -406,12 +406,20 @@ clsProveedor objProv = new clsProveedor();
             Toolkit.getDefaultToolkit().beep();
         }
         //metodo solo para ingresar numeros
-        if (txtRuc.getText().length() == 11) {
+        if ((txtRuc.getText().length() == 11) ) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
+        
     }//GEN-LAST:event_txtRucKeyTyped
-
+public boolean valruc(){
+    if((txtRuc.getText().substring(0,1)!="20" ||txtRuc.getText().substring(0,1)!="10") && (txtRuc.getText().length() != 11) ){
+        new MensajeMed().mostrar(this, "Ruc no válido, debe empezar por 20 o 10 y tener 11 dígitos.",3);
+        txtRuc.requestFocus();
+        return false;
+    }
+    return true;
+}
     private void txtRAZKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRAZKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();//metodo solo para ingresar letras
@@ -481,8 +489,8 @@ private void buscarPro(){
             if(txtRuc.getText().isEmpty() || txtRAZ.getText().isEmpty() || txtCorreo.getText().isEmpty() || txtTel.getText().isEmpty() || txtCiudad.getText().isEmpty()){
                 new MensajeMed().mostrar(this, "Complete todos los campos",0);
             } else {
-                
-                if (objProv.validar(txtRuc.getText())){
+                if (valruc()){
+                   if (objProv.validar(txtRuc.getText())){
                     if (cboRubro.getSelectedItem().equals("Agrícola")) rubro="A";
                     if (cboRubro.getSelectedItem().equals("Veterinario")) rubro="V";
                     if (cboRubro.getSelectedItem().equals("Químico")) rubro="Q";
@@ -494,7 +502,9 @@ private void buscarPro(){
                 }else{
                      new MensajeMed().mostrar(this, "Ruc ya está registrado!",3);
 
+                } 
                 }
+                
             }
               
             
