@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -589,7 +590,6 @@ public class jdCliente extends javax.swing.JDialog {
                 txtCodigo.setText(objC.generarCodigoCliente().toString());
                 txtNombre.requestFocus();
             } else {
-
                 if (!txtNombre.getText().equals("") || !txtApellidos.getText().equals("") || !txtTelefono.getText().equals("") || !txtCorreo.getText().equals("") || !txtDNI.getText().equals("") || !txtCiudad.getText().equals("") || !(jdCalendar.getDate() == null)) {
                     btnNuevo.setText("Nuevo");
 
@@ -609,11 +609,18 @@ public class jdCliente extends javax.swing.JDialog {
                     }
 
                     String fecha = new SimpleDateFormat("yyyy/MM/dd").format(jdCalendar.getDate());
+                    
+                    if(objC.verfificarCliNum(txtDNI.getText(), tipoDoc)){
+                        objC.registrarCliente(Integer.parseInt(txtCodigo.getText()), txtDNI.getText(), tipoDoc, txtNombre.getText(), txtApellidos.getText(), fecha, sexo, txtCiudad.getText(), txtTelefono.getText(), txtCorreo.getText(), chkVigencia.isSelected());
+                        new MensajeMed().mostrar(this, "Se agrego el cliente correctamente", 2);
+                        limpiarControles();
+                        listarCliente();
+                    }else{
+                        new MensajeMed().mostrar(this, "El mismo numero de documento y tipo ya estan registrado", 0);
+                        btnNuevo.setText("Guardar");
+                    }
 
-                    objC.registrarCliente(Integer.parseInt(txtCodigo.getText()), txtDNI.getText(), tipoDoc, txtNombre.getText(), txtApellidos.getText(), fecha, sexo, txtCiudad.getText(), txtTelefono.getText(), txtCorreo.getText(), chkVigencia.isSelected());
-                    new MensajeMed().mostrar(this, "Se agrego el cliente correctamente", 2);
-                    limpiarControles();
-                    listarCliente();
+                    
 
                 } else {
                     new MensajeMed().mostrar(this, "Por favor complete todos los campos", 0);
@@ -635,10 +642,19 @@ public class jdCliente extends javax.swing.JDialog {
                 new MensajeMed().mostrar(this, "Ingrese código a eliminar...", 0);
             } else {
                 if (objC.verfificarCli(Integer.parseInt(txtCodigo.getText()))) {
-                    objC.eliminarCliente(Integer.parseInt(txtCodigo.getText()));
-                    limpiarControles();
+                    
+                int confirmacion =new MensajeMed().mostrar(this,"¿Estás seguro de la eliminación? El cliente será eliminado",1);
+                if(confirmacion == JOptionPane.YES_OPTION){
+                 objC.eliminarCliente(Integer.parseInt(txtCodigo.getText()));
+                 new MensajeMed().mostrar(this,"Se elimino al Cliente",2); 
+                 limpiarControles();
                     listarCliente();
-                    new MensajeMed().mostrar(this, "Se elimino el cliente correctamente", 2);
+                 }else{
+                  new MensajeMed().mostrar(this,"No se elimino al Cliente",3); 
+                  limpiarControles();
+                    listarCliente();
+                }
+
                 } else {
                     new MensajeMed().mostrar(this, "No se puede eliminar este cliente porque tiene compras asignadas.", 3);
                 }

@@ -172,7 +172,27 @@ public class clsCliente {
             cs.close();
         }
         return false;
-    } 
+    }
+    
+    public Boolean verfificarCliNum(String num,String tip) throws Exception{
+        strSQL="select pa_verificarCliNum('"+num+"','"+tip+"') ";
+        try {
+            objConexion.conectarBD();
+            con=objConexion.getCon();
+            cs=con.prepareCall(strSQL);
+            rs=cs.executeQuery();
+            if (rs.next()){
+            return rs.getBoolean("pa_verificarCliNum");
+            }
+            
+        } catch (Exception e) {
+            throw new Exception(e);
+        }finally{
+            objConexion.desconectarBD();
+            cs.close();
+        }
+        return false;
+    }
     
     public boolean validarVigencia(String dn, char tip) throws Exception{
         strSQL="select vigencia from cliente where numdocumento='" + dn + "' and tipodocumento='"+tip+"' ;";
