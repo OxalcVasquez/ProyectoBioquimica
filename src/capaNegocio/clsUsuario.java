@@ -224,7 +224,7 @@ public class clsUsuario {
     
     public String[] inicioSesion(String usu, char[] contra) throws Exception {
 
-        strSQLar.add("select nombres||' '||apellidos as nombre, nombreusuario, contraseñausuario, codusuario, cargo,dni,fechanac,telefono, correo, direccion,fecharegistro,sexo from usuario usu inner join trabajador tr on tr.codtrabajador=usu.codtrabajador where nombreusuario=?");
+        strSQLar.add("select nombres||' '||apellidos as nombre, nombreusuario, contraseñausuario, codusuario, case cargo when 'A' then 'Administrador' when 'V' then 'Vendedor' else 'Apoyo' end as cargo,dni,fechanac,telefono, correo, direccion,fecharegistro,sexo from usuario usu inner join trabajador tr on tr.codtrabajador=usu.codtrabajador where nombreusuario=?");
         strSQLar.add(usu);
         String[] usuario = null;
         //String usuario = null;
