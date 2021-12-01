@@ -44,7 +44,7 @@ public class jdUsuario extends javax.swing.JDialog {
         getRootPane().setOpaque(false);
         setBackground(new Color(0, 0, 0, 0));
         
-        
+        setLocationRelativeTo(parent);
         tblUsuario.getTableHeader().setDefaultRenderer(new ColorTabla());
     }
         public void alinearTabla(JTable tabla) {
@@ -487,7 +487,7 @@ public class jdUsuario extends javax.swing.JDialog {
         try {
             rs = objUsu.listarUsu();
             while(rs.next()){
-                modelo.addRow(new Object[]{rs.getInt("codusuario"), rs.getString("nombreusuario"), rs.getBoolean("vigencia"),rs.getString("fecharegistro"),rs.getString("nombreTrabajador") });
+                modelo.addRow(new Object[]{rs.getInt("codusuario"), rs.getString("nombreusuario"), rs.getString("vigencia"),rs.getString("fecharegistro"),rs.getString("nombretrabajador") });
             }
              alinearTabla(tblUsuario);
         } catch (Exception e) {
@@ -509,7 +509,7 @@ public class jdUsuario extends javax.swing.JDialog {
              
              rs = objUsu.cboTrabajadores();
              while(rs.next()){
-             modelo.addElement(rs.getInt("codtrabajador")+" - "+rs.getString("nombre")+" "+rs.getString("apellidos")); 
+             modelo.addElement(rs.getInt("codtrabajador")+" - "+rs.getString("nombres")+" "+rs.getString("apellidos")); 
              }
             
         } catch (Exception e) {

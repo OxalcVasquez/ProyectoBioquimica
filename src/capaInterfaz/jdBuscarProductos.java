@@ -399,7 +399,7 @@ public class jdBuscarProductos extends javax.swing.JDialog {
 
         listarCategorias();
         try {
-            listarProductos(objProducto.listarProductosVigentes());
+            listarProductos(objProducto.listarProductos());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
 

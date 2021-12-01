@@ -156,6 +156,7 @@ public class jdModificarContrasenia extends javax.swing.JDialog {
 
                 if (recuperacion) {
                     new Mail().enviarNuevoCodigo(lblUsuario.getText());
+                    new MensajeMed().mostrar(this, "<html><div style='text-align: center;'>¡Contraseña modificada!<br>Se le enviara un nuevo código de recuperación</div></html>", 2);
 
                 } else {
                     new MensajeMed().mostrar(this, "Contraseña modificada", 2);

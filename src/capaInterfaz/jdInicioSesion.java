@@ -405,7 +405,6 @@ public class jdInicioSesion extends javax.swing.JDialog {
                 mc.setVisible(true);
                 jLabel1MouseClicked(null);
                 this.setVisible(true);
-                new MensajeMed().mostrar(this, "<html><div style='text-align: center;'>¡Contraseña modificada!<br>Se le enviara un nuevo código de recuperación</div></html>", 2);
 
             } else {
                 new MensajeMed().mostrar(this, "Código incorrecto", 3);
