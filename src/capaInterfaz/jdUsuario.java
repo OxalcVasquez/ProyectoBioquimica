@@ -69,18 +69,14 @@ public class jdUsuario extends javax.swing.JDialog {
         jPanel2 = new RoundedPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuario = new javax.swing.JTable();
         txtCodigo = new capaInterfaz.Componentes.TextoMed();
         txtNombre = new capaInterfaz.Componentes.TextoMed();
-        txtFecha = new capaInterfaz.Componentes.TextoMed();
         jLabel9 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         cboTrabajador = new javax.swing.JComboBox<>();
-        jLabel14 = new javax.swing.JLabel();
-        txtCodigoTra = new capaInterfaz.Componentes.TextoMed();
         jLabel18 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -88,12 +84,12 @@ public class jdUsuario extends javax.swing.JDialog {
         jLabel17 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         chkEstado = new capaInterfaz.Componentes.CheckMed();
-        btnSalir2 = new capaInterfaz.Componentes.BotonMedGradiente();
         btnNuevo = new capaInterfaz.Componentes.BotonMedGradiente();
         gradientButton4 = new capaInterfaz.Componentes.BotonMedGradiente();
         botonMedGradiente1 = new capaInterfaz.Componentes.BotonMedGradiente();
         gradientButton3 = new capaInterfaz.Componentes.BotonMedGradiente();
         txtContraseña = new capaInterfaz.Componentes.TextoSecretoMed();
+        botonMedGradiente2 = new capaInterfaz.Componentes.BotonMedGradiente();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
@@ -125,9 +121,6 @@ public class jdUsuario extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel3.setText("Nombre:");
-
-        jLabel6.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabel6.setText("Fecha Registro : ");
 
         tblUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
@@ -166,9 +159,6 @@ public class jdUsuario extends javax.swing.JDialog {
             }
         });
 
-        txtFecha.setText("");
-        txtFecha.setPlaceholder("");
-
         jLabel9.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
         jLabel9.setText("Contraseña :");
 
@@ -185,12 +175,6 @@ public class jdUsuario extends javax.swing.JDialog {
                 cboTrabajadorActionPerformed(evt);
             }
         });
-
-        jLabel14.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
-        jLabel14.setText("Codigo Trabajador :");
-
-        txtCodigoTra.setText("");
-        txtCodigoTra.setPlaceholder("");
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
         jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -216,8 +200,6 @@ public class jdUsuario extends javax.swing.JDialog {
                 chkEstadoActionPerformed(evt);
             }
         });
-
-        btnSalir2.setText("Salir");
 
         btnNuevo.setText("Nuevo");
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -254,6 +236,13 @@ public class jdUsuario extends javax.swing.JDialog {
             }
         });
 
+        botonMedGradiente2.setText("Salir");
+        botonMedGradiente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMedGradiente2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -268,7 +257,7 @@ public class jdUsuario extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(chkEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addGap(46, 46, 46)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel2)
@@ -283,19 +272,11 @@ public class jdUsuario extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(93, 93, 93)
+                        .addComponent(jLabel13)
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboTrabajador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtCodigoTra, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cboTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,14 +288,13 @@ public class jdUsuario extends javax.swing.JDialog {
                             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(gradientButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(botonMedGradiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(gradientButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(gradientButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonMedGradiente1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(gradientButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(botonMedGradiente2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,7 +314,6 @@ public class jdUsuario extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
@@ -343,24 +322,13 @@ public class jdUsuario extends javax.swing.JDialog {
                                     .addComponent(jLabel12)))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
+                                .addComponent(jLabel9))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCodigoTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(29, 29, 29)
+                            .addComponent(cboTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(71, 71, 71)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -382,8 +350,8 @@ public class jdUsuario extends javax.swing.JDialog {
                         .addGap(32, 32, 32)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel20)
-                            .addComponent(btnSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                            .addComponent(botonMedGradiente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 850, 610));
@@ -497,8 +465,7 @@ public class jdUsuario extends javax.swing.JDialog {
          txtNombre.setText("");
           txtContraseña.setText("");
            chkEstado.setSelected(false);
-              txtFecha.setText("");
-               txtCodigoTra.setText("");
+
                cboTrabajador.setSelectedItem(null);
 
     }
@@ -542,7 +509,7 @@ public class jdUsuario extends javax.swing.JDialog {
              
              rs = objUsu.cboTrabajadores();
              while(rs.next()){
-             modelo.addElement(rs.getString("trabajador")); 
+             modelo.addElement(rs.getInt("codtrabajador")+" - "+rs.getString("nombre")+" "+rs.getString("apellidos")); 
              }
             
         } catch (Exception e) {
@@ -552,7 +519,6 @@ public class jdUsuario extends javax.swing.JDialog {
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         listarUsuario();
-        txtFecha.setText(obtenerFecha());
         cboTrabajadores();
         
         
@@ -567,13 +533,7 @@ public class jdUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_tblUsuarioMouseClicked
 
     private void cboTrabajadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTrabajadorActionPerformed
-         
-        try {
-            txtCodigoTra.setText(String.valueOf(objUsu.codigoTrabajadorCombo(String.valueOf(cboTrabajador.getSelectedItem()))));
-            
-        } catch (Exception e) {
-             JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+       
 
     }//GEN-LAST:event_cboTrabajadorActionPerformed
 
@@ -590,9 +550,8 @@ public class jdUsuario extends javax.swing.JDialog {
                 while(rs.next()){
                     txtNombre.setText(rs.getString("nombreusuario"));
                     txtContraseña.setText("");
-                    txtFecha.setText(rs.getString("fecharegistro"));
                     chkEstado.setSelected(rs.getBoolean("vigencia"));
-                    txtCodigoTra.setText(String.valueOf(rs.getInt("codtrabajador")));
+                    cboTrabajador.setSelectedItem(rs.getInt("codtrabajador")+" - "+rs.getString("nombres")+" "+rs.getString("apellidos"));
                     cboTrabajador.setSelectedItem(objUsu.Nomtrabajador(Integer.parseInt(txtCodigo.getText())));
   
                 }
@@ -621,7 +580,7 @@ public class jdUsuario extends javax.swing.JDialog {
             }else{
                 btnNuevo.setText("Nuevo");
                 //(Integer codusuario,String nombreusuario,char[] contraseñausuario,Boolean vigencia,String fecharegistro,String recu,Integer codtrabajador)
-                objUsu.registrarUsuario(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtContraseña.getPassword(),chkEstado.isSelected(),txtFecha.getText(),objUsu.generarCodigoRecuperacion(16),Integer.parseInt(txtCodigoTra.getText()));
+                objUsu.registrarUsuario(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtContraseña.getPassword(),chkEstado.isSelected(),objUsu.generarCodigoRecuperacion(16),Integer.parseInt(cboTrabajador.getSelectedItem().toString().split(" - ")[0]));
                 
                 limpiarContenido();
                 listarUsuario(); 
@@ -642,7 +601,7 @@ public class jdUsuario extends javax.swing.JDialog {
             new MensajeMed().mostrar(this, "Ingrese código a modificar...", 0);
            }else{
            
-               objUsu.actualizar(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtContraseña.getText(),chkEstado.isSelected(),txtFecha.getText(),Integer.parseInt(txtCodigoTra.getText()));
+               objUsu.actualizar(Integer.parseInt(txtCodigo.getText()),txtNombre.getText(),txtContraseña.getText(),chkEstado.isSelected(),Integer.parseInt(cboTrabajador.getSelectedItem().toString().split(" - ")[0]));
                new MensajeMed().mostrar(this, "Se modifico correctamente", 2);
                listarUsuario();
                limpiarContenido();
@@ -690,6 +649,11 @@ public class jdUsuario extends javax.swing.JDialog {
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraseñaActionPerformed
+
+    private void botonMedGradiente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMedGradiente2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_botonMedGradiente2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -990,9 +954,9 @@ public class jdUsuario extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente1;
+    private capaInterfaz.Componentes.BotonMedGradiente botonMedGradiente2;
     private capaInterfaz.Componentes.BotonMedGradiente btnNuevo;
     private javax.swing.JButton btnSalir;
-    private capaInterfaz.Componentes.BotonMedGradiente btnSalir2;
     private javax.swing.JComboBox<String> cboTrabajador;
     private capaInterfaz.Componentes.CheckMed chkEstado;
     private capaInterfaz.Componentes.BotonMedGradiente gradientButton3;
@@ -1000,7 +964,6 @@ public class jdUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1009,7 +972,6 @@ public class jdUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1017,9 +979,7 @@ public class jdUsuario extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblUsuario;
     private capaInterfaz.Componentes.TextoMed txtCodigo;
-    private capaInterfaz.Componentes.TextoMed txtCodigoTra;
     private capaInterfaz.Componentes.TextoSecretoMed txtContraseña;
-    private capaInterfaz.Componentes.TextoMed txtFecha;
     private capaInterfaz.Componentes.TextoMed txtNombre;
     // End of variables declaration//GEN-END:variables
 }

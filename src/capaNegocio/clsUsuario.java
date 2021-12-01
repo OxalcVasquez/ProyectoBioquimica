@@ -63,7 +63,7 @@ public class clsUsuario {
     }
     
     //Proceso Almacenado
-    public void registrarUsuario(Integer codusuario,String nombreusuario,char[] contraseñausuario,Boolean vigencia,String fecharegistro,String recu,Integer codtrabajador) throws Exception{
+    public void registrarUsuario(Integer codusuario,String nombreusuario,char[] contraseñausuario,Boolean vigencia,String recu,Integer codtrabajador) throws Exception{
 
         try {
          int iterations = Argon2Helper.findIterations(argon2, 500, 65536, 4);
@@ -72,7 +72,7 @@ public class clsUsuario {
 
         String hashRecu = argon2.hash(iterations, 65536, 4, recu.toCharArray());
         
-        strSQL = "select fn_registrarUsuario("+codusuario+",'"+nombreusuario+"','"+ hashPass+"','"+hashRecu+"',"+vigencia+",'"+fecharegistro+"',"+codtrabajador+")";
+        strSQL = "select fn_registrarUsuario("+codusuario+",'"+nombreusuario+"','"+ hashPass+"','"+hashRecu+"',"+vigencia+",current_date,"+codtrabajador+")";
         
         obj.consultarBD(strSQL);
         } catch (Exception e) {
@@ -169,9 +169,9 @@ public class clsUsuario {
         
     }
     
-    public void actualizar(Integer codusuario,String nombreusuario,String contraseñausuario,Boolean vigencia,String fecharegistro,Integer codtrabajador) throws Exception{
+    public void actualizar(Integer codusuario,String nombreusuario,String contraseñausuario,Boolean vigencia,Integer codtrabajador) throws Exception{
     
-        strSQL = "update usuario set nombreusuario='"+nombreusuario+"',contraseñausuario = '"+contraseñausuario+"',vigencia = "+vigencia+", fecharegistro='"+fecharegistro+"',codtrabajador = "+codtrabajador+" where codusuario = "+codusuario+"";
+        strSQL = "update usuario set nombreusuario='"+nombreusuario+"',contraseñausuario = '"+contraseñausuario+"',vigencia = "+vigencia+",codtrabajador = "+codtrabajador+" where codusuario = "+codusuario+"";
         try {
             obj.ejecutarBD(strSQL);
             
@@ -200,7 +200,7 @@ public class clsUsuario {
     
     public ResultSet cboTrabajadores() throws Exception{
     
-        strSQL = "select  (trabajador.nombres ||' '|| trabajador.apellidos )  as trabajador  from usuario u inner join trabajador  on u.codtrabajador = trabajador.codtrabajador group by  (trabajador.nombres ||' '|| trabajador.apellidos ) ";
+        strSQL = "select * from trabajador where vigencia=true and codtrabajador not in (select codtrabajador from usuario)";
         try {
             return obj.consultarBD(strSQL);
         } catch (Exception e) {
